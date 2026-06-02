@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 - TodoList by xdolist</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; margin-bottom: 10px; font-size: 2em; }
+        .meta { color: #7f8c8d; font-size: 0.9em; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #ecf0f1; }
+        h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; }
+        h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; }
+        p { margin-bottom: 15px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #f8f9fa; font-weight: 600; }
+        .contact { background: #e8f4f8; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .contact h2 { margin-top: 0; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .no-collect { color: #e74c3c; font-weight: 500; }
+        .nav { text-align: center; margin-bottom: 30px; }
+        .nav a { color: #667eea; font-weight: 600; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 20px; }
+            h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">← 返回主页</a>
+    </div>
+    
+    <div class="container">
+        <h1>TodoList 隐私政策</h1>
+        <div class="meta">
+            <p><strong>生效日期：</strong> 2026年6月2日</p>
+            <p><strong>最后更新：</strong> 2026年6月2日</p>
+        </div>
+
+        <h2>1. 简介</h2>
+        <p>TodoList（"我们"、"本应用"）是一款任务管理应用。我们高度重视您的隐私，本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。</p>
+        <div class="highlight">
+            <strong>请注意：</strong> 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。数据同步功能仅在用户主动配置第三方服务时才会启用。
+        </div>
+
+        <h2>2. 我们收集的数据</h2>
+        
+        <h3>2.1 您主动提供的数据</h3>
+        <p><strong>任务数据：</strong></p>
+        <ul>
+            <li>任务标题、描述、优先级、截止日期</li>
+            <li>任务分类名称和颜色</li>
+            <li>子任务关系</li>
+            <li>自定义排序顺序</li>
+            <li>提醒设置（时间、重复规则）</li>
+        </ul>
+        
+        <p><strong>账户数据（可选）：</strong></p>
+        <ul>
+            <li>如果您使用第三方同步服务（Supabase），您的 API 地址和密钥仅存储在本地设备上</li>
+            <li>我们不收集或存储您的第三方服务登录凭据</li>
+        </ul>
+        
+        <h3>2.2 自动收集的数据</h3>
+        <p><strong>设备标识符：</strong></p>
+        <ul>
+            <li>设备 ID（用于多端同步时标识设备来源）</li>
+            <li>此 ID 是匿名化的，不关联到您的个人身份</li>
+        </ul>
+        
+        <p><strong>使用数据：</strong></p>
+        <ul>
+            <li>应用崩溃日志（用于改进应用稳定性）</li>
+            <li>操作时间戳（用于数据同步的冲突解决）</li>
+        </ul>
+        
+        <p><strong>我们不收集：</strong></p>
+        <ul>
+            <li class="no-collect">❌ 地理位置信息</li>
+            <li class="no-collect">❌ 联系人信息</li>
+            <li class="no-collect">❌ 设备上的其他应用数据</li>
+            <li class="no-collect">❌ 浏览历史或网络活动</li>
+            <li class="no-collect">❌ 广告标识符（IDFA/AAID）</li>
+            <li class="no-collect">❌ 个人身份信息（姓名、邮箱、电话等）</li>
+        </ul>
+
+        <h2>3. 数据存储</h2>
+        
+        <h3>3.1 本地存储</h3>
+        <p>所有任务数据默认存储在您的设备本地数据库中（SQLite）。我们不会将这些数据上传到我们的服务器。</p>
+        
+        <h3>3.2 同步数据</h3>
+        <p>如果您启用了同步功能：</p>
+        <ul>
+            <li><strong>Supabase 同步：</strong> 数据存储在您自己配置的 Supabase 项目中，我们无权访问</li>
+            <li><strong>自定义 API 同步：</strong> 数据存储在您自己部署的服务器上</li>
+        </ul>
+        
+        <h3>3.3 备份数据</h3>
+        <p>应用支持创建本地备份文件，备份文件存储在设备本地存储中。您可以选择通过系统分享功能将备份文件导出到您选择的位置（如云盘、邮件等）。</p>
+
+        <h2>4. 数据使用</h2>
+        <p>我们使用您的数据仅限于以下目的：</p>
+        <ol>
+            <li><strong>提供核心功能：</strong> 任务管理、提醒、分类、排序</li>
+            <li><strong>多端同步：</strong> 在您的多个设备之间同步任务状态</li>
+            <li><strong>冲突解决：</strong> 当多端同时修改同一任务时，根据时间戳自动合并</li>
+            <li><strong>应用改进：</strong> 匿名化的崩溃报告帮助我们修复 bug</li>
+        </ol>
+        
+        <p><strong>我们不会：</strong></p>
+        <ul>
+            <li>出售您的数据给第三方</li>
+            <li>使用您的数据进行广告投放</li>
+            <li>将您的数据用于人工智能训练</li>
+            <li>超出上述目的使用您的数据</li>
+        </ul>
+
+        <h2>5. 数据安全</h2>
+        
+        <h3>5.1 传输安全</h3>
+        <ul>
+            <li>所有网络通信默认使用 HTTPS/TLS 加密</li>
+            <li>如果您启用"允许不安全连接"设置（仅用于内网开发/测试），HTTP 通信将不受加密保护</li>
+        </ul>
+        
+        <h3>5.2 本地安全</h3>
+        <ul>
+            <li>数据库密码（如配置）仅用于数据库初始化，可随时清除</li>
+            <li>应用使用操作系统提供的标准文件系统权限保护数据</li>
+        </ul>
+        
+        <h3>5.3 诊断导出</h3>
+        <ul>
+            <li>同步诊断和错误诊断导出功能会自动脱敏</li>
+            <li>导出的文件中不包含任务标题、描述等原始内容</li>
+            <li>仅包含 ID、状态、hash、时间戳等元数据</li>
+        </ul>
+
+        <h2>6. 数据保留与删除</h2>
+        
+        <h3>6.1 保留期限</h3>
+        <ul>
+            <li><strong>活跃数据：</strong> 永久保留，直至您主动删除</li>
+            <li><strong>已删除任务：</strong> 保留 30 天后从数据库中移除（软删除机制）</li>
+            <li><strong>操作日志：</strong> 保留 90 天，用于同步冲突排查</li>
+            <li><strong>备份文件：</strong> 最多保留 5 个历史版本，旧版本自动清理</li>
+        </ul>
+        
+        <h3>6.2 您的删除权利</h3>
+        <p>您可以随时：</p>
+        <ul>
+            <li>删除单个任务或所有任务</li>
+            <li>清除应用数据（通过系统设置）</li>
+            <li>卸载应用（将删除所有本地数据）</li>
+            <li>撤销同步服务的授权</li>
+        </ul>
+
+        <h2>7. 第三方服务</h2>
+        <p>本应用可能使用以下第三方服务（仅在您主动配置时）：</p>
+        
+        <table>
+            <tr>
+                <th>服务</th>
+                <th>用途</th>
+                <th>数据类型</th>
+            </tr>
+            <tr>
+                <td>Supabase</td>
+                <td>数据同步</td>
+                <td>任务数据、设备 ID</td>
+            </tr>
+            <tr>
+                <td>自定义 API</td>
+                <td>数据同步</td>
+                <td>任务数据、设备 ID</td>
+            </tr>
+        </table>
+        
+        <p>这些第三方服务有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。</p>
+
+        <h2>8. 儿童隐私</h2>
+        <p>本应用不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。如果您发现儿童向我们提供了个人信息，请联系我们，我们将尽快删除相关信息。</p>
+
+        <h2>9. 隐私政策变更</h2>
+        <p>我们可能会不时更新本隐私政策。任何变更将在本页面发布，并更新"最后更新"日期。重大变更将通过应用内通知告知您。</p>
+
+        <div class="contact">
+            <h2>10. 联系我们</h2>
+            <p>如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：</p>
+            <ul>
+                <li><strong>邮箱：</strong> <a href="mailto:privacy@xdolist.com">privacy@xdolist.com</a></li>
+                <li><strong>GitHub Issues：</strong> <a href="https://github.com/xdolist/todolist/issues">https://github.com/xdolist/todolist/issues</a></li>
+            </ul>
+        </div>
+
+        <h2>11. 权限说明</h2>
+        <p>本应用需要以下系统权限：</p>
+        <ul>
+            <li><strong>通知权限：</strong> 发送任务提醒通知（可选）</li>
+            <li><strong>网络权限：</strong> 同步数据到您配置的第三方服务（仅在启用同步时需要）</li>
+            <li><strong>本地网络权限（iOS）：</strong> 连接局域网内的自定义同步服务器（可选）</li>
+        </ul>
+        
+        <p>所有权限均为可选，拒绝授权不会影响应用的核心本地功能。</p>
+
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #ecf0f1;">
+        
+        <p style="text-align: center; color: #7f8c8d; font-size: 0.9em;">
+            <strong>再次声明：</strong> TodoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。
+        </p>
+    </div>
+</body>
+</html>

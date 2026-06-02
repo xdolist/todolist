@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList by xdolist - 智能任务管理</title>
+    <meta name="description" content="TodoList - 简单高效的任务管理工具，数据完全本地存储，无需网络即可使用">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Features */
+        .features {
+            background: white;
+            padding: 80px 0;
+            margin-top: 60px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 50px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Privacy Section */
+        .privacy-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .privacy-section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .privacy-section p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2em;
+            }
+            
+            .tagline {
+                font-size: 1.1em;
+            }
+            
+            .features h2 {
+                font-size: 1.8em;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">📋 TodoList</div>
+            <div class="tagline">简单高效的任务管理工具，数据完全属于您</div>
+            <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">
+                无需注册，无需联网，打开即用。您的任务数据完全存储在本地设备，隐私无忧。
+            </p>
+            
+            <div class="download-buttons">
+                <a href="#" class="btn btn-primary" onclick="alert('即将上架 App Store')">
+                    🍎 App Store
+                </a>
+                <a href="#" class="btn btn-primary" onclick="alert('即将上架 Google Play')">
+                    🤖 Google Play
+                </a>
+                <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank">
+                    💬 反馈问题
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="features">
+        <div class="container">
+            <h2>核心功能</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>快速记录</h3>
+                    <p>打开即用，无需注册账号，无需等待同步，立即开始管理您的任务。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>隐私优先</h3>
+                    <p>所有数据本地存储，不上传服务器。您的任务只属于您，我们甚至无法查看。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>智能分类</h3>
+                    <p>优先级标记、颜色分类、子任务依赖，让复杂项目也变得井井有条。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>提醒通知</h3>
+                    <p>本地提醒，准时送达。支持一次性、每日、每周、每月、每年重复提醒。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>数据同步（可选）</h3>
+                    <p>需要多端同步？随时可配置 Supabase 或自定义 API，数据始终在您控制中。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>深色模式</h3>
+                    <p>支持浅色/深色模式自动切换，保护眼睛，夜间使用更舒适。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="privacy-section">
+        <div class="container">
+            <h2>🔒 隐私承诺</h2>
+            <p>
+                我们坚信您的数据属于您。TodoList 不会收集、出售或分享您的个人信息。
+                没有广告追踪，没有数据分析，没有云服务强制同步。
+            </p>
+            <a href="privacy.html" class="btn btn-primary" style="background: #667eea; color: white;">
+                查看完整隐私政策
+            </a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">隐私政策</a>
+                <a href="https://github.com/xdolist/todolist/issues" target="_blank">反馈问题</a>
+                <a href="mailto:support@xdolist.com">联系我们</a>
+            </div>
+            <p>© 2026 xdolist.com. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.7; font-size: 0.9em;">
+                Made with ❤️ for privacy-conscious users.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
