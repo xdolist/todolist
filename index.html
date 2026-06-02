@@ -413,10 +413,9 @@
             });
         }
 
-        // Initialize: prefer saved lang, then browser lang, default to en
+        // Initialize: default to English, only use saved preference if user manually switched
         const savedLang = localStorage.getItem('preferred-lang');
-        const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
-        const initialLang = savedLang || browserLang;
+        const initialLang = savedLang || 'en';
         setLang(initialLang);
     </script>
 </body>

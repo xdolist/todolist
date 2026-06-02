@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>隐私政策 - TodoList by xdolist</title>
+    <title>Privacy Policy - TodoList by xdolist</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,9 +13,38 @@
             background: #f5f5f5;
             padding: 20px;
         }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .lang-btn {
+            padding: 6px 14px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: #f0f0ff;
+        }
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 50px auto 0;
             background: white;
             padding: 40px;
             border-radius: 8px;
@@ -43,199 +72,447 @@
         a { color: #3498db; text-decoration: none; }
         a:hover { text-decoration: underline; }
         .no-collect { color: #e74c3c; font-weight: 500; }
-        .nav { text-align: center; margin-bottom: 30px; }
+        .nav { text-align: center; margin-bottom: 30px; margin-top: 60px; }
         .nav a { color: #667eea; font-weight: 600; }
         @media (max-width: 600px) {
             body { padding: 10px; }
-            .container { padding: 20px; }
+            .container { padding: 20px; margin-top: 60px; }
             h1 { font-size: 1.5em; }
+            .lang-switcher { top: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="index.html">← 返回主页</a>
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
     </div>
-    
+
+    <div class="nav">
+        <a href="index.html" data-i18n="back_home">← Back to Home</a>
+    </div>
+
     <div class="container">
-        <h1>TodoList 隐私政策</h1>
+        <h1 data-i18n="title">TodoList Privacy Policy</h1>
         <div class="meta">
-            <p><strong>生效日期：</strong> 2026年6月2日</p>
-            <p><strong>最后更新：</strong> 2026年6月2日</p>
+            <p><strong data-i18n="effective">Effective Date:</strong> <span data-i18n="effective_date">June 2, 2026</span></p>
+            <p><strong data-i18n="updated">Last Updated:</strong> <span data-i18n="updated_date">June 2, 2026</span></p>
         </div>
 
-        <h2>1. 简介</h2>
-        <p>TodoList（"我们"、"本应用"）是一款任务管理应用。我们高度重视您的隐私，本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。</p>
+        <h2 data-i18n="sec1_title">1. Introduction</h2>
+        <p data-i18n="sec1_desc">
+            TodoList ("we", "the app") is a task management application. We highly value your privacy, and this privacy policy explains how we collect, use, store, and protect your personal information.
+        </p>
         <div class="highlight">
-            <strong>请注意：</strong> 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。数据同步功能仅在用户主动配置第三方服务时才会启用。
+            <strong data-i18n="notice">Please note:</strong>
+            <span data-i18n="notice_desc">
+                This app primarily processes local data and does not require user registration or uploading data to our servers. Sync features are only enabled when you actively configure third-party services.
+            </span>
         </div>
 
-        <h2>2. 我们收集的数据</h2>
-        
-        <h3>2.1 您主动提供的数据</h3>
-        <p><strong>任务数据：</strong></p>
+        <h2 data-i18n="sec2_title">2. Data We Collect</h2>
+
+        <h3 data-i18n="sec2_1_title">2.1 Data You Provide</h3>
+        <p><strong data-i18n="task_data">Task Data:</strong></p>
         <ul>
-            <li>任务标题、描述、优先级、截止日期</li>
-            <li>任务分类名称和颜色</li>
-            <li>子任务关系</li>
-            <li>自定义排序顺序</li>
-            <li>提醒设置（时间、重复规则）</li>
-        </ul>
-        
-        <p><strong>账户数据（可选）：</strong></p>
-        <ul>
-            <li>如果您使用第三方同步服务（Supabase），您的 API 地址和密钥仅存储在本地设备上</li>
-            <li>我们不收集或存储您的第三方服务登录凭据</li>
-        </ul>
-        
-        <h3>2.2 自动收集的数据</h3>
-        <p><strong>设备标识符：</strong></p>
-        <ul>
-            <li>设备 ID（用于多端同步时标识设备来源）</li>
-            <li>此 ID 是匿名化的，不关联到您的个人身份</li>
-        </ul>
-        
-        <p><strong>使用数据：</strong></p>
-        <ul>
-            <li>应用崩溃日志（用于改进应用稳定性）</li>
-            <li>操作时间戳（用于数据同步的冲突解决）</li>
-        </ul>
-        
-        <p><strong>我们不收集：</strong></p>
-        <ul>
-            <li class="no-collect">❌ 地理位置信息</li>
-            <li class="no-collect">❌ 联系人信息</li>
-            <li class="no-collect">❌ 设备上的其他应用数据</li>
-            <li class="no-collect">❌ 浏览历史或网络活动</li>
-            <li class="no-collect">❌ 广告标识符（IDFA/AAID）</li>
-            <li class="no-collect">❌ 个人身份信息（姓名、邮箱、电话等）</li>
+            <li data-i18n="task_data_1">Task title, description, priority, due date</li>
+            <li data-i18n="task_data_2">Task category names and colors</li>
+            <li data-i18n="task_data_3">Subtask relationships</li>
+            <li data-i18n="task_data_4">Custom sort order</li>
+            <li data-i18n="task_data_5">Reminder settings (time, recurrence rules)</li>
         </ul>
 
-        <h2>3. 数据存储</h2>
-        
-        <h3>3.1 本地存储</h3>
-        <p>所有任务数据默认存储在您的设备本地数据库中（SQLite）。我们不会将这些数据上传到我们的服务器。</p>
-        
-        <h3>3.2 同步数据</h3>
-        <p>如果您启用了同步功能：</p>
+        <p><strong data-i18n="account_data">Account Data (Optional):</strong></p>
         <ul>
-            <li><strong>Supabase 同步：</strong> 数据存储在您自己配置的 Supabase 项目中，我们无权访问</li>
-            <li><strong>自定义 API 同步：</strong> 数据存储在您自己部署的服务器上</li>
+            <li data-i18n="account_data_1">If you use third-party sync (Supabase), your API URL and key are only stored locally on your device</li>
+            <li data-i18n="account_data_2">We do not collect or store your third-party service login credentials</li>
         </ul>
-        
-        <h3>3.3 备份数据</h3>
-        <p>应用支持创建本地备份文件，备份文件存储在设备本地存储中。您可以选择通过系统分享功能将备份文件导出到您选择的位置（如云盘、邮件等）。</p>
 
-        <h2>4. 数据使用</h2>
-        <p>我们使用您的数据仅限于以下目的：</p>
+        <h3 data-i18n="sec2_2_title">2.2 Automatically Collected Data</h3>
+        <p><strong data-i18n="device_id">Device Identifier:</strong></p>
+        <ul>
+            <li data-i18n="device_id_1">Device ID (used to identify device source during multi-device sync)</li>
+            <li data-i18n="device_id_2">This ID is anonymized and not linked to your personal identity</li>
+        </ul>
+
+        <p><strong data-i18n="usage_data">Usage Data:</strong></p>
+        <ul>
+            <li data-i18n="usage_data_1">App crash logs (for improving app stability)</li>
+            <li data-i18n="usage_data_2">Operation timestamps (for sync conflict resolution)</li>
+        </ul>
+
+        <p><strong data-i18n="not_collect">We do NOT collect:</strong></p>
+        <ul>
+            <li class="no-collect" data-i18n="not_collect_1">❌ Geolocation</li>
+            <li class="no-collect" data-i18n="not_collect_2">❌ Contact information</li>
+            <li class="no-collect" data-i18n="not_collect_3">❌ Other app data on your device</li>
+            <li class="no-collect" data-i18n="not_collect_4">❌ Browsing history or network activity</li>
+            <li class="no-collect" data-i18n="not_collect_5">❌ Advertising identifiers (IDFA/AAID)</li>
+            <li class="no-collect" data-i18n="not_collect_6">❌ Personal identity information (name, email, phone, etc.)</li>
+        </ul>
+
+        <h2 data-i18n="sec3_title">3. Data Storage</h2>
+
+        <h3 data-i18n="sec3_1_title">3.1 Local Storage</h3>
+        <p data-i18n="sec3_1_desc">All task data is stored locally in your device's database (SQLite) by default. We do not upload this data to our servers.</p>
+
+        <h3 data-i18n="sec3_2_title">3.2 Sync Data</h3>
+        <p data-i18n="sec3_2_intro">If you enable sync:</p>
+        <ul>
+            <li data-i18n="sec3_2_1"><strong>Supabase Sync:</strong> Data is stored in your own Supabase project, which we cannot access</li>
+            <li data-i18n="sec3_2_2"><strong>Custom API Sync:</strong> Data is stored on your own deployed server</li>
+        </ul>
+
+        <h3 data-i18n="sec3_3_title">3.3 Backup Data</h3>
+        <p data-i18n="sec3_3_desc">The app supports creating local backup files stored on your device. You can export backup files to your chosen location (cloud storage, email, etc.) via system share functionality.</p>
+
+        <h2 data-i18n="sec4_title">4. Data Usage</h2>
+        <p data-i18n="sec4_intro">We use your data only for the following purposes:</p>
         <ol>
-            <li><strong>提供核心功能：</strong> 任务管理、提醒、分类、排序</li>
-            <li><strong>多端同步：</strong> 在您的多个设备之间同步任务状态</li>
-            <li><strong>冲突解决：</strong> 当多端同时修改同一任务时，根据时间戳自动合并</li>
-            <li><strong>应用改进：</strong> 匿名化的崩溃报告帮助我们修复 bug</li>
+            <li data-i18n="sec4_1"><strong>Core functionality:</strong> Task management, reminders, categories, sorting</li>
+            <li data-i18n="sec4_2"><strong>Multi-device sync:</strong> Sync task status across your devices</li>
+            <li data-i18n="sec4_3"><strong>Conflict resolution:</strong> Auto-merge based on timestamps when multiple devices edit the same task</li>
+            <li data-i18n="sec4_4"><strong>App improvement:</strong> Anonymous crash reports help us fix bugs</li>
         </ol>
-        
-        <p><strong>我们不会：</strong></p>
+
+        <p><strong data-i18n="we_will_not">We will NOT:</strong></p>
         <ul>
-            <li>出售您的数据给第三方</li>
-            <li>使用您的数据进行广告投放</li>
-            <li>将您的数据用于人工智能训练</li>
-            <li>超出上述目的使用您的数据</li>
+            <li data-i18n="we_will_not_1">Sell your data to third parties</li>
+            <li data-i18n="we_will_not_2">Use your data for advertising</li>
+            <li data-i18n="we_will_not_3">Use your data for AI training</li>
+            <li data-i18n="we_will_not_4">Use your data beyond the stated purposes</li>
         </ul>
 
-        <h2>5. 数据安全</h2>
-        
-        <h3>5.1 传输安全</h3>
+        <h2 data-i18n="sec5_title">5. Data Security</h2>
+
+        <h3 data-i18n="sec5_1_title">5.1 Transmission Security</h3>
         <ul>
-            <li>所有网络通信默认使用 HTTPS/TLS 加密</li>
-            <li>如果您启用"允许不安全连接"设置（仅用于内网开发/测试），HTTP 通信将不受加密保护</li>
-        </ul>
-        
-        <h3>5.2 本地安全</h3>
-        <ul>
-            <li>数据库密码（如配置）仅用于数据库初始化，可随时清除</li>
-            <li>应用使用操作系统提供的标准文件系统权限保护数据</li>
-        </ul>
-        
-        <h3>5.3 诊断导出</h3>
-        <ul>
-            <li>同步诊断和错误诊断导出功能会自动脱敏</li>
-            <li>导出的文件中不包含任务标题、描述等原始内容</li>
-            <li>仅包含 ID、状态、hash、时间戳等元数据</li>
+            <li data-i18n="sec5_1_1">All network communication uses HTTPS/TLS encryption by default</li>
+            <li data-i18n="sec5_1_2">If you enable "Allow insecure connections" (for internal network dev/testing only), HTTP communication will not be encrypted</li>
         </ul>
 
-        <h2>6. 数据保留与删除</h2>
-        
-        <h3>6.1 保留期限</h3>
+        <h3 data-i18n="sec5_2_title">5.2 Local Security</h3>
         <ul>
-            <li><strong>活跃数据：</strong> 永久保留，直至您主动删除</li>
-            <li><strong>已删除任务：</strong> 保留 30 天后从数据库中移除（软删除机制）</li>
-            <li><strong>操作日志：</strong> 保留 90 天，用于同步冲突排查</li>
-            <li><strong>备份文件：</strong> 最多保留 5 个历史版本，旧版本自动清理</li>
-        </ul>
-        
-        <h3>6.2 您的删除权利</h3>
-        <p>您可以随时：</p>
-        <ul>
-            <li>删除单个任务或所有任务</li>
-            <li>清除应用数据（通过系统设置）</li>
-            <li>卸载应用（将删除所有本地数据）</li>
-            <li>撤销同步服务的授权</li>
+            <li data-i18n="sec5_2_1">Database password (if configured) is only used for database initialization and can be cleared anytime</li>
+            <li data-i18n="sec5_2_2">The app uses standard OS file system permissions to protect data</li>
         </ul>
 
-        <h2>7. 第三方服务</h2>
-        <p>本应用可能使用以下第三方服务（仅在您主动配置时）：</p>
-        
+        <h3 data-i18n="sec5_3_title">5.3 Diagnostic Export</h3>
+        <ul>
+            <li data-i18n="sec5_3_1">Sync and error diagnostic exports are automatically anonymized</li>
+            <li data-i18n="sec5_3_2">Exported files do not contain task titles, descriptions, or other original content</li>
+            <li data-i18n="sec5_3_3">Only IDs, status, hashes, timestamps, and other metadata are included</li>
+        </ul>
+
+        <h2 data-i18n="sec6_title">6. Data Retention & Deletion</h2>
+
+        <h3 data-i18n="sec6_1_title">6.1 Retention Period</h3>
+        <ul>
+            <li data-i18n="sec6_1_1"><strong>Active data:</strong> Retained indefinitely until you actively delete it</li>
+            <li data-i18n="sec6_1_2"><strong>Deleted tasks:</strong> Removed from database after 30 days (soft delete mechanism)</li>
+            <li data-i18n="sec6_1_3"><strong>Operation logs:</strong> Retained for 90 days for sync conflict troubleshooting</li>
+            <li data-i18n="sec6_1_4"><strong>Backup files:</strong> Maximum 5 historical versions, old versions auto-cleaned</li>
+        </ul>
+
+        <h3 data-i18n="sec6_2_title">6.2 Your Right to Delete</h3>
+        <p data-i18n="sec6_2_intro">You can at any time:</p>
+        <ul>
+            <li data-i18n="sec6_2_1">Delete individual tasks or all tasks</li>
+            <li data-i18n="sec6_2_2">Clear app data (via system settings)</li>
+            <li data-i18n="sec6_2_3">Uninstall the app (deletes all local data)</li>
+            <li data-i18n="sec6_2_4">Revoke sync service authorization</li>
+        </ul>
+
+        <h2 data-i18n="sec7_title">7. Third-Party Services</h2>
+        <p data-i18n="sec7_intro">This app may use the following third-party services (only when you actively configure them):</p>
+
         <table>
             <tr>
-                <th>服务</th>
-                <th>用途</th>
-                <th>数据类型</th>
+                <th data-i18n="table_service">Service</th>
+                <th data-i18n="table_purpose">Purpose</th>
+                <th data-i18n="table_data">Data Type</th>
             </tr>
             <tr>
                 <td>Supabase</td>
-                <td>数据同步</td>
-                <td>任务数据、设备 ID</td>
+                <td data-i18n="table_sync">Data Sync</td>
+                <td data-i18n="table_task_device">Task data, Device ID</td>
             </tr>
             <tr>
-                <td>自定义 API</td>
-                <td>数据同步</td>
-                <td>任务数据、设备 ID</td>
+                <td data-i18n="table_custom">Custom API</td>
+                <td data-i18n="table_sync">Data Sync</td>
+                <td data-i18n="table_task_device">Task data, Device ID</td>
             </tr>
         </table>
-        
-        <p>这些第三方服务有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。</p>
 
-        <h2>8. 儿童隐私</h2>
-        <p>本应用不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。如果您发现儿童向我们提供了个人信息，请联系我们，我们将尽快删除相关信息。</p>
+        <p data-i18n="sec7_note">These third-party services have their own privacy policies. We recommend reviewing the privacy policies of the relevant service providers.</p>
 
-        <h2>9. 隐私政策变更</h2>
-        <p>我们可能会不时更新本隐私政策。任何变更将在本页面发布，并更新"最后更新"日期。重大变更将通过应用内通知告知您。</p>
+        <h2 data-i18n="sec8_title">8. Children's Privacy</h2>
+        <p data-i18n="sec8_desc">This app is not directed at children under 13. We do not knowingly collect personal information from children. If you discover that a child has provided personal information to us, please contact us and we will promptly delete such information.</p>
+
+        <h2 data-i18n="sec9_title">9. Policy Changes</h2>
+        <p data-i18n="sec9_desc">We may update this privacy policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. Significant changes will be communicated via in-app notifications.</p>
 
         <div class="contact">
-            <h2>10. 联系我们</h2>
-            <p>如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：</p>
+            <h2 data-i18n="sec10_title">10. Contact Us</h2>
+            <p data-i18n="sec10_intro">If you have any questions or suggestions about this privacy policy, please contact us:</p>
             <ul>
-                <li><strong>邮箱：</strong> <a href="mailto:privacy@xdolist.com">privacy@xdolist.com</a></li>
-                <li><strong>GitHub Issues：</strong> <a href="https://github.com/xdolist/todolist/issues">https://github.com/xdolist/todolist/issues</a></li>
+                <li><strong data-i18n="email">Email:</strong> <a href="mailto:privacy@xdolist.com">privacy@xdolist.com</a></li>
+                <li><strong>GitHub Issues:</strong> <a href="https://github.com/xdolist/todolist/issues">https://github.com/xdolist/todolist/issues</a></li>
             </ul>
         </div>
 
-        <h2>11. 权限说明</h2>
-        <p>本应用需要以下系统权限：</p>
+        <h2 data-i18n="sec11_title">11. Permissions</h2>
+        <p data-i18n="sec11_intro">This app requires the following system permissions:</p>
         <ul>
-            <li><strong>通知权限：</strong> 发送任务提醒通知（可选）</li>
-            <li><strong>网络权限：</strong> 同步数据到您配置的第三方服务（仅在启用同步时需要）</li>
-            <li><strong>本地网络权限（iOS）：</strong> 连接局域网内的自定义同步服务器（可选）</li>
+            <li data-i18n="sec11_1"><strong>Notifications:</strong> Send task reminder notifications (optional)</li>
+            <li data-i18n="sec11_2"><strong>Network:</strong> Sync data to your configured third-party services (only when sync is enabled)</li>
+            <li data-i18n="sec11_3"><strong>Local Network (iOS):</strong> Connect to custom sync servers on local network (optional)</li>
         </ul>
-        
-        <p>所有权限均为可选，拒绝授权不会影响应用的核心本地功能。</p>
+
+        <p data-i18n="sec11_note">All permissions are optional. Denying permission will not affect the app's core local functionality.</p>
 
         <hr style="margin: 40px 0; border: none; border-top: 1px solid #ecf0f1;">
-        
+
         <p style="text-align: center; color: #7f8c8d; font-size: 0.9em;">
-            <strong>再次声明：</strong> TodoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。
+            <strong data-i18n="final_statement">Statement:</strong>
+            <span data-i18n="final_desc"> TodoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.</span>
         </p>
     </div>
+
+    <script>
+        const translations = {
+            en: {
+                back_home: "← Back to Home",
+                title: "TodoList Privacy Policy",
+                effective: "Effective Date:",
+                effective_date: "June 2, 2026",
+                updated: "Last Updated:",
+                updated_date: "June 2, 2026",
+                sec1_title: "1. Introduction",
+                sec1_desc: 'TodoList ("we", "the app") is a task management application. We highly value your privacy, and this privacy policy explains how we collect, use, store, and protect your personal information.',
+                notice: "Please note:",
+                notice_desc: " This app primarily processes local data and does not require user registration or uploading data to our servers. Sync features are only enabled when you actively configure third-party services.",
+                sec2_title: "2. Data We Collect",
+                sec2_1_title: "2.1 Data You Provide",
+                task_data: "Task Data:",
+                task_data_1: "Task title, description, priority, due date",
+                task_data_2: "Task category names and colors",
+                task_data_3: "Subtask relationships",
+                task_data_4: "Custom sort order",
+                task_data_5: "Reminder settings (time, recurrence rules)",
+                account_data: "Account Data (Optional):",
+                account_data_1: "If you use third-party sync (Supabase), your API URL and key are only stored locally on your device",
+                account_data_2: "We do not collect or store your third-party service login credentials",
+                sec2_2_title: "2.2 Automatically Collected Data",
+                device_id: "Device Identifier:",
+                device_id_1: "Device ID (used to identify device source during multi-device sync)",
+                device_id_2: "This ID is anonymized and not linked to your personal identity",
+                usage_data: "Usage Data:",
+                usage_data_1: "App crash logs (for improving app stability)",
+                usage_data_2: "Operation timestamps (for sync conflict resolution)",
+                not_collect: "We do NOT collect:",
+                not_collect_1: "❌ Geolocation",
+                not_collect_2: "❌ Contact information",
+                not_collect_3: "❌ Other app data on your device",
+                not_collect_4: "❌ Browsing history or network activity",
+                not_collect_5: "❌ Advertising identifiers (IDFA/AAID)",
+                not_collect_6: "❌ Personal identity information (name, email, phone, etc.)",
+                sec3_title: "3. Data Storage",
+                sec3_1_title: "3.1 Local Storage",
+                sec3_1_desc: "All task data is stored locally in your device's database (SQLite) by default. We do not upload this data to our servers.",
+                sec3_2_title: "3.2 Sync Data",
+                sec3_2_intro: "If you enable sync:",
+                sec3_2_1: "Supabase Sync: Data is stored in your own Supabase project, which we cannot access",
+                sec3_2_2: "Custom API Sync: Data is stored on your own deployed server",
+                sec3_3_title: "3.3 Backup Data",
+                sec3_3_desc: "The app supports creating local backup files stored on your device. You can export backup files to your chosen location (cloud storage, email, etc.) via system share functionality.",
+                sec4_title: "4. Data Usage",
+                sec4_intro: "We use your data only for the following purposes:",
+                sec4_1: "Core functionality: Task management, reminders, categories, sorting",
+                sec4_2: "Multi-device sync: Sync task status across your devices",
+                sec4_3: "Conflict resolution: Auto-merge based on timestamps when multiple devices edit the same task",
+                sec4_4: "App improvement: Anonymous crash reports help us fix bugs",
+                we_will_not: "We will NOT:",
+                we_will_not_1: "Sell your data to third parties",
+                we_will_not_2: "Use your data for advertising",
+                we_will_not_3: "Use your data for AI training",
+                we_will_not_4: "Use your data beyond the stated purposes",
+                sec5_title: "5. Data Security",
+                sec5_1_title: "5.1 Transmission Security",
+                sec5_1_1: "All network communication uses HTTPS/TLS encryption by default",
+                sec5_1_2: "If you enable \"Allow insecure connections\" (for internal network dev/testing only), HTTP communication will not be encrypted",
+                sec5_2_title: "5.2 Local Security",
+                sec5_2_1: "Database password (if configured) is only used for database initialization and can be cleared anytime",
+                sec5_2_2: "The app uses standard OS file system permissions to protect data",
+                sec5_3_title: "5.3 Diagnostic Export",
+                sec5_3_1: "Sync and error diagnostic exports are automatically anonymized",
+                sec5_3_2: "Exported files do not contain task titles, descriptions, or other original content",
+                sec5_3_3: "Only IDs, status, hashes, timestamps, and other metadata are included",
+                sec6_title: "6. Data Retention & Deletion",
+                sec6_1_title: "6.1 Retention Period",
+                sec6_1_1: "Active data: Retained indefinitely until you actively delete it",
+                sec6_1_2: "Deleted tasks: Removed from database after 30 days (soft delete mechanism)",
+                sec6_1_3: "Operation logs: Retained for 90 days for sync conflict troubleshooting",
+                sec6_1_4: "Backup files: Maximum 5 historical versions, old versions auto-cleaned",
+                sec6_2_title: "6.2 Your Right to Delete",
+                sec6_2_intro: "You can at any time:",
+                sec6_2_1: "Delete individual tasks or all tasks",
+                sec6_2_2: "Clear app data (via system settings)",
+                sec6_2_3: "Uninstall the app (deletes all local data)",
+                sec6_2_4: "Revoke sync service authorization",
+                sec7_title: "7. Third-Party Services",
+                sec7_intro: "This app may use the following third-party services (only when you actively configure them):",
+                table_service: "Service",
+                table_purpose: "Purpose",
+                table_data: "Data Type",
+                table_sync: "Data Sync",
+                table_task_device: "Task data, Device ID",
+                table_custom: "Custom API",
+                sec7_note: "These third-party services have their own privacy policies. We recommend reviewing the privacy policies of the relevant service providers.",
+                sec8_title: "8. Children's Privacy",
+                sec8_desc: "This app is not directed at children under 13. We do not knowingly collect personal information from children. If you discover that a child has provided personal information to us, please contact us and we will promptly delete such information.",
+                sec9_title: "9. Policy Changes",
+                sec9_desc: 'We may update this privacy policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. Significant changes will be communicated via in-app notifications.',
+                sec10_title: "10. Contact Us",
+                sec10_intro: "If you have any questions or suggestions about this privacy policy, please contact us:",
+                email: "Email:",
+                sec11_title: "11. Permissions",
+                sec11_intro: "This app requires the following system permissions:",
+                sec11_1: "Notifications: Send task reminder notifications (optional)",
+                sec11_2: "Network: Sync data to your configured third-party services (only when sync is enabled)",
+                sec11_3: "Local Network (iOS): Connect to custom sync servers on local network (optional)",
+                sec11_note: "All permissions are optional. Denying permission will not affect the app's core local functionality.",
+                final_statement: "Statement:",
+                final_desc: " TodoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information."
+            },
+            zh: {
+                back_home: "← 返回主页",
+                title: "TodoList 隐私政策",
+                effective: "生效日期：",
+                effective_date: "2026年6月2日",
+                updated: "最后更新：",
+                updated_date: "2026年6月2日",
+                sec1_title: "1. 简介",
+                sec1_desc: "TodoList（'我们'、'本应用'）是一款任务管理应用。我们高度重视您的隐私，本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。",
+                notice: "请注意：",
+                notice_desc: " 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。数据同步功能仅在用户主动配置第三方服务时才会启用。",
+                sec2_title: "2. 我们收集的数据",
+                sec2_1_title: "2.1 您主动提供的数据",
+                task_data: "任务数据：",
+                task_data_1: "任务标题、描述、优先级、截止日期",
+                task_data_2: "任务分类名称和颜色",
+                task_data_3: "子任务关系",
+                task_data_4: "自定义排序顺序",
+                task_data_5: "提醒设置（时间、重复规则）",
+                account_data: "账户数据（可选）：",
+                account_data_1: "如果您使用第三方同步服务（Supabase），您的 API 地址和密钥仅存储在本地设备上",
+                account_data_2: "我们不收集或存储您的第三方服务登录凭据",
+                sec2_2_title: "2.2 自动收集的数据",
+                device_id: "设备标识符：",
+                device_id_1: "设备 ID（用于多端同步时标识设备来源）",
+                device_id_2: "此 ID 是匿名化的，不关联到您的个人身份",
+                usage_data: "使用数据：",
+                usage_data_1: "应用崩溃日志（用于改进应用稳定性）",
+                usage_data_2: "操作时间戳（用于数据同步的冲突解决）",
+                not_collect: "我们不收集：",
+                not_collect_1: "❌ 地理位置信息",
+                not_collect_2: "❌ 联系人信息",
+                not_collect_3: "❌ 设备上的其他应用数据",
+                not_collect_4: "❌ 浏览历史或网络活动",
+                not_collect_5: "❌ 广告标识符（IDFA/AAID）",
+                not_collect_6: "❌ 个人身份信息（姓名、邮箱、电话等）",
+                sec3_title: "3. 数据存储",
+                sec3_1_title: "3.1 本地存储",
+                sec3_1_desc: "所有任务数据默认存储在您的设备本地数据库中（SQLite）。我们不会将这些数据上传到我们的服务器。",
+                sec3_2_title: "3.2 同步数据",
+                sec3_2_intro: "如果您启用了同步功能：",
+                sec3_2_1: "Supabase 同步：数据存储在您自己配置的 Supabase 项目中，我们无权访问",
+                sec3_2_2: "自定义 API 同步：数据存储在您自己部署的服务器上",
+                sec3_3_title: "3.3 备份数据",
+                sec3_3_desc: "应用支持创建本地备份文件，备份文件存储在设备本地存储中。您可以选择通过系统分享功能将备份文件导出到您选择的位置（如云盘、邮件等）。",
+                sec4_title: "4. 数据使用",
+                sec4_intro: "我们使用您的数据仅限于以下目的：",
+                sec4_1: "提供核心功能：任务管理、提醒、分类、排序",
+                sec4_2: "多端同步：在您的多个设备之间同步任务状态",
+                sec4_3: "冲突解决：当多端同时修改同一任务时，根据时间戳自动合并",
+                sec4_4: "应用改进：匿名化的崩溃报告帮助我们修复 bug",
+                we_will_not: "我们不会：",
+                we_will_not_1: "出售您的数据给第三方",
+                we_will_not_2: "使用您的数据进行广告投放",
+                we_will_not_3: "将您的数据用于人工智能训练",
+                we_will_not_4: "超出上述目的使用您的数据",
+                sec5_title: "5. 数据安全",
+                sec5_1_title: "5.1 传输安全",
+                sec5_1_1: "所有网络通信默认使用 HTTPS/TLS 加密",
+                sec5_1_2: "如果您启用'允许不安全连接'设置（仅用于内网开发/测试），HTTP 通信将不受加密保护",
+                sec5_2_title: "5.2 本地安全",
+                sec5_2_1: "数据库密码（如配置）仅用于数据库初始化，可随时清除",
+                sec5_2_2: "应用使用操作系统提供的标准文件系统权限保护数据",
+                sec5_3_title: "5.3 诊断导出",
+                sec5_3_1: "同步诊断和错误诊断导出功能会自动脱敏",
+                sec5_3_2: "导出的文件中不包含任务标题、描述等原始内容",
+                sec5_3_3: "仅包含 ID、状态、hash、时间戳等元数据",
+                sec6_title: "6. 数据保留与删除",
+                sec6_1_title: "6.1 保留期限",
+                sec6_1_1: "活跃数据：永久保留，直至您主动删除",
+                sec6_1_2: "已删除任务：保留 30 天后从数据库中移除（软删除机制）",
+                sec6_1_3: "操作日志：保留 90 天，用于同步冲突排查",
+                sec6_1_4: "备份文件：最多保留 5 个历史版本，旧版本自动清理",
+                sec6_2_title: "6.2 您的删除权利",
+                sec6_2_intro: "您可以随时：",
+                sec6_2_1: "删除单个任务或所有任务",
+                sec6_2_2: "清除应用数据（通过系统设置）",
+                sec6_2_3: "卸载应用（将删除所有本地数据）",
+                sec6_2_4: "撤销同步服务的授权",
+                sec7_title: "7. 第三方服务",
+                sec7_intro: "本应用可能使用以下第三方服务（仅在您主动配置时）：",
+                table_service: "服务",
+                table_purpose: "用途",
+                table_data: "数据类型",
+                table_sync: "数据同步",
+                table_task_device: "任务数据、设备 ID",
+                table_custom: "自定义 API",
+                sec7_note: "这些第三方服务有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。",
+                sec8_title: "8. 儿童隐私",
+                sec8_desc: "本应用不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。如果您发现儿童向我们提供了个人信息，请联系我们，我们将尽快删除相关信息。",
+                sec9_title: "9. 隐私政策变更",
+                sec9_desc: "我们可能会不时更新本隐私政策。任何变更将在本页面发布，并更新'最后更新'日期。重大变更将通过应用内通知告知您。",
+                sec10_title: "10. 联系我们",
+                sec10_intro: "如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：",
+                email: "邮箱：",
+                sec11_title: "11. 权限说明",
+                sec11_intro: "本应用需要以下系统权限：",
+                sec11_1: "通知权限：发送任务提醒通知（可选）",
+                sec11_2: "网络权限：同步数据到您配置的第三方服务（仅在启用同步时需要）",
+                sec11_3: "本地网络权限（iOS）：连接局域网内的自定义同步服务器（可选）",
+                sec11_note: "所有权限均为可选，拒绝授权不会影响应用的核心本地功能。",
+                final_statement: "声明：",
+                final_desc: " TodoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。"
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            localStorage.setItem('preferred-lang', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all translated elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Initialize: default to English, only use saved preference if user manually switched
+        const savedLang = localStorage.getItem('preferred-lang');
+        const initialLang = savedLang || 'en';
+        setLang(initialLang);
+    </script>
 </body>
 </html>
