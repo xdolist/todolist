@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XdoList by xdolist</title>
     <meta name="description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,250 +15,334 @@
             box-sizing: border-box;
         }
 
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #151520;
+            --text-primary: #e5e5e5;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #d4a574;
+            --accent-hover: #c49468;
+            --border: rgba(212, 165, 116, 0.15);
+            --border-hover: rgba(212, 165, 116, 0.3);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
             min-height: 100vh;
+            font-weight: 300;
+            letter-spacing: 0.01em;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         /* Language Switcher */
         .lang-switcher {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            left: 20px;
+            position: sticky;
+            top: 0;
+            right: 0;
+            left: 0;
             display: flex;
-            gap: 5px;
+            gap: 4px;
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
+            background: var(--bg-primary);
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
         }
 
         .lang-btn {
-            padding: 4px 10px;
-            border: 1.5px solid rgba(255,255,255,0.4);
+            padding: 4px 12px;
+            border: 1px solid var(--border);
             background: transparent;
-            color: white;
-            border-radius: 14px;
+            color: var(--text-secondary);
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75em;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.72em;
+            font-weight: 400;
+            transition: all 0.25s ease;
             white-space: nowrap;
+            letter-spacing: 0.02em;
         }
 
         .lang-btn:hover {
-            background: rgba(255,255,255,0.2);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
         }
 
         .lang-btn.active {
-            background: white;
-            color: #667eea;
-            border-color: white;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            font-weight: 500;
         }
 
         /* Header */
         header {
-            padding: 100px 0 40px;
+            padding: 120px 0 100px;
             text-align: center;
-            color: white;
             position: relative;
         }
 
         .logo {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.2em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
         }
 
         .tagline {
-            font-size: 1.3em;
-            opacity: 0.9;
-            margin-bottom: 30px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6em;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            font-weight: 400;
+            line-height: 1.4;
         }
 
         .subtitle {
-            opacity: 0.8;
-            max-width: 600px;
+            color: var(--text-secondary);
+            max-width: 520px;
             margin: 0 auto;
+            font-size: 1.05em;
+            font-weight: 300;
         }
 
         .download-buttons {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 48px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 14px 32px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            font-size: 0.9em;
             cursor: pointer;
             border: none;
+            letter-spacing: 0.02em;
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
+            background: var(--accent);
+            color: var(--bg-primary);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: var(--accent-hover);
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid white;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #667eea;
+            border-color: var(--border-hover);
+            color: var(--text-primary);
         }
 
         /* Features */
         .features {
-            background: white;
-            padding: 80px 0;
-            margin-top: 60px;
+            background: var(--bg-secondary);
+            padding: 120px 0;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 500;
         }
 
         .features h2 {
             text-align: center;
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 50px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--text-primary);
+            margin-bottom: 80px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
             margin-top: 40px;
         }
 
         .feature-card {
-            padding: 30px;
-            border-radius: 12px;
-            background: #f8f9fa;
+            padding: 0;
+            background: transparent;
             transition: transform 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
         .feature-card h3 {
-            font-size: 1.5em;
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .feature-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 0.9em;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
         }
 
         /* Privacy Section */
         .privacy-section {
-            background: #f8f9fa;
-            padding: 60px 0;
+            background: var(--bg-primary);
+            padding: 120px 0;
             text-align: center;
         }
 
         .privacy-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
             font-size: 2em;
-            color: #2c3e50;
-            margin-bottom: 20px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            font-weight: 600;
         }
 
         .privacy-section p {
-            font-size: 1.1em;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 30px;
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            font-weight: 300;
+            line-height: 1.8;
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
-            color: white;
-            padding: 40px 0;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 60px 0 40px;
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
         footer a {
-            color: #3498db;
+            color: var(--text-secondary);
             text-decoration: none;
+            transition: color 0.25s ease;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: var(--accent);
         }
 
         .footer-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
+            font-size: 0.85em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            font-size: 0.8em;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .lang-switcher {
+                padding: 16px 24px;
+                gap: 3px;
+            }
+
+            .lang-btn {
+                font-size: 0.68em;
+                padding: 3px 8px;
+            }
+
             .logo {
-                font-size: 2em;
+                font-size: 2.4em;
             }
 
             .tagline {
-                font-size: 1.1em;
+                font-size: 1.2em;
+            }
+
+            header {
+                padding: 80px 0 60px;
+            }
+
+            .features {
+                padding: 80px 0;
             }
 
             .features h2 {
                 font-size: 1.8em;
+                margin-bottom: 48px;
             }
 
             .feature-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .lang-switcher {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                gap: 4px;
+            .privacy-section {
+                padding: 80px 0;
             }
 
-            .lang-btn {
-                font-size: 0.7em;
-                padding: 3px 8px;
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
-            header {
-                padding-top: 100px;
+            .btn {
+                width: 240px;
+                justify-content: center;
             }
         }
     </style>
@@ -276,7 +363,7 @@
 
     <header>
         <div class="container">
-            <div class="logo">📋 XdoList</div>
+            <div class="logo">XdoList</div>
             <div class="tagline" data-i18n="tagline">Simple and efficient task manager. Your data belongs to you.</div>
             <p class="subtitle" data-i18n="subtitle">
                 No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.
@@ -284,13 +371,13 @@
 
             <div class="download-buttons">
                 <a href="#" class="btn btn-primary" onclick="alert('Coming soon to App Store')">
-                    🍎 App Store
+                    App Store
                 </a>
                 <a href="#" class="btn btn-primary" onclick="alert('Coming soon to Google Play')">
-                    🤖 Google Play
+                    Google Play
                 </a>
                 <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank" data-i18n="feedback">
-                    💬 Feedback
+                    Feedback
                 </a>
             </div>
         </div>
@@ -298,41 +385,42 @@
 
     <section class="features">
         <div class="container">
+            <div class="section-label">Features</div>
             <h2 data-i18n="features_title">Key Features</h2>
 
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-number">01</div>
                     <h3 data-i18n="feat_quick_title">Quick Capture</h3>
                     <p data-i18n="feat_quick_desc">Open and start using instantly. No registration, no waiting for sync. Start managing your tasks right away.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-number">02</div>
                     <h3 data-i18n="feat_privacy_title">Privacy First</h3>
                     <p data-i18n="feat_privacy_desc">All data is stored locally, never uploaded to our servers. Your tasks belong only to you, we cannot even view them.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🏷️</div>
+                    <div class="feature-number">03</div>
                     <h3 data-i18n="feat_tags_title">Custom Categories</h3>
                     <p data-i18n="feat_tags_desc">Custom tags, color markers, priority settings, and subtask dependencies keep even complex projects organized.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
+                    <div class="feature-number">04</div>
                     <h3 data-i18n="feat_reminder_title">Reminders</h3>
                     <p data-i18n="feat_reminder_desc">Local reminders delivered on time. Supports one-time, daily, weekly, monthly, and yearly recurring reminders.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
+                    <div class="feature-number">05</div>
                     <h3 data-i18n="feat_sync_title">Sync (Optional)</h3>
                     <p data-i18n="feat_sync_desc">Need multi-device sync? Configure Supabase or custom API anytime. Your data always stays under your control.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
+                    <div class="feature-number">06</div>
                     <h3 data-i18n="feat_dark_title">Dark Mode</h3>
                     <p data-i18n="feat_dark_desc">Supports automatic light/dark mode switching. Protects your eyes and provides a more comfortable experience at night.</p>
                 </div>
@@ -342,11 +430,12 @@
 
     <section class="privacy-section">
         <div class="container">
-            <h2 data-i18n="privacy_title">🔒 Privacy Promise</h2>
+            <div class="section-label">Privacy</div>
+            <h2 data-i18n="privacy_title">Privacy Promise</h2>
             <p data-i18n="privacy_desc">
                 We believe your data belongs to you. XdoList does not collect, sell, or share your personal information. No ad tracking, no data analytics, no forced cloud sync.
             </p>
-            <a href="privacy.html" class="btn btn-primary" style="background: #667eea; color: white;" data-i18n="privacy_btn">
+            <a href="privacy.html" class="btn btn-secondary" data-i18n="privacy_btn">
                 View Full Privacy Policy
             </a>
         </div>
@@ -359,10 +448,7 @@
                 <a href="https://github.com/xdolist/todolist/issues" target="_blank" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
-            <p>© 2026 xdolist.com. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.7; font-size: 0.9em;">
-                Made with ❤️ for privacy-conscious users.
-            </p>
+            <p class="footer-copy">© 2026 XdoList. All rights reserved.</p>
         </div>
     </footer>
 
@@ -384,7 +470,7 @@
             en: {
                 tagline: "Simple and efficient task manager. Your data belongs to you.",
                 subtitle: "No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.",
-                feedback: "💬 Feedback",
+                feedback: "Feedback",
                 features_title: "Key Features",
                 feat_quick_title: "Quick Capture",
                 feat_quick_desc: "Open and start using instantly. No registration, no waiting for sync. Start managing your tasks right away.",
@@ -398,7 +484,7 @@
                 feat_sync_desc: "Need multi-device sync? Configure Supabase or custom API anytime. Your data always stays under your control.",
                 feat_dark_title: "Dark Mode",
                 feat_dark_desc: "Supports automatic light/dark mode switching. Protects your eyes and provides a more comfortable experience at night.",
-                privacy_title: "🔒 Privacy Promise",
+                privacy_title: "Privacy Promise",
                 privacy_desc: "We believe your data belongs to you. XdoList does not collect, sell, or share your personal information. No ad tracking, no data analytics, no forced cloud sync.",
                 privacy_btn: "View Full Privacy Policy",
                 footer_privacy: "Privacy Policy",
@@ -408,7 +494,7 @@
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
                 subtitle: "登録不要、インターネット不要。開いてすぐに使えます。タスクデータはすべて端末内に保存され、プライバシーが守られます。",
-                feedback: "💬 フィードバック",
+                feedback: "フィードバック",
                 features_title: "主な機能",
                 feat_quick_title: "素早く記録",
                 feat_quick_desc: "開いてすぐ使えます。アカウント登録や同期待ちは不要。今すぐタスク管理を始められます。",
@@ -422,7 +508,7 @@
                 feat_sync_desc: "複数端末の同期が必要ですか？Supabase やカスタム API はいつでも設定可能。データは常にあなたの管理下にあります。",
                 feat_dark_title: "ダークモード",
                 feat_dark_desc: "ライト／ダークモードの自動切り替えに対応。目を保護し、夜間も快適に使えます。",
-                privacy_title: "🔒 プライバシーに関するお約束",
+                privacy_title: "プライバシーに関するお約束",
                 privacy_desc: "あなたのデータはあなたのものだと私たちは信じています。XdoList は個人情報を収集・販売・共有しません。広告トラッキングも、データ解析も、強制クラウド同期もありません。",
                 privacy_btn: "プライバシーポリシーを見る",
                 footer_privacy: "プライバシーポリシー",
@@ -432,7 +518,7 @@
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
                 subtitle: "无需注册，无需联网，打开即用。您的任务数据完全存储在本地设备，隐私无忧。",
-                feedback: "💬 反馈问题",
+                feedback: "反馈问题",
                 features_title: "核心功能",
                 feat_quick_title: "快速记录",
                 feat_quick_desc: "打开即用，无需注册账号，无需等待同步，立即开始管理您的任务。",
@@ -446,7 +532,7 @@
                 feat_sync_desc: "需要多端同步？随时可配置 Supabase 或自定义 API，数据始终在您控制中。",
                 feat_dark_title: "深色模式",
                 feat_dark_desc: "支持浅色/深色模式自动切换，保护眼睛，夜间使用更舒适。",
-                privacy_title: "🔒 隐私承诺",
+                privacy_title: "隐私承诺",
                 privacy_desc: "我们坚信您的数据属于您。XdoList 不会收集、出售或分享您的个人信息。没有广告追踪，没有数据分析，没有云服务强制同步。",
                 privacy_btn: "查看完整隐私政策",
                 footer_privacy: "隐私政策",
@@ -456,7 +542,7 @@
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
                 subtitle: "가입 없이, 인터넷 없이, 열자마자 사용할 수 있습니다. 할 일 데이터는 모두 기기에 로컬로 저장되어 프라이버시가 보장됩니다.",
-                feedback: "💬 피드백",
+                feedback: "피드백",
                 features_title: "주요 기능",
                 feat_quick_title: "빠른 기록",
                 feat_quick_desc: "열자마자 사용할 수 있습니다. 계정 등록이나 동기화 대기 없이 지금 바로 할 일을 관리하세요.",
@@ -470,7 +556,7 @@
                 feat_sync_desc: "여러 기기 동기화가 필요하신가요? Supabase 또는 사용자 정의 API를 언제든 구성할 수 있습니다. 데이터는 항상 당신의 통제 아래 있습니다.",
                 feat_dark_title: "다크 모드",
                 feat_dark_desc: "라이트/다크 모드 자전환을 지원합니다. 눈을 보호하고 야간 사용 시 더 편안한 경험을 제공합니다.",
-                privacy_title: "🔒 개인정보 보호 약속",
+                privacy_title: "개인정보 보호 약속",
                 privacy_desc: "우리는 당신의 데이터가 당신에게 속한다고 믿습니다. XdoList는 개인정보를 수집, 판매 또는 공유하지 않습니다. 광고 추적, 데이터 분석, 강제 클라우드 동기화는 없습니다.",
                 privacy_btn: "전체 개인정보 처리방침 보기",
                 footer_privacy: "개인정보 처리방침",
@@ -480,7 +566,7 @@
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
                 subtitle: "Keine Anmeldung, kein Internet erforderlich. Öffnen und sofort loslegen. Ihre Aufgabendaten werden vollständig auf Ihrem lokalen Gerät gespeichert – Datenschutz garantiert.",
-                feedback: "💬 Feedback",
+                feedback: "Feedback",
                 features_title: "Hauptfunktionen",
                 feat_quick_title: "Schnelle Erfassung",
                 feat_quick_desc: "Öffnen und sofort nutzen. Keine Registrierung, kein Warten auf Synchronisation. Beginnen Sie sofort mit der Verwaltung Ihrer Aufgaben.",
@@ -494,7 +580,7 @@
                 feat_sync_desc: "Mehrgeräte-Synchronisation nötig? Konfigurieren Sie jederzeit Supabase oder eine benutzerdefinierte API. Ihre Daten bleiben immer unter Ihrer Kontrolle.",
                 feat_dark_title: "Dunkelmodus",
                 feat_dark_desc: "Unterstützt automatisches Umschalten zwischen hellem und dunklem Modus. Schützt Ihre Augen und sorgt für ein komfortableres Erlebnis bei Nacht.",
-                privacy_title: "🔒 Datenschutzversprechen",
+                privacy_title: "Datenschutzversprechen",
                 privacy_desc: "Wir glauben, dass Ihre Daten Ihnen gehören. XdoList sammelt, verkauft oder teilt keine persönlichen Informationen. Kein Werbe-Tracking, keine Datenanalyse, keine erzwungene Cloud-Synchronisation.",
                 privacy_btn: "Vollständige Datenschutzerklärung anzeigen",
                 footer_privacy: "Datenschutzerklärung",
@@ -504,7 +590,7 @@
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
                 subtitle: "Pas d'inscription, pas d'Internet requis. Ouvrez et utilisez instantanément. Les données de vos tâches sont entièrement stockées sur votre appareil local, confidentialité garantie.",
-                feedback: "💬 Retour d'expérience",
+                feedback: "Retour d'expérience",
                 features_title: "Fonctionnalités clés",
                 feat_quick_title: "Saisie rapide",
                 feat_quick_desc: "Ouvrez et commencez à utiliser immédiatement. Pas d'inscription, pas d'attente de synchronisation. Commencez à gérer vos tâches tout de suite.",
@@ -518,7 +604,7 @@
                 feat_sync_desc: "Besoin d'une synchronisation multi-appareils ? Configurez Supabase ou une API personnalisée à tout moment. Vos données restent toujours sous votre contrôle.",
                 feat_dark_title: "Mode sombre",
                 feat_dark_desc: "Prend en charge le basculement automatique entre les modes clair et sombre. Protège vos yeux et offre une expérience plus confortable la nuit.",
-                privacy_title: "🔒 Engagement de confidentialité",
+                privacy_title: "Engagement de confidentialité",
                 privacy_desc: "Nous croyons que vos données vous appartiennent. XdoList ne collecte, ne vend ni ne partage vos informations personnelles. Pas de suivi publicitaire, pas d'analyse de données, pas de synchronisation cloud forcée.",
                 privacy_btn: "Consulter la politique de confidentialité complète",
                 footer_privacy: "Politique de confidentialité",
@@ -528,7 +614,7 @@
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
                 subtitle: "Sin registro, sin internet necesario. Ábrelo y úsalo al instante. Los datos de tus tareas se almacenan completamente en tu dispositivo local, privacidad garantizada.",
-                feedback: "💬 Comentarios",
+                feedback: "Comentarios",
                 features_title: "Características principales",
                 feat_quick_title: "Captura rápida",
                 feat_quick_desc: "Ábrelo y empieza a usarlo al instante. Sin registro, sin esperar sincronización. Comienza a gestionar tus tareas de inmediato.",
@@ -542,7 +628,7 @@
                 feat_sync_desc: "¿Necesitas sincronización entre dispositivos? Configura Supabase o una API personalizada en cualquier momento. Tus datos siempre permanecen bajo tu control.",
                 feat_dark_title: "Modo oscuro",
                 feat_dark_desc: "Admite cambio automático entre modo claro y oscuro. Protege tus ojos y proporciona una experiencia más cómoda por la noche.",
-                privacy_title: "🔒 Promesa de privacidad",
+                privacy_title: "Promesa de privacidad",
                 privacy_desc: "Creemos que tus datos te pertenecen. XdoList no recopila, vende ni comparte tu información personal. Sin rastreo publicitario, sin análisis de datos, sin sincronización en la nube forzada.",
                 privacy_btn: "Ver política de privacidad completa",
                 footer_privacy: "Política de privacidad",
@@ -552,7 +638,7 @@
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
                 subtitle: "لا يحتاج إلى تسجيل أو إنترنت. افتح التطبيق واستخدمه فورًا. تُخزّن بيانات مهامك بالكامل على جهازك المحلي، مع ضمان الخصوصية.",
-                feedback: "💬 ملاحظات",
+                feedback: "ملاحظات",
                 features_title: "الميزات الرئيسية",
                 feat_quick_title: "التقاط سريع",
                 feat_quick_desc: "افتح التطبيق وابدأ الاستخدام فورًا. لا حاجة للتسجيل أو انتظار المزامنة. ابدأ إدارة مهامك على الفور.",
@@ -566,7 +652,7 @@
                 feat_sync_desc: "هل تحتاج إلى مزامنة عدة أجهزة؟ يمكنك ضبط Supabase أو واجهة برمجة تطبيقات مخصصة في أي وقت. بياناتك تبقى دائمًا تحت سيطرتك.",
                 feat_dark_title: "الوضع الداكن",
                 feat_dark_desc: "يدعم التبديل التلقائي بين الوضع الفاتح والداكن. يحمي عينيك ويوفر تجربة أكثر راحة في الليل.",
-                privacy_title: "🔒 وعد الخصوصية",
+                privacy_title: "وعد الخصوصية",
                 privacy_desc: "نؤمن بأن بياناتك ملك لك. لا يقوم XdoList بجمع أو بيع أو مشاركة معلوماتك الشخصية. لا تتبع إعلاني، ولا تحليل بيانات، ولا مزامنة سحابية إجبارية.",
                 privacy_btn: "عرض سياسة الخصوصية الكاملة",
                 footer_privacy: "سياسة الخصوصية",
@@ -576,7 +662,7 @@
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
                 subtitle: "Sem cadastro, sem internet necessária. Abra e use instantaneamente. Os dados das suas tarefas são armazenados integralmente no seu dispositivo local, privacidade garantida.",
-                feedback: "💬 Feedback",
+                feedback: "Feedback",
                 features_title: "Principais recursos",
                 feat_quick_title: "Captura rápida",
                 feat_quick_desc: "Abra e comece a usar instantaneamente. Sem cadastro, sem esperar sincronização. Comece a gerenciar suas tarefas agora mesmo.",
@@ -590,7 +676,7 @@
                 feat_sync_desc: "Precisa de sincronização entre dispositivos? Configure o Supabase ou uma API personalizada a qualquer momento. Seus dados sempre permanecem sob seu controle.",
                 feat_dark_title: "Modo escuro",
                 feat_dark_desc: "Suporta alternância automática entre modo claro e escuro. Protege seus olhos e proporciona uma experiência mais confortável à noite.",
-                privacy_title: "🔒 Promessa de privacidade",
+                privacy_title: "Promessa de privacidade",
                 privacy_desc: "Acreditamos que seus dados pertencem a você. O XdoList não coleta, vende ou compartilha suas informações pessoais. Sem rastreamento de anúncios, sem análise de dados, sem sincronização forçada na nuvem.",
                 privacy_btn: "Ver política de privacidade completa",
                 footer_privacy: "Política de privacidade",
@@ -600,7 +686,7 @@
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
                 subtitle: "Nessuna registrazione, nessuna connessione Internet richiesta. Apri e usa istantaneamente. I dati delle tue attività sono archiviati interamente sul tuo dispositivo locale, privacy garantita.",
-                feedback: "💬 Feedback",
+                feedback: "Feedback",
                 features_title: "Funzionalità principali",
                 feat_quick_title: "Cattura rapida",
                 feat_quick_desc: "Apri e inizia a usare istantaneamente. Nessuna registrazione, nessuna attesa di sincronizzazione. Inizia subito a gestire le tue attività.",
@@ -614,7 +700,7 @@
                 feat_sync_desc: "Hai bisogno di sincronizzazione multi-dispositivo? Configura Supabase o un'API personalizzata in qualsiasi momento. I tuoi dati restano sempre sotto il tuo controllo.",
                 feat_dark_title: "Modalità scura",
                 feat_dark_desc: "Supporta il passaggio automatico tra modalità chiara e scura. Protegge gli occhi e offre un'esperienza più confortevole di notte.",
-                privacy_title: "🔒 Impegno per la privacy",
+                privacy_title: "Impegno per la privacy",
                 privacy_desc: "Crediamo che i tuoi dati ti appartengano. XdoList non raccoglie, vende o condivide le tue informazioni personali. Nessun tracciamento pubblicitario, nessuna analisi dei dati, nessuna sincronizzazione cloud forzata.",
                 privacy_btn: "Visualizza l'informativa sulla privacy completa",
                 footer_privacy: "Informativa sulla privacy",
