@@ -3,87 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - XdoList by xdolist</title>
+    <title>Privacy Policy - XdoList</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #151520;
+            --text-primary: #e5e5e5;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #d4a574;
+            --accent-hover: #c49468;
+            --border: rgba(212, 165, 116, 0.15);
+            --border-hover: rgba(212, 165, 116, 0.3);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.8;
-            color: #333;
-            background: #f5f5f5;
-            padding: 20px;
+            color: var(--text-secondary);
+            background: var(--bg-primary);
+            padding: 0;
+            font-weight: 300;
+            letter-spacing: 0.01em;
         }
 
         /* Language Switcher */
         .lang-switcher {
-            position: fixed;
-            top: 16px;
-            right: 20px;
-            left: 20px;
+            position: sticky;
+            top: 0;
+            right: 0;
+            left: 0;
             display: flex;
-            gap: 5px;
+            gap: 4px;
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
+            background: var(--bg-primary);
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
         }
         .lang-btn {
-            padding: 4px 10px;
-            border: 1.5px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 14px;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75em;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.72em;
+            font-weight: 400;
+            transition: all 0.25s ease;
             white-space: nowrap;
+            letter-spacing: 0.02em;
         }
         .lang-btn:hover {
-            background: #f0f0ff;
+            border-color: var(--border-hover);
+            color: var(--text-primary);
         }
         .lang-btn.active {
-            background: #667eea;
-            color: white;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            font-weight: 500;
         }
 
         .container {
-            max-width: 800px;
-            margin: 70px auto 0;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 80px 60px;
+            border: 1px solid var(--border);
         }
-        h1 { color: #2c3e50; margin-bottom: 10px; font-size: 2em; }
-        .meta { color: #7f8c8d; font-size: 0.9em; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #ecf0f1; }
-        h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; }
-        h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; }
-        p { margin-bottom: 15px; }
-        ul, ol { margin-left: 20px; margin-bottom: 15px; }
-        li { margin-bottom: 8px; }
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 2.4em;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--text-primary);
+            margin-top: 60px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        h3 {
+            color: var(--text-primary);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        p { margin-bottom: 16px; }
+        ul, ol { margin-left: 0;
+            margin-bottom: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+        li { margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
         .highlight {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 2px solid var(--accent);
+            padding: 20px 24px;
+            margin: 30px 0;
         }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background: #f8f9fa; font-weight: 600; }
-        .contact { background: #e8f4f8; padding: 20px; border-radius: 8px; margin-top: 30px; }
-        .contact h2 { margin-top: 0; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .no-collect { color: #e74c3c; font-weight: 500; }
-        .nav { text-align: center; margin-bottom: 30px; margin-top: 60px; }
-        .nav a { color: #667eea; font-weight: 600; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 14px 16px;
+            text-align: left;
+        }
+        th {
+            background: var(--bg-secondary);
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .contact {
+            background: var(--bg-secondary);
+            padding: 32px;
+            margin-top: 60px;
+            border: 1px solid var(--border);
+        }
+        .contact h2 { margin-top: 0; margin-bottom: 16px; }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+        .no-collect { color: #c4786a; font-weight: 400; }
+        .nav {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            padding: 0 40px;
+        }
+        .nav a {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.85em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .nav a:hover { color: var(--accent); }
+
+        .final-statement {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
         @media (max-width: 600px) {
-            body { padding: 10px; }
-            .container { padding: 20px; margin-top: 80px; }
-            h1 { font-size: 1.5em; }
-            .lang-switcher { top: 10px; right: 10px; left: 10px; gap: 4px; }
-            .lang-btn { font-size: 0.7em; padding: 3px 8px; }
+            body { padding: 0; }
+            .container { padding: 40px 24px; }
+            h1 { font-size: 1.8em; }
+            .lang-switcher { padding: 16px 24px; gap: 3px; }
+            .lang-btn { font-size: 0.68em; padding: 3px 8px; }
+            .nav { padding: 0 24px; }
         }
     </style>
 </head>
@@ -106,10 +229,10 @@
     </div>
 
     <div class="container">
-        <h1 data-i18n="title">XdoList Privacy Policy</h1>
+        <h1 data-i18n="title">Privacy Policy</h1>
         <div class="meta">
-            <p><strong data-i18n="effective">Effective Date:</strong> <span data-i18n="effective_date">June 2, 2026</span></p>
-            <p><strong data-i18n="updated">Last Updated:</strong> <span data-i18n="updated_date">June 2, 2026</span></p>
+            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">June 2, 2026</span></p>
+            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">June 2, 2026</span></p>
         </div>
 
         <h2 data-i18n="sec1_title">1. Introduction</h2>
@@ -156,12 +279,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
 
         <p><strong data-i18n="not_collect">We do NOT collect:</strong></p>
         <ul>
-            <li class="no-collect" data-i18n="not_collect_1">❌ Geolocation</li>
-            <li class="no-collect" data-i18n="not_collect_2">❌ Contact information</li>
-            <li class="no-collect" data-i18n="not_collect_3">❌ Other app data on your device</li>
-            <li class="no-collect" data-i18n="not_collect_4">❌ Browsing history or network activity</li>
-            <li class="no-collect" data-i18n="not_collect_5">❌ Advertising identifiers (IDFA/AAID)</li>
-            <li class="no-collect" data-i18n="not_collect_6">❌ Personal identity information (name, email, phone, etc.)</li>
+            <li class="no-collect" data-i18n="not_collect_1">Geolocation</li>
+            <li class="no-collect" data-i18n="not_collect_2">Contact information</li>
+            <li class="no-collect" data-i18n="not_collect_3">Other app data on your device</li>
+            <li class="no-collect" data-i18n="not_collect_4">Browsing history or network activity</li>
+            <li class="no-collect" data-i18n="not_collect_5">Advertising identifiers (IDFA/AAID)</li>
+            <li class="no-collect" data-i18n="not_collect_6">Personal identity information (name, email, phone, etc.)</li>
         </ul>
 
         <h2 data-i18n="sec3_title">3. Data Storage</h2>
@@ -172,8 +295,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <h3 data-i18n="sec3_2_title">3.2 Sync Data</h3>
         <p data-i18n="sec3_2_intro">If you enable sync:</p>
         <ul>
-            <li data-i18n="sec3_2_1"><strong>Supabase Sync:</strong> Data is stored in your own Supabase project, which we cannot access</li>
-            <li data-i18n="sec3_2_2"><strong>Custom API Sync:</strong> Data is stored on your own deployed server</li>
+            <li data-i18n="sec3_2_1">Supabase Sync: Data is stored in your own Supabase project, which we cannot access</li>
+            <li data-i18n="sec3_2_2">Custom API Sync: Data is stored on your own deployed server</li>
         </ul>
 
         <h3 data-i18n="sec3_3_title">3.3 Backup Data</h3>
@@ -182,10 +305,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <h2 data-i18n="sec4_title">4. Data Usage</h2>
         <p data-i18n="sec4_intro">We use your data only for the following purposes:</p>
         <ol>
-            <li data-i18n="sec4_1"><strong>Core functionality:</strong> Task management, reminders, categories, sorting</li>
-            <li data-i18n="sec4_2"><strong>Multi-device sync:</strong> Sync task status across your devices</li>
-            <li data-i18n="sec4_3"><strong>Conflict resolution:</strong> Auto-merge based on timestamps when multiple devices edit the same task</li>
-            <li data-i18n="sec4_4"><strong>App improvement:</strong> Anonymous crash reports help us fix bugs</li>
+            <li data-i18n="sec4_1">Core functionality: Task management, reminders, categories, sorting</li>
+            <li data-i18n="sec4_2">Multi-device sync: Sync task status across your devices</li>
+            <li data-i18n="sec4_3">Conflict resolution: Auto-merge based on timestamps when multiple devices edit the same task</li>
+            <li data-i18n="sec4_4">App improvement: Anonymous crash reports help us fix bugs</li>
         </ol>
 
         <p><strong data-i18n="we_will_not">We will NOT:</strong></p>
@@ -221,10 +344,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
 
         <h3 data-i18n="sec6_1_title">6.1 Retention Period</h3>
         <ul>
-            <li data-i18n="sec6_1_1"><strong>Active data:</strong> Retained indefinitely until you actively delete it</li>
-            <li data-i18n="sec6_1_2"><strong>Deleted tasks:</strong> Removed from database after 30 days (soft delete mechanism)</li>
-            <li data-i18n="sec6_1_3"><strong>Operation logs:</strong> Retained for 90 days for sync conflict troubleshooting</li>
-            <li data-i18n="sec6_1_4"><strong>Backup files:</strong> Maximum 5 historical versions, old versions auto-cleaned</li>
+            <li data-i18n="sec6_1_1">Active data: Retained indefinitely until you actively delete it</li>
+            <li data-i18n="sec6_1_2">Deleted tasks: Removed from database after 30 days (soft delete mechanism)</li>
+            <li data-i18n="sec6_1_3">Operation logs: Retained for 90 days for sync conflict troubleshooting</li>
+            <li data-i18n="sec6_1_4">Backup files: Maximum 5 historical versions, old versions auto-cleaned</li>
         </ul>
 
         <h3 data-i18n="sec6_2_title">6.2 Your Right to Delete</h3>
@@ -277,19 +400,17 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <h2 data-i18n="sec11_title">11. Permissions</h2>
         <p data-i18n="sec11_intro">This app requires the following system permissions:</p>
         <ul>
-            <li data-i18n="sec11_1"><strong>Notifications:</strong> Send task reminder notifications (optional)</li>
-            <li data-i18n="sec11_2"><strong>Network:</strong> Sync data to your configured third-party services (only when sync is enabled)</li>
-            <li data-i18n="sec11_3"><strong>Local Network (iOS):</strong> Connect to custom sync servers on local network (optional)</li>
+            <li data-i18n="sec11_1">Notifications: Send task reminder notifications (optional)</li>
+            <li data-i18n="sec11_2">Network: Sync data to your configured third-party services (only when sync is enabled)</li>
+            <li data-i18n="sec11_3">Local Network (iOS): Connect to custom sync servers on local network (optional)</li>
         </ul>
 
         <p data-i18n="sec11_note">All permissions are optional. Denying permission will not affect the app's core local functionality.</p>
 
-        <hr style="margin: 40px 0; border: none; border-top: 1px solid #ecf0f1;">
-
-        <p style="text-align: center; color: #7f8c8d; font-size: 0.9em;">
+        <div class="final-statement">
             <strong data-i18n="final_statement">Statement:</strong>
             <span data-i18n="final_desc"> XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.</span>
-        </p>
+        </div>
     </div>
 
     <script>
@@ -309,7 +430,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
         const translations = {
             en: {
                 back_home: "← Back to Home",
-                title: "XdoList Privacy Policy",
+                title: "Privacy Policy",
                 effective: "Effective Date:",
                 effective_date: "June 2, 2026",
                 updated: "Last Updated:",
@@ -337,12 +458,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "App crash logs (for improving app stability)",
                 usage_data_2: "Operation timestamps (for sync conflict resolution)",
                 not_collect: "We do NOT collect:",
-                not_collect_1: "❌ Geolocation",
-                not_collect_2: "❌ Contact information",
-                not_collect_3: "❌ Other app data on your device",
-                not_collect_4: "❌ Browsing history or network activity",
-                not_collect_5: "❌ Advertising identifiers (IDFA/AAID)",
-                not_collect_6: "❌ Personal identity information (name, email, phone, etc.)",
+                not_collect_1: "Geolocation",
+                not_collect_2: "Contact information",
+                not_collect_3: "Other app data on your device",
+                not_collect_4: "Browsing history or network activity",
+                not_collect_5: "Advertising identifiers (IDFA/AAID)",
+                not_collect_6: "Personal identity information (name, email, phone, etc.)",
                 sec3_title: "3. Data Storage",
                 sec3_1_title: "3.1 Local Storage",
                 sec3_1_desc: "All task data is stored locally in your device's database (SQLite) by default. We do not upload this data to our servers.",
@@ -374,7 +495,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_3_1: "Sync and error diagnostic exports are automatically anonymized",
                 sec5_3_2: "Exported files do not contain task titles, descriptions, or other original content",
                 sec5_3_3: "Only IDs, status, hashes, timestamps, and other metadata are included",
-                sec6_title: "6. Data Retention & Deletion",
+                sec6_title: "6. Data Retention \u0026 Deletion",
                 sec6_1_title: "6.1 Retention Period",
                 sec6_1_1: "Active data: Retained indefinitely until you actively delete it",
                 sec6_1_2: "Deleted tasks: Removed from database after 30 days (soft delete mechanism)",
@@ -413,7 +534,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             ja: {
                 back_home: "← ホームに戻る",
-                title: "XdoList プライバシーポリシー",
+                title: "プライバシーポリシー",
                 effective: "発効日：",
                 effective_date: "2026年6月2日",
                 updated: "最終更新日：",
@@ -441,12 +562,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "アプリのクラッシュログ（アプリの安定性向上のため）",
                 usage_data_2: "操作タイムスタンプ（同期競合の解決のため）",
                 not_collect: "当社は収集しません：",
-                not_collect_1: "❌ 位置情報",
-                not_collect_2: "❌ 連絡先情報",
-                not_collect_3: "❌ デバイス上の他のアプリデータ",
-                not_collect_4: "❌ 閲覧履歴やネットワーク活動",
-                not_collect_5: "❌ 広告識別子（IDFA/AAID）",
-                not_collect_6: "❌ 個人を特定できる情報（氏名、メール、電話番号など）",
+                not_collect_1: "位置情報",
+                not_collect_2: "連絡先情報",
+                not_collect_3: "デバイス上の他のアプリデータ",
+                not_collect_4: "閲覧履歴やネットワーク活動",
+                not_collect_5: "広告識別子（IDFA/AAID）",
+                not_collect_6: "個人を特定できる情報（氏名、メール、電話番号など）",
                 sec3_title: "3. データの保存",
                 sec3_1_title: "3.1 ローカル保存",
                 sec3_1_desc: "すべてのタスクデータは、デフォルトでお客様のデバイスのデータベース（SQLite）にローカル保存されます。当社はこのデータを当社のサーバーにアップロードしません。",
@@ -517,7 +638,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             zh: {
                 back_home: "← 返回主页",
-                title: "XdoList 隐私政策",
+                title: "隐私政策",
                 effective: "生效日期：",
                 effective_date: "2026年6月2日",
                 updated: "最后更新：",
@@ -545,12 +666,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "应用崩溃日志（用于改进应用稳定性）",
                 usage_data_2: "操作时间戳（用于数据同步的冲突解决）",
                 not_collect: "我们不收集：",
-                not_collect_1: "❌ 地理位置信息",
-                not_collect_2: "❌ 联系人信息",
-                not_collect_3: "❌ 设备上的其他应用数据",
-                not_collect_4: "❌ 浏览历史或网络活动",
-                not_collect_5: "❌ 广告标识符（IDFA/AAID）",
-                not_collect_6: "❌ 个人身份信息（姓名、邮箱、电话等）",
+                not_collect_1: "地理位置信息",
+                not_collect_2: "联系人信息",
+                not_collect_3: "设备上的其他应用数据",
+                not_collect_4: "浏览历史或网络活动",
+                not_collect_5: "广告标识符（IDFA/AAID）",
+                not_collect_6: "个人身份信息（姓名、邮箱、电话等）",
                 sec3_title: "3. 数据存储",
                 sec3_1_title: "3.1 本地存储",
                 sec3_1_desc: "所有任务数据默认存储在您的设备本地数据库中（SQLite）。我们不会将这些数据上传到我们的服务器。",
@@ -621,7 +742,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             ko: {
                 back_home: "← 홈으로 돌아가기",
-                title: "XdoList 개인정보 처리방침",
+                title: "개인정보 처리방침",
                 effective: "발효일: ",
                 effective_date: "2026년 6월 2일",
                 updated: "최종 업데이트: ",
@@ -649,12 +770,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "앱 충돌 로그(앱 안정성 개선용)",
                 usage_data_2: "작업 타임스탬프(동기화 충돌 해결용)",
                 not_collect: "당사는 수집하지 않습니다: ",
-                not_collect_1: "❌ 위치 정보",
-                not_collect_2: "❌ 연락처 정보",
-                not_collect_3: "❌ 기기의 다른 앱 데이터",
-                not_collect_4: "❌ 브라우징 기록 또는 네트워크 활동",
-                not_collect_5: "❌ 광고 식별자(IDFA/AAID)",
-                not_collect_6: "❌ 개인 신원 정보(이름, 이메일, 전화번호 등)",
+                not_collect_1: "위치 정보",
+                not_collect_2: "연락처 정보",
+                not_collect_3: "기기의 다른 앱 데이터",
+                not_collect_4: "브라우징 기록 또는 네트워크 활동",
+                not_collect_5: "광고 식별자(IDFA/AAID)",
+                not_collect_6: "개인 신원 정보(이름, 이메일, 전화번호 등)",
                 sec3_title: "3. 데이터 저장",
                 sec3_1_title: "3.1 로컬 저장",
                 sec3_1_desc: "모든 작업 데이터는 기본적으로 귀하의 기기 데이터베이스(SQLite)에 로컬로 저장됩니다. 당사는 이 데이터를 서버에 업로드하지 않습니다.",
@@ -725,13 +846,13 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             de: {
                 back_home: "← Zurück zur Startseite",
-                title: "XdoList Datenschutzerklärung",
+                title: "Datenschutzerklärung",
                 effective: "Gültig ab: ",
                 effective_date: "2. Juni 2026",
                 updated: "Zuletzt aktualisiert: ",
                 updated_date: "2. Juni 2026",
                 sec1_title: "1. Einleitung",
-                sec1_desc: 'XdoList („wir", „die App") ist eine Aufgabenverwaltungsanwendung. Wir schätzen Ihre Privatsphäre sehr, und diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden, speichern und schützen.',
+                sec1_desc: 'XdoList ("wir", "die App") ist eine Aufgabenverwaltungsanwendung. Wir schätzen Ihre Privatsphäre sehr, und diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden, speichern und schützen.',
                 notice: "Bitte beachten: ",
                 notice_desc: " Diese App verarbeitet hauptsächlich lokale Daten und erfordert keine Benutzerregistrierung oder das Hochladen von Daten auf unsere Server. Synchronisationsfunktionen werden nur aktiviert, wenn Sie Drittanbieterdienste aktiv konfigurieren.",
                 sec2_title: "2. Daten, die wir sammeln",
@@ -753,12 +874,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "App-Absturzprotokolle (zur Verbesserung der App-Stabilität)",
                 usage_data_2: "Vorgangszeitstempel (zur Lösung von Synchronisationskonflikten)",
                 not_collect: "Wir sammeln NICHT: ",
-                not_collect_1: "❌ Standortdaten",
-                not_collect_2: "❌ Kontaktinformationen",
-                not_collect_3: "❌ Andere App-Daten auf Ihrem Gerät",
-                not_collect_4: "❌ Browserverlauf oder Netzwerkaktivität",
-                not_collect_5: "❌ Werbeidentifikatoren (IDFA/AAID)",
-                not_collect_6: "❌ Persönliche Identitätsinformationen (Name, E-Mail, Telefon usw.)",
+                not_collect_1: "Standortdaten",
+                not_collect_2: "Kontaktinformationen",
+                not_collect_3: "Andere App-Daten auf Ihrem Gerät",
+                not_collect_4: "Browserverlauf oder Netzwerkaktivität",
+                not_collect_5: "Werbeidentifikatoren (IDFA/AAID)",
+                not_collect_6: "Persönliche Identitätsinformationen (Name, E-Mail, Telefon usw.)",
                 sec3_title: "3. Datenspeicherung",
                 sec3_1_title: "3.1 Lokale Speicherung",
                 sec3_1_desc: "Alle Aufgabendaten werden standardmäßig lokal in der Datenbank Ihres Geräts (SQLite) gespeichert. Wir laden diese Daten nicht auf unsere Server hoch.",
@@ -782,7 +903,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_title: "5. Datensicherheit",
                 sec5_1_title: "5.1 Übertragungssicherheit",
                 sec5_1_1: "Alle Netzwerkkommunikationen verwenden standardmäßig HTTPS/TLS-Verschlüsselung",
-                sec5_1_2: "Wenn Sie „Unsichere Verbindungen erlauben“ aktivieren (nur für interne Netzwerk-Entwicklung/Tests), wird die HTTP-Kommunikation nicht verschlüsselt",
+                sec5_1_2: "Wenn Sie \"Unsichere Verbindungen erlauben\" aktivieren (nur für interne Netzwerk-Entwicklung/Tests), wird die HTTP-Kommunikation nicht verschlüsselt",
                 sec5_2_title: "5.2 Lokale Sicherheit",
                 sec5_2_1: "Das Datenbankpasswort (falls konfiguriert) wird nur für die Datenbankinitialisierung verwendet und kann jederzeit gelöscht werden",
                 sec5_2_2: "Die App verwendet Standard-Dateisystemberechtigungen des Betriebssystems zum Schutz der Daten",
@@ -814,7 +935,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec8_title: "8. Datenschutz für Kinder",
                 sec8_desc: "Diese App richtet sich nicht an Kinder unter 13 Jahren. Wir sammeln wissentlich keine persönlichen Informationen von Kindern. Wenn Sie feststellen, dass ein Kind uns persönliche Informationen bereitgestellt hat, kontaktieren Sie uns bitte, und wir werden diese Informationen umgehend löschen.",
                 sec9_title: "9. Änderungen der Richtlinie",
-                sec9_desc: 'Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum „Zuletzt aktualisiert“ veröffentlicht. Wichtige Änderungen werden über In-App-Benachrichtigungen mitgeteilt.',
+                sec9_desc: 'Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum "Zuletzt aktualisiert" veröffentlicht. Wichtige Änderungen werden über In-App-Benachrichtigungen mitgeteilt.',
                 sec10_title: "10. Kontakt",
                 sec10_intro: "Wenn Sie Fragen oder Anregungen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte: ",
                 email: "E-Mail: ",
@@ -829,7 +950,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             fr: {
                 back_home: "← Retour à l'accueil",
-                title: "Politique de confidentialité de XdoList",
+                title: "Politique de confidentialité",
                 effective: "Date d'effet : ",
                 effective_date: "2 juin 2026",
                 updated: "Dernière mise à jour : ",
@@ -857,12 +978,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "Journaux de plantage de l'application (pour améliorer la stabilité de l'application)",
                 usage_data_2: "Horodatages des opérations (pour la résolution des conflits de synchronisation)",
                 not_collect: "Nous ne collectons PAS : ",
-                not_collect_1: "❌ Géolocalisation",
-                not_collect_2: "❌ Informations de contact",
-                not_collect_3: "❌ Autres données d'applications sur votre appareil",
-                not_collect_4: "❌ Historique de navigation ou activité réseau",
-                not_collect_5: "❌ Identifiants publicitaires (IDFA/AAID)",
-                not_collect_6: "❌ Informations d'identité personnelle (nom, e-mail, téléphone, etc.)",
+                not_collect_1: "Géolocalisation",
+                not_collect_2: "Informations de contact",
+                not_collect_3: "Autres données d'applications sur votre appareil",
+                not_collect_4: "Historique de navigation ou activité réseau",
+                not_collect_5: "Identifiants publicitaires (IDFA/AAID)",
+                not_collect_6: "Informations d'identité personnelle (nom, e-mail, téléphone, etc.)",
                 sec3_title: "3. Stockage des données",
                 sec3_1_title: "3.1 Stockage local",
                 sec3_1_desc: "Toutes les données de tâches sont stockées localement dans la base de données de votre appareil (SQLite) par défaut. Nous ne téléchargeons pas ces données sur nos serveurs.",
@@ -918,7 +1039,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec8_title: "8. Confidentialité des enfants",
                 sec8_desc: "Cette application ne s'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants. Si vous découvrez qu'un enfant nous a fourni des informations personnelles, veuillez nous contacter et nous supprimerons rapidement ces informations.",
                 sec9_title: "9. Modifications de la politique",
-                sec9_desc: 'Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Toute modification sera publiée sur cette page avec une date de « Dernière mise à jour » actualisée. Les modifications importantes seront communiquées via des notifications in-app.',
+                sec9_desc: 'Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Toute modification sera publiée sur cette page avec une date de "Dernière mise à jour" actualisée. Les modifications importantes seront communiquées via des notifications in-app.',
                 sec10_title: "10. Nous contacter",
                 sec10_intro: "Si vous avez des questions ou des suggestions concernant cette politique de confidentialité, veuillez nous contacter : ",
                 email: "E-mail : ",
@@ -933,7 +1054,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             es: {
                 back_home: "← Volver al inicio",
-                title: "Política de privacidad de XdoList",
+                title: "Política de privacidad",
                 effective: "Fecha de vigencia: ",
                 effective_date: "2 de junio de 2026",
                 updated: "Última actualización: ",
@@ -961,12 +1082,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "Registros de fallos de la aplicación (para mejorar la estabilidad de la aplicación)",
                 usage_data_2: "Marcas de tiempo de operaciones (para la resolución de conflictos de sincronización)",
                 not_collect: "NO recopilamos: ",
-                not_collect_1: "❌ Geolocalización",
-                not_collect_2: "❌ Información de contacto",
-                not_collect_3: "❌ Otros datos de aplicaciones en su dispositivo",
-                not_collect_4: "❌ Historial de navegación o actividad de red",
-                not_collect_5: "❌ Identificadores publicitarios (IDFA/AAID)",
-                not_collect_6: "❌ Información de identidad personal (nombre, correo electrónico, teléfono, etc.)",
+                not_collect_1: "Geolocalización",
+                not_collect_2: "Información de contacto",
+                not_collect_3: "Otros datos de aplicaciones en su dispositivo",
+                not_collect_4: "Historial de navegación o actividad de red",
+                not_collect_5: "Identificadores publicitarios (IDFA/AAID)",
+                not_collect_6: "Información de identidad personal (nombre, correo electrónico, teléfono, etc.)",
                 sec3_title: "3. Almacenamiento de datos",
                 sec3_1_title: "3.1 Almacenamiento local",
                 sec3_1_desc: "Todos los datos de tareas se almacenan localmente en la base de datos de su dispositivo (SQLite) de forma predeterminada. No cargamos estos datos en nuestros servidores.",
@@ -990,7 +1111,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_title: "5. Seguridad de los datos",
                 sec5_1_title: "5.1 Seguridad de transmisión",
                 sec5_1_1: "Toda la comunicación de red utiliza cifrado HTTPS/TLS de forma predeterminada",
-                sec5_1_2: 'Si habilita «Permitir conexiones inseguras» (solo para desarrollo/pruebas en red interna), la comunicación HTTP no estará cifrada',
+                sec5_1_2: 'Si habilita "Permitir conexiones inseguras" (solo para desarrollo/pruebas en red interna), la comunicación HTTP no estará cifrada',
                 sec5_2_title: "5.2 Seguridad local",
                 sec5_2_1: "La contraseña de la base de datos (si está configurada) solo se usa para la inicialización de la base de datos y se puede borrar en cualquier momento",
                 sec5_2_2: "La aplicación usa los permisos estándar del sistema de archivos del sistema operativo para proteger los datos",
@@ -1037,7 +1158,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             ar: {
                 back_home: "← العودة إلى الرئيسية",
-                title: "سياسة الخصوصية - XdoList",
+                title: "سياسة الخصوصية",
                 effective: "تاريخ السريان: ",
                 effective_date: "2 يونيو 2026",
                 updated: "آخر تحديث: ",
@@ -1065,12 +1186,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "سجلات أعطال التطبيق (لتحسين استقرار التطبيق)",
                 usage_data_2: "طوابع الوقت للعمليات (لحل تعارضات المزامنة)",
                 not_collect: "لا نقوم بجمع: ",
-                not_collect_1: "❌ الموقع الجغرافي",
-                not_collect_2: "❌ معلومات الاتصال",
-                not_collect_3: "❌ بيانات التطبيقات الأخرى على جهازك",
-                not_collect_4: "❌ سجل التصفح أو نشاط الشبكة",
-                not_collect_5: "❌ معرّفات الإعلانات (IDFA/AAID)",
-                not_collect_6: "❌ معلومات الهوية الشخصية (الاسم، البريد الإلكتروني، الهاتف، إلخ)",
+                not_collect_1: "الموقع الجغرافي",
+                not_collect_2: "معلومات الاتصال",
+                not_collect_3: "بيانات التطبيقات الأخرى على جهازك",
+                not_collect_4: "سجل التصفح أو نشاط الشبكة",
+                not_collect_5: "معرّفات الإعلانات (IDFA/AAID)",
+                not_collect_6: "معلومات الهوية الشخصية (الاسم، البريد الإلكتروني، الهاتف، إلخ)",
                 sec3_title: "3. تخزين البيانات",
                 sec3_1_title: "3.1 التخزين المحلي",
                 sec3_1_desc: "تُخزّن جميع بيانات المهام محليًا في قاعدة بيانات جهازك (SQLite) بشكل افتراضي. نحن لا نرفع هذه البيانات إلى خوادمنا.",
@@ -1141,7 +1262,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             pt: {
                 back_home: "← Voltar para o início",
-                title: "Política de Privacidade do XdoList",
+                title: "Política de Privacidade",
                 effective: "Data de vigência: ",
                 effective_date: "2 de junho de 2026",
                 updated: "Última atualização: ",
@@ -1169,12 +1290,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "Registros de falhas do aplicativo (para melhorar a estabilidade do aplicativo)",
                 usage_data_2: "Carimbos de data/hora de operações (para resolução de conflitos de sincronização)",
                 not_collect: "NÃO coletamos: ",
-                not_collect_1: "❌ Geolocalização",
-                not_collect_2: "❌ Informações de contato",
-                not_collect_3: "❌ Outros dados de aplicativos no seu dispositivo",
-                not_collect_4: "❌ Histórico de navegação ou atividade de rede",
-                not_collect_5: "❌ Identificadores de publicidade (IDFA/AAID)",
-                not_collect_6: "❌ Informações de identidade pessoal (nome, e-mail, telefone, etc.)",
+                not_collect_1: "Geolocalização",
+                not_collect_2: "Informações de contato",
+                not_collect_3: "Outros dados de aplicativos no seu dispositivo",
+                not_collect_4: "Histórico de navegação ou atividade de rede",
+                not_collect_5: "Identificadores de publicidade (IDFA/AAID)",
+                not_collect_6: "Informações de identidade pessoal (nome, e-mail, telefone, etc.)",
                 sec3_title: "3. Armazenamento de dados",
                 sec3_1_title: "3.1 Armazenamento local",
                 sec3_1_desc: "Todos os dados de tarefas são armazenados localmente no banco de dados do seu dispositivo (SQLite) por padrão. Não fazemos upload desses dados para nossos servidores.",
@@ -1245,7 +1366,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
             },
             it: {
                 back_home: "← Torna alla home",
-                title: "Informativa sulla privacy di XdoList",
+                title: "Informativa sulla privacy",
                 effective: "Data di entrata in vigore: ",
                 effective_date: "2 giugno 2026",
                 updated: "Ultimo aggiornamento: ",
@@ -1273,12 +1394,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data_1: "Log di arresti anomali dell'app (per migliorare la stabilità dell'app)",
                 usage_data_2: "Timestamp delle operazioni (per la risoluzione dei conflitti di sincronizzazione)",
                 not_collect: "NON raccogliamo: ",
-                not_collect_1: "❌ Geolocalizzazione",
-                not_collect_2: "❌ Informazioni di contatto",
-                not_collect_3: "❌ Altri dati delle app sul tuo dispositivo",
-                not_collect_4: "❌ Cronologia di navigazione o attività di rete",
-                not_collect_5: "❌ Identificatori pubblicitari (IDFA/AAID)",
-                not_collect_6: "❌ Informazioni di identità personale (nome, email, telefono, ecc.)",
+                not_collect_1: "Geolocalizzazione",
+                not_collect_2: "Informazioni di contatto",
+                not_collect_3: "Altri dati delle app sul tuo dispositivo",
+                not_collect_4: "Cronologia di navigazione o attività di rete",
+                not_collect_5: "Identificatori pubblicitari (IDFA/AAID)",
+                not_collect_6: "Informazioni di identità personale (nome, email, telefono, ecc.)",
                 sec3_title: "3. Archiviazione dei dati",
                 sec3_1_title: "3.1 Archiviazione locale",
                 sec3_1_desc: "Tutti i dati delle attività sono archiviati localmente nel database del tuo dispositivo (SQLite) per impostazione predefinita. Non carichiamo questi dati sui nostri server.",
