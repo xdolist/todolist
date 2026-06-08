@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -17,7 +26,7 @@
 
         ::selection {
             background: var(--accent);
-            color: var(--bg-primary);
+            color: #ffffff;
         }
 
         :root {
@@ -31,6 +40,19 @@
             --accent-hover: #c49468;
             --border: rgba(212, 165, 116, 0.15);
             --border-hover: rgba(212, 165, 116, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f0;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --accent: #b8860b;
+            --accent-hover: #9a7009;
+            --border: rgba(184, 134, 11, 0.2);
+            --border-hover: rgba(184, 134, 11, 0.4);
         }
 
         body {
@@ -89,6 +111,45 @@
             color: var(--bg-primary);
             border-color: var(--accent);
             font-weight: 500;
+        }
+
+        .theme-toggle {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.25s ease;
+            margin-left: 8px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-right: auto;
+        }
+
+        .brand-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         /* Header */
@@ -349,6 +410,10 @@
 </head>
 <body>
     <div class="lang-switcher">
+        <a href="#" class="brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+            <img class="brand-icon" src="./logo.png" alt="">
+            <span class="brand-text">XdoList</span>
+        </a>
         <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
         <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">日本語</button>
         <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
@@ -359,6 +424,7 @@
         <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">العربية</button>
         <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
         <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
     </div>
 
     <header>
@@ -734,6 +800,27 @@
         const savedLang = localStorage.getItem('preferred-lang');
         const initialLang = savedLang || 'en';
         setLang(initialLang);
+
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        }
+
+        function updateThemeIcon(theme) {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+        }
+
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateThemeIcon(currentTheme);
     </script>
 </body>
 </html>
