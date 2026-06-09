@@ -9,14 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BV5Z2HLG2C');
-    </script>
     <script>
         (function() {
             const saved = localStorage.getItem('theme');
@@ -24,6 +16,19 @@
             const theme = saved || (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
+    </script>
+    <script>
+        // Cookie consent: only load GA after user accepts
+        function loadGA() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BV5Z2HLG2C');
+        }
     </script>
     <style>
         * {
@@ -503,9 +508,105 @@
                 order: 2;
             }
         }
+
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 20px 24px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .cookie-consent.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .cookie-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .cookie-btn.cookie-accept {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.cookie-accept:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                max-width: 140px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-reject" onclick="rejectCookies()" data-i18n="cookie_reject">Decline</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-i18n="cookie_accept">Accept</button>
+            </div>
+        </div>
+    </div>
     <div class="lang-switcher">
         <a href="#" class="brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
             <img class="brand-icon" src="./logo.png" alt="">
@@ -658,7 +759,10 @@
                 privacy_btn: "View Full Privacy Policy",
                 footer_privacy: "Privacy Policy",
                 footer_feedback: "Feedback",
-                footer_contact: "Contact Us"
+                footer_contact: "Contact Us",
+                cookie_desc: "We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.",
+                cookie_accept: "Accept",
+                cookie_reject: "Decline"
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
@@ -682,7 +786,10 @@
                 privacy_btn: "プライバシーポリシーを見る",
                 footer_privacy: "プライバシーポリシー",
                 footer_feedback: "フィードバック",
-                footer_contact: "お問い合わせ"
+                footer_contact: "お問い合わせ",
+                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。続行することで、クッキーの使用に同意したものとみなされます。",
+                cookie_accept: "同意する",
+                cookie_reject: "拒否"
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
@@ -706,7 +813,10 @@
                 privacy_btn: "查看完整隐私政策",
                 footer_privacy: "隐私政策",
                 footer_feedback: "反馈问题",
-                footer_contact: "联系我们"
+                footer_contact: "联系我们",
+                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。继续使用即表示您同意我们使用 Cookie。",
+                cookie_accept: "同意",
+                cookie_reject: "拒绝"
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
@@ -730,7 +840,10 @@
                 privacy_btn: "전체 개인정보 처리방침 보기",
                 footer_privacy: "개인정보 처리방침",
                 footer_feedback: "피드백",
-                footer_contact: "문의하기"
+                footer_contact: "문의하기",
+                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 계속 사용하면 쿠키 사용에 동의하는 것으로 간주됩니다.",
+                cookie_accept: "동의",
+                cookie_reject: "거부"
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
@@ -754,7 +867,10 @@
                 privacy_btn: "Vollständige Datenschutzerklärung anzeigen",
                 footer_privacy: "Datenschutzerklärung",
                 footer_feedback: "Feedback",
-                footer_contact: "Kontakt"
+                footer_contact: "Kontakt",
+                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.",
+                cookie_accept: "Akzeptieren",
+                cookie_reject: "Ablehnen"
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
@@ -778,7 +894,10 @@
                 privacy_btn: "Consulter la politique de confidentialité complète",
                 footer_privacy: "Politique de confidentialité",
                 footer_feedback: "Retour d'expérience",
-                footer_contact: "Nous contacter"
+                footer_contact: "Nous contacter",
+                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. En continuant, vous acceptez notre utilisation des cookies.",
+                cookie_accept: "Accepter",
+                cookie_reject: "Refuser"
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
@@ -802,7 +921,10 @@
                 privacy_btn: "Ver política de privacidad completa",
                 footer_privacy: "Política de privacidad",
                 footer_feedback: "Comentarios",
-                footer_contact: "Contacto"
+                footer_contact: "Contacto",
+                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Al continuar, acepta nuestro uso de cookies.",
+                cookie_accept: "Aceptar",
+                cookie_reject: "Rechazar"
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
@@ -826,7 +948,10 @@
                 privacy_btn: "عرض سياسة الخصوصية الكاملة",
                 footer_privacy: "سياسة الخصوصية",
                 footer_feedback: "ملاحظات",
-                footer_contact: "تواصل معنا"
+                footer_contact: "تواصل معنا",
+                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. بالاستمرار، فإنك توافق على استخدامنا لملفات تعريف الارتباط.",
+                cookie_accept: "موافق",
+                cookie_reject: "رفض"
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
@@ -850,7 +975,10 @@
                 privacy_btn: "Ver política de privacidade completa",
                 footer_privacy: "Política de privacidade",
                 footer_feedback: "Feedback",
-                footer_contact: "Fale conosco"
+                footer_contact: "Fale conosco",
+                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Ao continuar, você concorda com o uso de cookies.",
+                cookie_accept: "Aceitar",
+                cookie_reject: "Recusar"
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
@@ -874,7 +1002,10 @@
                 privacy_btn: "Visualizza l'informativa sulla privacy completa",
                 footer_privacy: "Informativa sulla privacy",
                 footer_feedback: "Feedback",
-                footer_contact: "Contattaci"
+                footer_contact: "Contattaci",
+                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Continuando, accetti il nostro uso dei cookie.",
+                cookie_accept: "Accetta",
+                cookie_reject: "Rifiuta"
             }
         };
 
@@ -962,6 +1093,36 @@
 
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         updateThemeIcon(currentTheme);
+
+        // Cookie consent
+        function showCookieConsent() {
+            const consent = document.getElementById('cookieConsent');
+            if (consent) consent.classList.add('show');
+        }
+
+        function hideCookieConsent() {
+            const consent = document.getElementById('cookieConsent');
+            if (consent) consent.classList.remove('show');
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookie-consent', 'accepted');
+            loadGA();
+            hideCookieConsent();
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookie-consent', 'rejected');
+            hideCookieConsent();
+        }
+
+        // Check cookie consent on load
+        const cookieConsent = localStorage.getItem('cookie-consent');
+        if (cookieConsent === 'accepted') {
+            loadGA();
+        } else if (cookieConsent === null) {
+            showCookieConsent();
+        }
     </script>
 </body>
 </html>

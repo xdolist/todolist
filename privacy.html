@@ -8,14 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BV5Z2HLG2C');
-    </script>
     <script>
         (function() {
             const saved = localStorage.getItem('theme');
@@ -23,6 +15,19 @@
             const theme = saved || (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
+    </script>
+    <script>
+        // Cookie consent: only load GA after user accepts
+        function loadGA() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BV5Z2HLG2C');
+        }
     </script>
     <style>
         :root {
@@ -364,9 +369,105 @@
                 order: 2;
             }
         }
+
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            padding: 20px 24px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .cookie-consent.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .cookie-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .cookie-btn.cookie-accept {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.cookie-accept:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                max-width: 140px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-reject" onclick="rejectCookies()" data-i18n="cookie_reject">Decline</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-i18n="cookie_accept">Accept</button>
+            </div>
+        </div>
+    </div>
     <div class="lang-switcher">
         <a href="index.html" class="brand">
             <img class="brand-icon" src="./logo.png" alt="">
@@ -697,7 +798,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Local Network (iOS): Connect to custom sync servers on local network (optional)",
                 sec11_note: "All permissions are optional. Denying permission will not affect the app's core local functionality.",
                 final_statement: "Statement:",
-                final_desc: " XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information."
+                final_desc: " XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.",
+                cookie_desc: "We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.",
+                cookie_accept: "Accept",
+                cookie_reject: "Decline"
             },
             ja: {
                 back_home: "← ホームに戻る",
@@ -801,7 +905,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "ローカルネットワーク権限（iOS）：ローカルネットワーク内のカスタム同期サーバーへの接続（オプション）",
                 sec11_note: "すべての権限はオプションです。権限を拒否しても、アプリの主要なローカル機能には影響しません。",
                 final_statement: "声明：",
-                final_desc: " XdoList はプライバシーを尊重するアプリです。あなたのデータはあなたのものであり、当社はデータを管理するツールを提供するのみで、所有、分析、販売は行いません。"
+                final_desc: " XdoList はプライバシーを尊重するアプリです。あなたのデータはあなたのものであり、当社はデータを管理するツールを提供するのみで、所有、分析、販売は行いません。",
+                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。続行することで、クッキーの使用に同意したものとみなされます。",
+                cookie_accept: "同意する",
+                cookie_reject: "拒否"
             },
             zh: {
                 back_home: "← 返回主页",
@@ -905,7 +1012,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "本地网络权限（iOS）：连接局域网内的自定义同步服务器（可选）",
                 sec11_note: "所有权限均为可选，拒绝授权不会影响应用的核心本地功能。",
                 final_statement: "声明：",
-                final_desc: " XdoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。"
+                final_desc: " XdoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。",
+                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。继续使用即表示您同意我们使用 Cookie。",
+                cookie_accept: "同意",
+                cookie_reject: "拒绝"
             },
             ko: {
                 back_home: "← 홈으로 돌아가기",
@@ -1009,7 +1119,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "로컬 네트워크(iOS): 로컬 네트워크의 사용자 정의 동기화 서버에 연결(선택)",
                 sec11_note: "모든 권한은 선택 사항입니다. 권한을 거부해도 앱의 핵심 로컬 기능에는 영향을 미치지 않습니다.",
                 final_statement: "성명: ",
-                final_desc: " XdoList는 개인정보 보호를 존중하는 앱입니다. 귀하의 데이터는 귀하에게 속하며, 당사는 데이터 관리를 위한 도구만 제공하고 소유, 분석 또는 판매하지 않습니다."
+                final_desc: " XdoList는 개인정보 보호를 존중하는 앱입니다. 귀하의 데이터는 귀하에게 속하며, 당사는 데이터 관리를 위한 도구만 제공하고 소유, 분석 또는 판매하지 않습니다.",
+                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 계속 사용하면 쿠키 사용에 동의하는 것으로 간주됩니다.",
+                cookie_accept: "동의",
+                cookie_reject: "거부"
             },
             de: {
                 back_home: "← Zurück zur Startseite",
@@ -1113,7 +1226,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Lokales Netzwerk (iOS): Verbindung mit benutzerdefinierten Synchronisationsservern im lokalen Netzwerk (optional)",
                 sec11_note: "Alle Berechtigungen sind optional. Die Ablehnung einer Berechtigung beeinträchtigt nicht die wesentlichen lokalen Funktionen der App.",
                 final_statement: "Erklärung: ",
-                final_desc: " XdoList ist eine datenschutzfreundliche App. Ihre Daten gehören Ihnen. Wir stellen nur Tools zur Verwaltung Ihrer Daten bereit und besitzen, analysieren oder verkaufen keine persönlichen Informationen."
+                final_desc: " XdoList ist eine datenschutzfreundliche App. Ihre Daten gehören Ihnen. Wir stellen nur Tools zur Verwaltung Ihrer Daten bereit und besitzen, analysieren oder verkaufen keine persönlichen Informationen.",
+                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.",
+                cookie_accept: "Akzeptieren",
+                cookie_reject: "Ablehnen"
             },
             fr: {
                 back_home: "← Retour à l'accueil",
@@ -1217,7 +1333,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Réseau local (iOS) : se connecter à des serveurs de synchronisation personnalisés sur le réseau local (facultatif)",
                 sec11_note: "Toutes les autorisations sont facultatives. Refuser une autorisation n'affectera pas les fonctionnalités locales principales de l'application.",
                 final_statement: "Déclaration : ",
-                final_desc: " XdoList est une application respectueuse de la confidentialité. Vos données vous appartiennent. Nous fournissons uniquement des outils pour vous aider à gérer vos données et ne possédons, n'analysons ni ne vendons vos informations personnelles."
+                final_desc: " XdoList est une application respectueuse de la confidentialité. Vos données vous appartiennent. Nous fournissons uniquement des outils pour vous aider à gérer vos données et ne possédons, n'analysons ni ne vendons vos informations personnelles.",
+                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. En continuant, vous acceptez notre utilisation des cookies.",
+                cookie_accept: "Accepter",
+                cookie_reject: "Refuser"
             },
             es: {
                 back_home: "← Volver al inicio",
@@ -1321,7 +1440,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Red local (iOS): conectarse a servidores de sincronización personalizados en la red local (opcional)",
                 sec11_note: "Todos los permisos son opcionales. Rechazar un permiso no afectará la funcionalidad local principal de la aplicación.",
                 final_statement: "Declaración: ",
-                final_desc: " XdoList es una aplicación que respeta la privacidad. Sus datos le pertenecen. Solo proporcionamos herramientas para ayudarle a gestionar sus datos y no poseemos, analizamos ni vendemos su información personal."
+                final_desc: " XdoList es una aplicación que respeta la privacidad. Sus datos le pertenecen. Solo proporcionamos herramientas para ayudarle a gestionar sus datos y no poseemos, analizamos ni vendemos su información personal.",
+                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Al continuar, acepta nuestro uso de cookies.",
+                cookie_accept: "Aceptar",
+                cookie_reject: "Rechazar"
             },
             ar: {
                 back_home: "← العودة إلى الرئيسية",
@@ -1425,7 +1547,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "الشبكة المحلية (iOS): الاتصال بخوادم المزامنة المخصصة على الشبكة المحلية (اختياري)",
                 sec11_note: "جميع الأذونات اختيارية. لن يؤثر رفض الإذن على الوظائف المحلية الأساسية للتطبيق.",
                 final_statement: "بيان: ",
-                final_desc: " XdoList هو تطبيق يحترم الخصوصية. بياناتك ملك لك. نحن نقدم فقط الأدوات لمساعدتك في إدارة بياناتك ولا نملك أو نحلل أو نبيع معلوماتك الشخصية."
+                final_desc: " XdoList هو تطبيق يحترم الخصوصية. بياناتك ملك لك. نحن نقدم فقط الأدوات لمساعدتك في إدارة بياناتك ولا نملك أو نحلل أو نبيع معلوماتك الشخصية.",
+                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. بالاستمرار، فإنك توافق على استخدامنا لملفات تعريف الارتباط.",
+                cookie_accept: "موافق",
+                cookie_reject: "رفض"
             },
             pt: {
                 back_home: "← Voltar para o início",
@@ -1529,7 +1654,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Rede local (iOS): conectar-se a servidores de sincronização personalizados na rede local (opcional)",
                 sec11_note: "Todas as permissões são opcionais. Negar uma permissão não afetará a funcionalidade local principal do aplicativo.",
                 final_statement: "Declaração: ",
-                final_desc: " O XdoList é um aplicativo que respeita a privacidade. Seus dados pertencem a você. Fornecemos apenas ferramentas para ajudá-lo a gerenciar seus dados e não possuímos, analisamos ou vendemos suas informações pessoais."
+                final_desc: " O XdoList é um aplicativo que respeita a privacidade. Seus dados pertencem a você. Fornecemos apenas ferramentas para ajudá-lo a gerenciar seus dados e não possuímos, analisamos ou vendemos suas informações pessoais.",
+                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Ao continuar, você concorda com o uso de cookies.",
+                cookie_accept: "Aceitar",
+                cookie_reject: "Recusar"
             },
             it: {
                 back_home: "← Torna alla home",
@@ -1633,7 +1761,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_3: "Rete locale (iOS): connettersi a server di sincronizzazione personalizzati sulla rete locale (opzionale)",
                 sec11_note: "Tutti i permessi sono opzionali. Il rifiuto di un permesso non influenzerà le funzionalità locali principali dell'app.",
                 final_statement: "Dichiarazione: ",
-                final_desc: " XdoList è un'app che rispetta la privacy. I tuoi dati ti appartengono. Forniamo solo strumenti per aiutarti a gestire i tuoi dati e non possediamo, analizziamo o vendiamo le tue informazioni personali."
+                final_desc: " XdoList è un'app che rispetta la privacy. I tuoi dati ti appartengono. Forniamo solo strumenti per aiutarti a gestire i tuoi dati e non possediamo, analizziamo o vendiamo le tue informazioni personali.",
+                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Continuando, accetti il nostro uso dei cookie.",
+                cookie_accept: "Accetta",
+                cookie_reject: "Rifiuta"
             }
         };
 
@@ -1721,6 +1852,36 @@ XdoList ("we", "the app") is a task management application. We highly value your
 
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         updateThemeIcon(currentTheme);
+
+        // Cookie consent
+        function showCookieConsent() {
+            const consent = document.getElementById('cookieConsent');
+            if (consent) consent.classList.add('show');
+        }
+
+        function hideCookieConsent() {
+            const consent = document.getElementById('cookieConsent');
+            if (consent) consent.classList.remove('show');
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookie-consent', 'accepted');
+            loadGA();
+            hideCookieConsent();
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookie-consent', 'rejected');
+            hideCookieConsent();
+        }
+
+        // Check cookie consent on load
+        const cookieConsent = localStorage.getItem('cookie-consent');
+        if (cookieConsent === 'accepted') {
+            loadGA();
+        } else if (cookieConsent === null) {
+            showCookieConsent();
+        }
     </script>
 </body>
 </html>
