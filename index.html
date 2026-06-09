@@ -17,18 +17,13 @@
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"></script>
     <script>
-        // Cookie consent: only load GA after user accepts
-        function loadGA() {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C';
-            document.head.appendChild(script);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-BV5Z2HLG2C');
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BV5Z2HLG2C');
     </script>
     <style>
         * {
@@ -546,7 +541,6 @@
 
         .cookie-buttons {
             display: flex;
-            gap: 12px;
             flex-shrink: 0;
         }
 
@@ -558,22 +552,11 @@
             cursor: pointer;
             transition: all 0.2s ease;
             border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-secondary);
+            background: var(--accent);
+            color: var(--bg-primary);
         }
 
         .cookie-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .cookie-btn.cookie-accept {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-        }
-
-        .cookie-btn.cookie-accept:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
         }
@@ -600,10 +583,9 @@
 <body>
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-content">
-            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.</p>
+            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience.</p>
             <div class="cookie-buttons">
-                <button class="cookie-btn cookie-reject" onclick="rejectCookies()" data-i18n="cookie_reject">Decline</button>
-                <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-i18n="cookie_accept">Accept</button>
+                <button class="cookie-btn" onclick="dismissCookieNotice()" data-i18n="cookie_dismiss">Got it</button>
             </div>
         </div>
     </div>
@@ -760,9 +742,8 @@
                 footer_privacy: "Privacy Policy",
                 footer_feedback: "Feedback",
                 footer_contact: "Contact Us",
-                cookie_desc: "We use cookies to analyze site traffic and improve your experience. By continuing, you agree to our use of cookies.",
-                cookie_accept: "Accept",
-                cookie_reject: "Decline"
+                cookie_desc: "We use cookies to analyze site traffic and improve your experience.",
+                cookie_dismiss: "Got it"
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
@@ -787,9 +768,8 @@
                 footer_privacy: "プライバシーポリシー",
                 footer_feedback: "フィードバック",
                 footer_contact: "お問い合わせ",
-                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。続行することで、クッキーの使用に同意したものとみなされます。",
-                cookie_accept: "同意する",
-                cookie_reject: "拒否"
+                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。",
+                cookie_dismiss: "了解"
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
@@ -814,9 +794,8 @@
                 footer_privacy: "隐私政策",
                 footer_feedback: "反馈问题",
                 footer_contact: "联系我们",
-                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。继续使用即表示您同意我们使用 Cookie。",
-                cookie_accept: "同意",
-                cookie_reject: "拒绝"
+                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。",
+                cookie_dismiss: "知道了"
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
@@ -841,9 +820,8 @@
                 footer_privacy: "개인정보 처리방침",
                 footer_feedback: "피드백",
                 footer_contact: "문의하기",
-                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 계속 사용하면 쿠키 사용에 동의하는 것으로 간주됩니다.",
-                cookie_accept: "동의",
-                cookie_reject: "거부"
+                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다.",
+                cookie_dismiss: "확인"
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
@@ -868,9 +846,8 @@
                 footer_privacy: "Datenschutzerklärung",
                 footer_feedback: "Feedback",
                 footer_contact: "Kontakt",
-                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.",
-                cookie_accept: "Akzeptieren",
-                cookie_reject: "Ablehnen"
+                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung.",
+                cookie_dismiss: "Verstanden"
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
@@ -895,9 +872,8 @@
                 footer_privacy: "Politique de confidentialité",
                 footer_feedback: "Retour d'expérience",
                 footer_contact: "Nous contacter",
-                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. En continuant, vous acceptez notre utilisation des cookies.",
-                cookie_accept: "Accepter",
-                cookie_reject: "Refuser"
+                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience.",
+                cookie_dismiss: "Compris"
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
@@ -922,9 +898,8 @@
                 footer_privacy: "Política de privacidad",
                 footer_feedback: "Comentarios",
                 footer_contact: "Contacto",
-                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Al continuar, acepta nuestro uso de cookies.",
-                cookie_accept: "Aceptar",
-                cookie_reject: "Rechazar"
+                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia.",
+                cookie_dismiss: "Entendido"
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
@@ -949,9 +924,8 @@
                 footer_privacy: "سياسة الخصوصية",
                 footer_feedback: "ملاحظات",
                 footer_contact: "تواصل معنا",
-                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. بالاستمرار، فإنك توافق على استخدامنا لملفات تعريف الارتباط.",
-                cookie_accept: "موافق",
-                cookie_reject: "رفض"
+                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك.",
+                cookie_dismiss: "فهمت"
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
@@ -976,9 +950,8 @@
                 footer_privacy: "Política de privacidade",
                 footer_feedback: "Feedback",
                 footer_contact: "Fale conosco",
-                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Ao continuar, você concorda com o uso de cookies.",
-                cookie_accept: "Aceitar",
-                cookie_reject: "Recusar"
+                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência.",
+                cookie_dismiss: "Entendi"
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
@@ -1003,9 +976,8 @@
                 footer_privacy: "Informativa sulla privacy",
                 footer_feedback: "Feedback",
                 footer_contact: "Contattaci",
-                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Continuando, accetti il nostro uso dei cookie.",
-                cookie_accept: "Accetta",
-                cookie_reject: "Rifiuta"
+                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza.",
+                cookie_dismiss: "Capito"
             }
         };
 
@@ -1094,34 +1066,17 @@
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         updateThemeIcon(currentTheme);
 
-        // Cookie consent
-        function showCookieConsent() {
-            const consent = document.getElementById('cookieConsent');
-            if (consent) consent.classList.add('show');
-        }
-
-        function hideCookieConsent() {
+        // Cookie notice
+        function dismissCookieNotice() {
+            localStorage.setItem('cookie-notice-dismissed', '1');
             const consent = document.getElementById('cookieConsent');
             if (consent) consent.classList.remove('show');
         }
 
-        function acceptCookies() {
-            localStorage.setItem('cookie-consent', 'accepted');
-            loadGA();
-            hideCookieConsent();
-        }
-
-        function rejectCookies() {
-            localStorage.setItem('cookie-consent', 'rejected');
-            hideCookieConsent();
-        }
-
-        // Check cookie consent on load
-        const cookieConsent = localStorage.getItem('cookie-consent');
-        if (cookieConsent === 'accepted') {
-            loadGA();
-        } else if (cookieConsent === null) {
-            showCookieConsent();
+        // Show cookie notice if not dismissed
+        if (!localStorage.getItem('cookie-notice-dismissed')) {
+            const consent = document.getElementById('cookieConsent');
+            if (consent) consent.classList.add('show');
         }
     </script>
 </body>
