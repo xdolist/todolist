@@ -5,10 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XdoList by xdolist</title>
     <meta name="description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline.">
+    <meta name="keywords" content="XdoList, task manager, to-do list, productivity, privacy, offline, todo app, task management">
+    <meta name="author" content="XdoList">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://xdolist.com/">
+
+    <!-- hreflang for multilingual support -->
+    <link rel="alternate" href="https://xdolist.com/" hreflang="en">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="ja">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="zh">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="ko">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="de">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="fr">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="es">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="ar">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="pt">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="it">
+    <link rel="alternate" href="https://xdolist.com/" hreflang="x-default">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xdolist.com/">
+    <meta property="og:title" content="XdoList - Simple and Efficient Task Manager">
+    <meta property="og:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app.">
+    <meta property="og:image" content="https://xdolist.com/logo.png">
+    <meta property="og:site_name" content="XdoList">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xdolist.com/">
+    <meta name="twitter:title" content="XdoList - Simple and Efficient Task Manager">
+    <meta name="twitter:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app.">
+    <meta name="twitter:image" content="https://xdolist.com/logo.png">
+
+    <!-- Structured Data: Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "XdoList",
+        "description": "Simple and efficient task manager. All data stored locally, works offline.",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Cross-platform",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "XdoList",
+            "url": "https://xdolist.com"
+        },
+        "url": "https://xdolist.com/",
+        "image": "https://xdolist.com/logo.png",
+        "keywords": "task manager, todo app, productivity, privacy"
+    }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "XdoList",
+        "url": "https://xdolist.com/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://xdolist.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./logo.png">
     <script>
         (function() {
             const saved = localStorage.getItem('theme');
@@ -591,7 +669,7 @@
     </div>
     <div class="lang-switcher">
         <a href="#" class="brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-            <img class="brand-icon" src="./logo.png" alt="">
+            <img class="brand-icon" src="./logo.png" alt="XdoList">
             <span class="brand-text">XdoList</span>
         </a>
         <button class="lang-toggle" onclick="toggleLangPanel()">
@@ -615,7 +693,7 @@
 
     <header>
         <div class="container">
-            <div class="logo">XdoList</div>
+            <h1 class="logo">XdoList</h1>
             <div class="tagline" data-i18n="tagline">Simple and efficient task manager. Your data belongs to you.</div>
             <p class="subtitle" data-i18n="subtitle">
                 No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.
@@ -628,7 +706,7 @@
                 <a href="#" class="btn btn-primary" onclick="alert('Coming soon to Google Play')">
                     Google Play
                 </a>
-                <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank" data-i18n="feedback">
+                <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="feedback">
                     Feedback
                 </a>
             </div>
@@ -697,7 +775,7 @@
         <div class="container">
             <div class="footer-links">
                 <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
-                <a href="https://github.com/xdolist/todolist/issues" target="_blank" data-i18n="footer_feedback">Feedback</a>
+                <a href="https://github.com/xdolist/todolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
             <p class="footer-copy">© 2026 XdoList. All rights reserved.</p>
