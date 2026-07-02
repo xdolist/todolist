@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - XdoList</title>
+    <meta name="description" content="XdoList Terms of Use - Read the rules and conditions for using the XdoList app and website.">
+    <meta name="keywords" content="XdoList terms of use, terms and conditions, user agreement, app terms">
+    <meta name="author" content="XdoList">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <link rel="canonical" href="https://xdolist.com/terms-of-use.html">
+    <link rel="alternate" href="https://xdolist.com/terms-of-use.html" hreflang="en">
+    <link rel="alternate" href="https://xdolist.com/terms-of-use.html" hreflang="x-default">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xdolist.com/terms-of-use.html">
+    <meta property="og:title" content="Terms of Use - XdoList">
+    <meta property="og:description" content="XdoList Terms of Use - Read the rules and conditions for using the XdoList app and website.">
+    <meta property="og:image" content="https://xdolist.com/logo.png">
+    <meta property="og:site_name" content="XdoList">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xdolist.com/terms-of-use.html">
+    <meta name="twitter:title" content="Terms of Use - XdoList">
+    <meta name="twitter:description" content="XdoList Terms of Use - Read the rules and conditions for using the XdoList app and website.">
+    <meta name="twitter:image" content="https://xdolist.com/logo.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Use - XdoList",
+        "description": "XdoList Terms of Use - Read the rules and conditions for using the XdoList app and website.",
+        "url": "https://xdolist.com/terms-of-use.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "XdoList",
+            "url": "https://xdolist.com/"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #151520;
+            --text-primary: #e5e5e5;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #d4a574;
+            --accent-hover: #c49468;
+            --border: rgba(212, 165, 116, 0.15);
+            --border-hover: rgba(212, 165, 116, 0.3);
+        }
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f0;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --accent: #b8860b;
+            --accent-hover: #9a7009;
+            --border: rgba(184, 134, 11, 0.2);
+            --border-hover: rgba(184, 134, 11, 0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::selection { background: var(--accent); color: #ffffff; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            background: var(--bg-primary);
+            padding: 0;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        .lang-switcher {
+            position: sticky;
+            top: 0; right: 0; left: 0;
+            display: flex;
+            gap: 4px;
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            background: var(--bg-primary);
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .lang-btn {
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.72em;
+            font-weight: 400;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+        .lang-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+        .lang-btn.active { background: var(--accent); color: var(--bg-primary); border-color: var(--accent); font-weight: 500; }
+        .theme-toggle {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.25s ease;
+            margin-left: 8px;
+        }
+        .theme-toggle:hover { border-color: var(--border-hover); color: var(--text-primary); }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-right: auto;
+        }
+        .brand-icon { width: 24px; height: 24px; flex-shrink: 0; }
+        .brand-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1em; font-weight: 600; letter-spacing: -0.01em; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 80px 60px;
+            border: 1px solid var(--border);
+        }
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 2.4em;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--text-primary);
+            margin-top: 60px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        h3 {
+            color: var(--text-primary);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        p { margin-bottom: 16px; }
+        ul, ol { margin-left: 0; margin-bottom: 20px; list-style: none; padding-left: 0; }
+        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 12px;
+            width: 4px; height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        a { color: var(--accent); text-decoration: none; transition: color 0.25s ease; }
+        a:hover { color: var(--accent-hover); }
+        .highlight {
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 2px solid var(--accent);
+            padding: 20px 24px;
+            margin: 30px 0;
+        }
+        .nav { text-align: center; margin-bottom: 40px; margin-top: 40px; padding: 0 40px; }
+        .nav a { color: var(--text-muted); font-weight: 400; font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase; }
+        .nav a:hover { color: var(--accent); }
+        .final-statement {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .container { padding: 40px 24px; }
+            h1 { font-size: 1.8em; }
+            .lang-switcher { padding: 16px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <a href="index.html" class="brand">
+            <img class="brand-icon" src="./logo.png" alt="XdoList">
+            <span class="brand-text">XdoList</span>
+        </a>
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+    </div>
+
+    <div class="nav">
+        <a href="index.html" data-i18n="back_home">← Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 data-i18n="title">Terms of Use</h1>
+        <div class="meta">
+            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">July 2, 2026</span></p>
+            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">July 2, 2026</span></p>
+        </div>
+
+        <h2 data-i18n="sec1_title">1. Acceptance of Terms</h2>
+        <p data-i18n="sec1_desc">
+            By downloading, installing, accessing, or using the XdoList mobile application and website (collectively, the "Service"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Service.
+        </p>
+
+        <h2 data-i18n="sec2_title">2. Description of Service</h2>
+        <p data-i18n="sec2_desc">
+            XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage.
+        </p>
+
+        <h2 data-i18n="sec3_title">3. Your Data</h2>
+        <h3 data-i18n="sec3_1_title">3.1 Local Data</h3>
+        <p data-i18n="sec3_1_desc">
+            All task data you create is stored locally on your device by default. We do not upload, access, or process your local data on our servers.
+        </p>
+        <h3 data-i18n="sec3_2_title">3.2 Data Backup</h3>
+        <p data-i18n="sec3_2_desc">
+            You may export backups of your data to locations you control, such as your device storage or cloud services. You are responsible for the security of any exported backup files.
+        </p>
+        <h3 data-i18n="sec3_3_title">3.3 Data Loss</h3>
+        <p data-i18n="sec3_3_desc">
+            You are responsible for maintaining adequate backups of your data. We are not liable for any data loss resulting from device failure, uninstallation of the app, accidental deletion, or other causes beyond our reasonable control.
+        </p>
+
+        <h2 data-i18n="sec4_title">4. Acceptable Use</h2>
+        <p data-i18n="sec4_desc">You agree not to use the Service to:</p>
+        <ul>
+            <li data-i18n="sec4_1">Violate any applicable laws or regulations.</li>
+            <li data-i18n="sec4_2">Infringe the intellectual property or other rights of any third party.</li>
+            <li data-i18n="sec4_3">Distribute malware, viruses, or any harmful code.</li>
+            <li data-i18n="sec4_4">Attempt to reverse engineer, decompile, or disassemble the Service.</li>
+            <li data-i18n="sec4_5">Interfere with or disrupt the integrity or performance of the Service.</li>
+        </ul>
+
+        <h2 data-i18n="sec5_title">5. Intellectual Property</h2>
+        <p data-i18n="sec5_desc">
+            The Service, including its design, code, trademarks, logos, and content, is owned by XdoList and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our prior written consent.
+        </p>
+
+        <h2 data-i18n="sec6_title">6. Third-Party Services</h2>
+        <p data-i18n="sec6_desc">
+            The Service may include optional integrations with third-party services, such as analytics providers. Your use of such services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.
+        </p>
+
+        <h2 data-i18n="sec7_title">7. Disclaimers</h2>
+        <p data-i18n="sec7_desc">
+            The Service is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the Service will be uninterrupted, secure, or error-free.
+        </p>
+
+        <h2 data-i18n="sec8_title">8. Limitation of Liability</h2>
+        <p data-i18n="sec8_desc">
+            To the fullest extent permitted by law, XdoList shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of the Service.
+        </p>
+
+        <h2 data-i18n="sec9_title">9. Changes to These Terms</h2>
+        <p data-i18n="sec9_desc">
+            We may update these Terms of Use from time to time. Any changes will be posted on this page with an updated "Last Updated" date. Your continued use of the Service after such changes constitutes acceptance of the updated terms.
+        </p>
+
+        <h2 data-i18n="sec10_title">10. Governing Law</h2>
+        <p data-i18n="sec10_desc">
+            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which XdoList operates, without regard to conflict of law principles.
+        </p>
+
+        <h2 data-i18n="sec11_title">11. Contact Us</h2>
+        <p data-i18n="sec11_desc">
+            If you have any questions about these Terms of Use, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>.
+        </p>
+
+        <div class="final-statement">
+            <p><span data-i18n="final_statement">Thank you for using XdoList.</span></p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                back_home: "← Back to Home",
+                title: "Terms of Use",
+                effective: "Effective Date:",
+                effective_date: "July 2, 2026",
+                updated: "Last Updated:",
+                updated_date: "July 2, 2026",
+                sec1_title: "1. Acceptance of Terms",
+                sec1_desc: "By downloading, installing, accessing, or using the XdoList mobile application and website (collectively, the \"Service\"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Service.",
+                sec2_title: "2. Description of Service",
+                sec2_desc: "XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage.",
+                sec3_title: "3. Your Data",
+                sec3_1_title: "3.1 Local Data",
+                sec3_1_desc: "All task data you create is stored locally on your device by default. We do not upload, access, or process your local data on our servers.",
+                sec3_2_title: "3.2 Data Backup",
+                sec3_2_desc: "You may export backups of your data to locations you control, such as your device storage or cloud services. You are responsible for the security of any exported backup files.",
+                sec3_3_title: "3.3 Data Loss",
+                sec3_3_desc: "You are responsible for maintaining adequate backups of your data. We are not liable for any data loss resulting from device failure, uninstallation of the app, accidental deletion, or other causes beyond our reasonable control.",
+                sec4_title: "4. Acceptable Use",
+                sec4_desc: "You agree not to use the Service to:",
+                sec4_1: "Violate any applicable laws or regulations.",
+                sec4_2: "Infringe the intellectual property or other rights of any third party.",
+                sec4_3: "Distribute malware, viruses, or any harmful code.",
+                sec4_4: "Attempt to reverse engineer, decompile, or disassemble the Service.",
+                sec4_5: "Interfere with or disrupt the integrity or performance of the Service.",
+                sec5_title: "5. Intellectual Property",
+                sec5_desc: "The Service, including its design, code, trademarks, logos, and content, is owned by XdoList and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our prior written consent.",
+                sec6_title: "6. Third-Party Services",
+                sec6_desc: "The Service may include optional integrations with third-party services, such as analytics providers. Your use of such services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.",
+                sec7_title: "7. Disclaimers",
+                sec7_desc: "The Service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not warrant that the Service will be uninterrupted, secure, or error-free.",
+                sec8_title: "8. Limitation of Liability",
+                sec8_desc: "To the fullest extent permitted by law, XdoList shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of the Service.",
+                sec9_title: "9. Changes to These Terms",
+                sec9_desc: "We may update these Terms of Use from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date. Your continued use of the Service after such changes constitutes acceptance of the updated terms.",
+                sec10_title: "10. Governing Law",
+                sec10_desc: "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which XdoList operates, without regard to conflict of law principles.",
+                sec11_title: "11. Contact Us",
+                sec11_desc: "If you have any questions about these Terms of Use, please contact us at support@xdolist.com.",
+                final_statement: "Thank you for using XdoList."
+            },
+            zh: {
+                back_home: "← 返回首页",
+                title: "用户协议",
+                effective: "生效日期：",
+                effective_date: "2026年7月2日",
+                updated: "最后更新：",
+                updated_date: "2026年7月2日",
+                sec1_title: "1. 接受条款",
+                sec1_desc: "通过下载、安装、访问或使用 XdoList 移动应用和网站（统称"服务"），您同意受本用户协议约束。如果您不同意这些条款，请勿使用本服务。",
+                sec2_title: "2. 服务说明",
+                sec2_desc: "XdoList 是一款注重隐私的任务管理应用。本服务允许您创建、组织和管理任务、项目、责任区、标签、提醒以及相关个人效率数据。核心功能完全在您的设备上通过本地存储运行。",
+                sec3_title: "3. 您的数据",
+                sec3_1_title: "3.1 本地数据",
+                sec3_1_desc: "您创建的所有任务数据默认存储在您的设备本地。我们不会将您的本地数据上传、访问或处理到我们的服务器。",
+                sec3_2_title: "3.2 数据备份",
+                sec3_2_desc: "您可以将数据备份导出到您控制的位置，例如设备存储或云服务。您负责导出备份文件的安全性。",
+                sec3_3_title: "3.3 数据丢失",
+                sec3_3_desc: "您负责维护足够的数据备份。对于因设备故障、卸载应用、意外删除或其他超出我们合理控制范围的原因导致的任何数据丢失，我们不承担责任。",
+                sec4_title: "4. 可接受的使用",
+                sec4_desc: "您同意不使用本服务从事以下行为：",
+                sec4_1: "违反任何适用的法律法规。",
+                sec4_2: "侵犯任何第三方的知识产权或其他权利。",
+                sec4_3: "分发恶意软件、病毒或任何有害代码。",
+                sec4_4: "尝试对服务进行逆向工程、反编译或反汇编。",
+                sec4_5: "干扰或破坏服务的完整性或性能。",
+                sec5_title: "5. 知识产权",
+                sec5_desc: "本服务（包括其设计、代码、商标、标识和内容）归 XdoList 所有，并受知识产权法律保护。未经我们事先书面同意，您不得复制、修改、分发或创作衍生作品。",
+                sec6_title: "6. 第三方服务",
+                sec6_desc: "本服务可能包含与第三方服务的可选集成，例如分析服务提供商。您对这些服务的使用受各自条款和隐私政策的约束。我们不对第三方服务的做法负责。",
+                sec7_title: "7. 免责声明",
+                sec7_desc: "本服务按"原样"和"可用"状态提供，不提供任何形式的明示或暗示担保。我们不保证服务不会中断、安全或无错误。",
+                sec8_title: "8. 责任限制",
+                sec8_desc: "在法律允许的最大范围内，XdoList 不对因您使用本服务而引起或与之相关的任何间接、附带、特殊、后果性或惩罚性损害承担责任。",
+                sec9_title: "9. 条款变更",
+                sec9_desc: "我们可能会不时更新本用户协议。任何变更都会在本页面发布，并更新"最后更新"日期。您在变更后继续使用本服务即表示接受更新后的条款。",
+                sec10_title: "10. 适用法律",
+                sec10_desc: "本条款应受 XdoList 运营所在司法管辖区的法律管辖并按其解释，不考虑法律冲突原则。",
+                sec11_title: "11. 联系我们",
+                sec11_desc: "如果您对本用户协议有任何疑问，请通过 support@xdolist.com 联系我们。",
+                final_statement: "感谢您使用 XdoList。"
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
+            localStorage.setItem('preferred-lang', lang);
+            document.body.dir = 'ltr';
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        const savedLang = localStorage.getItem('preferred-lang');
+        setLang(savedLang === 'zh' ? 'zh' : 'en');
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        }
+        function updateThemeIcon(theme) {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+        }
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateThemeIcon(currentTheme);
+    </script>
+</body>
+</html>
