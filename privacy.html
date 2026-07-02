@@ -536,7 +536,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <div class="highlight">
             <strong data-i18n="notice">Please note:</strong>
             <span data-i18n="notice_desc">
-                This app primarily processes local data and does not require user registration or uploading data to our servers. Sync features are only enabled when you actively configure third-party services.
+                This app primarily processes local data and does not require user registration or uploading data to our servers. Cloud sync is only enabled when you actively configure a backend. Supabase sync stores data in your own Supabase project. Our built-in REST API cloud service stores data on servers operated by us.
             </span>
         </div>
 
@@ -571,6 +571,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
             <li data-i18n="usage_data_2">Operation timestamps (for sync conflict resolution)</li>
         </ul>
 
+        <h3 data-i18n="sec2_3_title">2.3 Analytics</h3>
+        <p data-i18n="sec2_3_desc">To understand how the app is used and improve the user experience, the mobile app uses Firebase Analytics to collect anonymous usage events such as screen views, task creation, and feature usage. Firebase Analytics does not access your task content, and we do not use advertising identifiers (IDFA/AAID).</p>
+
         <p><strong data-i18n="not_collect">We do NOT collect:</strong></p>
         <ul>
             <li class="no-collect" data-i18n="not_collect_1">Geolocation</li>
@@ -590,7 +593,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <p data-i18n="sec3_2_intro">If you enable sync:</p>
         <ul>
             <li data-i18n="sec3_2_1">Supabase Sync: Data is stored in your own Supabase project, which we cannot access</li>
-            <li data-i18n="sec3_2_2">Custom API Sync: Data is stored on your own deployed server</li>
+            <li data-i18n="sec3_2_2">REST API Cloud Service: Data is stored on servers operated and maintained by us</li>
         </ul>
 
         <h3 data-i18n="sec3_3_title">3.3 Backup Data</h3>
@@ -653,28 +656,31 @@ XdoList ("we", "the app") is a task management application. We highly value your
             <li data-i18n="sec6_2_4">Revoke sync service authorization</li>
         </ul>
 
-        <h2 data-i18n="sec7_title">7. Third-Party Services</h2>
-        <p data-i18n="sec7_intro">This app may use the following third-party services (only when you actively configure them):</p>
+        <h2 data-i18n="sec7_title">7. Services</h2>
+        <p data-i18n="sec7_intro">This app may use the following services (only when you actively configure them): Supabase is a third-party service you provide yourself. Our built-in REST API cloud service is operated by us and governed by this privacy policy.</p>
 
         <table>
             <tr>
                 <th data-i18n="table_service">Service</th>
                 <th data-i18n="table_purpose">Purpose</th>
                 <th data-i18n="table_data">Data Type</th>
+                <th data-i18n="table_operator">Operator</th>
             </tr>
             <tr>
                 <td>Supabase</td>
                 <td data-i18n="table_sync">Data Sync</td>
                 <td data-i18n="table_task_device">Task data, Device ID</td>
+                <td data-i18n="table_user">You (third-party service)</td>
             </tr>
             <tr>
-                <td data-i18n="table_custom">Custom API</td>
+                <td data-i18n="table_custom">REST API Cloud Service</td>
                 <td data-i18n="table_sync">Data Sync</td>
                 <td data-i18n="table_task_device">Task data, Device ID</td>
+                <td data-i18n="table_us">Us</td>
             </tr>
         </table>
 
-        <p data-i18n="sec7_note">These third-party services have their own privacy policies. We recommend reviewing the privacy policies of the relevant service providers.</p>
+        <p data-i18n="sec7_note">Supabase has its own privacy policy. We recommend reviewing the privacy policy of the relevant service provider. Our REST API cloud service is operated by us and covered by this policy.</p>
 
         <h2 data-i18n="sec8_title">8. Children's Privacy</h2>
         <p data-i18n="sec8_desc">This app is not directed at children under 13. We do not knowingly collect personal information from children. If you discover that a child has provided personal information to us, please contact us and we will promptly delete such information.</p>
@@ -695,8 +701,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <p data-i18n="sec11_intro">This app requires the following system permissions:</p>
         <ul>
             <li data-i18n="sec11_1">Notifications: Send task reminder notifications (optional)</li>
-            <li data-i18n="sec11_2">Network: Sync data to your configured third-party services (only when sync is enabled)</li>
-            <li data-i18n="sec11_3">Local Network (iOS): Connect to custom sync servers on local network (optional)</li>
+            <li data-i18n="sec11_2">Network: Sync data to your configured backend service (only when sync is enabled)</li>
+            <li data-i18n="sec11_3">Local Network (iOS): Connect to sync servers on local network during development (optional)</li>
         </ul>
 
         <p data-i18n="sec11_note">All permissions are optional. Denying permission will not affect the app's core local functionality.</p>
@@ -728,11 +734,11 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 effective: "Effective Date:",
                 effective_date: "June 12, 2026",
                 updated: "Last Updated:",
-                updated_date: "June 12, 2026",
+                updated_date: "July 2, 2026",
                 sec1_title: "1. Introduction",
                 sec1_desc: 'XdoList ("we", "the app") is a task management application. We highly value your privacy, and this privacy policy explains how we collect, use, store, and protect your personal information.',
                 notice: "Please note:",
-                notice_desc: " This app primarily processes local data and does not require user registration or uploading data to our servers. Sync features are only enabled when you actively configure third-party services.",
+                notice_desc: " This app primarily processes local data and does not require user registration or uploading data to our servers. Cloud sync is only enabled when you actively configure a backend. Supabase sync stores data in your own Supabase project. Our built-in REST API cloud service stores data on servers operated by us.",
                 sec2_title: "2. Data We Collect",
                 sec2_1_title: "2.1 Data You Provide",
                 task_data: "Task Data:",
@@ -742,7 +748,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 task_data_4: "Custom sort order",
                 task_data_5: "Reminder settings (time, recurrence rules)",
                 account_data: "Account Data (Optional):",
-                account_data_1: "If you use third-party sync (Supabase), your API URL and key are only stored locally on your device",
+                account_data_1: "If you use third-party sync (Supabase), your API URL and key are only stored locally on your device. If you use our built-in REST API cloud service, connection credentials are also stored locally.",
                 account_data_2: "We do not collect or store your third-party service login credentials",
                 sec2_2_title: "2.2 Automatically Collected Data",
                 device_id: "Device Identifier:",
@@ -751,6 +757,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data: "Usage Data:",
                 usage_data_1: "App crash logs (for improving app stability)",
                 usage_data_2: "Operation timestamps (for sync conflict resolution)",
+                sec2_3_title: "2.3 Analytics",
+                sec2_3_desc: "To understand how the app is used and improve the user experience, the mobile app uses Firebase Analytics to collect anonymous usage events such as screen views, task creation, and feature usage. Firebase Analytics does not access your task content, and we do not use advertising identifiers (IDFA/AAID).",
                 not_collect: "We do NOT collect:",
                 not_collect_1: "Geolocation",
                 not_collect_2: "Contact information",
@@ -764,7 +772,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_2_title: "3.2 Sync Data",
                 sec3_2_intro: "If you enable sync:",
                 sec3_2_1: "Supabase Sync: Data is stored in your own Supabase project, which we cannot access",
-                sec3_2_2: "Custom API Sync: Data is stored on your own deployed server",
+                sec3_2_2: "REST API Cloud Service: Data is stored on servers operated and maintained by us",
                 sec3_3_title: "3.3 Backup Data",
                 sec3_3_desc: "The app supports creating local backup files stored on your device. You can export backup files to your chosen location (cloud storage, email, etc.) via system share functionality.",
                 sec4_title: "4. Data Usage",
@@ -802,14 +810,17 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Uninstall the app (deletes all local data)",
                 sec6_2_4: "Revoke sync service authorization",
                 sec7_title: "7. Third-Party Services",
-                sec7_intro: "This app may use the following third-party services (only when you actively configure them):",
+                sec7_intro: "This app may use the following services (only when you actively configure them): Supabase is a third-party service you provide yourself. Our built-in REST API cloud service is operated by us and governed by this privacy policy.",
                 table_service: "Service",
                 table_purpose: "Purpose",
                 table_data: "Data Type",
+                table_operator: "Operator",
                 table_sync: "Data Sync",
                 table_task_device: "Task data, Device ID",
-                table_custom: "Custom API",
-                sec7_note: "These third-party services have their own privacy policies. We recommend reviewing the privacy policies of the relevant service providers.",
+                table_custom: "REST API Cloud Service",
+                table_user: "You (third-party service)",
+                table_us: "Us",
+                sec7_note: "Supabase has its own privacy policy. We recommend reviewing the privacy policy of the relevant service provider. Our REST API cloud service is operated by us and covered by this policy.",
                 sec8_title: "8. Children's Privacy",
                 sec8_desc: "This app is not directed at children under 13. We do not knowingly collect personal information from children. If you discover that a child has provided personal information to us, please contact us and we will promptly delete such information.",
                 sec9_title: "9. Policy Changes",
@@ -820,8 +831,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_title: "11. Permissions",
                 sec11_intro: "This app requires the following system permissions:",
                 sec11_1: "Notifications: Send task reminder notifications (optional)",
-                sec11_2: "Network: Sync data to your configured third-party services (only when sync is enabled)",
-                sec11_3: "Local Network (iOS): Connect to custom sync servers on local network (optional)",
+                sec11_2: "Network: Sync data to your configured backend service (only when sync is enabled)",
+                sec11_3: "Local Network (iOS): Connect to sync servers on local network during development (optional)",
                 sec11_note: "All permissions are optional. Denying permission will not affect the app's core local functionality.",
                 final_statement: "Statement:",
                 final_desc: " XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.",
@@ -838,7 +849,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec1_title: "1. はじめに",
                 sec1_desc: "XdoList（「当社」「本アプリ」）はタスク管理アプリケーションです。当社はお客様のプライバシーを非常に重視しており、本プライバシーポリシーでは、個人情報の収集、使用、保存、保護の方法について説明します。",
                 notice: "ご注意：",
-                notice_desc: " 本アプリは主にローカルデータを処理し、ユーザー登録や当社サーバーへのデータアップロードを必要としません。同期機能は、お客様が第三者サービスを積極的に設定した場合にのみ有効になります。",
+                notice_desc: " 本アプリは主にローカルデータを処理し、ユーザー登録や当社サーバーへのデータアップロードを必要としません。クラウド同期は、お客様がバックエンドを積極的に設定した場合にのみ有効になります。Supabase 同期はお客様の Supabase プロジェクトに保存されます。当社が提供する REST API クラウドサービスは、当社が運用するサーバーにデータを保存します。",
                 sec2_title: "2. 収集するデータ",
                 sec2_1_title: "2.1 お客様が提供するデータ",
                 task_data: "タスクデータ：",
@@ -848,7 +859,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 task_data_4: "カスタム並び順",
                 task_data_5: "リマインダー設定（時刻、繰り返しルール）",
                 account_data: "アカウントデータ（オプション）：",
-                account_data_1: "第三者同期サービス（Supabase）をご利用の場合、API URL とキーはお客様のデバイスにのみローカル保存されます",
+                account_data_1: "第三者同期サービス（Supabase）をご利用の場合、API URL とキーはお客様のデバイスにのみローカル保存されます。当社が提供する REST API クラウドサービスをご利用の場合、接続情報もデバイスにローカル保存されます。",
                 account_data_2: "当社は第三者サービスのログイン情報を収集・保存しません",
                 sec2_2_title: "2.2 自動的に収集されるデータ",
                 device_id: "デバイス識別子：",
@@ -870,7 +881,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_2_title: "3.2 同期データ",
                 sec3_2_intro: "同期を有効にした場合：",
                 sec3_2_1: "Supabase 同期：データはお客様が所有する Supabase プロジェクトに保存され、当社はアクセスできません",
-                sec3_2_2: "カスタム API 同期：データはお客様がデプロイしたサーバーに保存されます",
+                sec3_2_2: "REST API クラウドサービス：データは当社が運用・管理するサーバーに保存されます",
                 sec3_3_title: "3.3 バックアップデータ",
                 sec3_3_desc: "アプリは、デバイスにローカル保存されるバックアップファイルの作成をサポートしています。システムの共有機能を使用して、バックアップファイルを任意の場所（クラウドストレージ、メールなど）にエクスポートできます。",
                 sec4_title: "4. データの使用",
@@ -907,15 +918,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_2: "アプリデータをクリア（システム設定から）",
                 sec6_2_3: "アプリをアンインストール（すべてのローカルデータが削除されます）",
                 sec6_2_4: "同期サービスの承認を取り消す",
-                sec7_title: "7. 第三者サービス",
-                sec7_intro: "本アプリは、お客様が積極的に設定した場合に限り、以下の第三者サービスを使用する場合があります：",
+                sec7_title: "7. サービス",
+                sec7_intro: "本アプリは、お客様が積極的に設定した場合に限り、以下のサービスを使用する場合があります。Supabase はお客様がご自身で用意する第三者サービスです。当社が提供する REST API クラウドサービスは当社が運用し、本プライバシーポリシーが適用されます。",
                 table_service: "サービス",
                 table_purpose: "目的",
                 table_data: "データ種別",
+                table_operator: "運用者",
                 table_sync: "データ同期",
                 table_task_device: "タスクデータ、デバイス ID",
-                table_custom: "カスタム API",
-                sec7_note: "これらの第三者サービスには独自のプライバシーポリシーがあります。関連サービスプロバイダーのプライバシーポリシーを確認することをお勧めします。",
+                table_custom: "REST API クラウドサービス",
+                table_user: "お客様（第三者サービス）",
+                table_us: "当社",
+                sec7_note: "Supabase には独自のプライバシーポリシーがあります。関連サービスプロバイダーのプライバシーポリシーを確認することをお勧めします。当社の REST API クラウドサービスは当社が運用し、本ポリシーでカバーされます。",
                 sec8_title: "8. 子どものプライバシー",
                 sec8_desc: "本アプリは 13 歳未満の子どもを対象としていません。当社は故意に子どもから個人情報を収集することはありません。子どもが当社に個人情報を提供したことが判明した場合、お知らせください。速やかに削除いたします。",
                 sec9_title: "9. ポリシーの変更",
@@ -926,8 +940,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_title: "11. 権限の説明",
                 sec11_intro: "本アプリには以下のシステム権限が必要です：",
                 sec11_1: "通知権限：タスクリマインダー通知の送信（オプション）",
-                sec11_2: "ネットワーク権限：設定した第三者サービスへのデータ同期（同期有効時のみ）",
-                sec11_3: "ローカルネットワーク権限（iOS）：ローカルネットワーク内のカスタム同期サーバーへの接続（オプション）",
+                sec11_2: "ネットワーク権限：設定したバックエンドサービスへのデータ同期（同期有効時のみ）",
+                sec11_3: "ローカルネットワーク権限（iOS）：開発時にローカルネットワークの同期サーバーへの接続（オプション）",
                 sec11_note: "すべての権限はオプションです。権限を拒否しても、アプリの主要なローカル機能には影響しません。",
                 final_statement: "声明：",
                 final_desc: " XdoList はプライバシーを尊重するアプリです。あなたのデータはあなたのものであり、当社はデータを管理するツールを提供するのみで、所有、分析、販売は行いません。",
@@ -940,11 +954,11 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 effective: "生效日期：",
                 effective_date: "2026年6月12日",
                 updated: "最后更新：",
-                updated_date: "2026年6月12日",
+                updated_date: "2026年7月2日",
                 sec1_title: "1. 简介",
                 sec1_desc: "XdoList（'我们'、'本应用'）是一款任务管理应用。我们高度重视您的隐私，本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。",
                 notice: "请注意：",
-                notice_desc: " 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。数据同步功能仅在用户主动配置第三方服务时才会启用。",
+                notice_desc: " 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。云同步仅在您主动配置后端时启用。Supabase 同步将数据存储在您自己配置的 Supabase 项目中；REST API 云服务将数据存储在由我们运营的服务器上。",
                 sec2_title: "2. 我们收集的数据",
                 sec2_1_title: "2.1 您主动提供的数据",
                 task_data: "任务数据：",
@@ -954,7 +968,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 task_data_4: "自定义排序顺序",
                 task_data_5: "提醒设置（时间、重复规则）",
                 account_data: "账户数据（可选）：",
-                account_data_1: "如果您使用第三方同步服务（Supabase），您的 API 地址和密钥仅存储在本地设备上",
+                account_data_1: "如果您使用第三方同步服务（Supabase），您的 API 地址和密钥仅存储在本地设备上；如果您使用我们内置的 REST API 云服务，连接凭据也仅存储在本地设备上",
                 account_data_2: "我们不收集或存储您的第三方服务登录凭据",
                 sec2_2_title: "2.2 自动收集的数据",
                 device_id: "设备标识符：",
@@ -963,6 +977,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 usage_data: "使用数据：",
                 usage_data_1: "应用崩溃日志（用于改进应用稳定性）",
                 usage_data_2: "操作时间戳（用于数据同步的冲突解决）",
+                sec2_3_title: "2.3 数据分析",
+                sec2_3_desc: "为了了解应用的使用情况并持续改进用户体验，移动应用使用 Firebase Analytics 收集匿名的使用事件（如页面浏览、任务创建、功能使用等）。Firebase Analytics 不会访问您的任务内容，我们也不会使用广告标识符（IDFA/AAID）。",
                 not_collect: "我们不收集：",
                 not_collect_1: "地理位置信息",
                 not_collect_2: "联系人信息",
@@ -976,7 +992,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_2_title: "3.2 同步数据",
                 sec3_2_intro: "如果您启用了同步功能：",
                 sec3_2_1: "Supabase 同步：数据存储在您自己配置的 Supabase 项目中，我们无权访问",
-                sec3_2_2: "自定义 API 同步：数据存储在您自己部署的服务器上",
+                sec3_2_2: "REST API 云服务：数据存储在由我们运营和维护的服务器上",
                 sec3_3_title: "3.3 备份数据",
                 sec3_3_desc: "应用支持创建本地备份文件，备份文件存储在设备本地存储中。您可以选择通过系统分享功能将备份文件导出到您选择的位置（如云盘、邮件等）。",
                 sec4_title: "4. 数据使用",
@@ -1013,15 +1029,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_2: "清除应用数据（通过系统设置）",
                 sec6_2_3: "卸载应用（将删除所有本地数据）",
                 sec6_2_4: "撤销同步服务的授权",
-                sec7_title: "7. 第三方服务",
-                sec7_intro: "本应用可能使用以下第三方服务（仅在您主动配置时）：",
+                sec7_title: "7. 服务",
+                sec7_intro: "本应用可能使用以下服务（仅在您主动配置时）：Supabase 是您自行提供的第三方服务；我们内置的 REST API 云服务由我们运营，受本隐私政策约束。",
                 table_service: "服务",
                 table_purpose: "用途",
                 table_data: "数据类型",
+                table_operator: "运营者",
                 table_sync: "数据同步",
                 table_task_device: "任务数据、设备 ID",
-                table_custom: "自定义 API",
-                sec7_note: "这些第三方服务有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。",
+                table_custom: "REST API 云服务",
+                table_user: "您（第三方服务）",
+                table_us: "我们",
+                sec7_note: "Supabase 有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。我们运营的 REST API 云服务由我们管理，受本政策约束。",
                 sec8_title: "8. 儿童隐私",
                 sec8_desc: "本应用不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。如果您发现儿童向我们提供了个人信息，请联系我们，我们将尽快删除相关信息。",
                 sec9_title: "9. 隐私政策变更",
@@ -1032,8 +1051,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_title: "11. 权限说明",
                 sec11_intro: "本应用需要以下系统权限：",
                 sec11_1: "通知权限：发送任务提醒通知（可选）",
-                sec11_2: "网络权限：同步数据到您配置的第三方服务（仅在启用同步时需要）",
-                sec11_3: "本地网络权限（iOS）：连接局域网内的自定义同步服务器（可选）",
+                sec11_2: "网络权限：同步数据到您配置的后端服务（仅在启用同步时需要）",
+                sec11_3: "本地网络权限（iOS）：开发时连接局域网内的同步服务器（可选）",
                 sec11_note: "所有权限均为可选，拒绝授权不会影响应用的核心本地功能。",
                 final_statement: "声明：",
                 final_desc: " XdoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。",

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XdoList by xdolist</title>
-    <meta name="description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline.">
+    <meta name="description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Anonymous analytics only.">
     <meta name="keywords" content="XdoList, task manager, to-do list, productivity, privacy, offline, todo app, task management">
     <meta name="author" content="XdoList">
     <meta name="robots" content="index, follow">
@@ -30,7 +30,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xdolist.com/">
     <meta property="og:title" content="XdoList - Simple and Efficient Task Manager">
-    <meta property="og:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app.">
+    <meta property="og:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app with anonymous analytics.">
     <meta property="og:image" content="https://xdolist.com/logo.png">
     <meta property="og:site_name" content="XdoList">
     <meta property="og:locale" content="en_US">
@@ -39,7 +39,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://xdolist.com/">
     <meta name="twitter:title" content="XdoList - Simple and Efficient Task Manager">
-    <meta name="twitter:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app.">
+    <meta name="twitter:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app with anonymous analytics.">
     <meta name="twitter:image" content="https://xdolist.com/logo.png">
 
     <!-- Structured Data: Software Application -->
@@ -48,7 +48,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "XdoList",
-        "description": "Simple and efficient task manager. All data stored locally, works offline.",
+        "description": "Simple and efficient task manager. All data stored locally, works offline. Anonymous analytics only.",
         "applicationCategory": "ProductivityApplication",
         "operatingSystem": "Cross-platform",
         "offers": {
@@ -703,9 +703,6 @@
                 <a href="#" class="btn btn-primary" onclick="alert('Coming soon to App Store')">
                     App Store
                 </a>
-                <a href="#" class="btn btn-primary" onclick="alert('Coming soon to Google Play')">
-                    Google Play
-                </a>
                 <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="feedback">
                     Feedback
                 </a>
@@ -746,7 +743,7 @@
                 <div class="feature-card">
                     <div class="feature-number">05</div>
                     <h3 data-i18n="feat_sync_title">Sync (Optional)</h3>
-                    <p data-i18n="feat_sync_desc">Need multi-device sync? Configure Supabase or custom API anytime. Your data always stays under your control.</p>
+                    <p data-i18n="feat_sync_desc">Need multi-device sync? Configure Supabase or our built-in REST API cloud service anytime. Your data always stays under your control.</p>
                 </div>
 
                 <div class="feature-card">
@@ -763,7 +760,7 @@
             <div class="section-label">Privacy</div>
             <h2 data-i18n="privacy_title">Privacy Promise</h2>
             <p data-i18n="privacy_desc">
-                We believe your data belongs to you. XdoList does not collect, sell, or share your personal information. No ad tracking, no data analytics, no forced cloud sync.
+                We believe your data belongs to you. Your tasks are stored locally on your device and are never uploaded to our servers. We use anonymous analytics only to understand feature usage.
             </p>
             <a href="privacy.html" class="btn btn-secondary" data-i18n="privacy_btn">
                 View Full Privacy Policy
@@ -775,6 +772,7 @@
         <div class="container">
             <div class="footer-links">
                 <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                <a href="cookies.html">Cookie Policy</a>
                 <a href="https://github.com/xdolist/todolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
@@ -811,11 +809,11 @@
                 feat_reminder_title: "Reminders",
                 feat_reminder_desc: "Local reminders delivered on time. Supports one-time, daily, weekly, monthly, and yearly recurring reminders.",
                 feat_sync_title: "Sync (Optional)",
-                feat_sync_desc: "Need multi-device sync? Configure Supabase or custom API anytime. Your data always stays under your control.",
+                feat_sync_desc: "Need multi-device sync? Configure Supabase or our built-in REST API cloud service anytime. Your data always stays under your control.",
                 feat_dark_title: "Dark Mode",
                 feat_dark_desc: "Supports automatic light/dark mode switching. Protects your eyes and provides a more comfortable experience at night.",
                 privacy_title: "Privacy Promise",
-                privacy_desc: "We believe your data belongs to you. XdoList does not collect, sell, or share your personal information. No ad tracking, no data analytics, no forced cloud sync.",
+                privacy_desc: "We believe your data belongs to you. Your tasks are stored locally on your device and are never uploaded to our servers. We use anonymous analytics only to understand feature usage.",
                 privacy_btn: "View Full Privacy Policy",
                 footer_privacy: "Privacy Policy",
                 footer_feedback: "Feedback",
@@ -837,7 +835,7 @@
                 feat_reminder_title: "リマインダー",
                 feat_reminder_desc: "ローカルリマインダーが時間通りにお知らせ。一度きり、毎日、毎週、毎月、毎年の繰り返しに対応しています。",
                 feat_sync_title: "同期（オプション）",
-                feat_sync_desc: "複数端末の同期が必要ですか？Supabase やカスタム API はいつでも設定可能。データは常にあなたの管理下にあります。",
+                feat_sync_desc: "複数端末の同期が必要ですか？Supabase や当社が提供する REST API クラウドサービスをいつでも設定可能。データは常にあなたの管理下にあります。",
                 feat_dark_title: "ダークモード",
                 feat_dark_desc: "ライト／ダークモードの自動切り替えに対応。目を保護し、夜間も快適に使えます。",
                 privacy_title: "プライバシーに関するお約束",
@@ -863,11 +861,11 @@
                 feat_reminder_title: "提醒通知",
                 feat_reminder_desc: "本地提醒，准时送达。支持一次性、每日、每周、每月、每年重复提醒。",
                 feat_sync_title: "数据同步（可选）",
-                feat_sync_desc: "需要多端同步？随时可配置 Supabase 或自定义 API，数据始终在您控制中。",
+                feat_sync_desc: "需要多端同步？随时可配置 Supabase 或我们内置的 REST API 云服务，数据始终在您控制中。",
                 feat_dark_title: "深色模式",
                 feat_dark_desc: "支持浅色/深色模式自动切换，保护眼睛，夜间使用更舒适。",
                 privacy_title: "隐私承诺",
-                privacy_desc: "我们坚信您的数据属于您。XdoList 不会收集、出售或分享您的个人信息。没有广告追踪，没有数据分析，没有云服务强制同步。",
+                privacy_desc: "我们坚信您的数据属于您。您的任务数据存储在本地设备，不会上传至我们的服务器。我们仅使用匿名的数据分析来了解功能使用情况。",
                 privacy_btn: "查看完整隐私政策",
                 footer_privacy: "隐私政策",
                 footer_feedback: "反馈问题",
@@ -1023,7 +1021,7 @@
                 feat_dark_title: "Modo escuro",
                 feat_dark_desc: "Suporta alternância automática entre modo claro e escuro. Protege seus olhos e proporciona uma experiência mais confortável à noite.",
                 privacy_title: "Promessa de privacidade",
-                privacy_desc: "Acreditamos que seus dados pertencem a você. O XdoList não coleta, vende ou compartilha suas informações pessoais. Sem rastreamento de anúncios, sem análise de dados, sem sincronização forçada na nuvem.",
+                privacy_desc: "Acreditamos que seus dados pertencem a você. Os dados das suas tarefas são armazenados localmente no dispositivo e nunca são enviados aos nossos servidores. Usamos apenas análise anônima para entender o uso dos recursos.",
                 privacy_btn: "Ver política de privacidade completa",
                 footer_privacy: "Política de privacidade",
                 footer_feedback: "Feedback",
@@ -1049,7 +1047,7 @@
                 feat_dark_title: "Modalità scura",
                 feat_dark_desc: "Supporta il passaggio automatico tra modalità chiara e scura. Protegge gli occhi e offre un'esperienza più confortevole di notte.",
                 privacy_title: "Impegno per la privacy",
-                privacy_desc: "Crediamo che i tuoi dati ti appartengano. XdoList non raccoglie, vende o condivide le tue informazioni personali. Nessun tracciamento pubblicitario, nessuna analisi dei dati, nessuna sincronizzazione cloud forzata.",
+                privacy_desc: "Crediamo che i tuoi dati ti appartengano. I dati delle tue attività sono archiviati localmente sul dispositivo e non vengono mai caricati sui nostri server. Utilizziamo solo analisi anonime per comprendere l'uso delle funzionalità.",
                 privacy_btn: "Visualizza l'informativa sulla privacy completa",
                 footer_privacy: "Informativa sulla privacy",
                 footer_feedback: "Feedback",
