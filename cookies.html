@@ -10,6 +10,15 @@
 
     <link rel="canonical" href="https://xdolist.com/cookies.html">
     <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="en">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="ja">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="zh">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="ko">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="de">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="fr">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="es">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="ar">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="pt">
+    <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="it">
     <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="x-default">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,10 +65,69 @@
             min-height: 100vh;
         }
 
+        .lang-switcher {
+            position: sticky;
+            top: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            gap: 4px;
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            background: var(--bg-primary);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.72em;
+            font-weight: 400;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent-hover);
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            font-weight: 500;
+        }
+
+        .theme-toggle {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.25s ease;
+            margin-left: 8px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-hover);
+            color: var(--text-primary);
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 40px 24px 60px;
         }
 
         .back-link {
@@ -164,7 +232,7 @@
 
         @media (max-width: 600px) {
             .container {
-                padding: 40px 20px;
+                padding: 24px 20px 40px;
             }
 
             h1 {
@@ -183,60 +251,409 @@
     </style>
 </head>
 <body data-theme="dark">
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+        <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">한국어</button>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">Deutsch</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">Français</button>
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')">Español</button>
+        <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">العربية</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
+        <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+    </div>
+
     <div class="container">
-        <a href="index.html" class="back-link">← Back to Home</a>
-        <h1>Cookie Policy</h1>
-        <p class="effective">Effective Date: July 2, 2026 | Last Updated: July 2, 2026</p>
+        <a href="index.html" class="back-link" data-i18n="back_home">← Back to Home</a>
+        <h1 data-i18n="page_title">Cookie Policy</h1>
+        <p class="effective"><span data-i18n="effective_date">Effective Date: July 2, 2026</span> | <span data-i18n="last_updated">Last Updated: July 2, 2026</span></p>
 
-        <h2>1. What Are Cookies</h2>
-        <p>Cookies are small text files that websites place on your device to store information about your preferences, login status, or browsing behavior. Similar technologies such as local storage and session storage may also be used.</p>
+        <h2 data-i18n="sec1_title">1. What Are Cookies</h2>
+        <p data-i18n="sec1_text">Cookies are small text files that websites place on your device to store information about your preferences, login status, or browsing behavior. Similar technologies such as local storage and session storage may also be used.</p>
 
-        <h2>2. How We Use Cookies</h2>
-        <p>We use cookies and similar technologies on the XdoList website for the following purposes:</p>
+        <h2 data-i18n="sec2_title">2. How We Use Cookies</h2>
+        <p data-i18n="sec2_text">We use cookies and similar technologies on the XdoList website for the following purposes:</p>
         <ul>
-            <li><strong>Essential cookies:</strong> Required for the website to function properly, such as remembering your language preference and cookie consent status.</li>
-            <li><strong>Analytics cookies:</strong> Help us understand how visitors interact with our website, so we can improve content and user experience. We use Google Analytics for this purpose.</li>
+            <li data-i18n="sec2_essential"><strong>Essential cookies:</strong> Required for the website to function properly, such as remembering your language preference and cookie consent status.</li>
+            <li data-i18n="sec2_analytics"><strong>Analytics cookies:</strong> Help us understand how visitors interact with our website, so we can improve content and user experience. We use Google Analytics for this purpose.</li>
         </ul>
 
-        <h2>3. Cookies We Use</h2>
+        <h2 data-i18n="sec3_title">3. Cookies We Use</h2>
         <table class="cookie-table">
             <thead>
                 <tr>
-                    <th>Category</th>
-                    <th>Provider</th>
-                    <th>Purpose</th>
+                    <th data-i18n="table_category">Category</th>
+                    <th data-i18n="table_provider">Provider</th>
+                    <th data-i18n="table_purpose">Purpose</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Essential</td>
+                    <td data-i18n="cat_essential">Essential</td>
                     <td>XdoList</td>
-                    <td>Store language preference and cookie consent status.</td>
+                    <td data-i18n="cat_essential_purpose">Store language preference and cookie consent status.</td>
                 </tr>
                 <tr>
-                    <td>Analytics</td>
+                    <td data-i18n="cat_analytics">Analytics</td>
                     <td>Google Analytics</td>
-                    <td>Measure website traffic and user interactions anonymously.</td>
+                    <td data-i18n="cat_analytics_purpose">Measure website traffic and user interactions anonymously.</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>4. Managing Cookies</h2>
-        <p>Most web browsers allow you to control cookies through their settings. You can choose to block or delete cookies, but doing so may affect the functionality of our website.</p>
-        <p>To opt out of Google Analytics tracking, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+        <h2 data-i18n="sec4_title">4. Managing Cookies</h2>
+        <p data-i18n="sec4_text1">Most web browsers allow you to control cookies through their settings. You can choose to block or delete cookies, but doing so may affect the functionality of our website.</p>
+        <p data-i18n="sec4_text2">To opt out of Google Analytics tracking, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
 
-        <h2>5. Mobile App</h2>
-        <p>The XdoList mobile app does not use browser cookies. For information about analytics and data collection in the app, please refer to our <a href="privacy.html">Privacy Policy</a>.</p>
+        <h2 data-i18n="sec5_title">5. Mobile App</h2>
+        <p data-i18n="sec5_text">The XdoList mobile app does not use browser cookies. For information about analytics and data collection in the app, please refer to our <a href="privacy.html" data-i18n="privacy_link">Privacy Policy</a>.</p>
 
-        <h2>6. Changes to This Policy</h2>
-        <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date.</p>
+        <h2 data-i18n="sec6_title">6. Changes to This Policy</h2>
+        <p data-i18n="sec6_text">We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date.</p>
 
-        <h2>7. Contact Us</h2>
-        <p>If you have any questions about this Cookie Policy, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>.</p>
+        <h2 data-i18n="sec7_title">7. Contact Us</h2>
+        <p data-i18n="sec7_text">If you have any questions about this Cookie Policy, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>.</p>
 
         <footer>
             <p>© 2026 XdoList. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        const translations = {
+            en: {
+                back_home: "← Back to Home",
+                page_title: "Cookie Policy",
+                effective_date: "Effective Date: July 2, 2026",
+                last_updated: "Last Updated: July 2, 2026",
+                sec1_title: "1. What Are Cookies",
+                sec1_text: "Cookies are small text files that websites place on your device to store information about your preferences, login status, or browsing behavior. Similar technologies such as local storage and session storage may also be used.",
+                sec2_title: "2. How We Use Cookies",
+                sec2_text: "We use cookies and similar technologies on the XdoList website for the following purposes:",
+                sec2_essential: "<strong>Essential cookies:</strong> Required for the website to function properly, such as remembering your language preference and cookie consent status.",
+                sec2_analytics: "<strong>Analytics cookies:</strong> Help us understand how visitors interact with our website, so we can improve content and user experience. We use Google Analytics for this purpose.",
+                sec3_title: "3. Cookies We Use",
+                table_category: "Category",
+                table_provider: "Provider",
+                table_purpose: "Purpose",
+                cat_essential: "Essential",
+                cat_essential_purpose: "Store language preference and cookie consent status.",
+                cat_analytics: "Analytics",
+                cat_analytics_purpose: "Measure website traffic and user interactions anonymously.",
+                sec4_title: "4. Managing Cookies",
+                sec4_text1: "Most web browsers allow you to control cookies through their settings. You can choose to block or delete cookies, but doing so may affect the functionality of our website.",
+                sec4_text2: "To opt out of Google Analytics tracking, you can install the <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics Opt-out Browser Add-on</a>.",
+                sec5_title: "5. Mobile App",
+                sec5_text: "The XdoList mobile app does not use browser cookies. For information about analytics and data collection in the app, please refer to our <a href='privacy.html'>Privacy Policy</a>.",
+                sec6_title: "6. Changes to This Policy",
+                sec6_text: "We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date.",
+                sec7_title: "7. Contact Us",
+                sec7_text: "If you have any questions about this Cookie Policy, please contact us at <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            ja: {
+                back_home: "← ホームに戻る",
+                page_title: "Cookie ポリシー",
+                effective_date: "発効日: 2026年7月2日",
+                last_updated: "最終更新日: 2026年7月2日",
+                sec1_title: "1. Cookie とは",
+                sec1_text: "Cookie は、ウェブサイトがお使いのデバイスに保存する小さなテキストファイルです。言語設定、ログイン状態、閲覧行動などの情報を記憶するために使用されます。ローカルストレージやセッションストレージなどの類似技術も使用される場合があります。",
+                sec2_title: "2. Cookie の使用目的",
+                sec2_text: "XdoList のウェブサイトでは、以下の目的で Cookie および類似技術を使用しています。",
+                sec2_essential: "<strong>必須 Cookie:</strong> 言語設定や Cookie 同意状態の記憶など、ウェブサイトが正常に機能するために必要です。",
+                sec2_analytics: "<strong>分析 Cookie:</strong> 訪問者がウェブサイトとどのように相互作用するかを把握し、コンテンツや体験を改善するために使用します。この目的で Google Analytics を使用しています。",
+                sec3_title: "3. 使用している Cookie",
+                table_category: "カテゴリ",
+                table_provider: "提供者",
+                table_purpose: "目的",
+                cat_essential: "必須",
+                cat_essential_purpose: "言語設定と Cookie 同意状態を保存します。",
+                cat_analytics: "分析",
+                cat_analytics_purpose: "匿名でウェブサイトのトラフィックとユーザー行動を測定します。",
+                sec4_title: "4. Cookie の管理",
+                sec4_text1: "ほとんどのブラウザでは、設定から Cookie を管理できます。Cookie をブロックまたは削除することも可能ですが、ウェブサイトの機能に影響を与える場合があります。",
+                sec4_text2: "Google Analytics のトラッキングをオプトアウトするには、<a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics オプトアウト ブラウザ アドオン</a>をインストールしてください。",
+                sec5_title: "5. モバイルアプリ",
+                sec5_text: "XdoList のモバイルアプリではブラウザ Cookie は使用されません。アプリ内の分析やデータ収集については、<a href='privacy.html'>プライバシーポリシー</a>をご参照ください。",
+                sec6_title: "6. ポリシーの変更",
+                sec6_text: "本 Cookie ポリシーは随時更新される場合があります。変更がある場合は、このページに更新された「最終更新日」とともに掲載されます。",
+                sec7_title: "7. お問い合わせ",
+                sec7_text: "本 Cookie ポリシーについてご質問がある場合は、<a href='mailto:support@xdolist.com'>support@xdolist.com</a>までお問い合わせください。"
+            },
+            zh: {
+                back_home: "← 返回首页",
+                page_title: "Cookie 政策",
+                effective_date: "生效日期：2026年7月2日",
+                last_updated: "最后更新：2026年7月2日",
+                sec1_title: "1. 什么是 Cookie",
+                sec1_text: "Cookie 是网站放置在您设备上的小型文本文件，用于存储您的偏好设置、登录状态或浏览行为等信息。我们也可能使用本地存储、会话存储等类似技术。",
+                sec2_title: "2. 我们如何使用 Cookie",
+                sec2_text: "我们在 XdoList 网站上使用 Cookie 和类似技术，目的如下：",
+                sec2_essential: "<strong>必要 Cookie：</strong> 网站正常运行所必需，例如记住您的语言偏好和 Cookie 同意状态。",
+                sec2_analytics: "<strong>分析 Cookie：</strong> 帮助我们了解访问者如何与网站互动，以便改进内容和用户体验。我们使用 Google Analytics 实现此目的。",
+                sec3_title: "3. 我们使用的 Cookie",
+                table_category: "类别",
+                table_provider: "提供者",
+                table_purpose: "目的",
+                cat_essential: "必要",
+                cat_essential_purpose: "存储语言偏好和 Cookie 同意状态。",
+                cat_analytics: "分析",
+                cat_analytics_purpose: "匿名测量网站流量和用户互动。",
+                sec4_title: "4. 管理 Cookie",
+                sec4_text1: "大多数网络浏览器允许您通过设置控制 Cookie。您可以选择阻止或删除 Cookie，但这可能会影响我们网站的正常功能。",
+                sec4_text2: "如需退出 Google Analytics 跟踪，您可以安装<a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics 停用浏览器插件</a>。",
+                sec5_title: "5. 移动应用",
+                sec5_text: "XdoList 移动应用不使用浏览器 Cookie。有关应用内的分析和数据收集信息，请参阅我们的<a href='privacy.html'>隐私政策</a>。",
+                sec6_title: "6. 政策变更",
+                sec6_text: "我们可能会不时更新本 Cookie 政策。任何变更都会在本页面发布，并更新「最后更新」日期。",
+                sec7_title: "7. 联系我们",
+                sec7_text: "如果您对本 Cookie 政策有任何疑问，请通过 <a href='mailto:support@xdolist.com'>support@xdolist.com</a> 联系我们。"
+            },
+            ko: {
+                back_home: "← 홈으로 돌아가기",
+                page_title: "쿠키 정책",
+                effective_date: "발효일: 2026년 7월 2일",
+                last_updated: "최종 업데이트: 2026년 7월 2일",
+                sec1_title: "1. 쿠키란",
+                sec1_text: "쿠키는 웹사이트가 귀하의 기기에 저장하는 작은 텍스트 파일로, 선호도, 로그인 상태 또는 탐색 행동 등의 정보를 저장합니다. 로컬 저장소 및 세션 저장소와 같은 유사 기술도 사용될 수 있습니다.",
+                sec2_title: "2. 쿠키 사용 목적",
+                sec2_text: "XdoList 웹사이트에서는 다음의 목적으로 쿠키 및 유사 기술을 사용합니다.",
+                sec2_essential: "<strong>필수 쿠키:</strong> 언어 설정 및 쿠키 동의 상태 기억 등 웹사이트가 정상적으로 작동하는 데 필요합니다.",
+                sec2_analytics: "<strong>분석 쿠키:</strong> 방문자가 웹사이트와 어떻게 상호작용하는지 파악하여 콘텐츠와 사용자 경험을 개선합니다. 이를 위해 Google Analytics를 사용합니다.",
+                sec3_title: "3. 사용하는 쿠키",
+                table_category: "카테고리",
+                table_provider: "제공자",
+                table_purpose: "목적",
+                cat_essential: "필수",
+                cat_essential_purpose: "언어 설정과 쿠키 동의 상태를 저장합니다.",
+                cat_analytics: "분석",
+                cat_analytics_purpose: "웹사이트 트래픽과 사용자 상호작용을 익명으로 측정합니다.",
+                sec4_title: "4. 쿠키 관리",
+                sec4_text1: "대부분의 브라우저에서는 설정을 통해 쿠키를 제어할 수 있습니다. 쿠키를 차단하거나 삭제할 수 있지만, 이 경우 웹사이트 기능에 영향을 미칠 수 있습니다.",
+                sec4_text2: "Google Analytics 추적을 거부하려면 <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics 옵트아웃 브라우저 추가 기능</a>을 설치하세요.",
+                sec5_title: "5. 모바일 앱",
+                sec5_text: "XdoList 모바일 앱은 브라우저 쿠키를 사용하지 않습니다. 앱 내 분석 및 데이터 수집에 대한 정보는 <a href='privacy.html'>개인정보 처리방침</a>을 참조하세요.",
+                sec6_title: "6. 정책 변경",
+                sec6_text: "본 쿠키 정책은 수시로 업데이트될 수 있습니다. 변경 사항이 있는 경우 업데이트된 '최종 업데이트' 날짜와 함께 본 페이지에 게시됩니다.",
+                sec7_title: "7. 문의하기",
+                sec7_text: "본 쿠키 정책에 대해 궁금한 점이 있으시면 <a href='mailto:support@xdolist.com'>support@xdolist.com</a>으로 문의해 주세요."
+            },
+            de: {
+                back_home: "← Zurück zur Startseite",
+                page_title: "Cookie-Richtlinie",
+                effective_date: "Gültig ab: 2. Juli 2026",
+                last_updated: "Zuletzt aktualisiert: 2. Juli 2026",
+                sec1_title: "1. Was Cookies sind",
+                sec1_text: "Cookies sind kleine Textdateien, die Websites auf Ihrem Gerät speichern, um Informationen zu Ihren Einstellungen, Anmeldestatus oder Surfverhalten zu speichern. Ähnliche Technologien wie Local Storage und Session Storage können ebenfalls verwendet werden.",
+                sec2_title: "2. Wie wir Cookies verwenden",
+                sec2_text: "Wir verwenden Cookies und ähnliche Technologien auf der XdoList-Website für folgende Zwecke:",
+                sec2_essential: "<strong>Erforderliche Cookies:</strong> Erforderlich, damit die Website ordnungsgemäß funktioniert, z. B. zum Speichern Ihrer Spracheinstellung und Ihres Cookie-Einwilligungsstatus.",
+                sec2_analytics: "<strong>Analyse-Cookies:</strong> Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, damit wir Inhalte und Nutzererlebnis verbessern können. Dazu verwenden wir Google Analytics.",
+                sec3_title: "3. Von uns verwendete Cookies",
+                table_category: "Kategorie",
+                table_provider: "Anbieter",
+                table_purpose: "Zweck",
+                cat_essential: "Erforderlich",
+                cat_essential_purpose: "Speichert Spracheinstellung und Cookie-Einwilligungsstatus.",
+                cat_analytics: "Analyse",
+                cat_analytics_purpose: "Misst Website-Traffic und Nutzerinteraktionen anonym.",
+                sec4_title: "4. Cookies verwalten",
+                sec4_text1: "Die meisten Webbrowser ermöglichen die Kontrolle von Cookies über ihre Einstellungen. Sie können Cookies blockieren oder löschen, was jedoch die Funktionalität unserer Website beeinträchtigen kann.",
+                sec4_text2: "Um Google Analytics-Tracking zu deaktivieren, können Sie das <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics Opt-out Browser Add-on</a> installieren.",
+                sec5_title: "5. Mobile App",
+                sec5_text: "Die XdoList Mobile App verwendet keine Browser-Cookies. Informationen zu Analysen und Datenerfassung in der App finden Sie in unserer <a href='privacy.html'>Datenschutzerklärung</a>.",
+                sec6_title: "6. Änderungen dieser Richtlinie",
+                sec6_text: "Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum \"Zuletzt aktualisiert\" veröffentlicht.",
+                sec7_title: "7. Kontakt",
+                sec7_text: "Bei Fragen zu dieser Cookie-Richtlinie kontaktieren Sie uns bitte unter <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            fr: {
+                back_home: "← Retour à l'accueil",
+                page_title: "Politique relative aux cookies",
+                effective_date: "Date d'effet : 2 juillet 2026",
+                last_updated: "Dernière mise à jour : 2 juillet 2026",
+                sec1_title: "1. Qu'est-ce qu'un cookie",
+                sec1_text: "Les cookies sont de petits fichiers texte que les sites web placent sur votre appareil pour stocker des informations sur vos préférences, votre état de connexion ou votre comportement de navigation. Des technologies similaires telles que le stockage local et le stockage de session peuvent également être utilisées.",
+                sec2_title: "2. Comment nous utilisons les cookies",
+                sec2_text: "Nous utilisons des cookies et des technologies similaires sur le site XdoList aux fins suivantes :",
+                sec2_essential: "<strong>Cookies essentiels :</strong> Requis pour que le site web fonctionne correctement, par exemple pour mémoriser votre préférence linguistique et votre statut de consentement aux cookies.",
+                sec2_analytics: "<strong>Cookies analytiques :</strong> Nous aident à comprendre comment les visiteurs interagissent avec notre site web, afin d'améliorer le contenu et l'expérience utilisateur. Nous utilisons Google Analytics à cette fin.",
+                sec3_title: "3. Cookies que nous utilisons",
+                table_category: "Catégorie",
+                table_provider: "Fournisseur",
+                table_purpose: "Objectif",
+                cat_essential: "Essentiel",
+                cat_essential_purpose: "Stocke la préférence linguistique et le statut de consentement aux cookies.",
+                cat_analytics: "Analyse",
+                cat_analytics_purpose: "Mesure le trafic du site et les interactions des utilisateurs de manière anonyme.",
+                sec4_title: "4. Gestion des cookies",
+                sec4_text1: "La plupart des navigateurs web vous permettent de contrôler les cookies via leurs paramètres. Vous pouvez choisir de bloquer ou de supprimer les cookies, mais cela peut affecter le fonctionnement de notre site web.",
+                sec4_text2: "Pour refuser le suivi Google Analytics, vous pouvez installer le <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>module complémentaire de désactivation de Google Analytics</a>.",
+                sec5_title: "5. Application mobile",
+                sec5_text: "L'application mobile XdoList n'utilise pas de cookies de navigateur. Pour plus d'informations sur les analyses et la collecte de données dans l'application, veuillez consulter notre <a href='privacy.html'>politique de confidentialité</a>.",
+                sec6_title: "6. Modifications de cette politique",
+                sec6_text: "Nous pouvons mettre à jour cette politique relative aux cookies de temps à autre. Toute modification sera publiée sur cette page avec une date de \"Dernière mise à jour\" actualisée.",
+                sec7_title: "7. Nous contacter",
+                sec7_text: "Si vous avez des questions concernant cette politique relative aux cookies, veuillez nous contacter à <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            es: {
+                back_home: "← Volver al inicio",
+                page_title: "Política de cookies",
+                effective_date: "Fecha de vigencia: 2 de julio de 2026",
+                last_updated: "Última actualización: 2 de julio de 2026",
+                sec1_title: "1. Qué son las cookies",
+                sec1_text: "Las cookies son pequeños archivos de texto que los sitios web colocan en su dispositivo para almacenar información sobre sus preferencias, estado de inicio de sesión o comportamiento de navegación. También pueden utilizarse tecnologías similares como el almacenamiento local y el almacenamiento de sesiones.",
+                sec2_title: "2. Cómo usamos las cookies",
+                sec2_text: "Utilizamos cookies y tecnologías similares en el sitio web de XdoList para los siguientes fines:",
+                sec2_essential: "<strong>Cookies esenciales:</strong> Necesarias para que el sitio web funcione correctamente, como recordar su preferencia de idioma y su estado de consentimiento de cookies.",
+                sec2_analytics: "<strong>Cookies analíticas:</strong> Nos ayudan a comprender cómo los visitantes interactúan con nuestro sitio web, para que podamos mejorar el contenido y la experiencia del usuario. Para ello utilizamos Google Analytics.",
+                sec3_title: "3. Cookies que utilizamos",
+                table_category: "Categoría",
+                table_provider: "Proveedor",
+                table_purpose: "Propósito",
+                cat_essential: "Esencial",
+                cat_essential_purpose: "Almacena la preferencia de idioma y el estado de consentimiento de cookies.",
+                cat_analytics: "Análisis",
+                cat_analytics_purpose: "Mide el tráfico del sitio web y las interacciones de los usuarios de forma anónima.",
+                sec4_title: "4. Gestión de cookies",
+                sec4_text1: "La mayoría de los navegadores web le permiten controlar las cookies a través de su configuración. Puede elegir bloquear o eliminar las cookies, pero esto puede afectar al funcionamiento de nuestro sitio web.",
+                sec4_text2: "Para optar por no participar en el seguimiento de Google Analytics, puede instalar el <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>complemento de inhabilitación de Google Analytics</a>.",
+                sec5_title: "5. Aplicación móvil",
+                sec5_text: "La aplicación móvil XdoList no utiliza cookies de navegador. Para obtener información sobre análisis y recopilación de datos en la aplicación, consulte nuestra <a href='privacy.html'>política de privacidad</a>.",
+                sec6_title: "6. Cambios en esta política",
+                sec6_text: "Es posible que actualicemos esta política de cookies de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de \"Última actualización\" actualizada.",
+                sec7_title: "7. Contáctenos",
+                sec7_text: "Si tiene alguna pregunta sobre esta política de cookies, póngase en contacto con nosotros en <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            ar: {
+                back_home: "← العودة إلى الرئيسية",
+                page_title: "سياسة ملفات تعريف الارتباط",
+                effective_date: "تاريخ السريان: 2 يوليو 2026",
+                last_updated: "آخر تحديث: 2 يوليو 2026",
+                sec1_title: "1. ما هي ملفات تعريف الارتباط",
+                sec1_text: "ملفات تعريف الارتباط هي ملفات نصية صغيرة تضعها المواقع على جهازك لتخزين معلومات حول تفضيلاتك، أو حالة تسجيل الدخول، أو سلوك التصفح. يمكن استخدام تقنيات مماثلة مثل التخزين المحلي وتخزين الجلسة.",
+                sec2_title: "2. كيف نستخدم ملفات تعريف الارتباط",
+                sec2_text: "نستخدم ملفات تعريف الارتباط والتقنيات المماثلة على موقع XdoList للأغراض التالية:",
+                sec2_essential: "<strong>ملفات تعريف الارتباط الأساسية:</strong> مطلوبة لكي يعمل الموقع بشكل صحيح، مثل تذكر تفضيل اللغة وحالة موافقة ملفات تعريف الارتباط.",
+                sec2_analytics: "<strong>ملفات تعريف الارتباط التحليلية:</strong> تساعدنا على فهم كيفية تفاعل الزوار مع موقعنا، حتى نتمكن من تحسين المحتوى وتجربة المستخدم. نستخدم Google Analytics لهذا الغرض.",
+                sec3_title: "3. ملفات تعريف الارتباط التي نستخدمها",
+                table_category: "الفئة",
+                table_provider: "المزود",
+                table_purpose: "الغرض",
+                cat_essential: "أساسية",
+                cat_essential_purpose: "تخزين تفضيل اللغة وحالة موافقة ملفات تعريف الارتباط.",
+                cat_analytics: "تحليلية",
+                cat_analytics_purpose: "قياس حركة الموقع وتفاعلات المستخدمين بشكل مجهول.",
+                sec4_title: "4. إدارة ملفات تعريف الارتباط",
+                sec4_text1: "تسمح معظم متصفحات الويب بالتحكم في ملفات تعريف الارتباط من خلال إعداداتها. يمكنك اختيار حظر أو حذف ملفات تعريف الارتباط، ولكن قد يؤثر ذلك على وظائف موقعنا.",
+                sec4_text2: "لإلغاء تتبع Google Analytics، يمكنك تثبيت <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>إضافة متصفح إلغاء تتبع Google Analytics</a>.",
+                sec5_title: "5. تطبيق الجوال",
+                sec5_text: "لا يستخدم تطبيق XdoList للجوال ملفات تعريف ارتباط المتصفح. للحصول على معلومات حول التحليلات وجمع البيانات في التطبيق، يرجى الرجوع إلى <a href='privacy.html'>سياسة الخصوصية</a> الخاصة بنا.",
+                sec6_title: "6. تغييرات على هذه السياسة",
+                sec6_text: "قد نقوم بتحديث سياسة ملفات تعريف الارتباط هذه من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ \"آخر تحديث\".",
+                sec7_title: "7. اتصل بنا",
+                sec7_text: "إذا كانت لديك أي أسئلة حول سياسة ملفات تعريف الارتباط هذه، يرجى التواصل معنا على <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            pt: {
+                back_home: "← Voltar para o início",
+                page_title: "Política de cookies",
+                effective_date: "Data de vigência: 2 de julho de 2026",
+                last_updated: "Última atualização: 2 de julho de 2026",
+                sec1_title: "1. O que são cookies",
+                sec1_text: "Cookies são pequenos arquivos de texto que os sites colocam no seu dispositivo para armazenar informações sobre suas preferências, status de login ou comportamento de navegação. Tecnologias similares, como armazenamento local e armazenamento de sessão, também podem ser usadas.",
+                sec2_title: "2. Como usamos os cookies",
+                sec2_text: "Usamos cookies e tecnologias similares no site da XdoList para os seguintes propósitos:",
+                sec2_essential: "<strong>Cookies essenciais:</strong> Necessários para o site funcionar corretamente, como lembrar sua preferência de idioma e status de consentimento de cookies.",
+                sec2_analytics: "<strong>Cookies analíticos:</strong> Nos ajudam a entender como os visitantes interagem com nosso site, para que possamos melhorar o conteúdo e a experiência do usuário. Usamos o Google Analytics para isso.",
+                sec3_title: "3. Cookies que usamos",
+                table_category: "Categoria",
+                table_provider: "Provedor",
+                table_purpose: "Finalidade",
+                cat_essential: "Essencial",
+                cat_essential_purpose: "Armazena a preferência de idioma e o status de consentimento de cookies.",
+                cat_analytics: "Análise",
+                cat_analytics_purpose: "Mede o tráfego do site e as interações dos usuários anonimamente.",
+                sec4_title: "4. Gerenciamento de cookies",
+                sec4_text1: "A maioria dos navegadores permite controlar os cookies por meio de suas configurações. Você pode escolher bloquear ou excluir cookies, mas isso pode afetar a funcionalidade do nosso site.",
+                sec4_text2: "Para optar por não participar do rastreamento do Google Analytics, você pode instalar o <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>Google Analytics Opt-out Browser Add-on</a>.",
+                sec5_title: "5. Aplicativo móvel",
+                sec5_text: "O aplicativo móvel XdoList não usa cookies de navegador. Para informações sobre análises e coleta de dados no aplicativo, consulte nossa <a href='privacy.html'>Política de Privacidade</a>.",
+                sec6_title: "6. Alterações nesta política",
+                sec6_text: "Podemos atualizar esta Política de Cookies periodicamente. Quaisquer alterações serão publicadas nesta página com uma data de \"Última atualização\" atualizada.",
+                sec7_title: "7. Entre em contato",
+                sec7_text: "Se tiver alguma dúvida sobre esta Política de Cookies, entre em contato conosco em <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            },
+            it: {
+                back_home: "← Torna alla home",
+                page_title: "Politica sui cookie",
+                effective_date: "Data di efficacia: 2 luglio 2026",
+                last_updated: "Ultimo aggiornamento: 2 luglio 2026",
+                sec1_title: "1. Cosa sono i cookie",
+                sec1_text: "I cookie sono piccoli file di testo che i siti web memorizzano sul tuo dispositivo per conservare informazioni sulle tue preferenze, lo stato di accesso o il comportamento di navigazione. Possono essere utilizzate anche tecnologie simili come l'archiviazione locale e l'archiviazione delle sessioni.",
+                sec2_title: "2. Come utilizziamo i cookie",
+                sec2_text: "Utilizziamo cookie e tecnologie simili sul sito web XdoList per i seguenti scopi:",
+                sec2_essential: "<strong>Cookie essenziali:</strong> Necessari per il corretto funzionamento del sito web, ad esempio per ricordare la preferenza della lingua e lo stato del consenso ai cookie.",
+                sec2_analytics: "<strong>Cookie analitici:</strong> Ci aiutano a capire come i visitatori interagiscono con il nostro sito web, in modo da migliorare i contenuti e l'esperienza utente. A questo scopo utilizziamo Google Analytics.",
+                sec3_title: "3. Cookie che utilizziamo",
+                table_category: "Categoria",
+                table_provider: "Provider",
+                table_purpose: "Scopo",
+                cat_essential: "Essenziale",
+                cat_essential_purpose: "Memorizza la preferenza della lingua e lo stato del consenso ai cookie.",
+                cat_analytics: "Analitici",
+                cat_analytics_purpose: "Misura il traffico del sito web e le interazioni degli utenti in modo anonimo.",
+                sec4_title: "4. Gestione dei cookie",
+                sec4_text1: "La maggior parte dei browser web consente di controllare i cookie attraverso le proprie impostazioni. Puoi scegliere di bloccare o eliminare i cookie, ma ciò potrebbe influire sul funzionamento del nostro sito web.",
+                sec4_text2: "Per disattivare il tracciamento di Google Analytics, puoi installare il <a href='https://tools.google.com/dlpage/gaoptout' target='_blank' rel='noopener noreferrer'>componente aggiuntivo del browser per la disattivazione di Google Analytics</a>.",
+                sec5_title: "5. App mobile",
+                sec5_text: "L'app mobile XdoList non utilizza cookie del browser. Per informazioni su analisi e raccolta dati nell'app, consulta la nostra <a href='privacy.html'>Informativa sulla privacy</a>.",
+                sec6_title: "6. Modifiche alla presente politica",
+                sec6_text: "Potremmo aggiornare questa politica sui cookie di tanto in tanto. Eventuali modifiche saranno pubblicate su questa pagina con una data di \"Ultimo aggiornamento\" aggiornata.",
+                sec7_title: "7. Contattaci",
+                sec7_text: "In caso di domande sulla presente politica sui cookie, contattaci all'indirizzo <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+            }
+        };
+
+        let currentLang = localStorage.getItem('cookiePageLang') || 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('cookiePageLang', lang);
+            document.documentElement.lang = lang;
+            applyTranslations();
+            updateLangButtons();
+        }
+
+        function applyTranslations() {
+            const t = translations[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.innerHTML = t[key];
+                }
+            });
+            document.title = t.page_title + ' - XdoList';
+        }
+
+        function updateLangButtons() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+
+        (function init() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            setLang(currentLang);
+        })();
+    </script>
 </body>
 </html>
