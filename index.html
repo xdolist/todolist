@@ -15,15 +15,6 @@
 
     <!-- hreflang for multilingual support -->
     <link rel="alternate" href="https://xdolist.com/" hreflang="en">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="ja">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="zh">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="ko">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="de">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="fr">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="es">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="ar">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="pt">
-    <link rel="alternate" href="https://xdolist.com/" hreflang="it">
     <link rel="alternate" href="https://xdolist.com/" hreflang="x-default">
 
     <!-- Open Graph / Facebook -->
@@ -95,13 +86,28 @@
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"></script>
+    <!-- Google tag (gtag.js) — consent-mode loader. Until the user grants
+         analytics consent, the GA4 script is not loaded and no advertising
+         cookies are set; gtag() default consent is "denied". -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
       gtag('js', new Date());
-      gtag('config', 'G-BV5Z2HLG2C');
+    </script>
+    <script>
+      window.XDO_COOKIE_CONSENT_KEY = 'xdo-cookie-consent';
+      try {
+        var consent = localStorage.getItem(window.XDO_COOKIE_CONSENT_KEY);
+        if (consent === 'granted') {
+          document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"><\/script>');
+          gtag('config', 'G-BV5Z2HLG2C', { anonymize_ip: true });
+        }
+      } catch (e) { /* localStorage unavailable */ }
     </script>
     <style>
         * {
@@ -301,6 +307,17 @@
             margin: 0 auto;
             font-size: 1.05em;
             font-weight: 300;
+        }
+
+        .promo {
+            color: var(--accent);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            max-width: 620px;
+            margin: 20px auto 0;
+            font-size: 1.1em;
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
 
         .download-buttons {
@@ -661,9 +678,10 @@
 <body>
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-content">
-            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience.</p>
+            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.</p>
             <div class="cookie-buttons">
-                <button class="cookie-btn" onclick="dismissCookieNotice()" data-i18n="cookie_dismiss">Got it</button>
+                <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Decline</button>
+                <button class="cookie-btn" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
             </div>
         </div>
     </div>
@@ -698,12 +716,13 @@
             <p class="subtitle" data-i18n="subtitle">
                 No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.
             </p>
+            <p class="promo" data-i18n="promo_line">One Model. Multiple Workflows. Composable Views.</p>
 
             <div class="download-buttons">
-                <a href="#" class="btn btn-primary" onclick="alert('Coming soon to App Store')">
+                <a href="https://apps.apple.com/app/com.xdolist.xdolist" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     App Store
                 </a>
-                <a href="https://github.com/xdolist/todolist/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="feedback">
+                <a href="https://github.com/xdolist/xdolist/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="feedback">
                     Feedback
                 </a>
             </div>
@@ -774,7 +793,7 @@
                 <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
                 <a href="terms-of-use.html" data-i18n="footer_terms">Terms of Use</a>
                 <a href="cookies.html">Cookie Policy</a>
-                <a href="https://github.com/xdolist/todolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
+                <a href="https://github.com/xdolist/xdolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
             <p class="footer-copy">© 2026 XdoList. All rights reserved.</p>
@@ -798,6 +817,7 @@
         const translations = {
             en: {
                 tagline: "Simple and efficient task manager. Your data belongs to you.",
+                promo_line: "One Model. Multiple Workflows. Composable Views.",
                 subtitle: "No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.",
                 feedback: "Feedback",
                 features_title: "Key Features",
@@ -820,11 +840,14 @@
                 footer_terms: "Terms of Use",
                 footer_feedback: "Feedback",
                 footer_contact: "Contact Us",
-                cookie_desc: "We use cookies to analyze site traffic and improve your experience.",
-                cookie_dismiss: "Got it"
+                cookie_desc: "We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.",
+                cookie_dismiss: "Got it",
+                cookie_accept: "Accept analytics",
+                cookie_decline: "Decline"
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
+                promo_line: "ひとつのモデル。複数のワークフロー。構成可能なビュー。",
                 subtitle: "登録不要、インターネット不要。開いてすぐに使えます。タスクデータはすべて端末内に保存され、プライバシーが守られます。",
                 feedback: "フィードバック",
                 features_title: "主な機能",
@@ -847,11 +870,14 @@
                 footer_terms: "利用規約",
                 footer_feedback: "フィードバック",
                 footer_contact: "お問い合わせ",
-                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。",
-                cookie_dismiss: "了解"
+                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。分析クッキーは承諾/拒否を選択できます。サイト機能に必要な必須クッキーは無効化できません。",
+                cookie_dismiss: "了解",
+                cookie_accept: "分析を受け入れる",
+                cookie_decline: "拒否する"
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
+                promo_line: "一个模型、多种工作流、可组合视图。",
                 subtitle: "无需注册，无需联网，打开即用。您的任务数据完全存储在本地设备，隐私无忧。",
                 feedback: "反馈问题",
                 features_title: "核心功能",
@@ -874,11 +900,14 @@
                 footer_terms: "用户协议",
                 footer_feedback: "反馈问题",
                 footer_contact: "联系我们",
-                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。",
-                cookie_dismiss: "知道了"
+                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。您可以选择接受或拒绝分析 Cookie；网站功能所必需的必要 Cookie 无法禁用。",
+                cookie_dismiss: "知道了",
+                cookie_accept: "接受分析",
+                cookie_decline: "拒绝"
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
+                promo_line: "하나의 모델, 다양한 워크플로, 조합 가능한 뷰.",
                 subtitle: "가입 없이, 인터넷 없이, 열자마자 사용할 수 있습니다. 할 일 데이터는 모두 기기에 로컬로 저장되어 프라이버시가 보장됩니다.",
                 feedback: "피드백",
                 features_title: "주요 기능",
@@ -901,11 +930,14 @@
                 footer_terms: "이용약관",
                 footer_feedback: "피드백",
                 footer_contact: "문의하기",
-                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다.",
-                cookie_dismiss: "확인"
+                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 분석 쿠키는 수락 또는 거절을 선택할 수 있습니다. 사이트 기능에 필요한 필수 쿠키는 비활성화할 수 없습니다.",
+                cookie_dismiss: "확인",
+                cookie_accept: "분석 수락",
+                cookie_decline: "거절"
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
+                promo_line: "Ein Modell. Viele Workflows. Komponierbare Ansichten.",
                 subtitle: "Keine Anmeldung, kein Internet erforderlich. Öffnen und sofort loslegen. Ihre Aufgabendaten werden vollständig auf Ihrem lokalen Gerät gespeichert – Datenschutz garantiert.",
                 feedback: "Feedback",
                 features_title: "Hauptfunktionen",
@@ -928,11 +960,14 @@
                 footer_terms: "Nutzungsbedingungen",
                 footer_feedback: "Feedback",
                 footer_contact: "Kontakt",
-                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung.",
-                cookie_dismiss: "Verstanden"
+                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Sie können Analyse-Cookies akzeptieren oder ablehnen; erforderliche Cookies für die Seitenfunktion können nicht deaktiviert werden.",
+                cookie_dismiss: "Verstanden",
+                cookie_accept: "Analyse akzeptieren",
+                cookie_decline: "Ablehnen"
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
+                promo_line: "Un modèle. Plusieurs flux de travail. Vues composables.",
                 subtitle: "Pas d'inscription, pas d'Internet requis. Ouvrez et utilisez instantanément. Les données de vos tâches sont entièrement stockées sur votre appareil local, confidentialité garantie.",
                 feedback: "Retour d'expérience",
                 features_title: "Fonctionnalités clés",
@@ -955,11 +990,14 @@
                 footer_terms: "Conditions d'utilisation",
                 footer_feedback: "Retour d'expérience",
                 footer_contact: "Nous contacter",
-                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience.",
-                cookie_dismiss: "Compris"
+                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. Vous pouvez accepter ou refuser les cookies analytiques ; les cookies essentiels au fonctionnement du site ne peuvent pas être désactivés.",
+                cookie_dismiss: "Compris",
+                cookie_accept: "Accepter l'analyse",
+                cookie_decline: "Refuser"
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
+                promo_line: "Un modelo. Múltiples flujos. Vistas componibles.",
                 subtitle: "Sin registro, sin internet necesario. Ábrelo y úsalo al instante. Los datos de tus tareas se almacenan completamente en tu dispositivo local, privacidad garantizada.",
                 feedback: "Comentarios",
                 features_title: "Características principales",
@@ -982,11 +1020,14 @@
                 footer_terms: "Términos de uso",
                 footer_feedback: "Comentarios",
                 footer_contact: "Contacto",
-                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia.",
-                cookie_dismiss: "Entendido"
+                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Puede aceptar o rechazar las cookies analíticas; las cookies esenciales para el funcionamiento del sitio no se pueden desactivar.",
+                cookie_dismiss: "Entendido",
+                cookie_accept: "Aceptar análisis",
+                cookie_decline: "Rechazar"
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
+                promo_line: "نموذج واحد. سير عمل متعددة. عروض قابلة للتركيب.",
                 subtitle: "لا يحتاج إلى تسجيل أو إنترنت. افتح التطبيق واستخدمه فورًا. تُخزّن بيانات مهامك بالكامل على جهازك المحلي، مع ضمان الخصوصية.",
                 feedback: "ملاحظات",
                 features_title: "الميزات الرئيسية",
@@ -1009,11 +1050,14 @@
                 footer_terms: "شروط الاستخدام",
                 footer_feedback: "ملاحظات",
                 footer_contact: "تواصل معنا",
-                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك.",
-                cookie_dismiss: "فهمت"
+                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. يمكنك قبول أو رفض ملفات تعريف الارتباط التحليلية؛ لا يمكن تعطيل ملفات تعريف الارتباط الأساسية اللازمة لتشغيل الموقع.",
+                cookie_dismiss: "فهمت",
+                cookie_accept: "قبول التحليل",
+                cookie_decline: "رفض"
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
+                promo_line: "Um modelo. Múltiplos fluxos. Visualizações componíveis.",
                 subtitle: "Sem cadastro, sem internet necessária. Abra e use instantaneamente. Os dados das suas tarefas são armazenados integralmente no seu dispositivo local, privacidade garantida.",
                 feedback: "Feedback",
                 features_title: "Principais recursos",
@@ -1036,11 +1080,14 @@
                 footer_terms: "Termos de Uso",
                 footer_feedback: "Feedback",
                 footer_contact: "Fale conosco",
-                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência.",
-                cookie_dismiss: "Entendi"
+                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Você pode aceitar ou recusar cookies analíticos; os cookies essenciais para o funcionamento do site não podem ser desativados.",
+                cookie_dismiss: "Entendi",
+                cookie_accept: "Aceitar análise",
+                cookie_decline: "Recusar"
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
+                promo_line: "Un modello. Più flussi. Viste componibili.",
                 subtitle: "Nessuna registrazione, nessuna connessione Internet richiesta. Apri e usa istantaneamente. I dati delle tue attività sono archiviati interamente sul tuo dispositivo locale, privacy garantita.",
                 feedback: "Feedback",
                 features_title: "Funzionalità principali",
@@ -1063,8 +1110,10 @@
                 footer_terms: "Termini di utilizzo",
                 footer_feedback: "Feedback",
                 footer_contact: "Contattaci",
-                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza.",
-                cookie_dismiss: "Capito"
+                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Puoi accettare o rifiutare i cookie analitici; i cookie essenziali per il funzionamento del sito non possono essere disattivati.",
+                cookie_dismiss: "Capito",
+                cookie_accept: "Accetta analisi",
+                cookie_decline: "Rifiuta"
             }
         };
 
@@ -1153,15 +1202,33 @@
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         updateThemeIcon(currentTheme);
 
-        // Cookie notice
-        function dismissCookieNotice() {
-            localStorage.setItem('cookie-notice-dismissed', '1');
-            const consent = document.getElementById('cookieConsent');
-            if (consent) consent.classList.remove('show');
+        // Cookie consent: required by GDPR / UK GDPR / Switzerland.
+        // Analytics cookies are off until the user opts in. Essential cookies
+        // required to remember the chosen language and theme are always set.
+        function setCookieConsent(value) {
+            try { localStorage.setItem('xdo-cookie-consent', value); } catch (e) { /* ignore */ }
+        }
+        function hideCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) banner.classList.remove('show');
+        }
+        function acceptAnalyticsCookies() {
+            setCookieConsent('granted');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'granted' });
+            }
+        }
+        function declineAnalyticsCookies() {
+            setCookieConsent('denied');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'denied' });
+            }
         }
 
-        // Show cookie notice if not dismissed
-        if (!localStorage.getItem('cookie-notice-dismissed')) {
+        // Show the cookie banner the first time a visitor lands on the site.
+        if (!localStorage.getItem('xdo-cookie-consent')) {
             const consent = document.getElementById('cookieConsent');
             if (consent) consent.classList.add('show');
         }

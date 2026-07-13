@@ -234,8 +234,8 @@
     <div class="container">
         <h1 data-i18n="title">Terms of Use</h1>
         <div class="meta">
-            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">July 2, 2026</span></p>
-            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">July 2, 2026</span></p>
+            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">July 13, 2026</span></p>
+            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">July 13, 2026</span></p>
         </div>
 
         <h2 data-i18n="sec1_title">1. Acceptance of Terms</h2>
@@ -245,20 +245,24 @@
 
         <h2 data-i18n="sec2_title">2. Description of Service</h2>
         <p data-i18n="sec2_desc">
-            XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage.
+            XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage. v0.1.0 does not upload your task data to servers we operate by default; optional sync is available only through (1) Apple iCloud on Apple platforms, (2) Supabase configured by you, and (3) a self-hosted backend you deploy and operate.
         </p>
 
         <h2 data-i18n="sec3_title">3. Your Data</h2>
         <h3 data-i18n="sec3_1_title">3.1 Local Data</h3>
         <p data-i18n="sec3_1_desc">
-            All task data you create is stored locally on your device by default. We do not upload, access, or process your local data on our servers.
+            All task data you create is stored locally on your device by default. v0.1.0 does not upload, access, or process your local task data on servers we operate. The mobile app uses Firebase Analytics to collect anonymous usage events; it does not access your task content, and we do not use advertising identifiers (IDFA/AAID).
         </p>
-        <h3 data-i18n="sec3_2_title">3.2 Data Backup</h3>
+        <h3 data-i18n="sec3_2_title">3.2 Optional Sync Channels</h3>
         <p data-i18n="sec3_2_desc">
+            v0.1.0 supports three optional sync paths that do not involve servers we operate by default: Apple iCloud (subject to Apple's iCloud terms), your own Supabase project, or your self-hosted backend. Each channel is configured by you; we do not have access to data stored in your self-managed channel.
+        </p>
+        <h3 data-i18n="sec3_3_title">3.3 Data Backup</h3>
+        <p data-i18n="sec3_3_desc">
             You may export backups of your data to locations you control, such as your device storage or cloud services. You are responsible for the security of any exported backup files.
         </p>
-        <h3 data-i18n="sec3_3_title">3.3 Data Loss</h3>
-        <p data-i18n="sec3_3_desc">
+        <h3 data-i18n="sec3_4_title">3.4 Data Loss</h3>
+        <p data-i18n="sec3_4_desc">
             You are responsible for maintaining adequate backups of your data. We are not liable for any data loss resulting from device failure, uninstallation of the app, accidental deletion, or other causes beyond our reasonable control.
         </p>
 
@@ -299,12 +303,12 @@
 
         <h2 data-i18n="sec10_title">10. Governing Law</h2>
         <p data-i18n="sec10_desc">
-            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which XdoList operates, without regard to conflict of law principles.
+            These Terms shall be governed by and construed in accordance with the laws of the People's Republic of China, without regard to its conflict-of-law principles. Where the user is located in the European Economic Area, Switzerland, or the United Kingdom, the mandatory consumer protection laws of that user's habitual residence shall apply in addition to the extent they cannot be derogated from by agreement.
         </p>
 
         <h2 data-i18n="sec11_title">11. Contact Us</h2>
         <p data-i18n="sec11_desc">
-            If you have any questions about these Terms of Use, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>.
+            If you have any questions about these Terms of Use, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>. For privacy-related questions, please contact <a href="mailto:privacy@xdolist.com">privacy@xdolist.com</a>.
         </p>
 
         <div class="final-statement">
@@ -318,20 +322,22 @@
                 back_home: "← Back to Home",
                 title: "Terms of Use",
                 effective: "Effective Date:",
-                effective_date: "July 2, 2026",
+                effective_date: "July 13, 2026",
                 updated: "Last Updated:",
-                updated_date: "July 2, 2026",
+                updated_date: "July 13, 2026",
                 sec1_title: "1. Acceptance of Terms",
                 sec1_desc: "By downloading, installing, accessing, or using the XdoList mobile application and website (collectively, the \"Service\"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Service.",
                 sec2_title: "2. Description of Service",
-                sec2_desc: "XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage.",
+                sec2_desc: "XdoList is a privacy-focused task management application. The Service allows you to create, organize, and manage tasks, projects, areas, tags, reminders, and related personal productivity data. Core features operate entirely on your device using local storage. v0.1.0 does not upload your task data to servers we operate by default; optional sync is available only through (1) Apple iCloud on Apple platforms, (2) Supabase configured by you, and (3) a self-hosted backend you deploy and operate.",
                 sec3_title: "3. Your Data",
                 sec3_1_title: "3.1 Local Data",
-                sec3_1_desc: "All task data you create is stored locally on your device by default. We do not upload, access, or process your local data on our servers.",
-                sec3_2_title: "3.2 Data Backup",
-                sec3_2_desc: "You may export backups of your data to locations you control, such as your device storage or cloud services. You are responsible for the security of any exported backup files.",
-                sec3_3_title: "3.3 Data Loss",
-                sec3_3_desc: "You are responsible for maintaining adequate backups of your data. We are not liable for any data loss resulting from device failure, uninstallation of the app, accidental deletion, or other causes beyond our reasonable control.",
+                sec3_1_desc: "All task data you create is stored locally on your device by default. v0.1.0 does not upload, access, or process your local task data on servers we operate. The mobile app uses Firebase Analytics to collect anonymous usage events; it does not access your task content, and we do not use advertising identifiers (IDFA/AAID).",
+                sec3_2_title: "3.2 Optional Sync Channels",
+                sec3_2_desc: "v0.1.0 supports three optional sync paths that do not involve servers we operate by default: Apple iCloud (subject to Apple's iCloud terms), your own Supabase project, or your self-hosted backend. Each channel is configured by you; we do not have access to data stored in your self-managed channel.",
+                sec3_3_title: "3.3 Data Backup",
+                sec3_3_desc: "You may export backups of your data to locations you control, such as your device storage or cloud services. You are responsible for the security of any exported backup files.",
+                sec3_4_title: "3.4 Data Loss",
+                sec3_4_desc: "You are responsible for maintaining adequate backups of your data. We are not liable for any data loss resulting from device failure, uninstallation of the app, accidental deletion, or other causes beyond our reasonable control.",
                 sec4_title: "4. Acceptable Use",
                 sec4_desc: "You agree not to use the Service to:",
                 sec4_1: "Violate any applicable laws or regulations.",
@@ -342,7 +348,7 @@
                 sec5_title: "5. Intellectual Property",
                 sec5_desc: "The Service, including its design, code, trademarks, logos, and content, is owned by XdoList and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our prior written consent.",
                 sec6_title: "6. Third-Party Services",
-                sec6_desc: "The Service may include optional integrations with third-party services, such as analytics providers. Your use of such services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.",
+                sec6_desc: "The Service may include optional integrations with third-party services, such as Firebase Analytics (anonymous usage events), Apple iCloud, Supabase, and self-hosted backends. Your use of such services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.",
                 sec7_title: "7. Disclaimers",
                 sec7_desc: "The Service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not warrant that the Service will be uninterrupted, secure, or error-free.",
                 sec8_title: "8. Limitation of Liability",
@@ -350,29 +356,31 @@
                 sec9_title: "9. Changes to These Terms",
                 sec9_desc: "We may update these Terms of Use from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date. Your continued use of the Service after such changes constitutes acceptance of the updated terms.",
                 sec10_title: "10. Governing Law",
-                sec10_desc: "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which XdoList operates, without regard to conflict of law principles.",
+                sec10_desc: "These Terms shall be governed by and construed in accordance with the laws of the People's Republic of China, without regard to its conflict-of-law principles. Where the user is located in the European Economic Area, Switzerland, or the United Kingdom, the mandatory consumer protection laws of that user's habitual residence shall apply in addition to the extent they cannot be derogated from by agreement.",
                 sec11_title: "11. Contact Us",
-                sec11_desc: "If you have any questions about these Terms of Use, please contact us at support@xdolist.com.",
+                sec11_desc: "If you have any questions about these Terms of Use, please contact us at support@xdolist.com. For privacy-related questions, please contact privacy@xdolist.com.",
                 final_statement: "Thank you for using XdoList."
             },
             zh: {
                 back_home: "← 返回首页",
                 title: "用户协议",
                 effective: "生效日期：",
-                effective_date: "2026年7月2日",
+                effective_date: "2026年7月13日",
                 updated: "最后更新：",
-                updated_date: "2026年7月2日",
+                updated_date: "2026年7月13日",
                 sec1_title: "1. 接受条款",
                 sec1_desc: "通过下载、安装、访问或使用 XdoList 移动应用和网站（统称"服务"），您同意受本用户协议约束。如果您不同意这些条款，请勿使用本服务。",
                 sec2_title: "2. 服务说明",
-                sec2_desc: "XdoList 是一款注重隐私的任务管理应用。本服务允许您创建、组织和管理任务、项目、责任区、标签、提醒以及相关个人效率数据。核心功能完全在您的设备上通过本地存储运行。",
+                sec2_desc: "XdoList 是一款注重隐私的任务管理应用。本服务允许您创建、组织和管理任务、项目、责任区、标签、提醒以及相关个人效率数据。核心功能完全在您的设备上通过本地存储运行。v0.1.0 默认不上传您的任务数据至我们运营的服务器；可选同步仅支持 (1) Apple 平台上的 Apple iCloud；(2) 由您自行配置的 Supabase；(3) 由您自行部署和运营的自托管后端。",
                 sec3_title: "3. 您的数据",
                 sec3_1_title: "3.1 本地数据",
-                sec3_1_desc: "您创建的所有任务数据默认存储在您的设备本地。我们不会将您的本地数据上传、访问或处理到我们的服务器。",
-                sec3_2_title: "3.2 数据备份",
-                sec3_2_desc: "您可以将数据备份导出到您控制的位置，例如设备存储或云服务。您负责导出备份文件的安全性。",
-                sec3_3_title: "3.3 数据丢失",
-                sec3_3_desc: "您负责维护足够的数据备份。对于因设备故障、卸载应用、意外删除或其他超出我们合理控制范围的原因导致的任何数据丢失，我们不承担责任。",
+                sec3_1_desc: "您创建的所有任务数据默认存储在您的设备本地。v0.1.0 不会将您的本地任务数据上传、访问或处理到我们运营的服务器。移动应用使用 Firebase Analytics 收集匿名的使用事件；不会访问您的任务内容，也不会使用广告标识符（IDFA/AAID）。",
+                sec3_2_title: "3.2 可选同步渠道",
+                sec3_2_desc: "v0.1.0 支持三条可选同步路径，默认均不涉及由我们运营的服务器：Apple iCloud（受 Apple iCloud 条款约束）、您自己的 Supabase 项目、或您自行部署的自托管后端。每条渠道均由您配置；我们无权访问您自管理渠道中的数据。",
+                sec3_3_title: "3.3 数据备份",
+                sec3_3_desc: "您可以将数据备份导出到您控制的位置，例如设备存储或云服务。您负责导出备份文件的安全性。",
+                sec3_4_title: "3.4 数据丢失",
+                sec3_4_desc: "您负责维护足够的数据备份。对于因设备故障、卸载应用、意外删除或其他超出我们合理控制范围的原因导致的任何数据丢失，我们不承担责任。",
                 sec4_title: "4. 可接受的使用",
                 sec4_desc: "您同意不使用本服务从事以下行为：",
                 sec4_1: "违反任何适用的法律法规。",
@@ -383,7 +391,7 @@
                 sec5_title: "5. 知识产权",
                 sec5_desc: "本服务（包括其设计、代码、商标、标识和内容）归 XdoList 所有，并受知识产权法律保护。未经我们事先书面同意，您不得复制、修改、分发或创作衍生作品。",
                 sec6_title: "6. 第三方服务",
-                sec6_desc: "本服务可能包含与第三方服务的可选集成，例如分析服务提供商。您对这些服务的使用受各自条款和隐私政策的约束。我们不对第三方服务的做法负责。",
+                sec6_desc: "本服务可能包含与第三方服务的可选集成，包括 Firebase Analytics（匿名使用事件）、Apple iCloud、Supabase 以及自托管后端。您对这些服务的使用受各自条款和隐私政策的约束。我们不对第三方服务的做法负责。",
                 sec7_title: "7. 免责声明",
                 sec7_desc: "本服务按"原样"和"可用"状态提供，不提供任何形式的明示或暗示担保。我们不保证服务不会中断、安全或无错误。",
                 sec8_title: "8. 责任限制",
@@ -391,9 +399,9 @@
                 sec9_title: "9. 条款变更",
                 sec9_desc: "我们可能会不时更新本用户协议。任何变更都会在本页面发布，并更新"最后更新"日期。您在变更后继续使用本服务即表示接受更新后的条款。",
                 sec10_title: "10. 适用法律",
-                sec10_desc: "本条款应受 XdoList 运营所在司法管辖区的法律管辖并按其解释，不考虑法律冲突原则。",
+                sec10_desc: "本条款应受中华人民共和国法律管辖并按其解释，不考虑其法律冲突原则。若用户位于欧洲经济区、瑞士或英国，该用户居住国不能通过协议减损的强制性消费者保护法律亦应一并适用。",
                 sec11_title: "11. 联系我们",
-                sec11_desc: "如果您对本用户协议有任何疑问，请通过 support@xdolist.com 联系我们。",
+                sec11_desc: "如果您对本用户协议有任何疑问，请通过 support@xdolist.com 联系我们。如涉及隐私问题，请联系 privacy@xdolist.com。",
                 final_statement: "感谢您使用 XdoList。"
             }
         };

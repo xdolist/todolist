@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - XdoList</title>
-    <meta name="description" content="XdoList Privacy Policy - Learn how we protect your data. All task data is stored locally, never uploaded to our servers. Privacy-first task management.">
-    <meta name="keywords" content="XdoList privacy policy, data protection, privacy first, local storage, task manager privacy">
+    <meta name="description" content="XdoList Privacy Policy - v0.1.0 stores all task data locally on your device by default, with optional Apple iCloud (Apple platforms only), optional self-managed Supabase or self-hosted backends. We do not operate an official cross-platform cloud sync service.">
+    <meta name="keywords" content="XdoList privacy policy, data protection, privacy first, local storage, task manager privacy, iCloud, Supabase">
     <meta name="author" content="XdoList">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0f">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xdolist.com/privacy.html">
     <meta property="og:title" content="Privacy Policy - XdoList">
-    <meta property="og:description" content="XdoList Privacy Policy - Learn how we protect your data. All task data is stored locally, never uploaded to our servers.">
+    <meta property="og:description" content="XdoList Privacy Policy - v0.1.0 stores task data locally by default; supports optional Apple iCloud, Supabase, or self-hosted backend. No official cross-platform cloud sync service is operated by us in v0.1.0.">
     <meta property="og:image" content="https://xdolist.com/logo.png">
     <meta property="og:site_name" content="XdoList">
     <meta property="og:locale" content="en_US">
@@ -60,13 +60,29 @@
             const theme = saved || (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"></script>
+    </script>
+    <!-- Google tag (gtag.js) — consent-mode loader. Until the user grants
+         analytics consent, the GA4 script is not loaded and no advertising
+         cookies are set; gtag() default consent is "denied". -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
       gtag('js', new Date());
-      gtag('config', 'G-BV5Z2HLG2C');
+    </script>
+    <script>
+      window.XDO_COOKIE_CONSENT_KEY = 'xdo-cookie-consent';
+      try {
+        var consent = localStorage.getItem(window.XDO_COOKIE_CONSENT_KEY);
+        if (consent === 'granted') {
+          document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"><\/script>');
+          gtag('config', 'G-BV5Z2HLG2C', { anonymize_ip: true });
+        }
+      } catch (e) { /* localStorage unavailable */ }
     </script>
     <style>
         :root {
@@ -488,9 +504,10 @@
 <body>
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-content">
-            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience.</p>
+            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.</p>
             <div class="cookie-buttons">
-                <button class="cookie-btn" onclick="dismissCookieNotice()" data-i18n="cookie_dismiss">Got it</button>
+                <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Decline</button>
+                <button class="cookie-btn" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
             </div>
         </div>
     </div>
@@ -524,9 +541,9 @@
 
     <div class="container">
         <h1 data-i18n="title">Privacy Policy</h1>
-        <div class="meta">
-            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">June 12, 2026</span></p>
-            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">June 12, 2026</span></p>
+    <div class="meta">
+            <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">July 13, 2026</span></p>
+            <p><span data-i18n="updated">Last Updated:</span> <span data-i18n="updated_date">July 13, 2026</span></p>
         </div>
 
         <h2 data-i18n="sec1_title">1. Introduction</h2>
@@ -536,7 +553,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <div class="highlight">
             <strong data-i18n="notice">Please note:</strong>
             <span data-i18n="notice_desc">
-                This app primarily processes local data and does not require user registration or uploading data to our servers. Cloud sync is only enabled when you actively configure a backend. Supabase sync stores data in your own Supabase project. Our built-in REST API cloud service stores data on servers operated by us.
+                v0.1.0 stores your task data locally on your device by default and does not upload it to our servers. Optional sync is available through three paths only: (1) Apple iCloud (basic sync on Apple platforms, governed by Apple's iCloud terms, not by us); (2) Supabase, configured by you with your own project; (3) a self-hosted backend you deploy and operate. We do <strong>not</strong> operate an official cross-platform cloud sync service in v0.1.0. A future paid Pro tier may add an optional XdoList-operated sync with usage limits tied to compute, storage, and bandwidth costs.
             </span>
         </div>
 
@@ -590,10 +607,11 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <p data-i18n="sec3_1_desc">All task data is stored locally in your device's database (SQLite) by default. We do not upload this data to our servers.</p>
 
         <h3 data-i18n="sec3_2_title">3.2 Sync Data</h3>
-        <p data-i18n="sec3_2_intro">If you enable sync:</p>
+        <p data-i18n="sec3_2_intro">v0.1.0 supports three optional sync paths. None of them sends data to servers we operate by default:</p>
         <ul>
-            <li data-i18n="sec3_2_1">Supabase Sync: Data is stored in your own Supabase project, which we cannot access</li>
-            <li data-i18n="sec3_2_2">REST API Cloud Service: Data is stored on servers operated and maintained by us</li>
+            <li data-i18n="sec3_2_1">Apple iCloud (Apple platforms only): a basic device-to-device sync channel provided by Apple; governed by Apple's iCloud terms, not by us.</li>
+            <li data-i18n="sec3_2_2">Supabase: data is stored in your own Supabase project, which we cannot access.</li>
+            <li data-i18n="sec3_2_3">Self-hosted backend: data is stored on a server you deploy and operate; we have no access.</li>
         </ul>
 
         <h3 data-i18n="sec3_3_title">3.3 Backup Data</h3>
@@ -621,12 +639,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
         <h3 data-i18n="sec5_1_title">5.1 Transmission Security</h3>
         <ul>
             <li data-i18n="sec5_1_1">All network communication uses HTTPS/TLS encryption by default</li>
-            <li data-i18n="sec5_1_2">If you enable "Allow insecure connections" (for internal network dev/testing only), HTTP communication will not be encrypted</li>
+            <li data-i18n="sec5_1_2">If you enable "Allow insecure connections" (for self-hosted development only), HTTP communication will not be encrypted</li>
         </ul>
 
         <h3 data-i18n="sec5_2_title">5.2 Local Security</h3>
         <ul>
-            <li data-i18n="sec5_2_1">Database password (if configured) is only used for database initialization and can be cleared anytime</li>
+            <li data-i18n="sec5_2_1">v0.1.0 does not configure a database password; the local SQLite database is protected by the standard OS file system sandbox and app-private storage permissions</li>
             <li data-i18n="sec5_2_2">The app uses standard OS file system permissions to protect data</li>
         </ul>
 
@@ -641,10 +659,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
 
         <h3 data-i18n="sec6_1_title">6.1 Retention Period</h3>
         <ul>
-            <li data-i18n="sec6_1_1">Active data: Retained indefinitely until you actively delete it</li>
-            <li data-i18n="sec6_1_2">Deleted tasks: Removed from database after 30 days (soft delete mechanism)</li>
-            <li data-i18n="sec6_1_3">Operation logs: Retained locally until you clear app data or uninstall the app; not automatically deleted after a fixed period</li>
-            <li data-i18n="sec6_1_4">Backup files: Maximum 5 historical versions, old versions auto-cleaned</li>
+            <li data-i18n="sec6_1_1">Active data: Retained indefinitely on your device until you actively delete it. v0.1.0 does not upload data to servers we operate, so we have no independent copy.</li>
+            <li data-i18n="sec6_1_2">Deleted tasks: Soft-deleted first; removed permanently from the local database 30 days after deletion.</li>
+            <li data-i18n="sec6_1_3">Operation logs: Retained locally on your device until you clear app data or uninstall the app. v0.1.0 does not auto-purge operation logs after a fixed period.</li>
+            <li data-i18n="sec6_1_4">Backup files: Up to 5 historical versions kept locally; older versions auto-cleaned.</li>
         </ul>
 
         <h3 data-i18n="sec6_2_title">6.2 Your Right to Delete</h3>
@@ -656,8 +674,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
             <li data-i18n="sec6_2_4">Revoke sync service authorization</li>
         </ul>
 
-        <h2 data-i18n="sec7_title">7. Services</h2>
-        <p data-i18n="sec7_intro">This app may use the following services (only when you actively configure them): Supabase is a third-party service you provide yourself. Our built-in REST API cloud service is operated by us and governed by this privacy policy.</p>
+        <h2 data-i18n="sec7_title">7. Third-Party Services</h2>
+        <p data-i18n="sec7_intro">v0.1.0 uses the following services. None of them is an XdoList-operated cross-platform cloud sync service; the sync paths below are either operated by Apple, operated by you, or hosted by you.</p>
 
         <table>
             <tr>
@@ -667,20 +685,32 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 <th data-i18n="table_operator">Operator</th>
             </tr>
             <tr>
-                <td>Supabase</td>
-                <td data-i18n="table_sync">Data Sync</td>
-                <td data-i18n="table_task_device">Task data, Device ID</td>
-                <td data-i18n="table_user">You (third-party service)</td>
+                <td>Firebase Analytics</td>
+                <td data-i18n="table_analytics">Anonymous usage analytics</td>
+                <td data-i18n="table_event">Anonymous event metadata (screen, action class)</td>
+                <td>Google</td>
             </tr>
             <tr>
-                <td data-i18n="table_custom">REST API Cloud Service</td>
-                <td data-i18n="table_sync">Data Sync</td>
+                <td>Apple iCloud</td>
+                <td data-i18n="table_sync">Basic device-to-device sync (Apple platforms)</td>
+                <td data-i18n="table_task_device">Task data (Apple-managed)</td>
+                <td>Apple</td>
+            </tr>
+            <tr>
+                <td>Supabase</td>
+                <td data-i18n="table_sync">Optional self-managed sync</td>
                 <td data-i18n="table_task_device">Task data, Device ID</td>
-                <td data-i18n="table_us">Us</td>
+                <td data-i18n="table_user">You (your Supabase project)</td>
+            </tr>
+            <tr>
+                <td data-i18n="table_custom">Self-hosted backend</td>
+                <td data-i18n="table_sync">Optional self-managed sync</td>
+                <td data-i18n="table_task_device">Task data, Device ID</td>
+                <td data-i18n="table_user">You (your server)</td>
             </tr>
         </table>
 
-        <p data-i18n="sec7_note">Supabase has its own privacy policy. We recommend reviewing the privacy policy of the relevant service provider. Our REST API cloud service is operated by us and covered by this policy.</p>
+        <p data-i18n="sec7_note">Firebase Analytics is governed by Google's privacy policy; Apple iCloud is governed by Apple's iCloud terms; Supabase is governed by Supabase's privacy policy. Each service has its own policy you should review. v0.1.0 does not include any XdoList-operated cross-platform sync service; an optional paid XdoList-operated sync may be introduced in a future Pro tier.</p>
 
         <h2 data-i18n="sec8_title">8. Children's Privacy</h2>
         <p data-i18n="sec8_desc">This app is not directed at children under 13. We do not knowingly collect personal information from children. If you discover that a child has provided personal information to us, please contact us and we will promptly delete such information.</p>
@@ -693,16 +723,16 @@ XdoList ("we", "the app") is a task management application. We highly value your
             <p data-i18n="sec10_intro">If you have any questions or suggestions about this privacy policy, please contact us:</p>
             <ul>
                 <li><strong data-i18n="email">Email:</strong> <a href="mailto:privacy@xdolist.com">privacy@xdolist.com</a></li>
-                <li><strong>GitHub Issues:</strong> <a href="https://github.com/xdolist/todolist/issues">https://github.com/xdolist/todolist/issues</a></li>
+                <li><strong>GitHub Issues:</strong> <a href="https://github.com/xdolist/xdolist/issues">https://github.com/xdolist/xdolist/issues</a></li>
             </ul>
         </div>
 
         <h2 data-i18n="sec11_title">11. Permissions</h2>
-        <p data-i18n="sec11_intro">This app requires the following system permissions:</p>
+        <p data-i18n="sec11_intro">This app uses the following system permissions. All permissions are optional; denying any of them does not affect the app's core local functionality.</p>
         <ul>
-            <li data-i18n="sec11_1">Notifications: Send task reminder notifications (optional)</li>
-            <li data-i18n="sec11_2">Network: Sync data to your configured backend service (only when sync is enabled)</li>
-            <li data-i18n="sec11_3">Local Network (iOS): Connect to sync servers on local network during development (optional)</li>
+            <li data-i18n="sec11_1">Notifications: To deliver task reminder notifications (optional).</li>
+            <li data-i18n="sec11_2">Network: Only used when you actively configure Supabase or a self-hosted backend, or when Apple iCloud sync is enabled on Apple platforms. v0.1.0 does not phone home to servers we operate.</li>
+            <li data-i18n="sec11_3">Local Network (iOS): Reserved for future self-hosted backend discovery. v0.1.0 does not use this permission to connect to any server.</li>
         </ul>
 
         <p data-i18n="sec11_note">All permissions are optional. Denying permission will not affect the app's core local functionality.</p>
@@ -836,20 +866,22 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec11_note: "All permissions are optional. Denying permission will not affect the app's core local functionality.",
                 final_statement: "Statement:",
                 final_desc: " XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.",
-                cookie_desc: "We use cookies to analyze site traffic and improve your experience.",
-                cookie_dismiss: "Got it"
+                cookie_desc: "We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.",
+                cookie_dismiss: "Got it",
+                cookie_accept: "Accept analytics",
+                cookie_decline: "Decline"
             },
             ja: {
                 back_home: "← ホームに戻る",
                 title: "プライバシーポリシー",
                 effective: "発効日：",
-                effective_date: "2026年6月12日",
-                updated: "最終更新日：",
-                updated_date: "2026年6月12日",
+                effective_date: "2026年7月13日",
+                updated: "最后更新：",
+                updated_date: "2026年7月13日",
                 sec1_title: "1. はじめに",
                 sec1_desc: "XdoList（「当社」「本アプリ」）はタスク管理アプリケーションです。当社はお客様のプライバシーを非常に重視しており、本プライバシーポリシーでは、個人情報の収集、使用、保存、保護の方法について説明します。",
                 notice: "ご注意：",
-                notice_desc: " 本アプリは主にローカルデータを処理し、ユーザー登録や当社サーバーへのデータアップロードを必要としません。クラウド同期は、お客様がバックエンドを積極的に設定した場合にのみ有効になります。Supabase 同期はお客様の Supabase プロジェクトに保存されます。当社が提供する REST API クラウドサービスは、当社が運用するサーバーにデータを保存します。",
+                notice_desc: " v0.1.0では、タスクデータはこのデバイス内にのみ保存し、当社サーバーにはアップロードしません。オプションの同期は以下の3通りだけです：(1) Apple iCloud（Appleプラットフォームのみ、AppleのiCloud規約に従い、当社の管轄外です）;(2) Supabase（あなたが自分のプロジェクトで設定）;(3) 自分でデプロイ・運用するセルフホストバックエンド。v0.1.0では当社が運営する公式のクロスプラットフォーム同期サービスは提供しません。将来のProプランで、利用量・ストレージ・帯域のコストに応じた上限付きで当社運営の同期を有料提供する可能性があります。",
                 sec2_title: "2. 収集するデータ",
                 sec2_1_title: "2.1 お客様が提供するデータ",
                 task_data: "タスクデータ：",
@@ -877,11 +909,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 not_collect_6: "個人を特定できる情報（氏名、メール、電話番号など）",
                 sec3_title: "3. データの保存",
                 sec3_1_title: "3.1 ローカル保存",
-                sec3_1_desc: "すべてのタスクデータは、デフォルトでお客様のデバイスのデータベース（SQLite）にローカル保存されます。当社はこのデータを当社のサーバーにアップロードしません。",
+                sec3_1_desc: "すべてのタスクデータは、デフォルトでお客様のデバイスのデータベース（SQLite）にローカル保存されます。v0.1.0では当社はこのデータを当社のサーバーにアップロードしません。",
                 sec3_2_title: "3.2 同期データ",
-                sec3_2_intro: "同期を有効にした場合：",
-                sec3_2_1: "Supabase 同期：データはお客様が所有する Supabase プロジェクトに保存され、当社はアクセスできません",
-                sec3_2_2: "REST API クラウドサービス：データは当社が運用・管理するサーバーに保存されます",
+                sec3_2_intro: "v0.1.0でサポートされるオプション同期は以下の3通りです。デフォルトではいずれも当社が運用するサーバーにはデータを送りません：",
+                sec3_2_1: "Apple iCloud（Appleプラットフォームのみ）：Appleが提供するデバイス間基本同期チャネル。Appleの iCloud 規約に従うため、当社の管轄外です。",
+                sec3_2_2: "Supabase：データはお客様が所有する Supabase プロジェクトに保存され、当社はアクセスできません。",
+                sec3_2_3: "セルフホストバックエンド：データはお客様がデプロイ・運用するサーバーに保存され、当社はアクセスできません。",
                 sec3_3_title: "3.3 バックアップデータ",
                 sec3_3_desc: "アプリは、デバイスにローカル保存されるバックアップファイルの作成をサポートしています。システムの共有機能を使用して、バックアップファイルを任意の場所（クラウドストレージ、メールなど）にエクスポートできます。",
                 sec4_title: "4. データの使用",
@@ -908,10 +941,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_3_3: "ID、ステータス、ハッシュ、タイムスタンプなどのメタデータのみが含まれます",
                 sec6_title: "6. データの保持と削除",
                 sec6_1_title: "6.1 保持期間",
-                sec6_1_1: "アクティブデータ：お客様が削除するまで無期限に保持されます",
-                sec6_1_2: "削除されたタスク：30 日後にデータベースから削除されます（ソフト削除メカニズム）",
-                sec6_1_3: "操作ログ：ローカルに保存され、お客様がアプリデータをクリアするかアンインストールするまで保持されます。固定期間後に自動削除されることはありません",
-                sec6_1_4: "バックアップファイル：最大 5 世代まで保持され、古いバージョンは自動削除されます",
+                sec6_1_1: "アクティブデータ：v0.1.0ではデータが当社サーバーへアップロードされないため、当社の独立したコピーはありません。データがお客様のデバイスから削除されない限り、無期限に保持されます。",
+                sec6_1_2: "削除されたタスク：まずソフト削除され、削除から 30 日後にローカルデータベースから完全に削除されます。",
+                sec6_1_3: "操作ログ：お客様のデバイス内にのみ保持され、アプリデータのクリアまたはアンインストールまで保持されます。v0.1.0では固定期間経過による自動パージは行いません。",
+                sec6_1_4: "バックアップファイル：ローカルに最大 5 世代まで保持され、古いバージョンは自動削除されます。",
                 sec6_2_title: "6.2 削除に関するお客様の権利",
                 sec6_2_intro: "お客様はいつでも以下が可能です：",
                 sec6_2_1: "個別またはすべてのタスクを削除",
@@ -919,17 +952,19 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "アプリをアンインストール（すべてのローカルデータが削除されます）",
                 sec6_2_4: "同期サービスの承認を取り消す",
                 sec7_title: "7. サービス",
-                sec7_intro: "本アプリは、お客様が積極的に設定した場合に限り、以下のサービスを使用する場合があります。Supabase はお客様がご自身で用意する第三者サービスです。当社が提供する REST API クラウドサービスは当社が運用し、本プライバシーポリシーが適用されます。",
+                sec7_intro: "v0.1.0では以下のサービスを利用します。いずれも当社が運営するクロスプラットフォームの同期サービスではなく、Apple 提供・お客様自身運用・セルフホストのいずれかです。",
                 table_service: "サービス",
                 table_purpose: "目的",
                 table_data: "データ種別",
                 table_operator: "運用者",
                 table_sync: "データ同期",
                 table_task_device: "タスクデータ、デバイス ID",
-                table_custom: "REST API クラウドサービス",
+                table_custom: "セルフホストバックエンド",
                 table_user: "お客様（第三者サービス）",
                 table_us: "当社",
-                sec7_note: "Supabase には独自のプライバシーポリシーがあります。関連サービスプロバイダーのプライバシーポリシーを確認することをお勧めします。当社の REST API クラウドサービスは当社が運用し、本ポリシーでカバーされます。",
+                table_analytics: "匿名利用分析",
+                table_event: "匿名イベントメタデータ（画面、操作種別）",
+                sec7_note: "Firebase Analytics は Google のプライバシーポリシーに、Apple iCloud は Apple の iCloud 規約に、Supabase は Supabase のプライバシーポリシーにそれぞれ従います。各サービスの規約を必ず確認してください。v0.1.0には当社が運営するクロスプラットフォーム同期サービスは含まれず、将来のProプランにオプションとして追加される場合があります。",
                 sec8_title: "8. 子どものプライバシー",
                 sec8_desc: "本アプリは 13 歳未満の子どもを対象としていません。当社は故意に子どもから個人情報を収集することはありません。子どもが当社に個人情報を提供したことが判明した場合、お知らせください。速やかに削除いたします。",
                 sec9_title: "9. ポリシーの変更",
@@ -938,15 +973,17 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "本プライバシーポリシーについてご質問やご提案がある場合は、以下までお問い合わせください：",
                 email: "メール：",
                 sec11_title: "11. 権限の説明",
-                sec11_intro: "本アプリには以下のシステム権限が必要です：",
+                sec11_intro: "本アプリは次のシステム権限を使用します。すべて任意の権限で、拒否してもアプリの主要なローカル機能には影響しません。",
                 sec11_1: "通知権限：タスクリマインダー通知の送信（オプション）",
-                sec11_2: "ネットワーク権限：設定したバックエンドサービスへのデータ同期（同期有効時のみ）",
-                sec11_3: "ローカルネットワーク権限（iOS）：開発時にローカルネットワークの同期サーバーへの接続（オプション）",
+                sec11_2: "ネットワーク権限：Supabase / セルフホストバックエンドを設定した場合、または Apple iCloud 同期が有効な場合のみ使用されます。v0.1.0では当社が運用するサーバーへの通信は行いません。",
+                sec11_3: "ローカルネットワーク権限（iOS）：将来のセルフホストバックエンド探索用に予約。v0.1.0ではこの権限を使っていかなるサーバーにも接続しません。",
                 sec11_note: "すべての権限はオプションです。権限を拒否しても、アプリの主要なローカル機能には影響しません。",
                 final_statement: "声明：",
                 final_desc: " XdoList はプライバシーを尊重するアプリです。あなたのデータはあなたのものであり、当社はデータを管理するツールを提供するのみで、所有、分析、販売は行いません。",
-                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。",
-                cookie_dismiss: "了解"
+                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。分析クッキーは承諾/拒否を選択できます。サイト機能に必要な必須クッキーは無効化できません。",
+                cookie_dismiss: "了解",
+                cookie_accept: "分析を受け入れる",
+                cookie_decline: "拒否する"
             },
             zh: {
                 back_home: "← 返回主页",
@@ -958,7 +995,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec1_title: "1. 简介",
                 sec1_desc: "XdoList（'我们'、'本应用'）是一款任务管理应用。我们高度重视您的隐私，本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。",
                 notice: "请注意：",
-                notice_desc: " 本应用主要处理本地数据，不强制要求用户注册账号或将数据上传至我们的服务器。云同步仅在您主动配置后端时启用。Supabase 同步将数据存储在您自己配置的 Supabase 项目中；REST API 云服务将数据存储在由我们运营的服务器上。",
+                notice_desc: " v0.1.0 默认将您的任务数据存储在您的设备本地，且不上传至我们的服务器。可选的同步仅限以下三条路径：(1) Apple iCloud（仅 Apple 平台，受 Apple 的 iCloud 条款管辖，不受我们管辖）；(2) Supabase，由您用自己的项目配置；(3) 您自行部署和运营的自托管后端。v0.1.0 中我们不运营官方跨平台云同步服务。未来的付费 Pro 等级可能引入由 XdoList 运营的同步服务，配额与计算、存储、带宽成本挂钩。",
                 sec2_title: "2. 我们收集的数据",
                 sec2_1_title: "2.1 您主动提供的数据",
                 task_data: "任务数据：",
@@ -988,11 +1025,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 not_collect_6: "个人身份信息（姓名、邮箱、电话等）",
                 sec3_title: "3. 数据存储",
                 sec3_1_title: "3.1 本地存储",
-                sec3_1_desc: "所有任务数据默认存储在您的设备本地数据库中（SQLite）。我们不会将这些数据上传到我们的服务器。",
+                sec3_1_desc: "所有任务数据默认存储在您的设备本地数据库中（SQLite）。v0.1.0 中我们不会将这些数据上传到我们的服务器。",
                 sec3_2_title: "3.2 同步数据",
-                sec3_2_intro: "如果您启用了同步功能：",
-                sec3_2_1: "Supabase 同步：数据存储在您自己配置的 Supabase 项目中，我们无权访问",
-                sec3_2_2: "REST API 云服务：数据存储在由我们运营和维护的服务器上",
+                sec3_2_intro: "v0.1.0 支持以下三条可选同步路径。默认情况下三条都不向由我们运营的服务器发送数据：",
+                sec3_2_1: "Apple iCloud（仅 Apple 平台）：Apple 提供的设备间基础同步通道，受 Apple 的 iCloud 条款约束，不受我们管辖。",
+                sec3_2_2: "Supabase：数据存储在您自己配置的 Supabase 项目中，我们无权访问。",
+                sec3_2_3: "自托管后端：数据存储在您自行部署和运营的服务器中，我们无权访问。",
                 sec3_3_title: "3.3 备份数据",
                 sec3_3_desc: "应用支持创建本地备份文件，备份文件存储在设备本地存储中。您可以选择通过系统分享功能将备份文件导出到您选择的位置（如云盘、邮件等）。",
                 sec4_title: "4. 数据使用",
@@ -1019,10 +1057,10 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_3_3: "仅包含 ID、状态、hash、时间戳等元数据",
                 sec6_title: "6. 数据保留与删除",
                 sec6_1_title: "6.1 保留期限",
-                sec6_1_1: "活跃数据：永久保留，直至您主动删除",
-                sec6_1_2: "已删除任务：保留 30 天后从数据库中移除（软删除机制）",
-                sec6_1_3: "操作日志：在本地保留，直至您清除应用数据或卸载应用；当前版本不按固定期限自动清理",
-                sec6_1_4: "备份文件：最多保留 5 个历史版本，旧版本自动清理",
+                sec6_1_1: "活跃数据：v0.1.0 中数据不上传至我们运营的服务器，因此我们没有独立副本。数据将保留在您的设备上直至您主动删除。",
+                sec6_1_2: "已删除任务：先软删除，自删除之日起 30 天后从本地数据库永久移除。",
+                sec6_1_3: "操作日志：仅在您的设备本地保留，直至您清除应用数据或卸载应用；v0.1.0 不按固定期限自动清理操作日志。",
+                sec6_1_4: "备份文件：本地最多保留 5 个历史版本，旧版本自动清理。",
                 sec6_2_title: "6.2 您的删除权利",
                 sec6_2_intro: "您可以随时：",
                 sec6_2_1: "删除单个任务或所有任务",
@@ -1030,17 +1068,19 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "卸载应用（将删除所有本地数据）",
                 sec6_2_4: "撤销同步服务的授权",
                 sec7_title: "7. 服务",
-                sec7_intro: "本应用可能使用以下服务（仅在您主动配置时）：Supabase 是您自行提供的第三方服务；我们内置的 REST API 云服务由我们运营，受本隐私政策约束。",
+                sec7_intro: "v0.1.0 使用以下服务。v0.1.0 中不存在由 XdoList 运营的跨平台云同步服务；以下同步路径要么由 Apple 提供，要么由您自管理，要么由您自托管。",
                 table_service: "服务",
                 table_purpose: "用途",
                 table_data: "数据类型",
                 table_operator: "运营者",
                 table_sync: "数据同步",
                 table_task_device: "任务数据、设备 ID",
-                table_custom: "REST API 云服务",
+                table_custom: "自托管后端",
                 table_user: "您（第三方服务）",
                 table_us: "我们",
-                sec7_note: "Supabase 有其独立的隐私政策，我们建议您查阅相关服务提供商的隐私政策。我们运营的 REST API 云服务由我们管理，受本政策约束。",
+                table_analytics: "匿名使用分析",
+                table_event: "匿名事件元数据（页面、操作种类）",
+                sec7_note: "Firebase Analytics 受 Google 隐私政策约束；Apple iCloud 受 Apple iCloud 条款约束；Supabase 受 Supabase 隐私政策约束。请分别查阅各服务条款。v0.1.0 不包含由 XdoList 运营的跨平台同步服务；未来的付费 Pro 等级可能作为可选项提供。",
                 sec8_title: "8. 儿童隐私",
                 sec8_desc: "本应用不面向 13 岁以下儿童。我们不会故意收集儿童的个人信息。如果您发现儿童向我们提供了个人信息，请联系我们，我们将尽快删除相关信息。",
                 sec9_title: "9. 隐私政策变更",
@@ -1049,15 +1089,17 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：",
                 email: "邮箱：",
                 sec11_title: "11. 权限说明",
-                sec11_intro: "本应用需要以下系统权限：",
+                sec11_intro: "本应用使用以下系统权限。所有权限均为可选；拒绝授权不会影响应用的核心本地功能。",
                 sec11_1: "通知权限：发送任务提醒通知（可选）",
-                sec11_2: "网络权限：同步数据到您配置的后端服务（仅在启用同步时需要）",
-                sec11_3: "本地网络权限（iOS）：开发时连接局域网内的同步服务器（可选）",
+                sec11_2: "网络权限：仅在您配置 Supabase 或自托管后端、或在 Apple 平台启用 Apple iCloud 同步时使用。v0.1.0 不会向由我们运营的服务器发起访问。",
+                sec11_3: "本地网络权限（iOS）：为未来自托管后端探索预留；v0.1.0 不使用此权限连接任何服务器。",
                 sec11_note: "所有权限均为可选，拒绝授权不会影响应用的核心本地功能。",
                 final_statement: "声明：",
                 final_desc: " XdoList 是一款尊重隐私的应用。您的数据属于您，我们仅提供工具帮助您管理数据，不占有、不分析、不出售您的个人信息。",
-                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。",
-                cookie_dismiss: "知道了"
+                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。您可以选择接受或拒绝分析 Cookie；网站功能所必需的必要 Cookie 无法禁用。",
+                cookie_dismiss: "知道了",
+                cookie_accept: "接受分析",
+                cookie_decline: "拒绝"
             },
             ko: {
                 back_home: "← 홈으로 돌아가기",
@@ -1099,9 +1141,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 로컬 저장",
                 sec3_1_desc: "모든 작업 데이터는 기본적으로 귀하의 기기 데이터베이스(SQLite)에 로컬로 저장됩니다. 당사는 이 데이터를 서버에 업로드하지 않습니다.",
                 sec3_2_title: "3.2 동기화 데이터",
-                sec3_2_intro: "동기화를 활성화한 경우: ",
-                sec3_2_1: "Supabase 동기화: 데이터는 귀하가 소유한 Supabase 프로젝트에 저장되며 당사는 액세스할 수 없습니다",
-                sec3_2_2: "사용자 정의 API 동기화: 데이터는 귀하가 배포한 서버에 저장됩니다",
+                sec3_2_intro: "v0.1.0은 다음 세 가지 옵션 동기화 경로만 지원합니다. 기본적으로 그 어느 경로도 당사가 운영하는 서버로 데이터를 보내지 않습니다:",
+                sec3_2_1: "Apple iCloud(Apple 플랫폼 한정): Apple이 제공하는 기기간 기본 동기화 채널. Apple의 iCloud 약관이 적용되며 당사의 관할이 아닙니다.",
+                sec3_2_2: "Supabase: 데이터는 귀하가 소유한 Supabase 프로젝트에 저장되며 당사는 액세스할 수 없습니다.",
+                sec3_2_3: "자체 호스팅 백엔드: 데이터는 귀하가 배포·운영하는 서버에 저장되며 당사는 액세스할 수 없습니다.",
+                sec6_1_1: "활성 데이터: v0.1.0에서는 당사가 운영하는 서버로 데이터가 업로드되지 않으므로 당사의 별도 사본이 없습니다. 귀하가 직접 삭제할 때까지 무기한 보존됩니다.",
+                sec6_1_3: "작업 로그: 기기 로컬에만 보존되며 앱 데이터 삭제 또는 앱 제거 시까지 유지됩니다. v0.1.0은 고정 기간 경과 후 작업 로그를 자동 정리하지 않습니다.",
+                table_analytics: "익명 사용 분석",
+                table_event: "익명 이벤트 메타데이터(화면, 작업 종류)",
                 sec3_3_title: "3.3 백업 데이터",
                 sec3_3_desc: "앱은 귀하의 기기에 저장되는 로컬 백업 파일 생성을 지원합니다. 시스템 공유 기능을 통해 백업 파일을 선택한 위치(클라우드 스토리지, 이메일 등)로 내보낼 수 있습니다.",
                 sec4_title: "4. 데이터 사용",
@@ -1120,7 +1167,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "모든 네트워크 통신은 기본적으로 HTTPS/TLS 암호화를 사용합니다",
                 sec5_1_2: "'안전하지 않은 연결 허용'을 활성화하면(내부 네트워크 개발/테스트 전용) HTTP 통신은 암호화되지 않습니다",
                 sec5_2_title: "5.2 로컬 보안",
-                sec5_2_1: "데이터베이스 비밀번호(구성된 경우)는 데이터베이스 초기화에만 사용되며 언제든지 지울 수 있습니다",
+                sec5_2_1: "v0.1.0에서는 데이터베이스 비밀번호를 구성하지 않습니다. 로컬 SQLite 데이터베이스는 OS 표준 파일 시스템 샌드박스와 앱 전용 저장소 권한으로 보호됩니다",
                 sec5_2_2: "앱은 OS 표준 파일 시스템 권한을 사용하여 데이터를 보호합니다",
                 sec5_3_title: "5.3 진단 내보내기",
                 sec5_3_1: "동기화 및 오류 진단 내보내기는 자동으로 익명화됩니다",
@@ -1128,9 +1175,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_3_3: "ID, 상태, 해시, 타임스탬프 및 기타 메타데이터만 포함됩니다",
                 sec6_title: "6. 데이터 보유 및 삭제",
                 sec6_1_title: "6.1 보유 기간",
-                sec6_1_1: "활성 데이터: 귀하가 직접 삭제할 때까지 무기한 보유",
+                sec6_1_1: "활성 데이터: v0.1.0에서는 당사가 운영하는 서버로 데이터가 업로드되지 않으므로 당사의 별도 사본이 없습니다. 귀하가 직접 삭제할 때까지 무기한 보존됩니다.",
                 sec6_1_2: "삭제된 작업: 30일 후 데이터베이스에서 제거(소프트 삭제 메커니즘)",
-                sec6_1_3: "작업 로그: 동기화 충돌 문제 해결을 위해 90일 동안 보유",
+                sec6_1_3: "작업 로그: 기기 로컬에만 보존되며 앱 데이터 삭제 또는 앱 제거 시까지 유지됩니다. v0.1.0은 고정 기간 경과 후 작업 로그를 자동 정리하지 않습니다.",
                 sec6_1_4: "백업 파일: 최대 5개의 이전 버전, 오래된 버전은 자동 정리",
                 sec6_2_title: "6.2 귀하의 삭제 권리",
                 sec6_2_intro: "귀하는 언제든지 다음을 수행할 수 있습니다: ",
@@ -1139,14 +1186,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "앱 제거(모든 로컬 데이터 삭제)",
                 sec6_2_4: "동기화 서비스 권한 취소",
                 sec7_title: "7. 제3자 서비스",
-                sec7_intro: "본 앱은 다음 제3자 서비스를 사용할 수 있습니다(귀하가 직접 구성한 경우에만): ",
+                sec7_intro: "v0.1.0에서 본 앱은 다음 서비스를 사용합니다. 그 어느 것도 당사가 운영하는 크로스 플랫폼 동기화 서비스가 아닙니다 — 모두 Apple 운영, 귀하의 자체 운영 또는 자체 호스팅입니다.",
                 table_service: "서비스",
                 table_purpose: "목적",
                 table_data: "데이터 유형",
                 table_sync: "데이터 동기화",
                 table_task_device: "작업 데이터, 기기 ID",
-                table_custom: "사용자 정의 API",
-                sec7_note: "이러한 제3자 서비스에는 자체 개인정보 처리방침이 있습니다. 관련 서비스 제공업체의 개인정보 처리방침을 검토하시기 바랍니다.",
+                table_custom: "자체 호스팅 백엔드",
+                table_user: "귀하(제3자 서비스)",
+                table_us: "당사",
+                table_analytics: "익명 사용 분석",
+                table_event: "익명 이벤트 메타데이터(화면, 작업 종류)",
+                sec7_note: "Firebase Analytics는 Google의 개인정보 처리방침을, Apple iCloud는 Apple iCloud 약관을, Supabase는 Supabase의 개인정보 처리방침을 각각 따릅니다. 각 서비스의 약관을 반드시 검토하시기 바랍니다. v0.1.0에는 당사가 운영하는 크로스 플랫폼 동기화 서비스가 포함되지 않으며, 향후 Pro 티어에서 옵션으로 추가될 수 있습니다.",
                 sec8_title: "8. 아동 개인정보 보호",
                 sec8_desc: "본 앱은 13세 미만 아동을 대상으로 하지 않습니다. 당사는 아동으로부터 개인정보를 고의로 수집하지 않습니다. 아동이 당사에 개인정보를 제공한 것을 발견하시면 연락 주시면 신속히 삭제하겠습니다.",
                 sec9_title: "9. 정책 변경",
@@ -1155,23 +1206,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "본 개인정보 처리방침에 대해 궁금한 점이나 제안이 있으시면 다음으로 문의해 주세요: ",
                 email: "이메일: ",
                 sec11_title: "11. 권한",
-                sec11_intro: "본 앱에는 다음 시스템 권한이 필요합니다: ",
+                sec11_intro: "본 앱은 다음 시스템 권한을 사용합니다. 모든 권한은 선택 사항이며 거부해도 앱의 핵심 로컬 기능에는 영향을 미치지 않습니다.",
                 sec11_1: "알림: 작업 알림 전송(선택)",
-                sec11_2: "네트워크: 구성된 제3자 서비스로 데이터 동기화(동기화 활성화 시에만)",
-                sec11_3: "로컬 네트워크(iOS): 로컬 네트워크의 사용자 정의 동기화 서버에 연결(선택)",
+                sec11_2: "네트워크: Supabase 또는 자체 호스팅 백엔드를 구성한 경우, 또는 Apple 플랫폼에서 Apple iCloud 동기화를 활성화한 경우에만 사용됩니다. v0.1.0은 당사가 운영하는 서버로 발신하지 않습니다.",
+                sec11_3: "로컬 네트워크(iOS): 향후 자체 호스팅 백엔드 검색용으로 예약됨. v0.1.0은 이 권한을 사용해 어떤 서버에도 연결하지 않습니다.",
                 sec11_note: "모든 권한은 선택 사항입니다. 권한을 거부해도 앱의 핵심 로컬 기능에는 영향을 미치지 않습니다.",
                 final_statement: "성명: ",
                 final_desc: " XdoList는 개인정보 보호를 존중하는 앱입니다. 귀하의 데이터는 귀하에게 속하며, 당사는 데이터 관리를 위한 도구만 제공하고 소유, 분석 또는 판매하지 않습니다.",
-                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다.",
-                cookie_dismiss: "확인"
+                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 분석 쿠키는 수락 또는 거절을 선택할 수 있습니다. 사이트 기능에 필요한 필수 쿠키는 비활성화할 수 없습니다.",
+                cookie_dismiss: "확인",
+                cookie_accept: "분석 수락",
+                cookie_decline: "거절"
             },
             de: {
                 back_home: "← Zurück zur Startseite",
                 title: "Datenschutzerklärung",
                 effective: "Gültig ab: ",
-                effective_date: "2. Juni 2026",
+                effective_date: "2. Juli 2026",
                 updated: "Zuletzt aktualisiert: ",
-                updated_date: "2. Juni 2026",
+                updated_date: "2. Juli 2026",
                 sec1_title: "1. Einleitung",
                 sec1_desc: 'XdoList ("wir", "die App") ist eine Aufgabenverwaltungsanwendung. Wir schätzen Ihre Privatsphäre sehr, und diese Datenschutzerklärung erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden, speichern und schützen.',
                 notice: "Bitte beachten: ",
@@ -1205,9 +1258,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 Lokale Speicherung",
                 sec3_1_desc: "Alle Aufgabendaten werden standardmäßig lokal in der Datenbank Ihres Geräts (SQLite) gespeichert. Wir laden diese Daten nicht auf unsere Server hoch.",
                 sec3_2_title: "3.2 Synchronisationsdaten",
-                sec3_2_intro: "Wenn Sie Synchronisation aktivieren: ",
-                sec3_2_1: "Supabase-Synchronisation: Daten werden in Ihrem eigenen Supabase-Projekt gespeichert, auf das wir keinen Zugriff haben",
-                sec3_2_2: "Benutzerdefinierte API-Synchronisation: Daten werden auf Ihrem eigenen bereitgestellten Server gespeichert",
+                sec3_2_intro: "v0.1.0 unterstützt ausschließlich die folgenden drei optionalen Synchronisationspfade. Standardmäßig werden keine Daten an Server gesendet, die wir betreiben:",
+                sec3_2_1: "Apple iCloud (nur Apple-Plattformen): grundlegender geräteübergreifender Synchronisationskanal von Apple; unterliegt den iCloud-Bedingungen von Apple, nicht uns.",
+                sec3_2_2: "Supabase: Daten werden in Ihrem eigenen Supabase-Projekt gespeichert, auf das wir keinen Zugriff haben.",
+                sec3_2_3: "Selbstgehosteter Backend: Daten werden auf einem von Ihnen bereitgestellten und betriebenen Server gespeichert; wir haben keinen Zugriff.",
+                sec6_1_1: "Aktive Daten: In v0.1.0 werden keine Daten an von uns betriebene Server hochgeladen; daher haben wir keine unabhängige Kopie. Die Daten werden unbegrenzt aufbewahrt, bis Sie sie aktiv löschen.",
+                sec6_1_3: "Vorgangsprotokolle: Werden nur lokal auf Ihrem Gerät gespeichert, bis Sie App-Daten löschen oder die App deinstallieren. v0.1.0 führt keine automatische Bereinigung nach einem festen Zeitraum durch.",
+                table_analytics: "Anonyme Nutzungsanalyse",
+                table_event: "Anonyme Ereignismetadaten (Bildschirm, Aktionsart)",
                 sec3_3_title: "3.3 Sicherungsdaten",
                 sec3_3_desc: "Die App unterstützt die Erstellung lokaler Sicherungsdateien, die auf Ihrem Gerät gespeichert werden. Sie können Sicherungsdateien über die Systemfreigabefunktion an einen Ort Ihrer Wahl (Cloud-Speicher, E-Mail usw.) exportieren.",
                 sec4_title: "4. Datennutzung",
@@ -1226,7 +1284,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "Alle Netzwerkkommunikationen verwenden standardmäßig HTTPS/TLS-Verschlüsselung",
                 sec5_1_2: "Wenn Sie \"Unsichere Verbindungen erlauben\" aktivieren (nur für interne Netzwerk-Entwicklung/Tests), wird die HTTP-Kommunikation nicht verschlüsselt",
                 sec5_2_title: "5.2 Lokale Sicherheit",
-                sec5_2_1: "Das Datenbankpasswort (falls konfiguriert) wird nur für die Datenbankinitialisierung verwendet und kann jederzeit gelöscht werden",
+                sec5_2_1: "v0.1.0 konfiguriert kein Datenbankpasswort. Die lokale SQLite-Datenbank wird durch die Standard-Sandbox des Betriebssystems und app-private Speicherrechte geschützt",
                 sec5_2_2: "Die App verwendet Standard-Dateisystemberechtigungen des Betriebssystems zum Schutz der Daten",
                 sec5_3_title: "5.3 Diagnose-Export",
                 sec5_3_1: "Synchronisations- und Fehlerdiagnose-Exporte werden automatisch anonymisiert",
@@ -1245,14 +1303,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Die App deinstallieren (löscht alle lokalen Daten)",
                 sec6_2_4: "Die Synchronisationsdienst-Autorisierung widerrufen",
                 sec7_title: "7. Drittanbieterdienste",
-                sec7_intro: "Diese App kann folgende Drittanbieterdienste verwenden (nur wenn Sie diese aktiv konfigurieren): ",
+                sec7_intro: "v0.1.0 nutzt die folgenden Dienste. Keiner davon ist ein von uns betriebener plattformübergreifender Synchronisationsdienst — die Synchronisationspfade werden entweder von Apple betrieben, von Ihnen selbst betrieben oder von Ihnen selbst gehostet.",
                 table_service: "Dienst",
                 table_purpose: "Zweck",
                 table_data: "Datentyp",
                 table_sync: "Datensynchronisation",
                 table_task_device: "Aufgabendaten, Geräte-ID",
-                table_custom: "Benutzerdefinierte API",
-                sec7_note: "Diese Drittanbieterdienste haben eigene Datenschutzerklärungen. Wir empfehlen, die Datenschutzerklärungen der jeweiligen Dienstanbieter zu lesen.",
+                table_custom: "Selbstgehosteter Backend",
+                table_user: "Sie (Drittanbieter)",
+                table_us: "Wir",
+                table_analytics: "Anonyme Nutzungsanalyse",
+                table_event: "Anonyme Ereignismetadaten",
+                sec7_note: "Firebase Analytics unterliegt der Datenschutzerklärung von Google; Apple iCloud unterliegt den iCloud-Bedingungen von Apple; Supabase unterliegt der Datenschutzerklärung von Supabase. Bitte überprüfen Sie die Bedingungen jedes Dienstes. v0.1.0 enthält keinen von uns betriebenen plattformübergreifenden Synchronisationsdienst; ein optionaler, kostenpflichtiger Synchronisationsdienst von uns kann in einem zukünftigen Pro-Tier hinzukommen.",
                 sec8_title: "8. Datenschutz für Kinder",
                 sec8_desc: "Diese App richtet sich nicht an Kinder unter 13 Jahren. Wir sammeln wissentlich keine persönlichen Informationen von Kindern. Wenn Sie feststellen, dass ein Kind uns persönliche Informationen bereitgestellt hat, kontaktieren Sie uns bitte, und wir werden diese Informationen umgehend löschen.",
                 sec9_title: "9. Änderungen der Richtlinie",
@@ -1261,23 +1323,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "Wenn Sie Fragen oder Anregungen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte: ",
                 email: "E-Mail: ",
                 sec11_title: "11. Berechtigungen",
-                sec11_intro: "Diese App benötigt die folgenden Systemberechtigungen: ",
+                sec11_intro: "Diese App verwendet die folgenden Systemberechtigungen. Alle Berechtigungen sind optional; die Verweigerung beeinträchtigt nicht die Kernfunktionen der App.",
                 sec11_1: "Benachrichtigungen: Senden von Aufgabenerinnerungen (optional)",
-                sec11_2: "Netzwerk: Synchronisieren von Daten mit Ihren konfigurierten Drittanbieterdiensten (nur wenn Synchronisation aktiviert ist)",
-                sec11_3: "Lokales Netzwerk (iOS): Verbindung mit benutzerdefinierten Synchronisationsservern im lokalen Netzwerk (optional)",
+                sec11_2: "Netzwerk: Wird nur verwendet, wenn Sie Supabase oder ein selbstgehostetes Backend konfigurieren, oder wenn Apple iCloud-Synchronisation auf Apple-Plattformen aktiviert ist. v0.1.0 kontaktiert keine von uns betriebenen Server.",
+                sec11_3: "Lokales Netzwerk (iOS): Reserviert für die zukünftige Erkennung selbstgehosteter Backends. v0.1.0 verwendet diese Berechtigung nicht, um eine Verbindung zu einem Server herzustellen.",
                 sec11_note: "Alle Berechtigungen sind optional. Die Ablehnung einer Berechtigung beeinträchtigt nicht die wesentlichen lokalen Funktionen der App.",
                 final_statement: "Erklärung: ",
                 final_desc: " XdoList ist eine datenschutzfreundliche App. Ihre Daten gehören Ihnen. Wir stellen nur Tools zur Verwaltung Ihrer Daten bereit und besitzen, analysieren oder verkaufen keine persönlichen Informationen.",
-                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung.",
-                cookie_dismiss: "Verstanden"
+                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Sie können Analyse-Cookies akzeptieren oder ablehnen; erforderliche Cookies für die Seitenfunktion können nicht deaktiviert werden.",
+                cookie_dismiss: "Verstanden",
+                cookie_accept: "Analyse akzeptieren",
+                cookie_decline: "Ablehnen"
             },
             fr: {
                 back_home: "← Retour à l'accueil",
                 title: "Politique de confidentialité",
                 effective: "Date d'effet : ",
-                effective_date: "2 juin 2026",
+                effective_date: "2 juillet 2026",
                 updated: "Dernière mise à jour : ",
-                updated_date: "2 juin 2026",
+                updated_date: "2 juillet 2026",
                 sec1_title: "1. Introduction",
                 sec1_desc: 'XdoList (« nous », « l\'application ») est une application de gestion de tâches. Nous attachons une grande importance à votre confidentialité, et la présente politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos informations personnelles.',
                 notice: "Veuillez noter : ",
@@ -1311,9 +1375,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 Stockage local",
                 sec3_1_desc: "Toutes les données de tâches sont stockées localement dans la base de données de votre appareil (SQLite) par défaut. Nous ne téléchargeons pas ces données sur nos serveurs.",
                 sec3_2_title: "3.2 Données de synchronisation",
-                sec3_2_intro: "Si vous activez la synchronisation : ",
-                sec3_2_1: "Synchronisation Supabase : les données sont stockées dans votre propre projet Supabase, auquel nous n'avons pas accès",
-                sec3_2_2: "Synchronisation API personnalisée : les données sont stockées sur votre propre serveur déployé",
+                sec3_2_intro: "v0.1.0 prend uniquement en charge les trois chemins de synchronisation optionnels suivants. Par défaut, aucun chemin n'envoie de données à des serveurs que nous exploitons :",
+                sec3_2_1: "Apple iCloud (plateformes Apple uniquement) : canal de synchronisation de base appareil-à-appareil fourni par Apple ; soumis aux conditions iCloud d'Apple, pas à nous.",
+                sec3_2_2: "Supabase : les données sont stockées dans votre propre projet Supabase, auquel nous n'avons pas accès.",
+                sec3_2_3: "Backend auto-hébergé : les données sont stockées sur un serveur que vous déployez et gérez ; nous n'y avons pas accès.",
+                sec6_1_1: "Données actives : dans v0.1.0, aucune donnée n'est téléchargée sur des serveurs que nous exploitons, donc nous n'avons pas de copie indépendante. Les données sont conservées indéfiniment jusqu'à ce que vous les supprimiez activement.",
+                sec6_1_3: "Journaux d'opérations : conservés uniquement localement sur votre appareil jusqu'à ce que vous effaciez les données de l'application ou désinstalliez l'application. v0.1.0 ne purge pas automatiquement les journaux après une période fixe.",
+                table_analytics: "Analyse anonyme de l'utilisation",
+                table_event: "Métadonnées d'événements anonymes (écran, type d'action)",
                 sec3_3_title: "3.3 Données de sauvegarde",
                 sec3_3_desc: "L'application prend en charge la création de fichiers de sauvegarde locaux stockés sur votre appareil. Vous pouvez exporter les fichiers de sauvegarde vers l'emplacement de votre choix (stockage cloud, e-mail, etc.) via la fonctionnalité de partage du système.",
                 sec4_title: "4. Utilisation des données",
@@ -1332,7 +1401,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "Toutes les communications réseau utilisent le chiffrement HTTPS/TLS par défaut",
                 sec5_1_2: "Si vous activez « Autoriser les connexions non sécurisées » (uniquement pour le développement/test en réseau interne), la communication HTTP ne sera pas chiffrée",
                 sec5_2_title: "5.2 Sécurité locale",
-                sec5_2_1: "Le mot de passe de la base de données (s'il est configuré) n'est utilisé que pour l'initialisation de la base de données et peut être effacé à tout moment",
+                sec5_2_1: "v0.1.0 ne configure pas de mot de passe de base de données. La base de données SQLite locale est protégée par le sandbox standard du système d'exploitation et les autorisations de stockage privées à l'application",
                 sec5_2_2: "L'application utilise les autorisations standard du système de fichiers du système d'exploitation pour protéger les données",
                 sec5_3_title: "5.3 Export de diagnostic",
                 sec5_3_1: "Les exports de diagnostic de synchronisation et d'erreur sont automatiquement anonymisés",
@@ -1351,14 +1420,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Désinstaller l'application (supprime toutes les données locales)",
                 sec6_2_4: "Révoquer l'autorisation du service de synchronisation",
                 sec7_title: "7. Services tiers",
-                sec7_intro: "Cette application peut utiliser les services tiers suivants (uniquement lorsque vous les configurez activement) : ",
+                sec7_intro: "v0.1.0 utilise les services suivants. Aucun n'est un service de synchronisation multiplateforme exploité par nous — les chemins de synchronisation sont soit exploités par Apple, soit par vous, soit auto-hébergés par vous.",
                 table_service: "Service",
                 table_purpose: "Objectif",
                 table_data: "Type de données",
                 table_sync: "Synchronisation des données",
                 table_task_device: "Données de tâches, ID d'appareil",
-                table_custom: "API personnalisée",
-                sec7_note: "Ces services tiers ont leurs propres politiques de confidentialité. Nous vous recommandons de consulter les politiques de confidentialité des fournisseurs de services concernés.",
+                table_custom: "Backend auto-hébergé",
+                table_user: "Vous (service tiers)",
+                table_us: "Nous",
+                table_analytics: "Analyse anonyme de l'utilisation",
+                table_event: "Métadonnées d'événements anonymes",
+                sec7_note: "Firebase Analytics est soumis à la politique de confidentialité de Google ; Apple iCloud est soumis aux conditions iCloud d'Apple ; Supabase est soumis à la politique de confidentialité de Supabase. Veuillez consulter les conditions de chaque service. v0.1.0 n'inclut aucun service de synchronisation multiplateforme exploité par nous ; un service payant optionnel pourra être ajouté dans un futur niveau Pro.",
                 sec8_title: "8. Confidentialité des enfants",
                 sec8_desc: "Cette application ne s'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants. Si vous découvrez qu'un enfant nous a fourni des informations personnelles, veuillez nous contacter et nous supprimerons rapidement ces informations.",
                 sec9_title: "9. Modifications de la politique",
@@ -1367,23 +1440,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "Si vous avez des questions ou des suggestions concernant cette politique de confidentialité, veuillez nous contacter : ",
                 email: "E-mail : ",
                 sec11_title: "11. Autorisations",
-                sec11_intro: "Cette application nécessite les autorisations système suivantes : ",
+                sec11_intro: "Cette application utilise les autorisations système suivantes. Toutes les autorisations sont facultatives ; leur refus n'affecte pas les fonctionnalités locales principales de l'application.",
                 sec11_1: "Notifications : envoyer des notifications de rappel de tâches (facultatif)",
-                sec11_2: "Réseau : synchroniser les données avec vos services tiers configurés (uniquement lorsque la synchronisation est activée)",
-                sec11_3: "Réseau local (iOS) : se connecter à des serveurs de synchronisation personnalisés sur le réseau local (facultatif)",
+                sec11_2: "Réseau : utilisé uniquement lorsque vous configurez Supabase ou un backend auto-hébergé, ou lorsque la synchronisation Apple iCloud est activée sur les plateformes Apple. v0.1.0 ne contacte aucun serveur que nous exploitons.",
+                sec11_3: "Réseau local (iOS) : réservé à la future découverte de backends auto-hébergés. v0.1.0 n'utilise pas cette autorisation pour se connecter à un serveur.",
                 sec11_note: "Toutes les autorisations sont facultatives. Refuser une autorisation n'affectera pas les fonctionnalités locales principales de l'application.",
                 final_statement: "Déclaration : ",
                 final_desc: " XdoList est une application respectueuse de la confidentialité. Vos données vous appartiennent. Nous fournissons uniquement des outils pour vous aider à gérer vos données et ne possédons, n'analysons ni ne vendons vos informations personnelles.",
-                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience.",
-                cookie_dismiss: "Compris"
+                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. Vous pouvez accepter ou refuser les cookies analytiques ; les cookies essentiels au fonctionnement du site ne peuvent pas être désactivés.",
+                cookie_dismiss: "Compris",
+                cookie_accept: "Accepter l'analyse",
+                cookie_decline: "Refuser"
             },
             es: {
                 back_home: "← Volver al inicio",
                 title: "Política de privacidad",
                 effective: "Fecha de vigencia: ",
-                effective_date: "2 de junio de 2026",
+                effective_date: "2 de julio de 2026",
                 updated: "Última actualización: ",
-                updated_date: "2 de junio de 2026",
+                updated_date: "2 de julio de 2026",
                 sec1_title: "1. Introducción",
                 sec1_desc: 'XdoList («nosotros», «la aplicación») es una aplicación de gestión de tareas. Valoramos mucho su privacidad, y esta política de privacidad explica cómo recopilamos, usamos, almacenamos y protegemos su información personal.',
                 notice: "Tenga en cuenta: ",
@@ -1417,9 +1492,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 Almacenamiento local",
                 sec3_1_desc: "Todos los datos de tareas se almacenan localmente en la base de datos de su dispositivo (SQLite) de forma predeterminada. No cargamos estos datos en nuestros servidores.",
                 sec3_2_title: "3.2 Datos de sincronización",
-                sec3_2_intro: "Si habilita la sincronización: ",
-                sec3_2_1: "Sincronización Supabase: los datos se almacenan en su propio proyecto Supabase, al cual no podemos acceder",
-                sec3_2_2: "Sincronización API personalizada: los datos se almacenan en su propio servidor implementado",
+                sec3_2_intro: "v0.1.0 solo admite las tres rutas de sincronización opcionales siguientes. Por defecto, ninguna ruta envía datos a servidores que operamos nosotros:",
+                sec3_2_1: "Apple iCloud (solo plataformas Apple): canal básico de sincronización entre dispositivos proporcionado por Apple; sujeto a las condiciones de iCloud de Apple, no a nosotros.",
+                sec3_2_2: "Supabase: los datos se almacenan en su propio proyecto de Supabase, al cual no tenemos acceso.",
+                sec3_2_3: "Backend autoalojado: los datos se almacenan en un servidor que usted implementa y opera; no tenemos acceso.",
+                sec6_1_1: "Datos activos: en v0.1.0 los datos no se suben a servidores operados por nosotros, por lo que no tenemos una copia independiente. Se conservan indefinidamente hasta que los elimine activamente.",
+                sec6_1_3: "Registros de operaciones: se conservan solo localmente en su dispositivo hasta que borre los datos de la aplicación o la desinstale. v0.1.0 no purga automáticamente los registros tras un período fijo.",
+                table_analytics: "Análisis anónimo de uso",
+                table_event: "Metadatos anónimos de eventos (pantalla, tipo de acción)",
                 sec3_3_title: "3.3 Datos de respaldo",
                 sec3_3_desc: "La aplicación admite la creación de archivos de respaldo locales almacenados en su dispositivo. Puede exportar archivos de respaldo a la ubicación que elija (almacenamiento en la nube, correo electrónico, etc.) a través de la funcionalidad de compartir del sistema.",
                 sec4_title: "4. Uso de datos",
@@ -1438,7 +1518,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "Toda la comunicación de red utiliza cifrado HTTPS/TLS de forma predeterminada",
                 sec5_1_2: 'Si habilita "Permitir conexiones inseguras" (solo para desarrollo/pruebas en red interna), la comunicación HTTP no estará cifrada',
                 sec5_2_title: "5.2 Seguridad local",
-                sec5_2_1: "La contraseña de la base de datos (si está configurada) solo se usa para la inicialización de la base de datos y se puede borrar en cualquier momento",
+                sec5_2_1: "v0.1.0 no configura una contraseña de base de datos. La base de datos SQLite local está protegida por el sandbox estándar del sistema operativo y los permisos de almacenamiento privado de la aplicación",
                 sec5_2_2: "La aplicación usa los permisos estándar del sistema de archivos del sistema operativo para proteger los datos",
                 sec5_3_title: "5.3 Exportación de diagnóstico",
                 sec5_3_1: "Las exportaciones de diagnóstico de sincronización y errores se anonimizan automáticamente",
@@ -1457,14 +1537,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Desinstalar la aplicación (elimina todos los datos locales)",
                 sec6_2_4: "Revocar la autorización del servicio de sincronización",
                 sec7_title: "7. Servicios de terceros",
-                sec7_intro: "Esta aplicación puede usar los siguientes servicios de terceros (solo cuando usted los configura activamente): ",
+                sec7_intro: "v0.1.0 utiliza los siguientes servicios. Ninguno es un servicio de sincronización multiplataforma operado por nosotros — las rutas de sincronización son operadas por Apple, por usted, o alojadas por usted.",
                 table_service: "Servicio",
                 table_purpose: "Propósito",
                 table_data: "Tipo de datos",
                 table_sync: "Sincronización de datos",
                 table_task_device: "Datos de tareas, ID de dispositivo",
-                table_custom: "API personalizada",
-                sec7_note: "Estos servicios de terceros tienen sus propias políticas de privacidad. Recomendamos revisar las políticas de privacidad de los proveedores de servicios correspondientes.",
+                table_custom: "Backend autoalojado",
+                table_user: "Usted (servicio de terceros)",
+                table_us: "Nosotros",
+                table_analytics: "Análisis anónimo de uso",
+                table_event: "Metadatos anónimos de eventos",
+                sec7_note: "Firebase Analytics se rige por la política de privacidad de Google; Apple iCloud se rige por las condiciones de iCloud de Apple; Supabase se rige por la política de privacidad de Supabase. Revise los términos de cada servicio. v0.1.0 no incluye ningún servicio de sincronización multiplataforma operado por nosotros; un servicio opcional de pago podría añadirse en un nivel Pro futuro.",
                 sec8_title: "8. Privacidad de los niños",
                 sec8_desc: "Esta aplicación no está dirigida a niños menores de 13 años. No recopilamos conscientemente información personal de niños. Si descubre que un niño nos ha proporcionado información personal, comuníquese con nosotros y eliminaremos dicha información rápidamente.",
                 sec9_title: "9. Cambios en la política",
@@ -1473,23 +1557,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "Si tiene alguna pregunta o sugerencia sobre esta política de privacidad, contáctenos: ",
                 email: "Correo electrónico: ",
                 sec11_title: "11. Permisos",
-                sec11_intro: "Esta aplicación requiere los siguientes permisos del sistema: ",
+                sec11_intro: "Esta aplicación utiliza los siguientes permisos del sistema. Todos los permisos son opcionales; denegarlos no afecta la funcionalidad local principal de la aplicación.",
                 sec11_1: "Notificaciones: enviar notificaciones de recordatorio de tareas (opcional)",
-                sec11_2: "Red: sincronizar datos con sus servicios de terceros configurados (solo cuando la sincronización está habilitada)",
-                sec11_3: "Red local (iOS): conectarse a servidores de sincronización personalizados en la red local (opcional)",
+                sec11_2: "Red: se usa solo cuando configura Supabase o un backend autoalojado, o cuando la sincronización Apple iCloud está habilitada en plataformas Apple. v0.1.0 no contacta a servidores operados por nosotros.",
+                sec11_3: "Red local (iOS): reservada para el descubrimiento futuro de backends autoalojados. v0.1.0 no utiliza este permiso para conectarse a ningún servidor.",
                 sec11_note: "Todos los permisos son opcionales. Rechazar un permiso no afectará la funcionalidad local principal de la aplicación.",
                 final_statement: "Declaración: ",
                 final_desc: " XdoList es una aplicación que respeta la privacidad. Sus datos le pertenecen. Solo proporcionamos herramientas para ayudarle a gestionar sus datos y no poseemos, analizamos ni vendemos su información personal.",
-                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia.",
-                cookie_dismiss: "Entendido"
+                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Puede aceptar o rechazar las cookies analíticas; las cookies esenciales para el funcionamiento del sitio no se pueden desactivar.",
+                cookie_dismiss: "Entendido",
+                cookie_accept: "Aceptar análisis",
+                cookie_decline: "Rechazar"
             },
             ar: {
                 back_home: "← العودة إلى الرئيسية",
                 title: "سياسة الخصوصية",
                 effective: "تاريخ السريان: ",
-                effective_date: "2 يونيو 2026",
+                effective_date: "2 يوليو 2026",
                 updated: "آخر تحديث: ",
-                updated_date: "2 يونيو 2026",
+                updated_date: "2 يوليو 2026",
                 sec1_title: "1. مقدمة",
                 sec1_desc: "XdoList ('نحن'، 'التطبيق') هو تطبيق لإدارة المهام. نولي أهمية كبيرة لخصوصيتك، وتوضح سياسة الخصوصية هذه كيفية جمع واستخدام وتخزين وحماية معلوماتك الشخصية.",
                 notice: "يرجى الملاحظة: ",
@@ -1523,9 +1609,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 التخزين المحلي",
                 sec3_1_desc: "تُخزّن جميع بيانات المهام محليًا في قاعدة بيانات جهازك (SQLite) بشكل افتراضي. نحن لا نرفع هذه البيانات إلى خوادمنا.",
                 sec3_2_title: "3.2 بيانات المزامنة",
-                sec3_2_intro: "إذا قمت بتمكين المزامنة: ",
-                sec3_2_1: "مزامنة Supabase: تُخزّن البيانات في مشروع Supabase الخاص بك، والذي لا يمكننا الوصول إليه",
-                sec3_2_2: "مزامنة API المخصص: تُخزّن البيانات على الخادم الخاص بك الذي قمت بنشره",
+                sec3_2_intro: "يدعم v0.1.0 مسارات المزامنة الاختيارية الثلاثة التالية فقط. افتراضيًا، لا يرسل أي مسار بيانات إلى خوادم نديرها:",
+                sec3_2_1: "Apple iCloud (منصات Apple فقط): قناة مزامنة أساسية بين الأجهزة تقدمها Apple؛ تخضع لشروط iCloud من Apple، وليس لنا.",
+                sec3_2_2: "Supabase: تُخزّن البيانات في مشروع Supabase الخاص بك، ولا يمكننا الوصول إليها.",
+                sec3_2_3: "خادم ذاتي الاستضافة: تُخزّن البيانات على خادم تنشره وتديره بنفسك؛ ليس لدينا وصول.",
+                sec6_1_1: "البيانات النشطة: في v0.1.0 لا تُرفع البيانات إلى خوادم نديرها، لذلك لا توجد لدينا نسخة مستقلة. تُحفظ إلى أجل غير مسمى حتى تقوم بحذفها بنشاط.",
+                sec6_1_3: "سجلات العمليات: تُحفظ محليًا فقط على جهازك حتى تقوم بمسح بيانات التطبيق أو إلغاء تثبيته. لا يقوم v0.1.0 بإزالة السجلات تلقائيًا بعد فترة محددة.",
+                table_analytics: "تحليل استخدام مجهول",
+                table_event: "بيانات وصفية مجهولة للأحداث (شاشة، نوع الإجراء)",
                 sec3_3_title: "3.3 بيانات النسخ الاحتياطي",
                 sec3_3_desc: "يدعم التطبيق إنشاء ملفات نسخ احتياطي محلية تُخزّن على جهازك. يمكنك تصدير ملفات النسخ الاحتياطي إلى الموقع الذي تختاره (التخزين السحابي، البريد الإلكتروني، إلخ) عبر وظيفة المشاركة في النظام.",
                 sec4_title: "4. استخدام البيانات",
@@ -1544,7 +1635,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "تستخدم جميع الاتصالات الشبكية تشفير HTTPS/TLS بشكل افتراضي",
                 sec5_1_2: "إذا قمت بتمكين 'السماح بالاتصالات غير الآمنة' (للتطوير/الاختبار في الشبكة الداخلية فقط)، فلن يتم تشفير اتصال HTTP",
                 sec5_2_title: "5.2 الأمان المحلي",
-                sec5_2_1: "يتم استخدام كلمة مرور قاعدة البيانات (إذا تم تكوينها) فقط لتهيئة قاعدة البيانات ويمكن مسحها في أي وقت",
+                sec5_2_1: "لا يقوم v0.1.0 بتكوين كلمة مرور لقاعدة البيانات. قاعدة بيانات SQLite المحلية محمية بواسطة بيئة عزل نظام التشغيل القياسية وأذونات التخزين الخاصة بالتطبيق",
                 sec5_2_2: "يستخدم التطبيق أذونات نظام الملفات القياسية لنظام التشغيل لحماية البيانات",
                 sec5_3_title: "5.3 تصدير التشخيص",
                 sec5_3_1: "يتم إخفاء هوية صادرات تشخيص المزامنة والأخطاء تلقائيًا",
@@ -1563,14 +1654,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "إلغاء تثبيت التطبيق (يحذف جميع البيانات المحلية)",
                 sec6_2_4: "إلغاء تفويض خدمة المزامنة",
                 sec7_title: "7. خدمات الطرف الثالث",
-                sec7_intro: "قد يستخدم هذا التطبيق خدمات الطرف الثالث التالية (فقط عندما تقوم بتكوينها بنشاط): ",
+                sec7_intro: "يستخدم v0.1.0 الخدمات التالية. لا توجد خدمة مزامنة متعددة المنصات نديرها — مسارات المزامنة إما تديرها Apple، أو تديرها أنت، أو تستضيفها بنفسك.",
                 table_service: "الخدمة",
                 table_purpose: "الغرض",
                 table_data: "نوع البيانات",
                 table_sync: "مزامنة البيانات",
                 table_task_device: "بيانات المهام، معرّف الجهاز",
-                table_custom: "API مخصص",
-                sec7_note: "تمتلك هذه الخدمات من أطراف ثالثة سياسات خصوصية خاصة بها. نوصي بمراجعة سياسات الخصوصية لمقدمي الخدمات المعنيين.",
+                table_custom: "خادم ذاتي الاستضافة",
+                table_user: "أنت (خدمة طرف ثالث)",
+                table_us: "نحن",
+                table_analytics: "تحليل استخدام مجهول",
+                table_event: "بيانات وصفية مجهولة للأحداث",
+                sec7_note: "يخضع Firebase Analytics لسياسة خصوصية Google؛ ويخضع Apple iCloud لشروط iCloud من Apple؛ ويخضع Supabase لسياسة خصوصية Supabase. يرجى مراجعة شروط كل خدمة. لا يتضمن v0.1.0 أي خدمة مزامنة متعددة المنصات نديرها؛ قد تُضاف خدمة مزامنة مدفوعة اختيارية في فئة Pro مستقبلية.",
                 sec8_title: "8. خصوصية الأطفال",
                 sec8_desc: "هذا التطبيق غير موجه للأطفال دون سن 13 عامًا. نحن لا نجمع عن قصد المعلومات الشخصية من الأطفال. إذا اكتشفت أن طفلًا قد قدم معلومات شخصية لنا، فيرجى الاتصال بنا وسنقوم بحذف هذه المعلومات على الفور.",
                 sec9_title: "9. تغييرات السياسة",
@@ -1579,23 +1674,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "إذا كانت لديك أي أسئلة أو اقتراحات حول سياسة الخصوصية هذه، يرجى الاتصال بنا: ",
                 email: "البريد الإلكتروني: ",
                 sec11_title: "11. الأذونات",
-                sec11_intro: "يتطلب هذا التطبيق الأذونات النظامية التالية: ",
+                sec11_intro: "يستخدم هذا التطبيق أذونات النظام التالية. جميع الأذونات اختيارية؛ رفضها لن يؤثر على الوظائف المحلية الأساسية للتطبيق.",
                 sec11_1: "الإشعارات: إرسال إشعارات تذكير بالمهام (اختياري)",
-                sec11_2: "الشبكة: مزامنة البيانات مع خدمات الطرف الثالث التي قمت بتكوينها (فقط عند تمكين المزامنة)",
-                sec11_3: "الشبكة المحلية (iOS): الاتصال بخوادم المزامنة المخصصة على الشبكة المحلية (اختياري)",
+                sec11_2: "الشبكة: تُستخدم فقط عندما تقوم بتكوين Supabase أو خادم ذاتي الاستضافة، أو عند تمكين مزامنة Apple iCloud على منصات Apple. لا يتصل v0.1.0 بأي خوادم نديرها.",
+                sec11_3: "الشبكة المحلية (iOS): محجوزة لاكتشاف خوادم ذاتية الاستضافة مستقبلًا. لا يستخدم v0.1.0 هذا الإذن للاتصال بأي خادم.",
                 sec11_note: "جميع الأذونات اختيارية. لن يؤثر رفض الإذن على الوظائف المحلية الأساسية للتطبيق.",
                 final_statement: "بيان: ",
                 final_desc: " XdoList هو تطبيق يحترم الخصوصية. بياناتك ملك لك. نحن نقدم فقط الأدوات لمساعدتك في إدارة بياناتك ولا نملك أو نحلل أو نبيع معلوماتك الشخصية.",
-                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك.",
-                cookie_dismiss: "فهمت"
+                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. يمكنك قبول أو رفض ملفات تعريف الارتباط التحليلية؛ لا يمكن تعطيل ملفات تعريف الارتباط الأساسية اللازمة لتشغيل الموقع.",
+                cookie_dismiss: "فهمت",
+                cookie_accept: "قبول التحليل",
+                cookie_decline: "رفض"
             },
             pt: {
                 back_home: "← Voltar para o início",
                 title: "Política de Privacidade",
                 effective: "Data de vigência: ",
-                effective_date: "2 de junho de 2026",
+                effective_date: "2 de julho de 2026",
                 updated: "Última atualização: ",
-                updated_date: "2 de junho de 2026",
+                updated_date: "2 de julho de 2026",
                 sec1_title: "1. Introdução",
                 sec1_desc: "XdoList ('nós', 'o aplicativo') é um aplicativo de gerenciamento de tarefas. Valorizamos muito sua privacidade, e esta política de privacidade explica como coletamos, usamos, armazenamos e protegemos suas informações pessoais.",
                 notice: "Observe: ",
@@ -1629,9 +1726,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 Armazenamento local",
                 sec3_1_desc: "Todos os dados de tarefas são armazenados localmente no banco de dados do seu dispositivo (SQLite) por padrão. Não fazemos upload desses dados para nossos servidores.",
                 sec3_2_title: "3.2 Dados de sincronização",
-                sec3_2_intro: "Se você habilitar a sincronização: ",
-                sec3_2_1: "Sincronização Supabase: os dados são armazenados no seu próprio projeto Supabase, ao qual não temos acesso",
-                sec3_2_2: "Sincronização API personalizada: os dados são armazenados no seu próprio servidor implantado",
+                sec3_2_intro: "v0.1.0 suporta apenas os três caminhos opcionais de sincronização abaixo. Por padrão, nenhum caminho envia dados para servidores que operamos:",
+                sec3_2_1: "Apple iCloud (apenas plataformas Apple): canal básico de sincronização entre dispositivos fornecido pela Apple; regido pelos termos do iCloud da Apple, não por nós.",
+                sec3_2_2: "Supabase: os dados são armazenados no seu próprio projeto Supabase, ao qual não temos acesso.",
+                sec3_2_3: "Backend auto-hospedado: os dados são armazenados em um servidor que você implanta e opera; não temos acesso.",
+                sec6_1_1: "Dados ativos: em v0.1.0 os dados não são enviados a servidores operados por nós, portanto não temos uma cópia independente. São retidos indefinidamente até que você os exclua ativamente.",
+                sec6_1_3: "Logs de operações: são mantidos apenas localmente no seu dispositivo até que você limpe os dados do aplicativo ou o desinstale. v0.1.0 não limpa automaticamente os logs após um período fixo.",
+                table_analytics: "Análise anônima de uso",
+                table_event: "Metadados anônimos de eventos (tela, tipo de ação)",
                 sec3_3_title: "3.3 Dados de backup",
                 sec3_3_desc: "O aplicativo suporta a criação de arquivos de backup locais armazenados no seu dispositivo. Você pode exportar arquivos de backup para o local de sua escolha (armazenamento em nuvem, e-mail etc.) por meio da funcionalidade de compartilhamento do sistema.",
                 sec4_title: "4. Uso de dados",
@@ -1650,7 +1752,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "Toda a comunicação de rede usa criptografia HTTPS/TLS por padrão",
                 sec5_1_2: "Se você habilitar 'Permitir conexões inseguras' (somente para desenvolvimento/teste de rede interna), a comunicação HTTP não será criptografada",
                 sec5_2_title: "5.2 Segurança local",
-                sec5_2_1: "A senha do banco de dados (se configurada) é usada apenas para inicialização do banco de dados e pode ser limpa a qualquer momento",
+                sec5_2_1: "v0.1.0 não configura uma senha de banco de dados. O banco de dados SQLite local é protegido pelo sandbox padrão do sistema operacional e pelas permissões de armazenamento privado do aplicativo",
                 sec5_2_2: "O aplicativo usa as permissões padrão do sistema de arquivos do sistema operacional para proteger os dados",
                 sec5_3_title: "5.3 Exportação de diagnóstico",
                 sec5_3_1: "As exportações de diagnóstico de sincronização e erro são anonimizadas automaticamente",
@@ -1669,14 +1771,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Desinstalar o aplicativo (exclui todos os dados locais)",
                 sec6_2_4: "Revogar a autorização do serviço de sincronização",
                 sec7_title: "7. Serviços de terceiros",
-                sec7_intro: "Este aplicativo pode usar os seguintes serviços de terceiros (somente quando você os configura ativamente): ",
+                sec7_intro: "v0.1.0 utiliza os seguintes serviços. Nenhum deles é um serviço de sincronização multiplataforma operado por nós — os caminhos de sincronização são operados pela Apple, por você, ou hospedados por você.",
                 table_service: "Serviço",
                 table_purpose: "Finalidade",
                 table_data: "Tipo de dado",
                 table_sync: "Sincronização de dados",
                 table_task_device: "Dados de tarefas, ID do dispositivo",
-                table_custom: "API personalizada",
-                sec7_note: "Esses serviços de terceiros têm suas próprias políticas de privacidade. Recomendamos revisar as políticas de privacidade dos provedores de serviços relevantes.",
+                table_custom: "Backend auto-hospedado",
+                table_user: "Você (serviço de terceiros)",
+                table_us: "Nós",
+                table_analytics: "Análise anônima de uso",
+                table_event: "Metadados anônimos de eventos",
+                sec7_note: "Firebase Analytics é regido pela política de privacidade do Google; Apple iCloud é regido pelos termos do iCloud da Apple; Supabase é regido pela política de privacidade do Supabase. Revise os termos de cada serviço. v0.1.0 não inclui nenhum serviço de sincronização multiplataforma operado por nós; um serviço pago opcional poderá ser adicionado em um nível Pro futuro.",
                 sec8_title: "8. Privacidade infantil",
                 sec8_desc: "Este aplicativo não é direcionado a crianças menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças. Se você descobrir que uma criança nos forneceu informações pessoais, entre em contato conosco e removeremos essas informações prontamente.",
                 sec9_title: "9. Alterações na política",
@@ -1685,23 +1791,25 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "Se você tiver alguma dúvida ou sugestão sobre esta política de privacidade, entre em contato conosco: ",
                 email: "E-mail: ",
                 sec11_title: "11. Permissões",
-                sec11_intro: "Este aplicativo requer as seguintes permissões do sistema: ",
+                sec11_intro: "Este aplicativo utiliza as seguintes permissões do sistema. Todas as permissões são opcionais; negá-las não afeta a funcionalidade local principal do aplicativo.",
                 sec11_1: "Notificações: enviar notificações de lembrete de tarefas (opcional)",
-                sec11_2: "Rede: sincronizar dados com seus serviços de terceiros configurados (somente quando a sincronização está habilitada)",
-                sec11_3: "Rede local (iOS): conectar-se a servidores de sincronização personalizados na rede local (opcional)",
+                sec11_2: "Rede: usada somente quando você configura Supabase ou um backend auto-hospedado, ou quando a sincronização Apple iCloud está habilitada nas plataformas Apple. v0.1.0 não contacta servidores operados por nós.",
+                sec11_3: "Rede local (iOS): reservada para a futura descoberta de backends auto-hospedados. v0.1.0 não usa essa permissão para se conectar a qualquer servidor.",
                 sec11_note: "Todas as permissões são opcionais. Negar uma permissão não afetará a funcionalidade local principal do aplicativo.",
                 final_statement: "Declaração: ",
                 final_desc: " O XdoList é um aplicativo que respeita a privacidade. Seus dados pertencem a você. Fornecemos apenas ferramentas para ajudá-lo a gerenciar seus dados e não possuímos, analisamos ou vendemos suas informações pessoais.",
-                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência.",
-                cookie_dismiss: "Entendi"
+                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Você pode aceitar ou recusar cookies analíticos; os cookies essenciais para o funcionamento do site não podem ser desativados.",
+                cookie_dismiss: "Entendi",
+                cookie_accept: "Aceitar análise",
+                cookie_decline: "Recusar"
             },
             it: {
                 back_home: "← Torna alla home",
                 title: "Informativa sulla privacy",
                 effective: "Data di entrata in vigore: ",
-                effective_date: "2 giugno 2026",
+                effective_date: "2 luglio 2026",
                 updated: "Ultimo aggiornamento: ",
-                updated_date: "2 giugno 2026",
+                updated_date: "2 luglio 2026",
                 sec1_title: "1. Introduzione",
                 sec1_desc: "XdoList ('noi', 'l'app') è un'applicazione di gestione delle attività. Diamo grande valore alla tua privacy, e questa informativa sulla privacy spiega come raccogliamo, utilizziamo, archiviamo e proteggiamo le tue informazioni personali.",
                 notice: "Si prega di notare: ",
@@ -1735,9 +1843,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec3_1_title: "3.1 Archiviazione locale",
                 sec3_1_desc: "Tutti i dati delle attività sono archiviati localmente nel database del tuo dispositivo (SQLite) per impostazione predefinita. Non carichiamo questi dati sui nostri server.",
                 sec3_2_title: "3.2 Dati di sincronizzazione",
-                sec3_2_intro: "Se abiliti la sincronizzazione: ",
-                sec3_2_1: "Sincronizzazione Supabase: i dati sono archiviati nel tuo progetto Supabase, a cui non abbiamo accesso",
-                sec3_2_2: "Sincronizzazione API personalizzata: i dati sono archiviati sul tuo server distribuito",
+                sec3_2_intro: "v0.1.0 supporta solo i tre percorsi di sincronizzazione opzionali seguenti. Per impostazione predefinita nessun percorso invia dati a server gestiti da noi:",
+                sec3_2_1: "Apple iCloud (solo piattaforme Apple): canale di sincronizzazione di base da dispositivo a dispositivo fornito da Apple; soggetto ai termini iCloud di Apple, non a noi.",
+                sec3_2_2: "Supabase: i dati sono archiviati nel tuo progetto Supabase, a cui non abbiamo accesso.",
+                sec3_2_3: "Backend self-hosted: i dati sono archiviati su un server che tu distribuisci e gestisci; non abbiamo accesso.",
+                sec6_1_1: "Dati attivi: in v0.1.0 i dati non vengono caricati su server gestiti da noi, quindi non disponiamo di una copia indipendente. Vengono conservati a tempo indeterminato finché non li elimini attivamente.",
+                sec6_1_3: "Log delle operazioni: vengono conservati solo localmente sul tuo dispositivo finché non cancelli i dati dell'app o la disinstalli. v0.1.0 non elimina automaticamente i log dopo un periodo fisso.",
+                table_analytics: "Analisi anonima dell'uso",
+                table_event: "Metadati anonimi degli eventi (schermata, tipo di azione)",
                 sec3_3_title: "3.3 Dati di backup",
                 sec3_3_desc: "L'app supporta la creazione di file di backup locali archiviati sul tuo dispositivo. Puoi esportare i file di backup nella posizione scelta (archiviazione cloud, email, ecc.) tramite la funzionalità di condivisione del sistema.",
                 sec4_title: "4. Utilizzo dei dati",
@@ -1756,7 +1869,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec5_1_1: "Tutte le comunicazioni di rete utilizzano la crittografia HTTPS/TLS per impostazione predefinita",
                 sec5_1_2: "Se abiliti 'Consenti connessioni non sicure' (solo per sviluppo/test in rete interna), la comunicazione HTTP non sarà crittografata",
                 sec5_2_title: "5.2 Sicurezza locale",
-                sec5_2_1: "La password del database (se configurata) viene utilizzata solo per l'inizializzazione del database e può essere cancellata in qualsiasi momento",
+                sec5_2_1: "v0.1.0 non configura una password per il database. Il database SQLite locale è protetto dal sandbox standard del sistema operativo e dai permessi di archiviazione privati dell'app",
                 sec5_2_2: "L'app utilizza le autorizzazioni standard del file system del sistema operativo per proteggere i dati",
                 sec5_3_title: "5.3 Esportazione diagnostica",
                 sec5_3_1: "Le esportazioni diagnostiche di sincronizzazione ed errore vengono anonimizzate automaticamente",
@@ -1775,14 +1888,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec6_2_3: "Disinstallare l'app (elimina tutti i dati locali)",
                 sec6_2_4: "Revocare l'autorizzazione del servizio di sincronizzazione",
                 sec7_title: "7. Servizi di terze parti",
-                sec7_intro: "Questa app può utilizzare i seguenti servizi di terze parti (solo quando li configuri attivamente): ",
+                sec7_intro: "v0.1.0 utilizza i seguenti servizi. Nessuno di essi è un servizio di sincronizzazione multipiattaforma gestito da noi — i percorsi di sincronizzazione sono gestiti da Apple, da te, o ospitati da te.",
                 table_service: "Servizio",
                 table_purpose: "Scopo",
                 table_data: "Tipo di dato",
                 table_sync: "Sincronizzazione dati",
                 table_task_device: "Dati delle attività, ID dispositivo",
-                table_custom: "API personalizzata",
-                sec7_note: "Questi servizi di terze parti hanno le proprie informative sulla privacy. Ti consigliamo di consultare le informative sulla privacy dei relativi fornitori di servizi.",
+                table_custom: "Backend self-hosted",
+                table_user: "Tu (servizio di terze parti)",
+                table_us: "Noi",
+                table_analytics: "Analisi anonima dell'uso",
+                table_event: "Metadati anonimi degli eventi",
+                sec7_note: "Firebase Analytics è regolato dall'informativa sulla privacy di Google; Apple iCloud è regolato dai termini iCloud di Apple; Supabase è regolato dall'informativa sulla privacy di Supabase. Consulta i termini di ciascun servizio. v0.1.0 non include alcun servizio di sincronizzazione multipiattaforma gestito da noi; un servizio opzionale a pagamento potrà essere aggiunto in un futuro livello Pro.",
                 sec8_title: "8. Privacy dei bambini",
                 sec8_desc: "Questa app non è destinata ai bambini di età inferiore ai 13 anni. Non raccogliamo consapevolmente informazioni personali dai bambini. Se scopri che un bambino ci ha fornito informazioni personali, contattaci e provvederemo prontamente a eliminare tali informazioni.",
                 sec9_title: "9. Modifiche all'informativa",
@@ -1791,15 +1908,17 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 sec10_intro: "Se hai domande o suggerimenti su questa informativa sulla privacy, contattaci: ",
                 email: "Email: ",
                 sec11_title: "11. Permessi",
-                sec11_intro: "Questa app richiede i seguenti permessi di sistema: ",
+                sec11_intro: "Questa app utilizza i seguenti permessi di sistema. Tutti i permessi sono opzionali; negarli non influisce sulle funzionalità locali principali dell'app.",
                 sec11_1: "Notifiche: inviare notifiche di promemoria attività (opzionale)",
-                sec11_2: "Rete: sincronizzare i dati con i servizi di terze parti configurati (solo quando la sincronizzazione è abilitata)",
-                sec11_3: "Rete locale (iOS): connettersi a server di sincronizzazione personalizzati sulla rete locale (opzionale)",
+                sec11_2: "Rete: utilizzata solo quando configuri Supabase o un backend self-hosted, o quando la sincronizzazione Apple iCloud è abilitata sulle piattaforme Apple. v0.1.0 non contatta server gestiti da noi.",
+                sec11_3: "Rete locale (iOS): riservata alla futura scoperta di backend self-hosted. v0.1.0 non utilizza questo permesso per connettersi ad alcun server.",
                 sec11_note: "Tutti i permessi sono opzionali. Il rifiuto di un permesso non influenzerà le funzionalità locali principali dell'app.",
                 final_statement: "Dichiarazione: ",
                 final_desc: " XdoList è un'app che rispetta la privacy. I tuoi dati ti appartengono. Forniamo solo strumenti per aiutarti a gestire i tuoi dati e non possediamo, analizziamo o vendiamo le tue informazioni personali.",
-                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza.",
-                cookie_dismiss: "Capito"
+                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Puoi accettare o rifiutare i cookie analitici; i cookie essenziali per il funzionamento del sito non possono essere disattivati.",
+                cookie_dismiss: "Capito",
+                cookie_accept: "Accetta analisi",
+                cookie_decline: "Rifiuta"
             }
         };
 
@@ -1888,15 +2007,31 @@ XdoList ("we", "the app") is a task management application. We highly value your
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         updateThemeIcon(currentTheme);
 
-        // Cookie notice
-        function dismissCookieNotice() {
-            localStorage.setItem('cookie-notice-dismissed', '1');
-            const consent = document.getElementById('cookieConsent');
-            if (consent) consent.classList.remove('show');
+        // Cookie consent: required by GDPR / UK GDPR / Switzerland.
+        function setCookieConsent(value) {
+            try { localStorage.setItem('xdo-cookie-consent', value); } catch (e) { /* ignore */ }
+        }
+        function hideCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) banner.classList.remove('show');
+        }
+        function acceptAnalyticsCookies() {
+            setCookieConsent('granted');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'granted' });
+            }
+        }
+        function declineAnalyticsCookies() {
+            setCookieConsent('denied');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'denied' });
+            }
         }
 
-        // Show cookie notice if not dismissed
-        if (!localStorage.getItem('cookie-notice-dismissed')) {
+        // Show the cookie banner the first time a visitor lands on the page.
+        if (!localStorage.getItem('xdo-cookie-consent')) {
             const consent = document.getElementById('cookieConsent');
             if (consent) consent.classList.add('show');
         }
