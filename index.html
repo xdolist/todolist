@@ -58,21 +58,6 @@
     }
     </script>
 
-    <!-- Structured Data: WebSite -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "XdoList",
-        "url": "https://xdolist.com/",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://xdolist.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -101,11 +86,31 @@
     </script>
     <script>
       window.XDO_COOKIE_CONSENT_KEY = 'xdo-cookie-consent';
+      window.XDO_COOKIE_CONSENT_VERSION = 1;
+      window.XDO_GA_ID = 'G-BV5Z2HLG2C';
+      function getCookieConsent() {
+        try {
+          var raw = localStorage.getItem(window.XDO_COOKIE_CONSENT_KEY);
+          if (!raw) return null;
+          if (raw === 'granted' || raw === 'denied') {
+            return { analytics: raw, version: 0 };
+          }
+          return JSON.parse(raw);
+        } catch (e) { return null; }
+      }
+      function loadAnalyticsScript() {
+        if (document.querySelector('script[data-xdo-analytics="ga4"]')) return;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.XDO_GA_ID;
+        script.dataset.xdoAnalytics = 'ga4';
+        document.head.appendChild(script);
+        gtag('config', window.XDO_GA_ID, { anonymize_ip: true });
+      }
       try {
-        var consent = localStorage.getItem(window.XDO_COOKIE_CONSENT_KEY);
-        if (consent === 'granted') {
-          document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=G-BV5Z2HLG2C"><\/script>');
-          gtag('config', 'G-BV5Z2HLG2C', { anonymize_ip: true });
+        var consent = getCookieConsent();
+        if (consent && consent.analytics === 'granted' && consent.version === window.XDO_COOKIE_CONSENT_VERSION) {
+          loadAnalyticsScript();
         }
       } catch (e) { /* localStorage unavailable */ }
     </script>
@@ -118,7 +123,7 @@
 
         ::selection {
             background: var(--accent);
-            color: #ffffff;
+            color: #111118;
         }
 
         :root {
@@ -459,14 +464,32 @@
             border-top: 1px solid var(--border);
         }
 
-        footer a {
+        footer a,
+        .footer-link-button {
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.25s ease;
         }
 
-        footer a:hover {
+        .footer-link-button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+            letter-spacing: inherit;
+            text-transform: inherit;
+        }
+
+        footer a:hover,
+        .footer-link-button:hover {
             color: var(--accent);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .footer-links {
@@ -634,6 +657,16 @@
             flex: 1;
         }
 
+        .cookie-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .cookie-content a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
         .cookie-buttons {
             display: flex;
             flex-shrink: 0;
@@ -648,7 +681,7 @@
             transition: all 0.2s ease;
             border: 1px solid var(--border);
             background: var(--accent);
-            color: var(--bg-primary);
+            color: #111118;
         }
 
         .cookie-btn:hover {
@@ -676,11 +709,11 @@
     </style>
 </head>
 <body>
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent" aria-describedby="cookieConsentDesc">
         <div class="cookie-content">
-            <p data-i18n="cookie_desc">We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.</p>
+            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
             <div class="cookie-buttons">
-                <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Decline</button>
+                <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Only essential</button>
                 <button class="cookie-btn" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
             </div>
         </div>
@@ -793,6 +826,7 @@
                 <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
                 <a href="terms-of-use.html" data-i18n="footer_terms">Terms of Use</a>
                 <a href="cookies.html">Cookie Policy</a>
+                <button type="button" class="footer-link-button" onclick="openCookiePreferences()" data-i18n="footer_privacy_choices">Privacy Choices</button>
                 <a href="https://github.com/xdolist/xdolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
@@ -838,12 +872,14 @@
                 privacy_btn: "View Full Privacy Policy",
                 footer_privacy: "Privacy Policy",
                 footer_terms: "Terms of Use",
+                footer_privacy_choices: "Privacy Choices",
                 footer_feedback: "Feedback",
                 footer_contact: "Contact Us",
-                cookie_desc: "We use cookies to analyze site traffic and improve your experience. You can accept or decline analytics cookies; essential cookies required for the site to function cannot be disabled.",
+                cookie_desc: "We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.",
+                cookie_policy_link: "Cookie Policy",
                 cookie_dismiss: "Got it",
                 cookie_accept: "Accept analytics",
-                cookie_decline: "Decline"
+                cookie_decline: "Only essential"
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
@@ -868,12 +904,14 @@
                 privacy_btn: "プライバシーポリシーを見る",
                 footer_privacy: "プライバシーポリシー",
                 footer_terms: "利用規約",
+                footer_privacy_choices: "プライバシー設定",
                 footer_feedback: "フィードバック",
                 footer_contact: "お問い合わせ",
-                cookie_desc: "サイトのトラフィック分析と体験向上のためにクッキーを使用しています。分析クッキーは承諾/拒否を選択できます。サイト機能に必要な必須クッキーは無効化できません。",
+                cookie_desc: "XdoList の改善のため、任意の分析 Cookie を使用します。分析 Cookie は同意するまで無効です。必須 Cookie は言語、テーマ、同意状態を保存し、無効化できません。",
+                cookie_policy_link: "Cookie ポリシー",
                 cookie_dismiss: "了解",
                 cookie_accept: "分析を受け入れる",
-                cookie_decline: "拒否する"
+                cookie_decline: "必須のみ"
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
@@ -898,12 +936,14 @@
                 privacy_btn: "查看完整隐私政策",
                 footer_privacy: "隐私政策",
                 footer_terms: "用户协议",
+                footer_privacy_choices: "隐私选择",
                 footer_feedback: "反馈问题",
                 footer_contact: "联系我们",
-                cookie_desc: "我们使用 Cookie 来分析网站流量并改善您的体验。您可以选择接受或拒绝分析 Cookie；网站功能所必需的必要 Cookie 无法禁用。",
+                cookie_desc: "我们使用可选的分析 Cookie 了解网站流量并改进 XdoList。分析 Cookie 在您接受前默认关闭。必要 Cookie 用于保存语言、主题和同意选择，无法禁用。",
+                cookie_policy_link: "Cookie 政策",
                 cookie_dismiss: "知道了",
                 cookie_accept: "接受分析",
-                cookie_decline: "拒绝"
+                cookie_decline: "仅必要 Cookie"
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
@@ -928,12 +968,14 @@
                 privacy_btn: "전체 개인정보 처리방침 보기",
                 footer_privacy: "개인정보 처리방침",
                 footer_terms: "이용약관",
+                footer_privacy_choices: "개인정보 선택",
                 footer_feedback: "피드백",
                 footer_contact: "문의하기",
-                cookie_desc: "사이트 트래픽 분석과 경험 향상을 위해 쿠키를 사용합니다. 분석 쿠키는 수락 또는 거절을 선택할 수 있습니다. 사이트 기능에 필요한 필수 쿠키는 비활성화할 수 없습니다.",
+                cookie_desc: "XdoList 개선을 위해 선택적 분석 쿠키를 사용합니다. 분석 쿠키는 동의 전까지 꺼져 있습니다. 필수 쿠키는 언어, 테마, 동의 선택을 저장하며 비활성화할 수 없습니다.",
+                cookie_policy_link: "쿠키 정책",
                 cookie_dismiss: "확인",
                 cookie_accept: "분석 수락",
-                cookie_decline: "거절"
+                cookie_decline: "필수만 사용"
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
@@ -958,12 +1000,14 @@
                 privacy_btn: "Vollständige Datenschutzerklärung anzeigen",
                 footer_privacy: "Datenschutzerklärung",
                 footer_terms: "Nutzungsbedingungen",
+                footer_privacy_choices: "Datenschutzauswahl",
                 footer_feedback: "Feedback",
                 footer_contact: "Kontakt",
-                cookie_desc: "Wir verwenden Cookies zur Analyse des Website-Traffics und zur Verbesserung Ihrer Erfahrung. Sie können Analyse-Cookies akzeptieren oder ablehnen; erforderliche Cookies für die Seitenfunktion können nicht deaktiviert werden.",
+                cookie_desc: "Wir verwenden optionale Analyse-Cookies, um den Website-Traffic zu verstehen und XdoList zu verbessern. Analyse-Cookies sind deaktiviert, bis Sie zustimmen. Erforderliche Cookies speichern Sprache, Design und Einwilligung und können nicht deaktiviert werden.",
+                cookie_policy_link: "Cookie-Richtlinie",
                 cookie_dismiss: "Verstanden",
                 cookie_accept: "Analyse akzeptieren",
-                cookie_decline: "Ablehnen"
+                cookie_decline: "Nur erforderliche"
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
@@ -988,12 +1032,14 @@
                 privacy_btn: "Consulter la politique de confidentialité complète",
                 footer_privacy: "Politique de confidentialité",
                 footer_terms: "Conditions d'utilisation",
+                footer_privacy_choices: "Choix de confidentialité",
                 footer_feedback: "Retour d'expérience",
                 footer_contact: "Nous contacter",
-                cookie_desc: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. Vous pouvez accepter ou refuser les cookies analytiques ; les cookies essentiels au fonctionnement du site ne peuvent pas être désactivés.",
+                cookie_desc: "Nous utilisons des cookies analytiques facultatifs pour comprendre le trafic du site et améliorer XdoList. Ils restent désactivés jusqu'à votre accord. Les cookies essentiels enregistrent la langue, le thème et votre choix de consentement et ne peuvent pas être désactivés.",
+                cookie_policy_link: "Politique relative aux cookies",
                 cookie_dismiss: "Compris",
                 cookie_accept: "Accepter l'analyse",
-                cookie_decline: "Refuser"
+                cookie_decline: "Essentiels uniquement"
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
@@ -1018,12 +1064,14 @@
                 privacy_btn: "Ver política de privacidad completa",
                 footer_privacy: "Política de privacidad",
                 footer_terms: "Términos de uso",
+                footer_privacy_choices: "Opciones de privacidad",
                 footer_feedback: "Comentarios",
                 footer_contact: "Contacto",
-                cookie_desc: "Utilizamos cookies para analizar el tráfico del sitio y mejorar su experiencia. Puede aceptar o rechazar las cookies analíticas; las cookies esenciales para el funcionamiento del sitio no se pueden desactivar.",
+                cookie_desc: "Usamos cookies analíticas opcionales para entender el tráfico del sitio y mejorar XdoList. Están desactivadas hasta que usted las acepte. Las cookies esenciales guardan idioma, tema y elección de consentimiento y no se pueden desactivar.",
+                cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendido",
                 cookie_accept: "Aceptar análisis",
-                cookie_decline: "Rechazar"
+                cookie_decline: "Solo esenciales"
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
@@ -1048,12 +1096,14 @@
                 privacy_btn: "عرض سياسة الخصوصية الكاملة",
                 footer_privacy: "سياسة الخصوصية",
                 footer_terms: "شروط الاستخدام",
+                footer_privacy_choices: "خيارات الخصوصية",
                 footer_feedback: "ملاحظات",
                 footer_contact: "تواصل معنا",
-                cookie_desc: "نستخدم ملفات تعريف الارتباط لتحليل حركة الموقع وتحسين تجربتك. يمكنك قبول أو رفض ملفات تعريف الارتباط التحليلية؛ لا يمكن تعطيل ملفات تعريف الارتباط الأساسية اللازمة لتشغيل الموقع.",
+                cookie_desc: "نستخدم ملفات تعريف ارتباط تحليلية اختيارية لفهم حركة الموقع وتحسين XdoList. تبقى ملفات التحليل معطلة حتى توافق. تحفظ الملفات الأساسية اللغة والمظهر وخيار الموافقة ولا يمكن تعطيلها.",
+                cookie_policy_link: "سياسة ملفات تعريف الارتباط",
                 cookie_dismiss: "فهمت",
                 cookie_accept: "قبول التحليل",
-                cookie_decline: "رفض"
+                cookie_decline: "الأساسية فقط"
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
@@ -1078,12 +1128,14 @@
                 privacy_btn: "Ver política de privacidade completa",
                 footer_privacy: "Política de privacidade",
                 footer_terms: "Termos de Uso",
+                footer_privacy_choices: "Opções de privacidade",
                 footer_feedback: "Feedback",
                 footer_contact: "Fale conosco",
-                cookie_desc: "Usamos cookies para analisar o tráfego do site e melhorar sua experiência. Você pode aceitar ou recusar cookies analíticos; os cookies essenciais para o funcionamento do site não podem ser desativados.",
+                cookie_desc: "Usamos cookies analíticos opcionais para entender o tráfego do site e melhorar o XdoList. Eles ficam desativados até você aceitar. Cookies essenciais armazenam idioma, tema e consentimento e não podem ser desativados.",
+                cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendi",
                 cookie_accept: "Aceitar análise",
-                cookie_decline: "Recusar"
+                cookie_decline: "Apenas essenciais"
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
@@ -1108,12 +1160,14 @@
                 privacy_btn: "Visualizza l'informativa sulla privacy completa",
                 footer_privacy: "Informativa sulla privacy",
                 footer_terms: "Termini di utilizzo",
+                footer_privacy_choices: "Scelte privacy",
                 footer_feedback: "Feedback",
                 footer_contact: "Contattaci",
-                cookie_desc: "Utilizziamo i cookie per analizzare il traffico del sito e migliorare la tua esperienza. Puoi accettare o rifiutare i cookie analitici; i cookie essenziali per il funzionamento del sito non possono essere disattivati.",
+                cookie_desc: "Utilizziamo cookie analitici opzionali per comprendere il traffico del sito e migliorare XdoList. Sono disattivati finché non li accetti. I cookie essenziali salvano lingua, tema e consenso e non possono essere disattivati.",
+                cookie_policy_link: "Politica sui cookie",
                 cookie_dismiss: "Capito",
                 cookie_accept: "Accetta analisi",
-                cookie_decline: "Rifiuta"
+                cookie_decline: "Solo essenziali"
             }
         };
 
@@ -1206,17 +1260,32 @@
         // Analytics cookies are off until the user opts in. Essential cookies
         // required to remember the chosen language and theme are always set.
         function setCookieConsent(value) {
-            try { localStorage.setItem('xdo-cookie-consent', value); } catch (e) { /* ignore */ }
+            const consent = {
+                analytics: value,
+                version: window.XDO_COOKIE_CONSENT_VERSION,
+                ts: Date.now()
+            };
+            try {
+                localStorage.setItem(window.XDO_COOKIE_CONSENT_KEY, JSON.stringify(consent));
+            } catch (e) { /* ignore */ }
         }
         function hideCookieConsent() {
             const banner = document.getElementById('cookieConsent');
             if (banner) banner.classList.remove('show');
+        }
+        function showCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) banner.classList.add('show');
+        }
+        function openCookiePreferences() {
+            showCookieConsent();
         }
         function acceptAnalyticsCookies() {
             setCookieConsent('granted');
             hideCookieConsent();
             if (typeof gtag === 'function') {
                 gtag('consent', 'update', { analytics_storage: 'granted' });
+                loadAnalyticsScript();
             }
         }
         function declineAnalyticsCookies() {
@@ -1228,9 +1297,9 @@
         }
 
         // Show the cookie banner the first time a visitor lands on the site.
-        if (!localStorage.getItem('xdo-cookie-consent')) {
-            const consent = document.getElementById('cookieConsent');
-            if (consent) consent.classList.add('show');
+        const currentConsent = getCookieConsent();
+        if (!currentConsent || currentConsent.version !== window.XDO_COOKIE_CONSENT_VERSION) {
+            showCookieConsent();
         }
     </script>
 </body>
