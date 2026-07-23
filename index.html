@@ -1894,6 +1894,8 @@
             it: 'it'
         };
 
+        let currentLang = 'en';
+
         const translations = {
             en: {
                 tagline: "Keep Your Workflow. Get More Power.",
@@ -1991,7 +1993,11 @@
                 faq_q5: "How do reminders work?",
                 faq_a5: "Local notifications scheduled by iOS. Recurring rules (daily, weekly, monthly, yearly) are supported. Reminders never leave your device.",
                 faq_q6: "Is it free?",
-                faq_a6: "Yes. The full app is free, with no ads and no upsells blocking basic features. The app collects only anonymous usage events—never your task content."
+                faq_a6: "Yes. The full app is free, with no ads and no upsells blocking basic features. The app collects only anonymous usage events—never your task content.",
+                theme_auto: "Theme: follow system",
+                theme_light: "Theme: light",
+                theme_dark: "Theme: dark",
+
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
@@ -2091,6 +2097,10 @@
                 privacy_point_one: "タスクは端末に保存",
                 privacy_point_two: "登録やメールアドレスは不要",
                 privacy_point_three: "分析は匿名で、タスク内容は含まれません",
+                theme_auto: "テーマ：システムに従う",
+                theme_light: "テーマ：ライト",
+                theme_dark: "テーマ：ダーク",
+
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
@@ -2190,6 +2200,10 @@
                 privacy_point_one: "任务只保存在你的设备上",
                 privacy_point_two: "无需注册或邮箱",
                 privacy_point_three: "分析是匿名的，不包含任务内容",
+                theme_auto: "主题：跟随系统",
+                theme_light: "主题：浅色",
+                theme_dark: "主题：深色",
+
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
@@ -2288,6 +2302,10 @@
                 privacy_point_one: "태스크는 기기에 저장됩니다",
                 privacy_point_two: "가입이나 이메일이 필요 없습니다",
                 privacy_point_three: "분석은 익명이며 태스크 내용을 포함하지 않습니다",
+                theme_auto: "테마: 시스템 따르기",
+                theme_light: "테마: 라이트",
+                theme_dark: "테마: 다크",
+
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
@@ -2386,6 +2404,10 @@
                 privacy_point_one: "Aufgaben bleiben auf deinem Gerät",
                 privacy_point_two: "Keine Anmeldung oder E-Mail erforderlich",
                 privacy_point_three: "Analysen sind anonym und enthalten keine Aufgabeninhalte",
+                theme_auto: "Design: System folgen",
+                theme_light: "Design: Hell",
+                theme_dark: "Design: Dunkel",
+
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
@@ -2484,6 +2506,10 @@
                 privacy_point_one: "Les tâches restent sur votre appareil",
                 privacy_point_two: "Aucune inscription ni e-mail requis",
                 privacy_point_three: "Les analyses sont anonymes et n'incluent jamais le contenu des tâches",
+                theme_auto: "Thème : suivre le système",
+                theme_light: "Thème : clair",
+                theme_dark: "Thème : sombre",
+
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
@@ -2582,6 +2608,10 @@
                 privacy_point_one: "Las tareas se quedan en tu dispositivo",
                 privacy_point_two: "Sin registro ni correo electrónico",
                 privacy_point_three: "La analítica es anónima y nunca incluye el contenido de las tareas",
+                theme_auto: "Tema: seguir sistema",
+                theme_light: "Tema: claro",
+                theme_dark: "Tema: oscuro",
+
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
@@ -2680,6 +2710,10 @@
                 privacy_point_one: "المهام تبقى على جهازك",
                 privacy_point_two: "لا حاجة للتسجيل أو البريد الإلكتروني",
                 privacy_point_three: "التحليلات مجهولة ولا تتضمن محتوى المهام أبدًا",
+                theme_auto: "المظهر: تابع للنظام",
+                theme_light: "المظهر: فاتح",
+                theme_dark: "المظهر: داكن",
+
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
@@ -2778,6 +2812,10 @@
                 privacy_point_one: "As tarefas ficam no seu dispositivo",
                 privacy_point_two: "Sem cadastro nem e-mail",
                 privacy_point_three: "A análise é anônima e nunca inclui o conteúdo das tarefas",
+                theme_auto: "Tema: seguir o sistema",
+                theme_light: "Tema: claro",
+                theme_dark: "Tema: escuro",
+
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
@@ -2876,10 +2914,60 @@
                 privacy_point_one: "Le attività restano sul tuo dispositivo",
                 privacy_point_two: "Nessuna registrazione né email richiesta",
                 privacy_point_three: "Le analisi sono anonime e non includono mai il contenuto delle attività",
+                theme_auto: "Tema: segui il sistema",
+                theme_light: "Tema: chiaro",
+                theme_dark: "Tema: scuro",
+
             }
         };
 
+        // 主题三态循环：跟随系统 → 浅色 → 深色
+        function getThemeMode() {
+            const saved = localStorage.getItem('theme');
+            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
+        }
+
+        function resolveSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyThemeMode(mode) {
+            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(mode);
+        }
+
+        function toggleTheme() {
+            const order = ['auto', 'light', 'dark'];
+            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
+            localStorage.setItem('theme', next);
+            applyThemeMode(next);
+        }
+
+        const THEME_ICONS = {
+            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
+            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+        };
+
+        function updateThemeIcon(mode) {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
+                const t = translations[currentLang] || translations.en;
+                const key = mode === 'auto' ? 'theme_auto' : mode === 'light' ? 'theme_light' : 'theme_dark';
+                btn.title = t[key] || translations.en[key];
+            }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+            if (getThemeMode() === 'auto') applyThemeMode('auto');
+        });
+
+        applyThemeMode(getThemeMode());
+
         function setLang(lang) {
+            currentLang = lang;
             document.documentElement.lang = langMap[lang] || lang;
             localStorage.setItem('preferred-lang', lang);
 
@@ -2916,6 +3004,7 @@
                     el.textContent = text;
                 }
             });
+            updateThemeIcon(getThemeMode());
         }
 
         function toggleLangPanel() {
@@ -2945,48 +3034,6 @@
         setLang(initialLang);
 
         // Theme toggle
-        // 主题三态循环：跟随系统 → 浅色 → 深色
-        function getThemeMode() {
-            const saved = localStorage.getItem('theme');
-            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
-        }
-
-        function resolveSystemTheme() {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function applyThemeMode(mode) {
-            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
-            document.documentElement.setAttribute('data-theme', theme);
-            updateThemeIcon(mode);
-        }
-
-        function toggleTheme() {
-            const order = ['auto', 'light', 'dark'];
-            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
-            localStorage.setItem('theme', next);
-            applyThemeMode(next);
-        }
-
-        const THEME_ICONS = {
-            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
-            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
-            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
-        };
-
-        function updateThemeIcon(mode) {
-            const btn = document.querySelector('.theme-toggle');
-            if (btn) {
-                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
-                btn.title = mode === 'auto' ? 'Theme: follow system' : mode === 'light' ? 'Theme: light' : 'Theme: dark';
-            }
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-            if (getThemeMode() === 'auto') applyThemeMode('auto');
-        });
-
-        applyThemeMode(getThemeMode());
 
         // Cookie consent: required by GDPR / UK GDPR / Switzerland.
         // Analytics cookies are off until the user opts in. Essential cookies

@@ -1027,6 +1027,8 @@ XdoList ("we", "the app") is a task management application. We highly value your
             it: 'it'
         };
 
+        let currentLang = 'en';
+
         const translations = {
             en: {
                 back_home: "← Back to Home",
@@ -1148,6 +1150,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Privacy Choices",
                 footer_feedback: "Feedback",
                 footer_contact: "Contact Us",
+                theme_auto: "Theme: follow system",
+                theme_light: "Theme: light",
+                theme_dark: "Theme: dark",
 
             },
             ja: {
@@ -1271,6 +1276,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "プライバシー設定",
                 footer_feedback: "フィードバック",
                 footer_contact: "お問い合わせ",
+                theme_auto: "テーマ：システムに従う",
+                theme_light: "テーマ：ライト",
+                theme_dark: "テーマ：ダーク",
 
             },
             zh: {
@@ -1396,6 +1404,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "隐私选择",
                 footer_feedback: "反馈问题",
                 footer_contact: "联系我们",
+                theme_auto: "主题：跟随系统",
+                theme_light: "主题：浅色",
+                theme_dark: "主题：深色",
 
             },
             ko: {
@@ -1522,6 +1533,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "개인정보 선택",
                 footer_feedback: "피드백",
                 footer_contact: "문의하기",
+                theme_auto: "테마: 시스템 따르기",
+                theme_light: "테마: 라이트",
+                theme_dark: "테마: 다크",
 
             },
             de: {
@@ -1648,6 +1662,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Datenschutzauswahl",
                 footer_feedback: "Feedback",
                 footer_contact: "Kontakt",
+                theme_auto: "Design: System folgen",
+                theme_light: "Design: Hell",
+                theme_dark: "Design: Dunkel",
 
             },
             fr: {
@@ -1774,6 +1791,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Choix de confidentialité",
                 footer_feedback: "Retour d'expérience",
                 footer_contact: "Nous contacter",
+                theme_auto: "Thème : suivre le système",
+                theme_light: "Thème : clair",
+                theme_dark: "Thème : sombre",
 
             },
             es: {
@@ -1900,6 +1920,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Opciones de privacidad",
                 footer_feedback: "Comentarios",
                 footer_contact: "Contacto",
+                theme_auto: "Tema: seguir sistema",
+                theme_light: "Tema: claro",
+                theme_dark: "Tema: oscuro",
 
             },
             ar: {
@@ -2026,6 +2049,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "خيارات الخصوصية",
                 footer_feedback: "ملاحظات",
                 footer_contact: "تواصل معنا",
+                theme_auto: "المظهر: تابع للنظام",
+                theme_light: "المظهر: فاتح",
+                theme_dark: "المظهر: داكن",
 
             },
             pt: {
@@ -2152,6 +2178,9 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Opções de privacidade",
                 footer_feedback: "Feedback",
                 footer_contact: "Fale conosco",
+                theme_auto: "Tema: seguir o sistema",
+                theme_light: "Tema: claro",
+                theme_dark: "Tema: escuro",
 
             },
             it: {
@@ -2278,11 +2307,60 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 footer_privacy_choices: "Scelte privacy",
                 footer_feedback: "Feedback",
                 footer_contact: "Contattaci",
+                theme_auto: "Tema: segui il sistema",
+                theme_light: "Tema: chiaro",
+                theme_dark: "Tema: scuro",
 
             }
         };
 
+        // 主题三态循环：跟随系统 → 浅色 → 深色
+        function getThemeMode() {
+            const saved = localStorage.getItem('theme');
+            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
+        }
+
+        function resolveSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyThemeMode(mode) {
+            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(mode);
+        }
+
+        function toggleTheme() {
+            const order = ['auto', 'light', 'dark'];
+            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
+            localStorage.setItem('theme', next);
+            applyThemeMode(next);
+        }
+
+        const THEME_ICONS = {
+            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
+            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+        };
+
+        function updateThemeIcon(mode) {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
+                const t = translations[currentLang] || translations.en;
+                const key = mode === 'auto' ? 'theme_auto' : mode === 'light' ? 'theme_light' : 'theme_dark';
+                btn.title = t[key] || translations.en[key];
+            }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+            if (getThemeMode() === 'auto') applyThemeMode('auto');
+        });
+
+        applyThemeMode(getThemeMode());
+
         function setLang(lang) {
+            currentLang = lang;
             document.documentElement.lang = langMap[lang] || lang;
             localStorage.setItem('preferred-lang', lang);
 
@@ -2319,6 +2397,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
                     el.textContent = text;
                 }
             });
+            updateThemeIcon(getThemeMode());
         }
 
         function toggleLangPanel() {
@@ -2348,48 +2427,6 @@ XdoList ("we", "the app") is a task management application. We highly value your
         setLang(initialLang);
 
         // Theme toggle
-        // 主题三态循环：跟随系统 → 浅色 → 深色
-        function getThemeMode() {
-            const saved = localStorage.getItem('theme');
-            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
-        }
-
-        function resolveSystemTheme() {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function applyThemeMode(mode) {
-            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
-            document.documentElement.setAttribute('data-theme', theme);
-            updateThemeIcon(mode);
-        }
-
-        function toggleTheme() {
-            const order = ['auto', 'light', 'dark'];
-            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
-            localStorage.setItem('theme', next);
-            applyThemeMode(next);
-        }
-
-        const THEME_ICONS = {
-            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
-            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
-            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
-        };
-
-        function updateThemeIcon(mode) {
-            const btn = document.querySelector('.theme-toggle');
-            if (btn) {
-                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
-                btn.title = mode === 'auto' ? 'Theme: follow system' : mode === 'light' ? 'Theme: light' : 'Theme: dark';
-            }
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-            if (getThemeMode() === 'auto') applyThemeMode('auto');
-        });
-
-        applyThemeMode(getThemeMode());
 
         // Cookie consent: required by GDPR / UK GDPR / Switzerland.
         function setCookieConsent(value) {
