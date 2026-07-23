@@ -129,7 +129,7 @@
         (function() {
             const saved = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'dark' : 'light');
+            const theme = (saved === 'light' || saved === 'dark') ? saved : (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
@@ -271,9 +271,11 @@
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
-            background: var(--bg-primary);
+            background: color-mix(in srgb, var(--bg-primary) 78%, transparent);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
             padding: 14px 40px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-strong);
             align-items: center;
         }
 
@@ -349,6 +351,8 @@
 
         .lang-toggle {
             display: inline-flex;
+            height: 36px;
+            box-sizing: border-box;
             padding: 6px 12px;
             border: 1px solid var(--border);
             background: transparent;
@@ -419,6 +423,8 @@
         .hero {
             padding: 82px 40px 72px;
             background: linear-gradient(180deg, var(--bg-primary) 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         [data-theme="dark"] .hero {
@@ -460,6 +466,11 @@
             letter-spacing: -0.025em;
             line-height: 1.05;
             color: var(--text-primary);
+        }
+
+        /* 中文标题避免把词拆开（如「获得」），断行落在标点后 */
+        [lang="zh-CN"] .hero h1 {
+            word-break: keep-all;
         }
 
         .hero p.lead {
@@ -539,7 +550,8 @@
 
         .btn.solid:hover {
             background: var(--accent-hover);
-            transform: translateY(-1px);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 16px 32px -12px rgba(91, 94, 247, 0.65);
         }
 
         .btn.warm {
@@ -1391,21 +1403,34 @@
             }
 
             .hero-screens {
-                min-height: 430px;
+                min-height: 440px;
             }
 
             .hero-screens .shot-left,
             .hero-screens .shot-right {
-                display: none;
+                width: 142px;
+                top: 64px;
+                z-index: 1;
+                opacity: 0.88;
+            }
+
+            .hero-screens .shot-left {
+                left: 0;
+                transform: rotate(-6deg);
+            }
+
+            .hero-screens .shot-right {
+                right: 0;
+                transform: rotate(7deg);
             }
 
             .hero-screens .shot-main {
-                position: relative;
-                left: auto;
-                top: auto;
-                width: 238px;
-                margin: 0 auto;
-                transform: none;
+                left: 50%;
+                top: 0;
+                width: 196px;
+                margin: 0;
+                transform: translateX(-50%) rotate(1deg);
+                z-index: 3;
             }
 
             .trust-item,
@@ -1448,9 +1473,149 @@
             }
         }
 
+        /* ===== 动效：入场 / 悬浮 / 氛围 / 滚动显现 ===== */
+        @keyframes hero-fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-left > * {
+            animation: hero-fade-up 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        }
+
+        .hero-left > *:nth-child(1) { animation-delay: 0.05s; }
+        .hero-left > *:nth-child(2) { animation-delay: 0.12s; }
+        .hero-left > *:nth-child(3) { animation-delay: 0.19s; }
+        .hero-left > *:nth-child(4) { animation-delay: 0.26s; }
+        .hero-left > *:nth-child(5) { animation-delay: 0.33s; }
+        .hero-left > *:nth-child(6) { animation-delay: 0.4s; }
+
+        .hero-screens {
+            animation: hero-fade-up 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s both;
+        }
+
+        .trust-strip {
+            animation: hero-fade-up 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            background:
+                radial-gradient(42% 36% at 72% 30%, var(--accent-soft), transparent 70%),
+                radial-gradient(30% 30% at 18% 72%, var(--teal-soft), transparent 70%);
+            animation: hero-ambient 14s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes hero-ambient {
+            from {
+                transform: translate3d(-2%, -1%, 0) scale(1);
+            }
+            to {
+                transform: translate3d(2%, 2%, 0) scale(1.06);
+            }
+        }
+
+        @keyframes float-main {
+            0%, 100% { transform: translateX(-50%) rotate(1deg) translateY(0); }
+            50% { transform: translateX(-50%) rotate(1deg) translateY(-9px); }
+        }
+
+        @keyframes float-left {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-5deg) translateY(-7px); }
+        }
+
+        @keyframes float-right {
+            0%, 100% { transform: rotate(8deg) translateY(0); }
+            50% { transform: rotate(8deg) translateY(-6px); }
+        }
+
+        @keyframes float-left-m {
+            0%, 100% { transform: rotate(-6deg) translateY(0); }
+            50% { transform: rotate(-6deg) translateY(-6px); }
+        }
+
+        @keyframes float-right-m {
+            0%, 100% { transform: rotate(7deg) translateY(0); }
+            50% { transform: rotate(7deg) translateY(-5px); }
+        }
+
+        @keyframes shot-fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-screens .shot-main {
+            animation: shot-fade-in 0.8s ease 0.35s both, float-main 8s ease-in-out 1.2s infinite;
+        }
+
+        .hero-screens .shot-left {
+            animation: shot-fade-in 0.8s ease 0.45s both, float-left 7s ease-in-out 1.4s infinite;
+        }
+
+        .hero-screens .shot-right {
+            animation: shot-fade-in 0.8s ease 0.45s both, float-right 7.5s ease-in-out 1.6s infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+
+        .reveal.reveal-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 520px) {
+            .hero-screens .shot-left {
+                animation: shot-fade-in 0.8s ease 0.45s both, float-left-m 7s ease-in-out 1.4s infinite;
+            }
+
+            .hero-screens .shot-right {
+                animation: shot-fade-in 0.8s ease 0.45s both, float-right-m 7.5s ease-in-out 1.6s infinite;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .device-shot,
             .feature-card {
+                transition: none;
+            }
+
+            .hero-left > *,
+            .hero-screens,
+            .hero-screens .shot-main,
+            .hero-screens .shot-left,
+            .hero-screens .shot-right,
+            .trust-strip,
+            .hero::before {
+                animation: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
                 transition: none;
             }
         }
@@ -1488,7 +1653,7 @@
             <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
             <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></button>
     </header>
 
     <section class="hero" aria-label="Hero">
@@ -2780,25 +2945,48 @@
         setLang(initialLang);
 
         // Theme toggle
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon(next);
+        // 主题三态循环：跟随系统 → 浅色 → 深色
+        function getThemeMode() {
+            const saved = localStorage.getItem('theme');
+            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
         }
 
-        function updateThemeIcon(theme) {
+        function resolveSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyThemeMode(mode) {
+            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(mode);
+        }
+
+        function toggleTheme() {
+            const order = ['auto', 'light', 'dark'];
+            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
+            localStorage.setItem('theme', next);
+            applyThemeMode(next);
+        }
+
+        const THEME_ICONS = {
+            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
+            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+        };
+
+        function updateThemeIcon(mode) {
             const btn = document.querySelector('.theme-toggle');
             if (btn) {
-                btn.textContent = theme === 'dark' ? '◐' : '◑';
-                btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
+                btn.title = mode === 'auto' ? 'Theme: follow system' : mode === 'light' ? 'Theme: light' : 'Theme: dark';
             }
         }
 
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        updateThemeIcon(currentTheme);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+            if (getThemeMode() === 'auto') applyThemeMode('auto');
+        });
+
+        applyThemeMode(getThemeMode());
 
         // Cookie consent: required by GDPR / UK GDPR / Switzerland.
         // Analytics cookies are off until the user opts in. Essential cookies
@@ -2845,6 +3033,38 @@
         if (!currentConsent || currentConsent.version !== window.XDO_COOKIE_CONSENT_VERSION) {
             showCookieConsent();
         }
+
+        // 滚动显现：卡片与标题进入视口时淡入上移（一次性）
+        (function initScrollReveal() {
+            const targets = document.querySelectorAll(
+                '.formula-card, .workflow-item, .feature-card, .privacy-card, .download-card, .faq-item, section:not(.hero) .section-label, section:not(.hero) h2, section:not(.hero) .lead'
+            );
+            if (!('IntersectionObserver' in window) || targets.length === 0) {
+                targets.forEach(el => el.classList.add('reveal-in'));
+                return;
+            }
+            targets.forEach(el => {
+                el.classList.add('reveal');
+                const index = Array.prototype.indexOf.call(el.parentElement.children, el);
+                el.style.setProperty('--reveal-delay', (Math.max(index, 0) % 6) * 0.06 + 's');
+            });
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            targets.forEach(el => {
+                // 已在视口内的元素直接显现，避免依赖异步回调时序
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                    el.classList.add('reveal-in');
+                } else {
+                    observer.observe(el);
+                }
+            });
+        })();
     </script>
 </body>
 </html>

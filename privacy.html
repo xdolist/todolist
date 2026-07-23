@@ -57,7 +57,7 @@
         (function() {
             const saved = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'dark' : 'light');
+            const theme = (saved === 'light' || saved === 'dark') ? saved : (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
@@ -180,9 +180,11 @@
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
-            background: var(--bg-primary);
+            background: color-mix(in srgb, var(--bg-primary) 78%, transparent);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
             padding: 14px 40px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-strong);
             align-items: center;
         }
 
@@ -258,6 +260,8 @@
 
         .lang-toggle {
             display: inline-flex;
+            height: 36px;
+            box-sizing: border-box;
             padding: 6px 12px;
             border: 1px solid var(--border);
             background: transparent;
@@ -778,7 +782,7 @@
             <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
             <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></button>
     </header>
 
     <main class="page">
@@ -2344,25 +2348,48 @@ XdoList ("we", "the app") is a task management application. We highly value your
         setLang(initialLang);
 
         // Theme toggle
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon(next);
+        // 主题三态循环：跟随系统 → 浅色 → 深色
+        function getThemeMode() {
+            const saved = localStorage.getItem('theme');
+            return (saved === 'light' || saved === 'dark') ? saved : 'auto';
         }
 
-        function updateThemeIcon(theme) {
+        function resolveSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyThemeMode(mode) {
+            const theme = mode === 'auto' ? resolveSystemTheme() : mode;
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(mode);
+        }
+
+        function toggleTheme() {
+            const order = ['auto', 'light', 'dark'];
+            const next = order[(order.indexOf(getThemeMode()) + 1) % order.length];
+            localStorage.setItem('theme', next);
+            applyThemeMode(next);
+        }
+
+        const THEME_ICONS = {
+            auto: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 2.4 A5.6 5.6 0 0 1 8 13.6 Z" fill="currentColor"/></svg>',
+            light: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+            dark: '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+        };
+
+        function updateThemeIcon(mode) {
             const btn = document.querySelector('.theme-toggle');
             if (btn) {
-                btn.textContent = theme === 'dark' ? '◐' : '◑';
-                btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+                btn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
+                btn.title = mode === 'auto' ? 'Theme: follow system' : mode === 'light' ? 'Theme: light' : 'Theme: dark';
             }
         }
 
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        updateThemeIcon(currentTheme);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+            if (getThemeMode() === 'auto') applyThemeMode('auto');
+        });
+
+        applyThemeMode(getThemeMode());
 
         // Cookie consent: required by GDPR / UK GDPR / Switzerland.
         function setCookieConsent(value) {
