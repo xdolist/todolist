@@ -5,193 +5,1192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Policy - XdoList</title>
     <meta name="description" content="XdoList Cookie Policy - Learn how we use cookies on our website.">
-    <meta name="robots" content="index, follow">
+    <meta name="author" content="XdoList">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#0a0a0f">
 
     <link rel="canonical" href="https://xdolist.com/cookies.html">
     <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="en">
     <link rel="alternate" href="https://xdolist.com/cookies.html" hreflang="x-default">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xdolist.com/cookies.html">
+    <meta property="og:title" content="Terms of Use - XdoList">
+    <meta property="og:description" content="XdoList Cookie Policy - Learn how we use cookies on our website.">
+    <meta property="og:image" content="https://xdolist.com/logo.png">
+    <meta property="og:site_name" content="XdoList">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xdolist.com/cookies.html">
+    <meta name="twitter:title" content="Terms of Use - XdoList">
+    <meta name="twitter:description" content="XdoList Cookie Policy - Learn how we use cookies on our website.">
+    <meta name="twitter:image" content="https://xdolist.com/logo.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Cookie Policy - XdoList",
+        "description": "XdoList Cookie Policy - Learn how we use cookies on our website.",
+        "url": "https://xdolist.com/cookies.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "XdoList",
+            "url": "https://xdolist.com/"
+        }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-
+    <link rel="apple-touch-icon" href="./logo.png">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <!-- Google tag (gtag.js) — consent-mode loader. Until the user grants
+         analytics consent, the GA4 script is not loaded and no advertising
+         cookies are set; gtag() default consent is "denied". -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+      gtag('js', new Date());
+    </script>
+    <script>
+      window.XDO_COOKIE_CONSENT_KEY = 'xdo-cookie-consent';
+      window.XDO_COOKIE_CONSENT_VERSION = 1;
+      window.XDO_GA_ID = 'G-BV5Z2HLG2C';
+      function getCookieConsent() {
+        try {
+          var raw = localStorage.getItem(window.XDO_COOKIE_CONSENT_KEY);
+          if (!raw) return null;
+          if (raw === 'granted' || raw === 'denied') {
+            return { analytics: raw, version: 0 };
+          }
+          return JSON.parse(raw);
+        } catch (e) { return null; }
+      }
+      function loadAnalyticsScript() {
+        if (document.querySelector('script[data-xdo-analytics="ga4"]')) return;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.XDO_GA_ID;
+        script.dataset.xdoAnalytics = 'ga4';
+        document.head.appendChild(script);
+        gtag('config', window.XDO_GA_ID, { anonymize_ip: true });
+      }
+      try {
+        var consent = getCookieConsent();
+        if (consent && consent.analytics === 'granted' && consent.version === window.XDO_COOKIE_CONSENT_VERSION) {
+          loadAnalyticsScript();
+        }
+      } catch (e) { /* localStorage unavailable */ }
+    </script>
     <style>
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #151520;
-            --text-primary: #e5e5e5;
-            --text-secondary: #888888;
-            --text-muted: #555555;
-            --accent: #d4a574;
-            --accent-hover: #c49468;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #faf8f5;
-            --bg-secondary: #f5f2ed;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --text-muted: #999999;
-            --accent: #8b6f47;
-            --accent-hover: #6b5538;
-            --border: rgba(0, 0, 0, 0.08);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            min-height: 100vh;
+        ::selection {
+            background: var(--accent);
+            color: #ffffff;
         }
 
+        :root {
+            /* 浅色为默认，深色为亮色变体，由 [data-theme="dark"] 覆盖 */
+            --bg-primary: #F7F8FB;
+            --bg-section: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #0F1226;
+            --text-secondary: rgba(15, 18, 38, 0.65);
+            --text-muted: rgba(15, 18, 38, 0.45);
+            --accent: #5B5EF7;
+            --accent-hover: #484BE5;
+            --accent-soft: rgba(91, 94, 247, 0.12);
+            --accent-text: #484BE5;
+            --teal: #0F9F8F;
+            --teal-soft: rgba(15, 159, 143, 0.12);
+            --warm: #F97316;
+            --warm-soft: rgba(249, 115, 22, 0.13);
+            --border: rgba(15, 18, 38, 0.06);
+            --border-strong: rgba(15, 18, 38, 0.12);
+            --card-shadow: 0 24px 48px -24px rgba(15, 18, 38, 0.18);
+            --accent-shadow: 0 10px 24px -10px rgba(91, 94, 247, 0.6);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1C1C1E;
+            --bg-section: #1C1C1E;
+            --bg-card: #2C2C2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: rgba(245, 245, 247, 0.65);
+            --text-muted: rgba(245, 245, 247, 0.45);
+            --accent: #818CF8;
+            --accent-hover: #A5B4FC;
+            --accent-soft: rgba(129, 140, 248, 0.18);
+            --accent-text: #C7D2FE;
+            --teal: #2DD4BF;
+            --teal-soft: rgba(45, 212, 191, 0.14);
+            --warm: #FB923C;
+            --warm-soft: rgba(251, 146, 60, 0.16);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --card-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+            --accent-shadow: 0 10px 24px -10px rgba(129, 140, 248, 0.6);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            min-height: 100vh;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* ===== 顶部：语言/主题栏 ===== */
         .lang-switcher {
             position: sticky;
             top: 0;
             right: 0;
             left: 0;
             display: flex;
-            gap: 4px;
+            gap: 6px;
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
             background: var(--bg-primary);
-            padding: 16px 24px;
+            padding: 14px 40px;
             border-bottom: 1px solid var(--border);
             align-items: center;
         }
 
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-right: auto;
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 9px;
+        }
+
+        .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
         .lang-btn {
-            padding: 4px 12px;
+            padding: 6px 12px;
             border: 1px solid var(--border);
             background: transparent;
             color: var(--text-secondary);
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 0.72em;
-            font-weight: 400;
-            transition: all 0.25s ease;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
             white-space: nowrap;
-            letter-spacing: 0.02em;
+            letter-spacing: 0;
         }
 
         .lang-btn:hover {
-            border-color: var(--accent-hover);
+            border-color: var(--accent);
             color: var(--text-primary);
         }
 
         .lang-btn.active {
             background: var(--accent);
-            color: var(--bg-primary);
+            color: #ffffff;
             border-color: var(--accent);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .theme-toggle {
-            padding: 4px 10px;
+            width: 36px;
+            height: 36px;
             border: 1px solid var(--border);
             background: transparent;
             color: var(--text-secondary);
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.25s ease;
-            margin-left: 8px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            margin-left: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .theme-toggle:hover {
-            border-color: var(--accent-hover);
-            color: var(--text-primary);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 24px 60px;
+        .lang-toggle {
+            display: inline-flex;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-toggle-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .lang-toggle.open .lang-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 6px;
+            gap: 0;
+            grid-template-columns: repeat(2, 1fr);
+            min-width: 230px;
+            box-shadow: 0 12px 40px rgba(15, 18, 38, 0.18);
+            z-index: 200;
+        }
+
+        .lang-panel.open {
+            display: grid;
+        }
+
+        .lang-panel .lang-btn {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            text-align: left;
+            background: transparent;
+            margin: 2px;
+        }
+
+        .lang-panel .lang-btn:hover {
+            background: var(--accent-soft);
+        }
+
+        .lang-panel .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* ===== 正文容器 ===== */
+        .page {
+            padding: 40px 24px 72px;
         }
 
         .back-link {
-            display: inline-block;
-            margin-bottom: 32px;
-            color: var(--accent);
+            display: block;
+            max-width: 760px;
+            margin: 0 auto 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
         }
 
         .back-link:hover {
-            color: var(--accent-hover);
+            color: var(--accent);
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 600;
-            margin-bottom: 24px;
+        .article {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 56px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .article h1 {
+            margin: 0 0 14px;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
         }
 
-        .effective {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 48px;
+        .meta {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
         }
 
-        h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 16px;
+        .meta p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .article h2 {
             color: var(--text-primary);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 12px;
+        .article h3 {
             color: var(--text-primary);
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 600;
         }
 
-        p, li {
+        .article p {
+            margin-bottom: 14px;
             color: var(--text-secondary);
             font-size: 15px;
-            margin-bottom: 12px;
+            line-height: 1.75;
         }
 
-        ul, ol {
-            padding-left: 24px;
-            margin-bottom: 16px;
+        .article ul,
+        .article ol {
+            margin: 0 0 18px;
+            list-style: none;
+            padding-left: 0;
         }
 
-        li {
-            margin-bottom: 8px;
+        .article li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
         }
 
-        a {
+        .article li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .article a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .article a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 18px 22px;
+            margin: 26px 0;
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        .final-statement {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .final-statement p {
+            margin: 0;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0F1226;
+            color: rgba(245, 245, 247, 0.7);
+            padding: 56px 40px 28px;
+            font-size: 13px;
+        }
+
+        footer .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+
+        footer .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer .brand-row .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+        }
+
+        footer .brand-row .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        footer .footer-tagline {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(245, 245, 247, 0.55);
+            max-width: 460px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        footer a,
+        footer .footer-link-button {
+            color: rgba(245, 245, 247, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 13px;
+        }
+
+        footer .footer-link-button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        footer a:hover,
+        footer .footer-link-button:hover {
+            color: var(--accent);
+        }
+
+        footer .copy {
+            font-size: 12px;
+            color: rgba(245, 245, 247, 0.45);
+            margin: 12px 0 0;
+        }
+
+        /* ===== Cookie Consent ===== */
+        .cookie-consent {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: min(360px, calc(100vw - 48px));
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 22px 54px -24px rgba(15, 18, 38, 0.38);
+        }
+
+        .cookie-consent.show {
+            display: block;
+        }
+
+        .cookie-content {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .cookie-content a {
             color: var(--accent);
             text-decoration: none;
         }
 
-        a:hover {
+        .cookie-content a:hover {
             text-decoration: underline;
         }
 
+        .cookie-buttons {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .cookie-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .cookie-btn.primary {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .cookie-btn:hover:not(.primary) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .lang-switcher {
+                padding: 12px 24px;
+                gap: 4px;
+                position: relative;
+            }
+
+            .lang-panel {
+                right: 24px;
+            }
+
+            .page {
+                padding: 28px 16px 56px;
+            }
+
+            .article {
+                padding: 36px 24px;
+                border-radius: 16px;
+            }
+
+            .article h1 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .cookie-consent {
+                right: 12px;
+                bottom: 12px;
+                width: min(300px, calc(100vw - 24px));
+                padding: 10px;
+            }
+
+            .cookie-content {
+                gap: 10px;
+            }
+
+            .cookie-content p {
+                font-size: 10px;
+                line-height: 1.3;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+        }
+    </style>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        :root {
+            /* 浅色为默认，深色为亮色变体，由 [data-theme="dark"] 覆盖 */
+            --bg-primary: #F7F8FB;
+            --bg-section: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #0F1226;
+            --text-secondary: rgba(15, 18, 38, 0.65);
+            --text-muted: rgba(15, 18, 38, 0.45);
+            --accent: #5B5EF7;
+            --accent-hover: #484BE5;
+            --accent-soft: rgba(91, 94, 247, 0.12);
+            --accent-text: #484BE5;
+            --teal: #0F9F8F;
+            --teal-soft: rgba(15, 159, 143, 0.12);
+            --warm: #F97316;
+            --warm-soft: rgba(249, 115, 22, 0.13);
+            --border: rgba(15, 18, 38, 0.06);
+            --border-strong: rgba(15, 18, 38, 0.12);
+            --card-shadow: 0 24px 48px -24px rgba(15, 18, 38, 0.18);
+            --accent-shadow: 0 10px 24px -10px rgba(91, 94, 247, 0.6);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1C1C1E;
+            --bg-section: #1C1C1E;
+            --bg-card: #2C2C2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: rgba(245, 245, 247, 0.65);
+            --text-muted: rgba(245, 245, 247, 0.45);
+            --accent: #818CF8;
+            --accent-hover: #A5B4FC;
+            --accent-soft: rgba(129, 140, 248, 0.18);
+            --accent-text: #C7D2FE;
+            --teal: #2DD4BF;
+            --teal-soft: rgba(45, 212, 191, 0.14);
+            --warm: #FB923C;
+            --warm-soft: rgba(251, 146, 60, 0.16);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --card-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+            --accent-shadow: 0 10px 24px -10px rgba(129, 140, 248, 0.6);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            min-height: 100vh;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* ===== 顶部：语言/主题栏 ===== */
+        .lang-switcher {
+            position: sticky;
+            top: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            gap: 6px;
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            background: var(--bg-primary);
+            padding: 14px 40px;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-right: auto;
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 9px;
+        }
+
+        .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            margin-left: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-toggle {
+            display: inline-flex;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-toggle-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .lang-toggle.open .lang-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 6px;
+            gap: 0;
+            grid-template-columns: repeat(2, 1fr);
+            min-width: 230px;
+            box-shadow: 0 12px 40px rgba(15, 18, 38, 0.18);
+            z-index: 200;
+        }
+
+        .lang-panel.open {
+            display: grid;
+        }
+
+        .lang-panel .lang-btn {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            text-align: left;
+            background: transparent;
+            margin: 2px;
+        }
+
+        .lang-panel .lang-btn:hover {
+            background: var(--accent-soft);
+        }
+
+        .lang-panel .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* ===== 正文容器 ===== */
+        .page {
+            padding: 40px 24px 72px;
+        }
+
+        .back-link {
+            display: block;
+            max-width: 760px;
+            margin: 0 auto 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .article {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 56px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .article h1 {
+            margin: 0 0 14px;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .meta {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .article h2 {
+            color: var(--text-primary);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .article h3 {
+            color: var(--text-primary);
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .article p {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .article ul,
+        .article ol {
+            margin: 0 0 18px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .article li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .article li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .article a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .article a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 18px 22px;
+            margin: 26px 0;
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        .final-statement {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .final-statement p {
+            margin: 0;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0F1226;
+            color: rgba(245, 245, 247, 0.7);
+            padding: 56px 40px 28px;
+            font-size: 13px;
+        }
+
+        footer .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+
+        footer .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer .brand-row .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+        }
+
+        footer .brand-row .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        footer .footer-tagline {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(245, 245, 247, 0.55);
+            max-width: 460px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        footer a,
+        footer .footer-link-button {
+            color: rgba(245, 245, 247, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 13px;
+        }
+
+        footer .footer-link-button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        footer a:hover,
+        footer .footer-link-button:hover {
+            color: var(--accent);
+        }
+
+        footer .copy {
+            font-size: 12px;
+            color: rgba(245, 245, 247, 0.45);
+            margin: 12px 0 0;
+        }
+
+        /* ===== Cookie Consent ===== */
+        .cookie-consent {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: min(360px, calc(100vw - 48px));
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 22px 54px -24px rgba(15, 18, 38, 0.38);
+        }
+
+        .cookie-consent.show {
+            display: block;
+        }
+
+        .cookie-content {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .cookie-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .cookie-content a:hover {
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .cookie-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .cookie-btn.primary {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .cookie-btn:hover:not(.primary) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+
+        /* ===== Cookie 表格 ===== */
         .cookie-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
+            margin: 22px 0;
             font-size: 14px;
         }
 
@@ -205,31 +1204,14 @@
         .cookie-table th {
             color: var(--text-primary);
             font-weight: 600;
-            background: var(--bg-card);
+            background: var(--bg-primary);
         }
 
         .cookie-table td {
             color: var(--text-secondary);
         }
 
-        footer {
-            margin-top: 80px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 24px 20px 40px;
-            }
-
-            h1 {
-                font-size: 32px;
-            }
-
+        @media (max-width: 768px) {
             .cookie-table {
                 font-size: 13px;
             }
@@ -239,25 +1221,97 @@
                 padding: 10px 12px;
             }
         }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .lang-switcher {
+                padding: 12px 24px;
+                gap: 4px;
+                position: relative;
+            }
+
+            .lang-panel {
+                right: 24px;
+            }
+
+            .page {
+                padding: 28px 16px 56px;
+            }
+
+            .article {
+                padding: 36px 24px;
+                border-radius: 16px;
+            }
+
+            .article h1 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .cookie-consent {
+                right: 12px;
+                bottom: 12px;
+                width: min(300px, calc(100vw - 24px));
+                padding: 10px;
+            }
+
+            .cookie-content {
+                gap: 10px;
+            }
+
+            .cookie-content p {
+                font-size: 10px;
+                line-height: 1.3;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
-<body data-theme="dark">
-    <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
-        <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">日本語</button>
-        <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
-        <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">한국어</button>
-        <button class="lang-btn" data-lang="de" onclick="setLang('de')">Deutsch</button>
-        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">Français</button>
-        <button class="lang-btn" data-lang="es" onclick="setLang('es')">Español</button>
-        <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">العربية</button>
-        <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
-        <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+<body>
+    <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent" aria-describedby="cookieConsentDesc">
+        <div class="cookie-content">
+            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">Optional analytics are off until accepted.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Only essential</button>
+                <button class="cookie-btn primary" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
+    <header class="lang-switcher">
+        <a href="index.html" class="brand">
+            <img class="brand-icon" src="./logo.png" alt="XdoList">
+            <span class="brand-text">XdoList</span>
+        </a>
+        <button class="lang-toggle" onclick="toggleLangPanel()">
+            <span class="lang-toggle-text">English</span>
+            <span class="lang-toggle-arrow">▼</span>
+        </button>
+        <div class="lang-panel" id="langPanel">
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">日本語</button>
+            <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+            <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">한국어</button>
+            <button class="lang-btn" data-lang="de" onclick="setLang('de')">Deutsch</button>
+            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">Français</button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">Español</button>
+            <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">العربية</button>
+            <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
+            <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    </header>
+
+    <main class="page">
         <a href="index.html" class="back-link" data-i18n="back_home">← Back to Home</a>
+
+        <article class="article">
         <h1 data-i18n="page_title">Cookie Policy</h1>
         <p class="effective"><span data-i18n="effective_date">Effective Date: July 13, 2026</span> | <span data-i18n="last_updated">Last Updated: July 13, 2026</span></p>
 
@@ -306,11 +1360,27 @@
 
         <h2 data-i18n="sec7_title">7. Contact Us</h2>
         <p data-i18n="sec7_text">If you have any questions about this Cookie Policy, please contact us at <a href="mailto:support@xdolist.com">support@xdolist.com</a>.</p>
+        </article>
+    </main>
 
-        <footer>
-            <p>© 2026 XdoList. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer>
+        <div class="inner">
+            <div class="brand-row">
+                <img class="brand-icon" src="./logo.png" alt="XdoList">
+                <span class="brand-text">XdoList</span>
+            </div>
+            <p class="footer-tagline" data-i18n="footer_tagline">One app. Multiple workflows. Composable views.</p>
+            <div class="links">
+                <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                <a href="terms-of-use.html" data-i18n="footer_terms">Terms of Use</a>
+                <a href="cookies.html">Cookie Policy</a>
+                <button type="button" class="footer-link-button" onclick="openCookiePreferences()" data-i18n="footer_privacy_choices">Privacy Choices</button>
+                <a href="https://github.com/xdolist/xdolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
+                <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
+            </div>
+            <p class="copy">© 2026 XdoList. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         const translations = {
@@ -341,7 +1411,18 @@
                 sec6_title: "6. Changes to This Policy",
                 sec6_text: "We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date.",
                 sec7_title: "7. Contact Us",
-                sec7_text: "If you have any questions about this Cookie Policy, please contact us at <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "If you have any questions about this Cookie Policy, please contact us at <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "One app. Multiple workflows. Composable views.",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Use",
+                footer_privacy_choices: "Privacy Choices",
+                footer_feedback: "Feedback",
+                footer_contact: "Contact Us",
+                cookie_desc: "Optional analytics are off until accepted.",
+                cookie_policy_link: "Cookie Policy",
+                cookie_accept: "Accept analytics",
+                cookie_decline: "Only essential",
+
             },
             ja: {
                 back_home: "← ホームに戻る",
@@ -370,7 +1451,18 @@
                 sec6_title: "6. ポリシーの変更",
                 sec6_text: "本 Cookie ポリシーは随時更新される場合があります。変更がある場合は、このページに更新された「最終更新日」とともに掲載されます。",
                 sec7_title: "7. お問い合わせ",
-                sec7_text: "本 Cookie ポリシーについてご質問がある場合は、<a href='mailto:support@xdolist.com'>support@xdolist.com</a>までお問い合わせください。"
+                sec7_text: "本 Cookie ポリシーについてご質問がある場合は、<a href='mailto:support@xdolist.com'>support@xdolist.com</a>までお問い合わせください。",
+                footer_tagline: "ひとつのアプリ。複数のワークフロー。組み合わせ可能なビュー。",
+                footer_privacy: "プライバシーポリシー",
+                footer_terms: "利用規約",
+                footer_privacy_choices: "プライバシー設定",
+                footer_feedback: "フィードバック",
+                footer_contact: "お問い合わせ",
+                cookie_desc: "XdoList の改善のため、任意の分析 Cookie を使用します。分析 Cookie は同意するまで無効です。必須 Cookie は言語、テーマ、同意状態を保存し、無効化できません。",
+                cookie_policy_link: "Cookie ポリシー",
+                cookie_accept: "分析を受け入れる",
+                cookie_decline: "必須のみ",
+
             },
             zh: {
                 back_home: "← 返回首页",
@@ -399,7 +1491,18 @@
                 sec6_title: "6. 政策变更",
                 sec6_text: "我们可能会不时更新本 Cookie 政策。任何变更都会在本页面发布，并更新「最后更新」日期。",
                 sec7_title: "7. 联系我们",
-                sec7_text: "如果您对本 Cookie 政策有任何疑问，请通过 <a href='mailto:support@xdolist.com'>support@xdolist.com</a> 联系我们。"
+                sec7_text: "如果您对本 Cookie 政策有任何疑问，请通过 <a href='mailto:support@xdolist.com'>support@xdolist.com</a> 联系我们。",
+                footer_tagline: "一个应用、多种工作流、可组合视图。",
+                footer_privacy: "隐私政策",
+                footer_terms: "用户协议",
+                footer_privacy_choices: "隐私选择",
+                footer_feedback: "反馈问题",
+                footer_contact: "联系我们",
+                cookie_desc: "我们使用可选的分析 Cookie 了解网站流量并改进 XdoList。分析 Cookie 在您接受前默认关闭。必要 Cookie 用于保存语言、主题和同意选择，无法禁用。",
+                cookie_policy_link: "Cookie 政策",
+                cookie_accept: "接受分析",
+                cookie_decline: "仅必要 Cookie",
+
             },
             ko: {
                 back_home: "← 홈으로 돌아가기",
@@ -428,7 +1531,18 @@
                 sec6_title: "6. 정책 변경",
                 sec6_text: "본 쿠키 정책은 수시로 업데이트될 수 있습니다. 변경 사항이 있는 경우 업데이트된 '최종 업데이트' 날짜와 함께 본 페이지에 게시됩니다.",
                 sec7_title: "7. 문의하기",
-                sec7_text: "본 쿠키 정책에 대해 궁금한 점이 있으시면 <a href='mailto:support@xdolist.com'>support@xdolist.com</a>으로 문의해 주세요."
+                sec7_text: "본 쿠키 정책에 대해 궁금한 점이 있으시면 <a href='mailto:support@xdolist.com'>support@xdolist.com</a>으로 문의해 주세요.",
+                footer_tagline: "하나의 앱. 다양한 워크플로. 조합 가능한 뷰.",
+                footer_privacy: "개인정보 처리방침",
+                footer_terms: "이용약관",
+                footer_privacy_choices: "개인정보 선택",
+                footer_feedback: "피드백",
+                footer_contact: "문의하기",
+                cookie_desc: "XdoList 개선을 위해 선택적 분석 쿠키를 사용합니다. 분석 쿠키는 동의 전까지 꺼져 있습니다. 필수 쿠키는 언어, 테마, 동의 선택을 저장하며 비활성화할 수 없습니다.",
+                cookie_policy_link: "쿠키 정책",
+                cookie_accept: "분석 수락",
+                cookie_decline: "필수만 사용",
+
             },
             de: {
                 back_home: "← Zurück zur Startseite",
@@ -457,7 +1571,18 @@
                 sec6_title: "6. Änderungen dieser Richtlinie",
                 sec6_text: "Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum \"Zuletzt aktualisiert\" veröffentlicht.",
                 sec7_title: "7. Kontakt",
-                sec7_text: "Bei Fragen zu dieser Cookie-Richtlinie kontaktieren Sie uns bitte unter <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "Bei Fragen zu dieser Cookie-Richtlinie kontaktieren Sie uns bitte unter <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "Eine App. Mehrere Workflows. Kombinierbare Ansichten.",
+                footer_privacy: "Datenschutzerklärung",
+                footer_terms: "Nutzungsbedingungen",
+                footer_privacy_choices: "Datenschutzauswahl",
+                footer_feedback: "Feedback",
+                footer_contact: "Kontakt",
+                cookie_desc: "Wir verwenden optionale Analyse-Cookies, um den Website-Traffic zu verstehen und XdoList zu verbessern. Analyse-Cookies sind deaktiviert, bis Sie zustimmen. Erforderliche Cookies speichern Sprache, Design und Einwilligung und können nicht deaktiviert werden.",
+                cookie_policy_link: "Cookie-Richtlinie",
+                cookie_accept: "Analyse akzeptieren",
+                cookie_decline: "Nur erforderliche",
+
             },
             fr: {
                 back_home: "← Retour à l'accueil",
@@ -486,7 +1611,18 @@
                 sec6_title: "6. Modifications de cette politique",
                 sec6_text: "Nous pouvons mettre à jour cette politique relative aux cookies de temps à autre. Toute modification sera publiée sur cette page avec une date de \"Dernière mise à jour\" actualisée.",
                 sec7_title: "7. Nous contacter",
-                sec7_text: "Si vous avez des questions concernant cette politique relative aux cookies, veuillez nous contacter à <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "Si vous avez des questions concernant cette politique relative aux cookies, veuillez nous contacter à <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "Une app. Plusieurs workflows. Des vues composables.",
+                footer_privacy: "Politique de confidentialité",
+                footer_terms: "Conditions d'utilisation",
+                footer_privacy_choices: "Choix de confidentialité",
+                footer_feedback: "Retour d'expérience",
+                footer_contact: "Nous contacter",
+                cookie_desc: "Nous utilisons des cookies analytiques facultatifs pour comprendre le trafic du site et améliorer XdoList. Ils restent désactivés jusqu'à votre accord. Les cookies essentiels enregistrent la langue, le thème et votre choix de consentement et ne peuvent pas être désactivés.",
+                cookie_policy_link: "Politique relative aux cookies",
+                cookie_accept: "Accepter l'analyse",
+                cookie_decline: "Essentiels uniquement",
+
             },
             es: {
                 back_home: "← Volver al inicio",
@@ -515,7 +1651,18 @@
                 sec6_title: "6. Cambios en esta política",
                 sec6_text: "Es posible que actualicemos esta política de cookies de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de \"Última actualización\" actualizada.",
                 sec7_title: "7. Contáctenos",
-                sec7_text: "Si tiene alguna pregunta sobre esta política de cookies, póngase en contacto con nosotros en <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "Si tiene alguna pregunta sobre esta política de cookies, póngase en contacto con nosotros en <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "Una app. Múltiples flujos. Vistas componibles.",
+                footer_privacy: "Política de privacidad",
+                footer_terms: "Términos de uso",
+                footer_privacy_choices: "Opciones de privacidad",
+                footer_feedback: "Comentarios",
+                footer_contact: "Contacto",
+                cookie_desc: "Usamos cookies analíticas opcionales para entender el tráfico del sitio y mejorar XdoList. Están desactivadas hasta que usted las acepte. Las cookies esenciales guardan idioma, tema y elección de consentimiento y no se pueden desactivar.",
+                cookie_policy_link: "Política de cookies",
+                cookie_accept: "Aceptar análisis",
+                cookie_decline: "Solo esenciales",
+
             },
             ar: {
                 back_home: "← العودة إلى الرئيسية",
@@ -544,7 +1691,18 @@
                 sec6_title: "6. تغييرات على هذه السياسة",
                 sec6_text: "قد نقوم بتحديث سياسة ملفات تعريف الارتباط هذه من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ \"آخر تحديث\".",
                 sec7_title: "7. اتصل بنا",
-                sec7_text: "إذا كانت لديك أي أسئلة حول سياسة ملفات تعريف الارتباط هذه، يرجى التواصل معنا على <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "إذا كانت لديك أي أسئلة حول سياسة ملفات تعريف الارتباط هذه، يرجى التواصل معنا على <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "تطبيق واحد. سير عمل متعددة. عروض قابلة للتركيب.",
+                footer_privacy: "سياسة الخصوصية",
+                footer_terms: "شروط الاستخدام",
+                footer_privacy_choices: "خيارات الخصوصية",
+                footer_feedback: "ملاحظات",
+                footer_contact: "تواصل معنا",
+                cookie_desc: "نستخدم ملفات تعريف ارتباط تحليلية اختيارية لفهم حركة الموقع وتحسين XdoList. تبقى ملفات التحليل معطلة حتى توافق. تحفظ الملفات الأساسية اللغة والمظهر وخيار الموافقة ولا يمكن تعطيلها.",
+                cookie_policy_link: "سياسة ملفات تعريف الارتباط",
+                cookie_accept: "قبول التحليل",
+                cookie_decline: "الأساسية فقط",
+
             },
             pt: {
                 back_home: "← Voltar para o início",
@@ -573,7 +1731,18 @@
                 sec6_title: "6. Alterações nesta política",
                 sec6_text: "Podemos atualizar esta Política de Cookies periodicamente. Quaisquer alterações serão publicadas nesta página com uma data de \"Última atualização\" atualizada.",
                 sec7_title: "7. Entre em contato",
-                sec7_text: "Se tiver alguma dúvida sobre esta Política de Cookies, entre em contato conosco em <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "Se tiver alguma dúvida sobre esta Política de Cookies, entre em contato conosco em <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "Um app. Vários fluxos. Visualizações componíveis.",
+                footer_privacy: "Política de privacidade",
+                footer_terms: "Termos de Uso",
+                footer_privacy_choices: "Opções de privacidade",
+                footer_feedback: "Feedback",
+                footer_contact: "Fale conosco",
+                cookie_desc: "Usamos cookies analíticos opcionais para entender o tráfego do site e melhorar o XdoList. Eles ficam desativados até você aceitar. Cookies essenciais armazenam idioma, tema e consentimento e não podem ser desativados.",
+                cookie_policy_link: "Política de cookies",
+                cookie_accept: "Aceitar análise",
+                cookie_decline: "Apenas essenciais",
+
             },
             it: {
                 back_home: "← Torna alla home",
@@ -602,49 +1771,142 @@
                 sec6_title: "6. Modifiche alla presente politica",
                 sec6_text: "Potremmo aggiornare questa politica sui cookie di tanto in tanto. Eventuali modifiche saranno pubblicate su questa pagina con una data di \"Ultimo aggiornamento\" aggiornata.",
                 sec7_title: "7. Contattaci",
-                sec7_text: "In caso di domande sulla presente politica sui cookie, contattaci all'indirizzo <a href='mailto:support@xdolist.com'>support@xdolist.com</a>."
+                sec7_text: "In caso di domande sulla presente politica sui cookie, contattaci all'indirizzo <a href='mailto:support@xdolist.com'>support@xdolist.com</a>.",
+                footer_tagline: "Un'app. Più flussi. Viste componibili.",
+                footer_privacy: "Informativa sulla privacy",
+                footer_terms: "Termini di utilizzo",
+                footer_privacy_choices: "Scelte privacy",
+                footer_feedback: "Feedback",
+                footer_contact: "Contattaci",
+                cookie_desc: "Utilizziamo cookie analitici opzionali per comprendere il traffico del sito e migliorare XdoList. Sono disattivati finché non li accetti. I cookie essenziali salvano lingua, tema e consenso e non possono essere disattivati.",
+                cookie_policy_link: "Politica sui cookie",
+                cookie_accept: "Accetta analisi",
+                cookie_decline: "Solo essenziali",
+
             }
         };
 
-        let currentLang = localStorage.getItem('cookiePageLang') || 'en';
+        const langMap = { en: 'en', ja: 'ja', zh: 'zh-CN', ko: 'ko', de: 'de', fr: 'fr', es: 'es', ar: 'ar', pt: 'pt', it: 'it' };
 
         function setLang(lang) {
-            currentLang = lang;
-            localStorage.setItem('cookiePageLang', lang);
-            document.documentElement.lang = lang;
-            applyTranslations();
-            updateLangButtons();
-        }
-
-        function applyTranslations() {
-            const t = translations[currentLang];
+            document.documentElement.lang = langMap[lang] || lang;
+            localStorage.setItem('preferred-lang', lang);
+            document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            const activeBtn = document.querySelector('.lang-btn.active');
+            if (activeBtn) {
+                const toggleText = document.querySelector('.lang-toggle-text');
+                if (toggleText) {
+                    toggleText.textContent = activeBtn.textContent;
+                }
+            }
+            const panel = document.getElementById('langPanel');
+            const toggle = document.querySelector('.lang-toggle');
+            if (panel && panel.classList.contains('open')) {
+                panel.classList.remove('open');
+                if (toggle) toggle.classList.remove('open');
+            }
             document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) {
-                    el.innerHTML = t[key];
+                const key = el.dataset.i18n;
+                const text = translations[lang]?.[key] ?? translations.en[key];
+                if (text) {
+                    el.innerHTML = text;
                 }
             });
-            document.title = t.page_title + ' - XdoList';
+            document.title = (translations[lang]?.page_title ?? translations.en.page_title) + ' - XdoList';
         }
 
-        function updateLangButtons() {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === currentLang);
-            });
+        function toggleLangPanel() {
+            const panel = document.getElementById('langPanel');
+            const toggle = document.querySelector('.lang-toggle');
+            if (panel) {
+                const isOpen = panel.classList.toggle('open');
+                if (toggle) toggle.classList.toggle('open', isOpen);
+            }
         }
+
+        // Close language panel when clicking outside
+        document.addEventListener('click', function(e) {
+            const panel = document.getElementById('langPanel');
+            const toggle = document.querySelector('.lang-toggle');
+            if (panel && panel.classList.contains('open')) {
+                if (!panel.contains(e.target) && (!toggle || !toggle.contains(e.target))) {
+                    panel.classList.remove('open');
+                    if (toggle) toggle.classList.remove('open');
+                }
+            }
+        });
+
+        const savedLang = localStorage.getItem('preferred-lang');
+        setLang(savedLang && translations[savedLang] ? savedLang : 'en');
 
         function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme') || 'dark';
             const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
+            html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
+            updateThemeIcon(next);
         }
 
-        (function init() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            setLang(currentLang);
-        })();
+        function updateThemeIcon(theme) {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                btn.textContent = theme === 'dark' ? '◐' : '◑';
+                btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+        }
+
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateThemeIcon(currentTheme);
+
+        // Cookie consent: required by GDPR / UK GDPR / Switzerland.
+        // Analytics cookies are off until the user opts in. Essential cookies
+        // required to remember the chosen language and theme are always set.
+        function setCookieConsent(value) {
+            const consent = {
+                analytics: value,
+                version: window.XDO_COOKIE_CONSENT_VERSION,
+                ts: Date.now()
+            };
+            try {
+                localStorage.setItem(window.XDO_COOKIE_CONSENT_KEY, JSON.stringify(consent));
+            } catch (e) { /* ignore */ }
+        }
+        function hideCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) banner.classList.remove('show');
+        }
+        function showCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) banner.classList.add('show');
+        }
+        function openCookiePreferences() {
+            showCookieConsent();
+        }
+        function acceptAnalyticsCookies() {
+            setCookieConsent('granted');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'granted' });
+                loadAnalyticsScript();
+            }
+        }
+        function declineAnalyticsCookies() {
+            setCookieConsent('denied');
+            hideCookieConsent();
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'denied' });
+            }
+        }
+
+        // Show the cookie banner the first time a visitor lands on the site.
+        const currentConsent = getCookieConsent();
+        if (!currentConsent || currentConsent.version !== window.XDO_COOKIE_CONSENT_VERSION) {
+            showCookieConsent();
+        }
     </script>
 </body>
 </html>

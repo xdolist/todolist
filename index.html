@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XdoList by xdolist</title>
-    <meta name="description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Anonymous analytics only.">
-    <meta name="keywords" content="XdoList, task manager, to-do list, productivity, privacy, offline, todo app, task management">
+    <title>XdoList - Keep Your Workflow. Get More Power.</title>
+    <meta name="description" content="XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views. Local-first, works offline, anonymous usage analytics only.">
+    <meta name="keywords" content="XdoList, task manager, to-do list, productivity, workflow, GTD, calendar, todo app, task management, local-first, privacy, offline">
     <meta name="author" content="XdoList">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#0a0a0f">
 
     <!-- Canonical URL -->
@@ -20,18 +20,20 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xdolist.com/">
-    <meta property="og:title" content="XdoList - Simple and Efficient Task Manager">
-    <meta property="og:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app with anonymous analytics.">
-    <meta property="og:image" content="https://xdolist.com/logo.png">
+    <meta property="og:title" content="XdoList - Keep Your Workflow. Get More Power.">
+    <meta property="og:description" content="XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views. Local-first, works offline, anonymous usage analytics only.">
+    <meta property="og:image" content="https://xdolist.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="XdoList">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://xdolist.com/">
-    <meta name="twitter:title" content="XdoList - Simple and Efficient Task Manager">
-    <meta name="twitter:description" content="XdoList - Simple and efficient task manager. All data stored locally, works offline. Privacy-first todo app with anonymous analytics.">
-    <meta name="twitter:image" content="https://xdolist.com/logo.png">
+    <meta name="twitter:title" content="XdoList - Keep Your Workflow. Get More Power.">
+    <meta name="twitter:description" content="XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views. Local-first, works offline, anonymous usage analytics only.">
+    <meta name="twitter:image" content="https://xdolist.com/assets/og-image.png">
 
     <!-- Structured Data: Software Application -->
     <script type="application/ld+json">
@@ -39,9 +41,11 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "XdoList",
-        "description": "Simple and efficient task manager. All data stored locally, works offline. Anonymous analytics only.",
+        "description": "XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views. Local-first, works offline, anonymous usage analytics only.",
         "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "Cross-platform",
+        "operatingSystem": "iOS",
+        "downloadUrl": "https://apps.apple.com/app/id6789898901",
+        "installUrl": "https://apps.apple.com/app/id6789898901",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -53,14 +57,72 @@
             "url": "https://xdolist.com"
         },
         "url": "https://xdolist.com/",
-        "image": "https://xdolist.com/logo.png",
-        "keywords": "task manager, todo app, productivity, privacy"
+        "image": "https://xdolist.com/assets/og-image.png",
+        "keywords": "task manager, todo app, productivity, workflow, GTD, local-first, privacy"
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is my data really stored only on my device?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Tasks, tags, and reminders live in a local database inside the app. The app may send anonymous usage events via Firebase Analytics, but never your task content. Website analytics is optional and separate."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need an account?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Open the app and start typing. There is no signup, no email verification, no password to forget."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does it work offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. All core features work without internet: capture, organize, complete, reminders. You only need a connection for the App Store download itself."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I sync between devices?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not in this version. XdoList is intentionally a single-device app. If we add sync later, it will be opt-in and end-to-end encrypted."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do reminders work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local notifications scheduled by iOS. Recurring rules (daily, weekly, monthly, yearly) are supported. Reminders never leave your device."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The full app is free, with no ads and no upsells blocking basic features. The app collects only anonymous usage events—never your task content."
+                }
+            }
+        ]
     }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="apple-touch-icon" href="./logo.png">
     <script>
@@ -123,43 +185,61 @@
 
         ::selection {
             background: var(--accent);
-            color: #111118;
+            color: #ffffff;
         }
 
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #151520;
-            --text-primary: #e5e5e5;
-            --text-secondary: #888888;
-            --text-muted: #555555;
-            --accent: #d4a574;
-            --accent-hover: #c49468;
-            --border: rgba(212, 165, 116, 0.15);
-            --border-hover: rgba(212, 165, 116, 0.3);
+            /* 浅色为默认，深色为亮色变体，由 [data-theme="dark"] 覆盖 */
+            --bg-primary: #F7F8FB;
+            --bg-section: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #0F1226;
+            --text-secondary: rgba(15, 18, 38, 0.65);
+            --text-muted: rgba(15, 18, 38, 0.45);
+            --accent: #5B5EF7;
+            --accent-hover: #484BE5;
+            --accent-soft: rgba(91, 94, 247, 0.12);
+            --accent-text: #484BE5;
+            --teal: #0F9F8F;
+            --teal-soft: rgba(15, 159, 143, 0.12);
+            --warm: #F97316;
+            --warm-soft: rgba(249, 115, 22, 0.13);
+            --border: rgba(15, 18, 38, 0.06);
+            --border-strong: rgba(15, 18, 38, 0.12);
+            --card-shadow: 0 24px 48px -24px rgba(15, 18, 38, 0.18);
+            --accent-shadow: 0 10px 24px -10px rgba(91, 94, 247, 0.6);
         }
 
-        [data-theme="light"] {
-            --bg-primary: #fafafa;
-            --bg-secondary: #f5f5f0;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --text-muted: #999999;
-            --accent: #b8860b;
-            --accent-hover: #9a7009;
-            --border: rgba(184, 134, 11, 0.2);
-            --border-hover: rgba(184, 134, 11, 0.4);
+        [data-theme="dark"] {
+            --bg-primary: #1C1C1E;
+            --bg-section: #1C1C1E;
+            --bg-card: #2C2C2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: rgba(245, 245, 247, 0.65);
+            --text-muted: rgba(245, 245, 247, 0.45);
+            --accent: #818CF8;
+            --accent-hover: #A5B4FC;
+            --accent-soft: rgba(129, 140, 248, 0.18);
+            --accent-text: #C7D2FE;
+            --teal: #2DD4BF;
+            --teal-soft: rgba(45, 212, 191, 0.14);
+            --warm: #FB923C;
+            --warm-soft: rgba(251, 146, 60, 0.16);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --card-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+            --accent-shadow: 0 10px 24px -10px rgba(129, 140, 248, 0.6);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
             min-height: 100vh;
-            font-weight: 300;
-            letter-spacing: 0.01em;
+            font-weight: 400;
+            letter-spacing: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -168,95 +248,33 @@
             padding: 0 40px;
         }
 
-        /* Language Switcher */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        /* ===== 顶部：语言/主题栏 ===== */
         .lang-switcher {
             position: sticky;
             top: 0;
             right: 0;
             left: 0;
             display: flex;
-            gap: 4px;
+            gap: 6px;
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
             background: var(--bg-primary);
-            padding: 20px 40px;
+            padding: 14px 40px;
             border-bottom: 1px solid var(--border);
             align-items: center;
-        }
-
-        .lang-btn {
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.72em;
-            font-weight: 400;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-            letter-spacing: 0.02em;
-        }
-
-        .lang-btn:hover {
-            border-color: var(--border-hover);
-            color: var(--text-primary);
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-            font-weight: 500;
-        }
-
-        .theme-toggle {
-            padding: 4px 10px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.25s ease;
-            margin-left: 8px;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--border-hover);
-            color: var(--text-primary);
-        }
-
-        .lang-toggle {
-            display: none;
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-primary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.25s ease;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .lang-toggle:hover {
-            border-color: var(--border-hover);
-        }
-
-        .lang-toggle-arrow {
-            font-size: 0.7em;
-            transition: transform 0.25s ease;
-        }
-
-        .lang-toggle.open .lang-toggle-arrow {
-            transform: rotate(180deg);
-        }
-
-        .lang-panel {
-            display: contents;
         }
 
         .brand {
@@ -269,371 +287,918 @@
         }
 
         .brand-icon {
-            width: 24px;
-            height: 24px;
+            width: 34px;
+            height: 34px;
             flex-shrink: 0;
+            border-radius: 9px;
         }
 
         .brand-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1em;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
             letter-spacing: -0.01em;
         }
 
-        /* Header */
-        header {
-            padding: 120px 0 100px;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 3.2em;
-            font-weight: 600;
-            margin-bottom: 32px;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-        }
-
-        .tagline {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.6em;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .subtitle {
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
             color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto;
-            font-size: 1.05em;
-            font-weight: 300;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0;
         }
 
-        .promo {
-            color: var(--accent);
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            max-width: 620px;
-            margin: 20px auto 0;
-            font-size: 1.1em;
-            font-weight: 400;
-            letter-spacing: 0.01em;
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
         }
 
-        .download-buttons {
-            display: flex;
-            gap: 16px;
+        .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            margin-left: 6px;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-toggle {
+            display: inline-flex;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-toggle-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .lang-toggle.open .lang-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 6px;
+            gap: 0;
+            grid-template-columns: repeat(2, 1fr);
+            min-width: 230px;
+            box-shadow: 0 12px 40px rgba(15, 18, 38, 0.18);
+            z-index: 200;
+        }
+
+        .lang-panel.open {
+            display: grid;
+        }
+
+        .lang-panel .lang-btn {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            text-align: left;
+            background: transparent;
+            margin: 2px;
+        }
+
+        .lang-panel .lang-btn:hover {
+            background: var(--accent-soft);
+        }
+
+        .lang-panel .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 82px 40px 72px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #FFFFFF 100%);
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(180deg, #1C1C1E 0%, #202124 100%);
+        }
+
+        .hero-grid {
+            max-width: 1160px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .pill {
+            display: inline-block;
+            background: var(--bg-card);
+            color: var(--accent-text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--accent-soft);
+            width: fit-content;
+        }
+
+        .hero h1 {
+            margin: 0;
+            max-width: 560px;
+            font-size: 58px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            color: var(--text-primary);
+        }
+
+        .hero p.lead {
+            margin: 0;
+            text-align: left;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .hero-proof {
+            display: flex;
             flex-wrap: wrap;
-            margin-top: 48px;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .proof-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 11px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .proof-pill {
+            background: rgba(44, 44, 46, 0.78);
+        }
+
+        .proof-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--teal);
+            box-shadow: 0 0 0 4px var(--teal-soft);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .appstore-note {
+            margin: -4px 0 0;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            padding: 14px 32px;
-            border-radius: 4px;
+            padding: 13px 22px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.25s ease;
-            font-size: 0.9em;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
             cursor: pointer;
-            border: none;
-            letter-spacing: 0.02em;
+            border: 1px solid transparent;
         }
 
-        .btn-primary {
+        .btn.solid {
             background: var(--accent);
-            color: var(--bg-primary);
+            color: #ffffff;
+            box-shadow: var(--accent-shadow);
         }
 
-        .btn-primary:hover {
+        .btn.solid:hover {
             background: var(--accent-hover);
             transform: translateY(-1px);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
+        .btn.warm {
+            background: var(--warm);
+            color: #ffffff;
+            box-shadow: 0 10px 24px -10px rgba(249, 115, 22, 0.72);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--border-hover);
+        .btn.warm:hover {
+            filter: brightness(0.96);
+            transform: translateY(-1px);
+        }
+
+        .btn.outline {
+            background: var(--bg-card);
+            border-color: var(--border-strong);
             color: var(--text-primary);
         }
 
-        /* Features */
-        .features {
-            background: var(--bg-secondary);
-            padding: 120px 0;
+        .btn.outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .trust-strip {
+            max-width: 1160px;
+            margin: 28px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .trust-item {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        [data-theme="dark"] .trust-item {
+            background: rgba(44, 44, 46, 0.78);
+        }
+
+        .trust-item strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        /* ===== 真实 App 截图展示 ===== */
+        .hero-screens {
+            position: relative;
+            min-height: 510px;
+        }
+
+        .device-shot {
+            display: block;
+            border-radius: 32px;
+            background: #0F1226;
+            padding: 8px;
+            box-shadow: 0 30px 56px -24px rgba(15, 18, 38, 0.52);
+        }
+
+        .device-shot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            background: #F2F2F7;
+        }
+
+        .hero-screens .device-shot {
+            position: absolute;
+            width: 240px;
+        }
+
+        .hero-screens .shot-main {
+            width: 270px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(1deg);
+            z-index: 3;
+        }
+
+        .hero-screens .shot-left {
+            left: 26px;
+            top: 54px;
+            transform: rotate(-5deg);
+            z-index: 1;
+            opacity: 0.96;
+        }
+
+        .hero-screens .shot-right {
+            right: -8px;
+            top: 58px;
+            transform: rotate(8deg);
+            z-index: 1;
+            opacity: 0.96;
+        }
+
+        .hero-screens::after {
+            content: "";
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 4px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(15, 18, 38, 0.13);
+            filter: blur(34px);
+            z-index: 0;
+        }
+
+        /* ===== Section ===== */
+        section {
+            padding: 80px 40px;
+        }
+
+        section.alt {
+            background: var(--bg-section);
+        }
+
+        section .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .section-label {
             text-align: center;
-            font-size: 0.75em;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.18em;
             color: var(--accent);
-            margin-bottom: 24px;
-            font-weight: 500;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.2em;
-            color: var(--text-primary);
-            margin-bottom: 80px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            padding: 0;
-            background: transparent;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.3em;
-            color: var(--text-primary);
             margin-bottom: 12px;
             font-weight: 600;
         }
 
-        .feature-card p {
+        section h2 {
+            text-align: center;
+            margin: 0 0 12px;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        section .lead {
+            text-align: center;
             color: var(--text-secondary);
-            line-height: 1.8;
-            font-weight: 300;
+            max-width: 580px;
+            margin: 0 auto 40px;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .feature-number {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 0.9em;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+        }
+
+        .feature-card .num {
+            font-size: 12px;
+            font-weight: 600;
             color: var(--accent);
-            margin-bottom: 16px;
-            font-weight: 400;
             letter-spacing: 0.05em;
+            line-height: 1;
         }
 
-        /* Privacy Section */
-        .privacy-section {
+        .feature-card h3 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .feature-card p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== 产品公式与工作流兼容 ===== */
+        .formula-section {
             background: var(--bg-primary);
-            padding: 120px 0;
+        }
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .formula-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .formula-card .num {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .formula-card h3 {
+            margin: 0;
+            font-size: 22px;
+            line-height: 1.3;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .formula-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .formula-card strong {
+            color: var(--text-primary);
+        }
+
+        .workflow-section {
+            background: var(--bg-section);
+        }
+
+        .workflow-panel {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .workflow-copy {
+            max-width: 680px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .privacy-section h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2em;
+        .workflow-copy h2,
+        .workflow-copy .section-label {
+            text-align: center;
+        }
+
+        .workflow-copy p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .workflow-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .workflow-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 18px 34px -28px rgba(15, 18, 38, 0.28);
+        }
+
+        .workflow-item .source {
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .workflow-item strong {
+            display: block;
+            margin-bottom: 4px;
             color: var(--text-primary);
-            margin-bottom: 24px;
+            font-size: 15px;
+            line-height: 1.35;
+        }
+
+        .workflow-item span:last-child {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .workflow-note {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .privacy-panel {
+            background: var(--bg-section);
+        }
+
+        .privacy-card {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 34px;
+            background: var(--bg-card);
+            box-shadow: var(--card-shadow);
+        }
+
+        .privacy-copy h2,
+        .download-copy h2 {
+            text-align: left;
+        }
+
+        .privacy-copy p,
+        .download-copy p {
+            margin: 0 0 20px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .privacy-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .privacy-list div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            font-size: 14px;
             font-weight: 600;
         }
 
-        .privacy-section p {
-            font-size: 1.05em;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 48px;
-            font-weight: 300;
-            line-height: 1.8;
+        .check-mark {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--teal-soft);
+            color: var(--teal);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex: 0 0 auto;
         }
 
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 60px 0 40px;
+        .privacy-visual {
+            border-radius: 20px;
+            background: var(--teal-soft);
+            padding: 22px;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lock-card {
+            width: 100%;
+            max-width: 310px;
+            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 22px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .lock-shape {
+            width: 58px;
+            height: 48px;
+            margin: 0 auto 18px;
+            border-radius: 14px;
+            background: var(--teal);
+            position: relative;
+        }
+
+        .lock-shape::before {
+            content: "";
+            position: absolute;
+            left: 13px;
+            top: -24px;
+            width: 32px;
+            height: 34px;
+            border: 7px solid var(--teal);
+            border-bottom: 0;
+            border-radius: 22px 22px 0 0;
+        }
+
+        .lock-card strong {
+            display: block;
             text-align: center;
-            border-top: 1px solid var(--border);
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 18px;
+        }
+
+        .lock-card span {
+            display: block;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .download-band {
+            background: var(--bg-primary);
+        }
+
+        .download-card {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            border-radius: 24px;
+            padding: 34px;
+            color: #ffffff;
+            background: #15172B;
+            box-shadow: 0 24px 64px -28px rgba(15, 18, 38, 0.65);
+        }
+
+        .download-copy h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .download-copy p {
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 0;
+        }
+
+        .download-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        /* ===== FAQ 段 ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .faq-item[open] {
+            border-color: var(--accent);
+            box-shadow: var(--card-shadow);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            letter-spacing: -0.005em;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            color: var(--accent-text);
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .faq-item summary:hover {
+            color: var(--accent);
+        }
+
+        .faq-item p {
+            margin: 0;
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0F1226;
+            color: rgba(245, 245, 247, 0.7);
+            padding: 56px 40px 28px;
+            font-size: 13px;
+        }
+
+        footer .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+
+        footer .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer .brand-row .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+        }
+
+        footer .brand-row .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        footer .footer-tagline {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(245, 245, 247, 0.55);
+            max-width: 460px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4px;
         }
 
         footer a,
-        .footer-link-button {
-            color: var(--text-secondary);
+        footer .footer-link-button {
+            color: rgba(245, 245, 247, 0.7);
             text-decoration: none;
-            transition: color 0.25s ease;
+            transition: color 0.2s ease;
+            font-size: 13px;
         }
 
-        .footer-link-button {
+        footer .footer-link-button {
             appearance: none;
             border: 0;
             background: transparent;
             cursor: pointer;
             font: inherit;
-            letter-spacing: inherit;
-            text-transform: inherit;
         }
 
         footer a:hover,
-        .footer-link-button:hover {
+        footer .footer-link-button:hover {
             color: var(--accent);
         }
 
-        a:focus-visible,
-        button:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
+        footer .copy {
+            font-size: 12px;
+            color: rgba(245, 245, 247, 0.45);
+            margin: 12px 0 0;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            font-size: 0.85em;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .footer-copy {
-            font-size: 0.8em;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-
-            .lang-switcher {
-                padding: 16px 24px;
-                gap: 3px;
-                position: relative;
-            }
-
-            .lang-btn {
-                font-size: 0.68em;
-                padding: 3px 8px;
-            }
-
-            .logo {
-                font-size: 2.4em;
-            }
-
-            .tagline {
-                font-size: 1.2em;
-            }
-
-            header {
-                padding: 80px 0 60px;
-            }
-
-            .features {
-                padding: 80px 0;
-            }
-
-            .features h2 {
-                font-size: 1.8em;
-                margin-bottom: 48px;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .privacy-section {
-                padding: 80px 0;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 240px;
-                justify-content: center;
-            }
-
-            .lang-panel {
-                display: none;
-                position: absolute;
-                top: calc(100% + 6px);
-                right: 24px;
-                background: var(--bg-card);
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                padding: 6px;
-                gap: 0;
-                grid-template-columns: repeat(3, 1fr);
-                min-width: 220px;
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-                z-index: 200;
-            }
-
-            .lang-panel.open {
-                display: grid;
-            }
-
-            .lang-panel .lang-btn {
-                display: block;
-                border: none;
-                border-radius: 8px;
-                padding: 8px 4px;
-                font-size: 0.7em;
-                text-align: center;
-                background: transparent;
-                margin: 2px;
-            }
-
-            .lang-panel .lang-btn:hover {
-                background: rgba(212, 165, 116, 0.15);
-            }
-
-            .lang-panel .lang-btn.active {
-                display: none;
-            }
-
-            .lang-toggle {
-                display: inline-flex;
-                order: 1;
-            }
-
-            .lang-switcher > .lang-btn:not(.active) {
-                display: none;
-            }
-
-            .lang-switcher > .lang-btn.active {
-                display: none;
-            }
-
-            .theme-toggle {
-                order: 2;
-            }
-        }
-
+        /* ===== Cookie Consent ===== */
         .cookie-consent {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            right: 24px;
+            bottom: 24px;
+            width: min(360px, calc(100vw - 48px));
             background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            padding: 20px 24px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px;
             z-index: 1000;
             display: none;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 22px 54px -24px rgba(15, 18, 38, 0.38);
         }
 
         .cookie-consent.show {
@@ -641,20 +1206,17 @@
         }
 
         .cookie-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .cookie-content p {
             margin: 0;
             color: var(--text-secondary);
-            font-size: 0.85em;
-            line-height: 1.5;
-            flex: 1;
+            font-size: 11px;
+            line-height: 1.4;
         }
 
         .cookie-content a {
@@ -663,38 +1225,126 @@
         }
 
         .cookie-content a:hover {
-            color: var(--accent-hover);
             text-decoration: underline;
         }
 
         .cookie-buttons {
             display: flex;
-            flex-shrink: 0;
             gap: 8px;
+            width: 100%;
+            justify-content: flex-end;
         }
 
         .cookie-btn {
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 0.8em;
-            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid var(--border);
-            background: var(--accent);
-            color: #111118;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--text-primary);
         }
 
-        .cookie-btn:hover {
+        .cookie-btn.primary {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.primary:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
         }
 
+        .cookie-btn:hover:not(.primary) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 980px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero-screens {
+                min-height: 500px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-strip,
+            .formula-grid,
+            .workflow-list,
+            .privacy-card {
+                grid-template-columns: 1fr;
+            }
+
+            .download-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .hero {
+                padding: 64px 24px 56px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-cta,
+            .download-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .hero-cta .btn,
+            .download-actions .btn {
+                width: 100%;
+            }
+
+            .trust-strip {
+                margin-top: 22px;
+            }
+
+            section {
+                padding: 56px 24px;
+            }
+
+            section h2 {
+                font-size: 26px;
+            }
+
+            .lang-switcher {
+                padding: 12px 24px;
+                gap: 4px;
+                position: relative;
+            }
+
+            .lang-panel {
+                right: 24px;
+            }
+
             .cookie-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 16px;
+                gap: 14px;
             }
 
             .cookie-buttons {
@@ -704,7 +1354,104 @@
 
             .cookie-btn {
                 flex: 1;
-                max-width: 140px;
+                max-width: 160px;
+            }
+
+            .grid-features {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-item summary {
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+
+            .faq-item p {
+                padding: 0 20px 16px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero {
+                padding: 52px 24px 44px;
+                overflow: hidden;
+            }
+
+            .hero-left {
+                min-width: 0;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-screens {
+                min-height: 430px;
+            }
+
+            .hero-screens .shot-left,
+            .hero-screens .shot-right {
+                display: none;
+            }
+
+            .hero-screens .shot-main {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 238px;
+                margin: 0 auto;
+                transform: none;
+            }
+
+            .trust-item,
+            .feature-card,
+            .formula-card,
+            .privacy-card,
+            .download-card {
+                border-radius: 16px;
+            }
+
+            .privacy-card,
+            .download-card {
+                padding: 24px;
+            }
+
+            .shot-preview {
+                width: min(100%, 238px);
+            }
+
+            .cookie-consent {
+                right: 12px;
+                bottom: 12px;
+                width: min(300px, calc(100vw - 24px));
+                padding: 10px;
+            }
+
+            .cookie-content {
+                gap: 10px;
+            }
+
+            .cookie-content p {
+                font-size: 10px;
+                line-height: 1.3;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .device-shot,
+            .feature-card {
+                transition: none;
             }
         }
     </style>
@@ -712,14 +1459,15 @@
 <body>
     <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent" aria-describedby="cookieConsentDesc">
         <div class="cookie-content">
-            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
+            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">Optional analytics are off until accepted.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
             <div class="cookie-buttons">
                 <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Only essential</button>
-                <button class="cookie-btn" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
+                <button class="cookie-btn primary" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
             </div>
         </div>
     </div>
-    <div class="lang-switcher">
+
+    <header class="lang-switcher">
         <a href="#" class="brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
             <img class="brand-icon" src="./logo.png" alt="XdoList">
             <span class="brand-text">XdoList</span>
@@ -740,67 +1488,132 @@
             <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
             <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
-    </div>
-
-    <header>
-        <div class="container">
-            <h1 class="logo">XdoList</h1>
-            <div class="tagline" data-i18n="tagline">Simple and efficient task manager. Your data belongs to you.</div>
-            <p class="subtitle" data-i18n="subtitle">
-                No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.
-            </p>
-            <p class="promo" data-i18n="promo_line">One Model. Multiple Workflows. Composable Views.</p>
-
-            <div class="download-buttons">
-                <a href="https://apps.apple.com/app/id6789898901" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    App Store
-                </a>
-                <a href="https://github.com/xdolist/xdolist/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="feedback">
-                    Feedback
-                </a>
-            </div>
-        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
     </header>
 
-    <section class="features">
-        <div class="container">
-            <div class="section-label">Features</div>
-            <h2 data-i18n="features_title">Key Features</h2>
+    <section class="hero" aria-label="Hero">
+        <div class="hero-grid">
+            <div class="hero-left">
+                <span class="pill" data-i18n="hero_pill">● Workflow Freedom Task App</span>
+                <h1 data-i18n="hero_title">Keep Your Workflow. Get More Power.</h1>
+                <p class="lead" data-i18n="hero_lead">XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views.</p>
+                <div class="hero-proof" aria-label="Product highlights">
+                    <span class="proof-pill"><span class="proof-dot"></span><span data-i18n="proof_free">One App</span></span>
+                    <span class="proof-pill"><span class="proof-dot"></span><span data-i18n="proof_offline">Multiple Workflows</span></span>
+                    <span class="proof-pill"><span class="proof-dot"></span><span data-i18n="proof_local">Composable Views</span></span>
+                </div>
+                <div class="hero-cta">
+                    <a href="https://apps.apple.com/app/id6789898901" class="btn solid" target="_blank" rel="noopener noreferrer" data-i18n="cta_appstore">Download on the App Store</a>
+                    <a href="https://github.com/xdolist/xdolist/issues" class="btn outline" target="_blank" rel="noopener noreferrer" data-i18n="feedback">Feedback</a>
+                </div>
+                <p class="appstore-note" data-i18n="appstore_note">Free on the App Store · Local-first · Anonymous usage analytics only</p>
+            </div>
+            <div class="hero-screens" aria-label="XdoList app screenshots">
+                <figure class="device-shot shot-left">
+                    <img src="assets/screenshot-today.webp" alt="XdoList Today task list screenshot" loading="eager" decoding="async" width="620" height="1342">
+                </figure>
+                <figure class="device-shot shot-main">
+                    <img src="assets/screenshot-home.webp" alt="XdoList dashboard screenshot" loading="eager" decoding="sync" fetchpriority="high" width="620" height="1342">
+                </figure>
+                <figure class="device-shot shot-right">
+                    <img src="assets/screenshot-add-task.webp" alt="XdoList add task screen screenshot" loading="eager" decoding="async" width="620" height="1342">
+                </figure>
+            </div>
+            <div class="trust-strip" aria-label="Why people try XdoList">
+                <div class="trust-item"><strong data-i18n="trust_one_title">Unified task model</strong><span data-i18n="trust_one_desc">Every workflow runs on the same task foundation.</span></div>
+                <div class="trust-item"><strong data-i18n="trust_two_title">Workflow styles</strong><span data-i18n="trust_two_desc">Keep the way you already think about tasks.</span></div>
+                <div class="trust-item"><strong data-i18n="trust_three_title">Composable views</strong><span data-i18n="trust_three_desc">Add more power without switching apps.</span></div>
+            </div>
+        </div>
+    </section>
 
-            <div class="feature-grid">
+    <section class="formula-section" aria-label="Product formula">
+        <div class="container">
+            <div class="section-label" data-i18n="formula_label">Product Formula</div>
+            <h2 data-i18n="formula_title">One App. Multiple Workflows. Composable Views.</h2>
+            <p class="lead" data-i18n="formula_lead">XdoList keeps every task in one unified task model, then lets you switch workflow styles and compose the views that fit how you already work.</p>
+
+            <div class="formula-grid">
+                <article class="formula-card">
+                    <div class="num">01</div>
+                    <h3 data-i18n="formula_one_title">One App</h3>
+                    <p data-i18n="formula_one_desc">Tasks, projects, areas, tags, reminders, and future views share the same underlying model instead of living in separate systems.</p>
+                </article>
+
+                <article class="formula-card">
+                    <div class="num">02</div>
+                    <h3 data-i18n="formula_two_title">Multiple Workflows</h3>
+                    <p data-i18n="formula_two_desc">Start with XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline, or a Custom Pack without changing apps.</p>
+                </article>
+
+                <article class="formula-card">
+                    <div class="num">03</div>
+                    <h3 data-i18n="formula_three_title">Composable Views</h3>
+                    <p data-i18n="formula_three_desc">Keep your familiar workflow, then add Today, Calendar, Review, Filter, Timeline, and other views as your system grows.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow-section" aria-label="Workflow compatibility">
+        <div class="workflow-panel">
+            <div class="workflow-copy">
+                <div class="section-label" data-i18n="workflow_label">Workflow Compatibility</div>
+                <h2 data-i18n="workflow_title">Bring your workflow with you.</h2>
+                <p data-i18n="workflow_lead">Most task apps ask you to learn their method. XdoList is built around workflow packs, so you can keep the mental model you already trust, or shape your own setup with Custom Pack.</p>
+            </div>
+            <div class="workflow-list">
+                <div class="workflow-item"><span class="source">XdoList</span><span><strong data-i18n="workflow_xdolist_title">The best of multiple workflows</strong><span data-i18n="workflow_xdolist_desc">A balanced default pack with dashboard, inbox, projects, areas, tags, review, filters, and saved views.</span></span></div>
+                <div class="workflow-item"><span class="source">Simple List</span><span><strong data-i18n="workflow_simple_title">The most direct list-first setup</strong><span data-i18n="workflow_simple_desc">Dashboard, inbox, projects, tags, and reminders without extra process.</span></span></div>
+                <div class="workflow-item"><span class="source">Elegant Flow</span><span><strong data-i18n="workflow_elegant_title">Today / Anytime / Someday planning</strong><span data-i18n="workflow_elegant_desc">Keep clean projects and areas, then add richer views when you need them.</span></span></div>
+                <div class="workflow-item"><span class="source">Quick Capture</span><span><strong data-i18n="workflow_query_title">Query-first organization</strong><span data-i18n="workflow_query_desc">Fast inbox, labels, filters, and saved views for people who think in searches.</span></span></div>
+                <div class="workflow-item"><span class="source">Pro GTD</span><span><strong data-i18n="workflow_gtd_title">Review-oriented control</strong><span data-i18n="workflow_gtd_desc">Inbox, forecast, review, projects, areas, and tags for heavier systems.</span></span></div>
+                <div class="workflow-item"><span class="source">Calendar Timeline</span><span><strong data-i18n="workflow_calendar_title">Time-driven planning</strong><span data-i18n="workflow_calendar_desc">Calendar, timeline, reminders, and repeats for people who plan by date and time.</span></span></div>
+                <div class="workflow-item"><span class="source">Custom Pack</span><span><strong data-i18n="workflow_custom_title">Compose your own workflow</strong><span data-i18n="workflow_custom_desc">Choose the capabilities, perspectives, navigation, and defaults that fit how you work.</span></span></div>
+            </div>
+            <p class="workflow-note" data-i18n="workflow_note">Workflow packs are inspired by familiar task-management patterns. Product names and trademarks belong to their respective owners; XdoList is not affiliated with or endorsed by them.</p>
+        </div>
+    </section>
+
+    <section class="alt" aria-label="Features">
+        <div class="container">
+            <div class="section-label" data-i18n="features_label">Features</div>
+            <h2 data-i18n="features_title">Daily execution stays simple</h2>
+            <p class="lead" data-i18n="features_lead">Under the flexible workflow system, the daily loop still stays fast: capture, plan, complete, and get reminded.</p>
+
+            <div class="grid-features">
                 <div class="feature-card">
-                    <div class="feature-number">01</div>
+                    <div class="num">01</div>
                     <h3 data-i18n="feat_quick_title">Quick Capture</h3>
                     <p data-i18n="feat_quick_desc">Open and start using instantly. No registration, no waiting for sync. Start managing your tasks right away.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-number">02</div>
+                    <div class="num">02</div>
                     <h3 data-i18n="feat_privacy_title">Privacy First</h3>
                     <p data-i18n="feat_privacy_desc">All data is stored locally, never uploaded to our servers. Your tasks belong only to you, we cannot even view them.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-number">03</div>
+                    <div class="num">03</div>
                     <h3 data-i18n="feat_tags_title">Custom Categories</h3>
                     <p data-i18n="feat_tags_desc">Custom tags, color markers, and priority settings keep even complex projects organized.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-number">04</div>
+                    <div class="num">04</div>
                     <h3 data-i18n="feat_reminder_title">Reminders</h3>
                     <p data-i18n="feat_reminder_desc">Local reminders delivered on time. Supports one-time, daily, weekly, monthly, and yearly recurring reminders.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-number">05</div>
+                    <div class="num">05</div>
                     <h3 data-i18n="feat_subtasks_title">Subtasks</h3>
                     <p data-i18n="feat_subtasks_desc">Break big tasks into smaller steps. Add, complete, and manage subtasks directly inside any task.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-number">06</div>
+                    <div class="num">06</div>
                     <h3 data-i18n="feat_dark_title">Dark Mode</h3>
                     <p data-i18n="feat_dark_desc">Supports automatic light/dark mode switching. Protects your eyes and provides a more comfortable experience at night.</p>
                 </div>
@@ -808,22 +1621,89 @@
         </div>
     </section>
 
-    <section class="privacy-section">
+    <section class="privacy-panel" aria-label="Privacy promise">
+        <div class="privacy-card">
+            <div class="privacy-copy">
+                <div class="section-label" style="text-align:left" data-i18n="privacy_label">Privacy</div>
+                <h2 data-i18n="privacy_title">Your task list should not become someone else's dataset.</h2>
+                <p data-i18n="privacy_desc">XdoList keeps your tasks, tags, reminders, and subtasks in a local app database. There is no account requirement and no default cloud sync server receiving your personal plans.</p>
+                <div class="privacy-list">
+                    <div><span class="check-mark">✓</span><span data-i18n="privacy_point_one">Tasks stay on your device</span></div>
+                    <div><span class="check-mark">✓</span><span data-i18n="privacy_point_two">No signup or email required</span></div>
+                    <div><span class="check-mark">✓</span><span data-i18n="privacy_point_three">Analytics are anonymous and never include task content</span></div>
+                </div>
+            </div>
+            <div class="privacy-visual" aria-hidden="true">
+                <div class="lock-card">
+                    <div class="lock-shape"></div>
+                    <strong>Local-first</strong>
+                    <span>Your tasks are written to the device you hold, not to an account you have to trust.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-band" aria-label="Download XdoList">
+        <div class="download-card">
+            <div class="download-copy">
+                <h2 data-i18n="cta_banner_title">Try XdoList today</h2>
+                <p data-i18n="cta_banner_sub">Free on the App Store · No sign-up · Works offline</p>
+            </div>
+            <div class="download-actions">
+                <a href="https://apps.apple.com/app/id6789898901" class="btn warm" target="_blank" rel="noopener noreferrer" data-i18n="cta_appstore">Download on the App Store</a>
+                <a href="privacy.html" class="btn outline" data-i18n="privacy_btn">View Privacy Policy</a>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="FAQ">
         <div class="container">
-            <div class="section-label">Privacy</div>
-            <h2 data-i18n="privacy_title">Privacy Promise</h2>
-            <p data-i18n="privacy_desc">
-                We believe your data belongs to you. Your tasks are stored locally on your device and are never uploaded to our servers. We use anonymous analytics only to understand feature usage.
-            </p>
-            <a href="privacy.html" class="btn btn-secondary" data-i18n="privacy_btn">
-                View Full Privacy Policy
-            </a>
+            <div class="section-label" data-i18n="faq_label">FAQ</div>
+            <h2 data-i18n="faq_title">Questions, answered</h2>
+            <p class="lead" data-i18n="faq_lead">Everything you might want to know before you download.</p>
+
+            <div class="faq-grid">
+                <details class="faq-item">
+                    <summary data-i18n="faq_q1">Is my data really stored only on my device?</summary>
+                    <p data-i18n="faq_a1">Yes. Tasks, tags, and reminders live in a local database inside the app. The app may send anonymous usage events (like "task created") via Firebase Analytics, but never your task content. Website analytics is optional and separate.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q2">Do I need an account?</summary>
+                    <p data-i18n="faq_a2">No. Open the app and start typing. There is no signup, no email verification, no password to forget.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q3">Does it work offline?</summary>
+                    <p data-i18n="faq_a3">Yes. All core features work without internet: capture, organize, complete, reminders. You only need a connection for the App Store download itself.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q4">Can I sync between devices?</summary>
+                    <p data-i18n="faq_a4">Not in this version. XdoList is intentionally a single-device app. If we add sync later, it will be opt-in and end-to-end encrypted.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q5">How do reminders work?</summary>
+                    <p data-i18n="faq_a5">Local notifications scheduled by iOS. Recurring rules (daily, weekly, monthly, yearly) are supported. Reminders never leave your device.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary data-i18n="faq_q6">Is it free?</summary>
+                    <p data-i18n="faq_a6">Yes. The full app is free, with no ads and no upsells blocking basic features. The app collects only anonymous usage events—never your task content.</p>
+                </details>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-links">
+        <div class="inner">
+            <div class="brand-row">
+                <img class="brand-icon" src="./logo.png" alt="XdoList">
+                <span class="brand-text">XdoList</span>
+            </div>
+            <p class="footer-tagline" data-i18n="footer_tagline">One app. Multiple workflows. Composable views.</p>
+            <div class="links">
                 <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
                 <a href="terms-of-use.html" data-i18n="footer_terms">Terms of Use</a>
                 <a href="cookies.html">Cookie Policy</a>
@@ -831,7 +1711,7 @@
                 <a href="https://github.com/xdolist/xdolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
                 <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
             </div>
-            <p class="footer-copy">© 2026 XdoList. All rights reserved.</p>
+            <p class="copy">© 2026 XdoList. All rights reserved.</p>
         </div>
     </footer>
 
@@ -851,11 +1731,11 @@
 
         const translations = {
             en: {
-                tagline: "Simple and efficient task manager. Your data belongs to you.",
-                promo_line: "One Model. Multiple Workflows. Composable Views.",
+                tagline: "Keep Your Workflow. Get More Power.",
+                promo_line: "Keep Your Workflow. Get More Power.",
                 subtitle: "No sign-up, no internet required. Open and use instantly. Your task data is stored entirely on your local device, privacy guaranteed.",
                 feedback: "Feedback",
-                features_title: "Key Features",
+                features_title: "Daily execution stays simple",
                 feat_quick_title: "Quick Capture",
                 feat_quick_desc: "Open and start using instantly. No registration, no waiting for sync. Start managing your tasks right away.",
                 feat_privacy_title: "Privacy First",
@@ -868,19 +1748,85 @@
                 feat_subtasks_desc: "Break big tasks into smaller steps. Add, complete, and manage subtasks directly inside any task.",
                 feat_dark_title: "Dark Mode",
                 feat_dark_desc: "Supports automatic light/dark mode switching. Protects your eyes and provides a more comfortable experience at night.",
-                privacy_title: "Privacy Promise",
-                privacy_desc: "We believe your data belongs to you. Your tasks are stored locally on your device and are never uploaded to our servers. We use anonymous analytics only to understand feature usage.",
+                privacy_title: "Your task list should not become someone else's dataset.",
+                privacy_desc: "XdoList keeps your tasks, tags, reminders, and subtasks in a local app database. There is no account requirement and no default cloud sync server receiving your personal plans.",
                 privacy_btn: "View Full Privacy Policy",
                 footer_privacy: "Privacy Policy",
                 footer_terms: "Terms of Use",
                 footer_privacy_choices: "Privacy Choices",
                 footer_feedback: "Feedback",
                 footer_contact: "Contact Us",
-                cookie_desc: "We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.",
+                cookie_desc: "Optional analytics are off until accepted.",
                 cookie_policy_link: "Cookie Policy",
                 cookie_dismiss: "Got it",
                 cookie_accept: "Accept analytics",
-                cookie_decline: "Only essential"
+                cookie_decline: "Only essential",
+                hero_pill: "● Workflow Freedom Task App",
+                hero_title: "Keep Your Workflow. Get More Power.",
+                hero_lead: "XdoList is a task manager built on one unified task model, with multiple workflow styles and composable views.",
+                proof_free: "One App",
+                proof_offline: "Multiple Workflows",
+                proof_local: "Composable Views",
+                appstore_note: "Free on the App Store · Local-first · Anonymous usage analytics only",
+                trust_one_title: "Unified task model",
+                trust_one_desc: "Every workflow runs on the same task foundation.",
+                trust_two_title: "Workflow styles",
+                trust_two_desc: "Keep the way you already think about tasks.",
+                trust_three_title: "Composable views",
+                trust_three_desc: "Add more power without switching apps.",
+                features_label: "Features",
+                features_lead: "Under the flexible workflow system, the daily loop still stays fast: capture, plan, complete, and get reminded.",
+                cta_appstore: "Download on the App Store",
+                cta_banner_title: "Try XdoList today",
+                cta_banner_sub: "Free on the App Store · No sign-up · Works offline",
+                privacy_label: "Privacy",
+                formula_label: "Product Formula",
+                formula_title: "One App. Multiple Workflows. Composable Views.",
+                formula_lead: "XdoList keeps every task in one unified task model, then lets you switch workflow styles and compose the views that fit how you already work.",
+                formula_one_title: "One App",
+                formula_one_desc: "Tasks, projects, areas, tags, reminders, and future views share the same underlying model instead of living in separate systems.",
+                formula_two_title: "Multiple Workflows",
+                formula_two_desc: "Start with XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline, or a Custom Pack without changing apps.",
+                formula_three_title: "Composable Views",
+                formula_three_desc: "Keep your familiar workflow, then add Today, Calendar, Review, Filter, Timeline, and other views as your system grows.",
+                workflow_label: "Workflow Compatibility",
+                workflow_title: "Bring your workflow with you.",
+                workflow_lead: "Most task apps ask you to learn their method. XdoList is built around workflow packs, so you can keep the mental model you already trust, or shape your own setup with Custom Pack.",
+                workflow_xdolist_title: "The best of multiple workflows",
+                workflow_xdolist_desc: "A balanced default pack with dashboard, inbox, projects, areas, tags, review, filters, and saved views.",
+                workflow_simple_title: "The most direct list-first setup",
+                workflow_simple_desc: "Dashboard, inbox, projects, tags, and reminders without extra process.",
+                workflow_elegant_title: "Today / Anytime / Someday planning",
+                workflow_elegant_desc: "Keep clean projects and areas, then add richer views when you need them.",
+                workflow_query_title: "Query-first organization",
+                workflow_query_desc: "Fast inbox, labels, filters, and saved views for people who think in searches.",
+                workflow_gtd_title: "Review-oriented control",
+                workflow_gtd_desc: "Inbox, forecast, review, projects, areas, and tags for heavier systems.",
+                workflow_calendar_title: "Time-driven planning",
+                workflow_calendar_desc: "Calendar, timeline, reminders, and repeats for people who plan by date and time.",
+                workflow_custom_title: "Compose your own workflow",
+                workflow_custom_desc: "Choose the capabilities, perspectives, navigation, and defaults that fit how you work.",
+                workflow_note: "Workflow packs are inspired by familiar task-management patterns. Product names and trademarks belong to their respective owners; XdoList is not affiliated with or endorsed by them.",
+                privacy_point_one: "Tasks stay on your device",
+                privacy_point_two: "No signup or email required",
+                privacy_point_three: "Analytics are anonymous and never include task content",
+                promo_sub: "Built for everyone who values focus.",
+                footer_tagline: "One app. Multiple workflows. Composable views.",
+                faq_label: "FAQ",
+                faq_title: "Questions, answered",
+                faq_lead: "Everything you might want to know before you download.",
+                faq_q1: "Is my data really stored only on my device?",
+                faq_a1: "Yes. Tasks, tags, and reminders live in a local database inside the app. The app may send anonymous usage events (like \"task created\") via Firebase Analytics, but never your task content. Website analytics is optional and separate.",
+                faq_q2: "Do I need an account?",
+                faq_a2: "No. Open the app and start typing. There is no signup, no email verification, no password to forget.",
+                faq_q3: "Does it work offline?",
+                faq_a3: "Yes. All core features work without internet: capture, organize, complete, reminders. You only need a connection for the App Store download itself.",
+                faq_q4: "Can I sync between devices?",
+                faq_a4: "Not in this version. XdoList is intentionally a single-device app. If we add sync later, it will be opt-in and end-to-end encrypted.",
+                faq_q5: "How do reminders work?",
+                faq_a5: "Local notifications scheduled by iOS. Recurring rules (daily, weekly, monthly, yearly) are supported. Reminders never leave your device.",
+                faq_q6: "Is it free?",
+                faq_a6: "Yes. The full app is free, with no ads and no upsells blocking basic features. The app collects only anonymous usage events—never your task content."
             },
             ja: {
                 tagline: "シンプルで効率的なタスク管理。あなたのデータはあなたのものです。",
@@ -901,7 +1847,7 @@
                 feat_dark_title: "ダークモード",
                 feat_dark_desc: "ライト／ダークモードの自動切り替えに対応。目を保護し、夜間も快適に使えます。",
                 privacy_title: "プライバシーに関するお約束",
-                privacy_desc: "あなたのデータはあなたのものだと私たちは信じています。XdoList は個人情報を収集・販売・共有しません。広告トラッキングも、データ解析も、強制クラウド同期もありません。",
+                privacy_desc: "あなたのデータはあなたのものだと私たちは信じています。XdoList は個人情報を収集・販売・共有しません。広告トラッキングや強制クラウド同期はなく、利用状況の分析はタスク内容を含まない匿名イベントのみです。",
                 privacy_btn: "プライバシーポリシーを見る",
                 footer_privacy: "プライバシーポリシー",
                 footer_terms: "利用規約",
@@ -912,7 +1858,74 @@
                 cookie_policy_link: "Cookie ポリシー",
                 cookie_dismiss: "了解",
                 cookie_accept: "分析を受け入れる",
-                cookie_decline: "必須のみ"
+                cookie_decline: "必須のみ",
+                hero_pill: "● ワークフロー自由型タスクアプリ",
+                hero_title: "ワークフローはそのままに、もっと強力に。",
+                hero_lead: "XdoList は、ひとつの統一タスクモデル、複数のワークフロースタイル、組み合わせ可能なビューで作られたタスク管理アプリです。",
+                proof_free: "ひとつのアプリ",
+                proof_offline: "複数のワークフロー",
+                proof_local: "組み合わせ可能なビュー",
+                appstore_note: "App Store で無料・ローカルファースト・匿名の利用分析のみ",
+                trust_one_title: "統一タスクモデル",
+                trust_one_desc: "すべてのワークフローが同じタスク基盤で動きます。",
+                trust_two_title: "ワークフロースタイル",
+                trust_two_desc: "今のタスクの考え方をそのまま使えます。",
+                trust_three_title: "組み合わせ可能なビュー",
+                trust_three_desc: "アプリを乗り換えずに、より強力な機能を追加できます。",
+                features_label: "主な機能",
+                features_title: "日々の実行はシンプルなまま",
+                features_lead: "柔軟なワークフローシステムの下でも、記録、計画、完了、リマインダーの日常ループは素早く使えます。",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "今すぐ XdoList を試す",
+                cta_banner_sub: "App Store で無料・登録不要・オフライン対応",
+                privacy_label: "プライバシー",
+                workflow_label: "ワークフロー対応",
+                workflow_title: "いつものワークフローを、そのまま持ち込めます。",
+                workflow_lead: "多くのタスクアプリは独自の方法を学ばせます。XdoList はワークフローパックを中心に設計されているので、信頼している考え方を保ったまま、Custom Pack で自分らしい構成にも変えられます。",
+                workflow_xdolist_title: "複数ワークフローの良いところどり",
+                workflow_xdolist_desc: "ダッシュボード、Inbox、プロジェクト、エリア、タグ、レビュー、フィルター、保存ビューを備えたバランスのよい標準パックです。",
+                workflow_simple_title: "最も直接的なリスト中心の構成",
+                workflow_simple_desc: "余計なプロセスなしで、ダッシュボード、Inbox、プロジェクト、タグ、リマインダーを使えます。",
+                workflow_elegant_title: "Today / Anytime / Someday で考える",
+                workflow_elegant_desc: "プロジェクトとエリアをきれいに保ちながら、必要なときに豊富なビューを追加できます。",
+                workflow_query_title: "クエリ中心の整理",
+                workflow_query_desc: "検索で考える人のために、速い Inbox、ラベル、フィルター、保存ビューを用意しています。",
+                workflow_gtd_title: "レビュー中心のコントロール",
+                workflow_gtd_desc: "重めのシステム向けに、Inbox、Forecast、レビュー、プロジェクト、エリア、タグをまとめます。",
+                workflow_calendar_title: "時間軸で考える計画",
+                workflow_calendar_desc: "日付と時間で計画する人のために、カレンダー、タイムライン、リマインダー、繰り返しを用意しています。",
+                workflow_custom_title: "自分だけのワークフローを組み立てる",
+                workflow_custom_desc: "能力、パースペクティブ、ナビゲーション、初期設定を自分の働き方に合わせて選べます。",
+                workflow_note: "ワークフローパックは、よく知られたタスク管理パターンから着想を得ています。各製品名と商標はそれぞれの所有者に帰属し、XdoList はそれらと提携・承認関係にはありません。",
+                promo_sub: "集中力を大切にする、すべての人のために。",
+                footer_tagline: "ひとつのアプリ。複数のワークフロー。組み合わせ可能なビュー。",
+                faq_label: "よくある質問",
+                faq_title: "よくあるご質問",
+                faq_lead: "ダウンロード前に知りたいことをまとめました。",
+                faq_q1: "データは本当に端末だけに保存されますか？",
+                faq_a1: "はい。タスク・タグ・リマインダーはアプリ内のローカルデータベースに保存されます。アプリは Firebase Analytics を通じて「タスクを作成した」などの匿名イベントを送信することがありますが、タスク内容が送信されることはありません。Web サイトの任意分析は匿名で、アプリとは別です。",
+                faq_q2: "アカウント登録は必要ですか？",
+                faq_a2: "不要です。アプリを開いてすぐ入力できます。サインアップもメール認証もパスワードもありません。",
+                faq_q3: "オフラインで動きますか？",
+                faq_a3: "はい。主要機能（記録・整理・完了・リマインダー）はネットなしで動作します。App Store からのダウンロード自体にのみ接続が必要です。",
+                faq_q4: "端末間で同期できますか？",
+                faq_a4: "本バージョンでは同期できません。XdoList は意図的に単一端末アプリです。今後同期を追加する場合はオプトインかつエンドツーエンド暗号化で行います。",
+                faq_q5: "リマインダーの仕組みは？",
+                faq_a5: "iOS がスケジュールするローカル通知です。繰り返し（毎日・毎週・毎月・毎年）にも対応。リマインダーが端末の外に出ることはありません。",
+                faq_q6: "無料ですか？",
+                faq_a6: "はい。完全無料で、アプリ内広告や基本機能を制限する有料誘導はありません。アプリが収集するのは匿名の利用イベントのみで、タスク内容は含まれません。",
+                formula_label: "プロダクトの公式",
+                formula_title: "ひとつのアプリ。複数のワークフロー。組み合わせ可能なビュー。",
+                formula_lead: "XdoList はすべてのタスクをひとつの統一タスクモデルで管理し、ワークフロースタイルを切り替え、自分の働き方に合うビューを組み合わせられます。",
+                formula_one_title: "ひとつのアプリ",
+                formula_one_desc: "タスク、プロジェクト、エリア、タグ、リマインダー、将来のビューは、別々のシステムではなく同じ基盤モデルを共有します。",
+                formula_two_title: "複数のワークフロー",
+                formula_two_desc: "XdoList、Simple List、Elegant Flow、Quick Capture、Pro GTD、Calendar Timeline、Custom Pack から、アプリを変えずに始められます。",
+                formula_three_title: "組み合わせ可能なビュー",
+                formula_three_desc: "慣れたワークフローを保ちながら、Today、カレンダー、レビュー、フィルター、タイムラインなどのビューを必要に応じて追加できます。",
+                privacy_point_one: "タスクは端末に保存",
+                privacy_point_two: "登録やメールアドレスは不要",
+                privacy_point_three: "分析は匿名で、タスク内容は含まれません",
             },
             zh: {
                 tagline: "简单高效的任务管理工具，数据完全属于您",
@@ -944,14 +1957,81 @@
                 cookie_policy_link: "Cookie 政策",
                 cookie_dismiss: "知道了",
                 cookie_accept: "接受分析",
-                cookie_decline: "仅必要 Cookie"
+                cookie_decline: "仅必要 Cookie",
+                hero_pill: "● 工作流自由的任务管理应用",
+                hero_title: "保留你的工作流，获得更强能力。",
+                hero_lead: "XdoList 基于一个统一任务模型构建，支持多种工作方式，并允许组合适合你的视图。",
+                proof_free: "一个应用",
+                proof_offline: "多种工作流",
+                proof_local: "可组合视图",
+                appstore_note: "App Store 免费 · 本地优先 · 仅匿名使用分析",
+                trust_one_title: "统一任务模型",
+                trust_one_desc: "所有工作流都运行在同一套任务基础上。",
+                trust_two_title: "工作方式",
+                trust_two_desc: "保留你已经习惯的任务思考方式。",
+                trust_three_title: "可组合视图",
+                trust_three_desc: "不换 App，也能获得更强能力。",
+                features_label: "核心功能",
+                features_title: "日常执行依然简单",
+                features_lead: "在灵活的工作流系统之下，记录、计划、完成和提醒这些日常动作依然保持快速直接。",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "立即试用 XdoList",
+                cta_banner_sub: "App Store 免费 · 无需注册 · 支持离线",
+                privacy_label: "隐私",
+                workflow_label: "工作流兼容",
+                workflow_title: "带着你熟悉的工作流来使用。",
+                workflow_lead: "很多任务应用都要求你先学习它的方法。XdoList 以工作流 Pack 为核心，你可以保留已经信任的思考方式，也可以用 Custom Pack 组装自己的设置。",
+                workflow_xdolist_title: "集多种工作流优势于一身",
+                workflow_xdolist_desc: "均衡的默认 Pack，包含仪表盘、收集箱、项目、领域、标签、回顾、过滤器和已保存视图。",
+                workflow_simple_title: "最直接的列表式设置",
+                workflow_simple_desc: "没有额外流程，只保留仪表盘、收集箱、项目、标签和提醒。",
+                workflow_elegant_title: "Today / Anytime / Someday 规划",
+                workflow_elegant_desc: "保持项目和领域清晰，再在需要时增加更丰富的视图。",
+                workflow_query_title: "查询优先的组织方式",
+                workflow_query_desc: "为习惯搜索的人准备快速收集箱、标签、过滤器和已保存视图。",
+                workflow_gtd_title: "回顾导向的掌控感",
+                workflow_gtd_desc: "为更复杂的系统整合收集箱、预测、回顾、项目、领域和标签。",
+                workflow_calendar_title: "按时间驱动的规划",
+                workflow_calendar_desc: "为按日期和时间安排的人准备日历、时间线、提醒和重复任务。",
+                workflow_custom_title: "组装你自己的工作流",
+                workflow_custom_desc: "按照你的工作方式选择能力、视角、导航和默认配置。",
+                workflow_note: "工作流 Pack 的灵感来自常见的任务管理模式。所有产品名称和商标均归其各自所有者所有；XdoList 与其没有隶属或背书关系。",
+                promo_sub: "专注至上的每个人，都值得拥有。",
+                footer_tagline: "一个应用、多种工作流、可组合视图。",
+                faq_label: "常见问题",
+                faq_title: "你想知道的，都在这里",
+                faq_lead: "下载前可以先了解的所有信息。",
+                faq_q1: "我的数据真的只存在设备本地吗？",
+                faq_a1: "是的。任务、标签、提醒都保存在 App 内的本地数据库。App 可能通过 Firebase Analytics 上报「创建了任务」这类匿名使用事件，但不会包含任何任务内容。网站上的可选分析是匿名的，与 App 相互独立。",
+                faq_q2: "需要账号吗？",
+                faq_a2: "不需要。打开 App 即可开始记录。没有注册、没有邮箱验证、没有密码。",
+                faq_q3: "能离线使用吗？",
+                faq_a3: "可以。所有核心功能（记录、整理、完成、提醒）都不需要网络。只有从 App Store 下载本身需要联网。",
+                faq_q4: "能在多个设备间同步吗？",
+                faq_a4: "当前版本不支持。XdoList 刻意保持单设备 App。如果未来加入同步，会采用可选加入且端到端加密。",
+                faq_q5: "提醒是如何工作的？",
+                faq_a5: "由 iOS 调度的本地通知。支持每日、每周、每月、每年的循环规则。提醒数据不会离开你的设备。",
+                faq_q6: "是免费的吗？",
+                faq_a6: "是的。App 完全免费，无广告，也没有阻断基本功能的付费墙。App 仅收集匿名的使用事件，不包含任何任务内容。",
+                formula_label: "产品公式",
+                formula_title: "一个应用、多种工作流、可组合视图。",
+                formula_lead: "XdoList 把所有任务放在一个统一任务模型里，你可以切换工作方式，并组合出适合自己工作方式的视图。",
+                formula_one_title: "一个应用",
+                formula_one_desc: "任务、项目、领域、标签、提醒和未来的视图都共享同一套底层模型，而不是分散在不同系统里。",
+                formula_two_title: "多种工作流",
+                formula_two_desc: "无需更换应用，即可从 XdoList、Simple List、Elegant Flow、Quick Capture、Pro GTD、Calendar Timeline 或 Custom Pack 开始。",
+                formula_three_title: "可组合视图",
+                formula_three_desc: "保留你熟悉的工作流，再随着系统成长加入 Today、日历、回顾、过滤器、时间线等视图。",
+                privacy_point_one: "任务只保存在你的设备上",
+                privacy_point_two: "无需注册或邮箱",
+                privacy_point_three: "分析是匿名的，不包含任务内容",
             },
             ko: {
                 tagline: "간단하고 효율적인 할 일 관리. 당신의 데이터는 당신의 것입니다.",
                 promo_line: "하나의 모델, 다양한 워크플로, 조합 가능한 뷰.",
                 subtitle: "가입 없이, 인터넷 없이, 열자마자 사용할 수 있습니다. 할 일 데이터는 모두 기기에 로컬로 저장되어 프라이버시가 보장됩니다.",
                 feedback: "피드백",
-                features_title: "주요 기능",
+                features_title: "일상의 실행은 간단하게",
                 feat_quick_title: "빠른 기록",
                 feat_quick_desc: "열자마자 사용할 수 있습니다. 계정 등록이나 동기화 대기 없이 지금 바로 할 일을 관리하세요.",
                 feat_privacy_title: "프라이버시 우선",
@@ -965,7 +2045,7 @@
                 feat_dark_title: "다크 모드",
                 feat_dark_desc: "라이트/다크 모드 자전환을 지원합니다. 눈을 보호하고 야간 사용 시 더 편안한 경험을 제공합니다.",
                 privacy_title: "개인정보 보호 약속",
-                privacy_desc: "우리는 당신의 데이터가 당신에게 속한다고 믿습니다. XdoList는 개인정보를 수집, 판매 또는 공유하지 않습니다. 광고 추적, 데이터 분석, 강제 클라우드 동기화는 없습니다.",
+                privacy_desc: "우리는 당신의 데이터가 당신에게 속한다고 믿습니다. XdoList는 개인정보를 수집, 판매 또는 공유하지 않습니다. 광고 추적과 강제 클라우드 동기화는 없으며, 사용 분석은 작업 내용을 포함하지 않는 익명 이벤트에 한정됩니다.",
                 privacy_btn: "전체 개인정보 처리방침 보기",
                 footer_privacy: "개인정보 처리방침",
                 footer_terms: "이용약관",
@@ -976,14 +2056,80 @@
                 cookie_policy_link: "쿠키 정책",
                 cookie_dismiss: "확인",
                 cookie_accept: "분석 수락",
-                cookie_decline: "필수만 사용"
+                cookie_decline: "필수만 사용",
+                hero_pill: "● 워크플로 자유형 할 일 앱",
+                hero_title: "당신의 워크플로는 그대로, 더 강력하게.",
+                hero_lead: "XdoList는 하나의 통합 태스크 모델 위에 다양한 워크플로 스타일과 조합 가능한 뷰를 갖춘 할 일 관리 앱입니다.",
+                features_label: "주요 기능",
+                features_lead: "유연한 워크플로 시스템 아래에서도 기록, 계획, 완료, 알림의 일상 루틴은 빠르게 유지됩니다.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "지금 XdoList 사용하기",
+                cta_banner_sub: "App Store 무료 · 가입 없음 · 오프라인 지원",
+                privacy_label: "프라이버시",
+                promo_sub: "집중을 소중히 여기는 모든 사람을 위해.",
+                footer_tagline: "하나의 앱. 다양한 워크플로. 조합 가능한 뷰.",
+                faq_label: "자주 묻는 질문",
+                faq_title: "궁금한 점을 해결합니다",
+                faq_lead: "다운로드 전에 알고 싶은 모든 것.",
+                faq_q1: "데이터는 정말 내 기기에만 저장되나요?",
+                faq_a1: "네. 작업, 태그, 알림은 모두 앱 내부의 로컬 데이터베이스에 저장됩니다. 동기화 서버를 운영하지 않으므로 업로드할 대상이 없습니다. 웹사이트의 선택적 분석은 익명이며 앱과 완전히 분리되어 있습니다.",
+                faq_q2: "계정이 필요한가요?",
+                faq_a2: "필요 없습니다. 앱을 열고 바로 입력하세요. 가입도 이메일 인증도 비밀번호도 없습니다.",
+                faq_q3: "오프라인에서도 작동하나요?",
+                faq_a3: "네. 모든 핵심 기능(기록·정리·완료·알림)은 인터넷 없이 동작합니다. App Store 다운로드를 위해서만 연결이 필요합니다.",
+                faq_q4: "기기 간 동기화가 되나요?",
+                faq_a4: "현재 버전에서는 지원하지 않습니다. XdoList는 의도적으로 단일 기기 앱입니다. 추후 동기화를 추가하더라도 옵트인 방식의 종단간 암호화로 제공됩니다.",
+                faq_q5: "알림은 어떻게 작동하나요?",
+                faq_a5: "iOS가 스케줄링하는 로컬 알림입니다. 매일/매주/매월/매년 반복 규칙을 지원합니다. 알림은 기기 밖으로 나가지 않습니다.",
+                faq_q6: "무료인가요?",
+                faq_a6: "네. 앱은 완전 무료이며 광고나 기본 기능을 가로막는 유료 전환도 없습니다. 앱은 익명 사용 이벤트만 수집하며 작업 내용은 수집하지 않습니다.",
+                proof_free: "하나의 앱",
+                proof_offline: "다양한 워크플로",
+                proof_local: "조합 가능한 뷰",
+                appstore_note: "App Store 묣료 · 로컬 우선 · 익명 사용 분석만",
+                trust_one_title: "통합 태스크 모델",
+                trust_one_desc: "모든 워크플로가 같은 태스크 기반 위에서 동작합니다.",
+                trust_two_title: "워크플로 스타일",
+                trust_two_desc: "이미 익숙한 할 일 사고방식을 그대로 유지하세요.",
+                trust_three_title: "조합 가능한 뷰",
+                trust_three_desc: "앱을 바꾸지 않고 더 강력한 기능을 추가하세요.",
+                formula_label: "제품 공식",
+                formula_title: "하나의 앱. 다양한 워크플로. 조합 가능한 뷰.",
+                formula_lead: "XdoList는 모든 태스크를 하나의 통합 모델에 담고, 워크플로 스타일을 전환하며 일하는 방식에 맞는 뷰를 조합할 수 있습니다.",
+                formula_one_title: "하나의 앱",
+                formula_one_desc: "태스크, 프로젝트, 영역, 태그, 알림, 앞으로의 뷰가 서로 다른 시스템이 아닌 같은 기반 모델을 공유합니다.",
+                formula_two_title: "다양한 워크플로",
+                formula_two_desc: "앱을 바꾸지 않고 XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline, Custom Pack 중에서 시작하세요.",
+                formula_three_title: "조합 가능한 뷰",
+                formula_three_desc: "익숙한 워크플로를 유지하면서 Today, 캘린더, 리뷰, 필터, 타임라인 등의 뷰를 필요에 따라 추가하세요.",
+                workflow_label: "워크플로 호환",
+                workflow_title: "익숙한 워크플로를 그대로 가져오세요.",
+                workflow_lead: "대부분의 할 일 앱은 자기 방식을 배우길 요구합니다. XdoList는 워크플로 팩을 중심으로 만들어져, 신뢰하는 사고방식을 유지하거나 Custom Pack으로 나만의 설정을 만들 수 있습니다.",
+                workflow_xdolist_title: "여러 워크플로의 장점을 모은 기본 팩",
+                workflow_xdolist_desc: "대시보드, 인박스, 프로젝트, 영역, 태그, 리뷰, 필터, 저장된 뷰를 갖춘 균형 잡힌 기본 팩입니다.",
+                workflow_simple_title: "가장 직접적인 리스트 중심 설정",
+                workflow_simple_desc: "대시보드, 인박스, 프로젝트, 태그, 알림만으로 추가 절차 없이 사용합니다.",
+                workflow_elegant_title: "Today / Anytime / Someday 계획",
+                workflow_elegant_desc: "프로젝트와 영역을 깔끔하게 유지하고 필요할 때 더 풍부한 뷰를 추가하세요.",
+                workflow_query_title: "쿼리 중심 정리",
+                workflow_query_desc: "검색으로 생각하는 사람을 위한 빠른 인박스, 라벨, 필터, 저장된 뷰.",
+                workflow_gtd_title: "리뷰 중심의 컨트롤",
+                workflow_gtd_desc: "인박스, 포캐스트, 리뷰, 프로젝트, 영역, 태그를 무거운 시스템용으로 통합합니다.",
+                workflow_calendar_title: "시간 기반 계획",
+                workflow_calendar_desc: "날짜와 시간으로 계획하는 사람을 위한 캘린더, 타임라인, 알림, 반복.",
+                workflow_custom_title: "나만의 워크플로 조합",
+                workflow_custom_desc: "내 일하는 방식에 맞게 기능, 관점, 납비게이션, 기본값을 선택하세요.",
+                workflow_note: "워크플로 팩은 익숙한 태스크 관리 패턴에서 영감을 받았습니다. 각 제품명과 상표는 해당 소유자의 것이며, XdoList는 그들과 제휴하거나 보증받지 않습니다.",
+                privacy_point_one: "태스크는 기기에 저장됩니다",
+                privacy_point_two: "가입이나 이메일이 필요 없습니다",
+                privacy_point_three: "분석은 익명이며 태스크 내용을 포함하지 않습니다",
             },
             de: {
                 tagline: "Einfacher und effizienter Aufgabenmanager. Ihre Daten gehören Ihnen.",
                 promo_line: "Ein Modell. Viele Workflows. Komponierbare Ansichten.",
                 subtitle: "Keine Anmeldung, kein Internet erforderlich. Öffnen und sofort loslegen. Ihre Aufgabendaten werden vollständig auf Ihrem lokalen Gerät gespeichert – Datenschutz garantiert.",
                 feedback: "Feedback",
-                features_title: "Hauptfunktionen",
+                features_title: "Die tägliche Arbeit bleibt einfach",
                 feat_quick_title: "Schnelle Erfassung",
                 feat_quick_desc: "Öffnen und sofort nutzen. Keine Registrierung, kein Warten auf Synchronisation. Beginnen Sie sofort mit der Verwaltung Ihrer Aufgaben.",
                 feat_privacy_title: "Datenschutz zuerst",
@@ -997,7 +2143,7 @@
                 feat_dark_title: "Dunkelmodus",
                 feat_dark_desc: "Unterstützt automatisches Umschalten zwischen hellem und dunklem Modus. Schützt Ihre Augen und sorgt für ein komfortableres Erlebnis bei Nacht.",
                 privacy_title: "Datenschutzversprechen",
-                privacy_desc: "Wir glauben, dass Ihre Daten Ihnen gehören. XdoList sammelt, verkauft oder teilt keine persönlichen Informationen. Kein Werbe-Tracking, keine Datenanalyse, keine erzwungene Cloud-Synchronisation.",
+                privacy_desc: "Wir glauben, dass Ihre Daten Ihnen gehören. XdoList sammelt, verkauft oder teilt keine persönlichen Informationen. Kein Werbe-Tracking und keine erzwungene Cloud-Synchronisation; die Nutzungsanalyse beschränkt sich auf anonyme Ereignisse ohne Aufgabeninhalte.",
                 privacy_btn: "Vollständige Datenschutzerklärung anzeigen",
                 footer_privacy: "Datenschutzerklärung",
                 footer_terms: "Nutzungsbedingungen",
@@ -1008,14 +2154,80 @@
                 cookie_policy_link: "Cookie-Richtlinie",
                 cookie_dismiss: "Verstanden",
                 cookie_accept: "Analyse akzeptieren",
-                cookie_decline: "Nur erforderliche"
+                cookie_decline: "Nur erforderliche",
+                hero_pill: "● Aufgaben-App mit Workflow-Freiheit",
+                hero_title: "Behalte deinen Workflow. Bekomme mehr Power.",
+                hero_lead: "XdoList ist ein Aufgabenmanager auf einem einheitlichen Aufgabenmodell – mit mehreren Workflow-Stilen und kombinierbaren Ansichten.",
+                features_label: "Funktionen",
+                features_lead: "Unter dem flexiblen Workflow-System bleibt die tägliche Routine schnell: erfassen, planen, erledigen, erinnert werden.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "XdoList jetzt ausprobieren",
+                cta_banner_sub: "Kostenlos im App Store · Keine Anmeldung · Funktioniert offline",
+                privacy_label: "Datenschutz",
+                promo_sub: "Für alle, die Fokus schätzen.",
+                footer_tagline: "Eine App. Mehrere Workflows. Kombinierbare Ansichten.",
+                faq_label: "FAQ",
+                faq_title: "Fragen, beantwortet",
+                faq_lead: "Alles, was Sie vor dem Download wissen möchten.",
+                faq_q1: "Werden meine Daten wirklich nur auf meinem Gerät gespeichert?",
+                faq_a1: "Ja. Aufgaben, Tags und Erinnerungen leben in einer lokalen Datenbank in der App. Wir betreiben keinen Sync-Server, also gibt es nichts, wohin hochgeladen wird. Optionale Analysen auf der Website sind anonym und von der App getrennt.",
+                faq_q2: "Brauche ich ein Konto?",
+                faq_a2: "Nein. Öffnen Sie die App und tippen Sie los. Keine Registrierung, keine E-Mail-Bestätigung, kein Passwort.",
+                faq_q3: "Funktioniert es offline?",
+                faq_a3: "Ja. Alle Kernfunktionen funktionieren ohne Internet: erfassen, organisieren, erledigen, Erinnerungen. Nur für den Download aus dem App Store brauchen Sie eine Verbindung.",
+                faq_q4: "Kann ich zwischen Geräten synchronisieren?",
+                faq_a4: "In dieser Version nicht. XdoList ist absichtlich eine Einzelgeräte-App. Falls wir Sync später hinzufügen, wird es Opt-in und Ende-zu-Ende-verschlüsselt sein.",
+                faq_q5: "Wie funktionieren Erinnerungen?",
+                faq_a5: "Lokale Benachrichtigungen, die von iOS geplant werden. Wiederholungsregeln (täglich, wöchentlich, monatlich, jährlich) werden unterstützt. Erinnerungen verlassen Ihr Gerät nicht.",
+                faq_q6: "Ist es kostenlos?",
+                faq_a6: "Ja. Die App ist vollständig kostenlos, ohne Werbung und ohne Bezahlschranken, die Grundfunktionen blockieren. Die App erfasst nur anonyme Nutzungsereignisse – niemals deine Aufgabeninhalte.",
+                proof_free: "Eine App",
+                proof_offline: "Mehrere Workflows",
+                proof_local: "Kombinierbare Ansichten",
+                appstore_note: "Kostenlos im App Store · Local-first · Nur anonyme Nutzungsanalyse",
+                trust_one_title: "Einheitliches Aufgabenmodell",
+                trust_one_desc: "Jeder Workflow läuft auf derselben Aufgabenbasis.",
+                trust_two_title: "Workflow-Stile",
+                trust_two_desc: "Behalte deine gewohnte Denkweise über Aufgaben.",
+                trust_three_title: "Kombinierbare Ansichten",
+                trust_three_desc: "Mehr Power, ohne die App zu wechseln.",
+                formula_label: "Produktformel",
+                formula_title: "Eine App. Mehrere Workflows. Kombinierbare Ansichten.",
+                formula_lead: "XdoList hält jede Aufgabe in einem einheitlichen Modell und lässt dich Workflow-Stile wechseln und Ansichten so kombinieren, wie du arbeitest.",
+                formula_one_title: "Eine App",
+                formula_one_desc: "Aufgaben, Projekte, Bereiche, Tags, Erinnerungen und künftige Ansichten teilen dasselbe Modell statt in getrennten Systemen zu leben.",
+                formula_two_title: "Mehrere Workflows",
+                formula_two_desc: "Starte mit XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline oder einem Custom Pack – ohne die App zu wechseln.",
+                formula_three_title: "Kombinierbare Ansichten",
+                formula_three_desc: "Behalte deinen vertrauten Workflow und füge Today, Kalender, Review, Filter, Timeline und weitere Ansichten hinzu, wenn dein System wächst.",
+                workflow_label: "Workflow-Kompatibilität",
+                workflow_title: "Bringe deinen Workflow mit.",
+                workflow_lead: "Die meisten Aufgaben-Apps verlangen, dass du ihre Methode lernst. XdoList basiert auf Workflow-Packs: Behalte dein vertrautes Denkmodell oder gestalte dein eigenes Setup mit dem Custom Pack.",
+                workflow_xdolist_title: "Das Beste aus mehreren Workflows",
+                workflow_xdolist_desc: "Ein ausgewogenes Standard-Pack mit Dashboard, Inbox, Projekten, Bereichen, Tags, Review, Filtern und gespeicherten Ansichten.",
+                workflow_simple_title: "Das direkteste Listen-Setup",
+                workflow_simple_desc: "Dashboard, Inbox, Projekte, Tags und Erinnerungen – ohne zusätzlichen Prozess.",
+                workflow_elegant_title: "Today / Anytime / Someday planen",
+                workflow_elegant_desc: "Halte Projekte und Bereiche sauber und füge bei Bedarf reichere Ansichten hinzu.",
+                workflow_query_title: "Abfrage-orientierte Organisation",
+                workflow_query_desc: "Schnelle Inbox, Labels, Filter und gespeicherte Ansichten für Menschen, die in Suchen denken.",
+                workflow_gtd_title: "Review-orientierte Kontrolle",
+                workflow_gtd_desc: "Inbox, Forecast, Review, Projekte, Bereiche und Tags für anspruchsvollere Systeme.",
+                workflow_calendar_title: "Zeitgetriebene Planung",
+                workflow_calendar_desc: "Kalender, Timeline, Erinnerungen und Wiederholungen für alle, die nach Datum und Uhrzeit planen.",
+                workflow_custom_title: "Stelle deinen eigenen Workflow zusammen",
+                workflow_custom_desc: "Wähle Funktionen, Perspektiven, Navigation und Standards, die zu deiner Arbeitsweise passen.",
+                workflow_note: "Workflow-Packs sind von vertrauten Aufgabenmanagement-Mustern inspiriert. Produktnamen und Marken gehören ihren jeweiligen Eigentümern; XdoList ist weder mit ihnen verbunden noch von ihnen unterstützt.",
+                privacy_point_one: "Aufgaben bleiben auf deinem Gerät",
+                privacy_point_two: "Keine Anmeldung oder E-Mail erforderlich",
+                privacy_point_three: "Analysen sind anonym und enthalten keine Aufgabeninhalte",
             },
             fr: {
                 tagline: "Gestionnaire de tâches simple et efficace. Vos données vous appartiennent.",
                 promo_line: "Un modèle. Plusieurs flux de travail. Vues composables.",
                 subtitle: "Pas d'inscription, pas d'Internet requis. Ouvrez et utilisez instantanément. Les données de vos tâches sont entièrement stockées sur votre appareil local, confidentialité garantie.",
                 feedback: "Retour d'expérience",
-                features_title: "Fonctionnalités clés",
+                features_title: "L'exécution quotidienne reste simple",
                 feat_quick_title: "Saisie rapide",
                 feat_quick_desc: "Ouvrez et commencez à utiliser immédiatement. Pas d'inscription, pas d'attente de synchronisation. Commencez à gérer vos tâches tout de suite.",
                 feat_privacy_title: "Confidentialité avant tout",
@@ -1029,7 +2241,7 @@
                 feat_dark_title: "Mode sombre",
                 feat_dark_desc: "Prend en charge le basculement automatique entre les modes clair et sombre. Protège vos yeux et offre une expérience plus confortable la nuit.",
                 privacy_title: "Engagement de confidentialité",
-                privacy_desc: "Nous croyons que vos données vous appartiennent. XdoList ne collecte, ne vend ni ne partage vos informations personnelles. Pas de suivi publicitaire, pas d'analyse de données, pas de synchronisation cloud forcée.",
+                privacy_desc: "Nous croyons que vos données vous appartiennent. XdoList ne collecte, ne vend ni ne partage vos informations personnelles. Pas de suivi publicitaire ni de synchronisation cloud forcée ; l'analyse d'usage se limite à des événements anonymes sans contenu de tâches.",
                 privacy_btn: "Consulter la politique de confidentialité complète",
                 footer_privacy: "Politique de confidentialité",
                 footer_terms: "Conditions d'utilisation",
@@ -1040,14 +2252,80 @@
                 cookie_policy_link: "Politique relative aux cookies",
                 cookie_dismiss: "Compris",
                 cookie_accept: "Accepter l'analyse",
-                cookie_decline: "Essentiels uniquement"
+                cookie_decline: "Essentiels uniquement",
+                hero_pill: "● Appli de tâches à workflow libre",
+                hero_title: "Gardez votre workflow. Gagnez en puissance.",
+                hero_lead: "XdoList est un gestionnaire de tâches construit sur un modèle de tâche unifié, avec plusieurs styles de workflow et des vues composables.",
+                features_label: "Fonctionnalités",
+                features_lead: "Sous le système de workflow flexible, la boucle quotidienne reste rapide : capturer, planifier, terminer, être rappelé.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "Essayez XdoList dès aujourd'hui",
+                cta_banner_sub: "Gratuit sur l'App Store · Sans inscription · Fonctionne hors ligne",
+                privacy_label: "Confidentialité",
+                promo_sub: "Pour tous ceux qui valorisent la concentration.",
+                footer_tagline: "Une app. Plusieurs workflows. Des vues composables.",
+                faq_label: "FAQ",
+                faq_title: "Questions, réponses",
+                faq_lead: "Tout ce que vous voudrez savoir avant de télécharger.",
+                faq_q1: "Mes données sont-elles vraiment stockées uniquement sur mon appareil ?",
+                faq_a1: "Oui. Les tâches, étiquettes et rappels vivent dans une base locale à l'intérieur de l'app. Nous n'avons pas de serveur de synchronisation, il n'y a donc rien à téléverser. Les analyses facultatives sur le site sont anonymes et séparées de l'app.",
+                faq_q2: "Ai-je besoin d'un compte ?",
+                faq_a2: "Non. Ouvrez l'app et commencez à écrire. Pas d'inscription, pas de vérification e-mail, pas de mot de passe.",
+                faq_q3: "Fonctionne-t-elle hors ligne ?",
+                faq_a3: "Oui. Toutes les fonctions clés marchent sans Internet : capture, organisation, complétion, rappels. Seule l'installation depuis l'App Store nécessite une connexion.",
+                faq_q4: "Puis-je synchroniser entre appareils ?",
+                faq_a4: "Pas dans cette version. XdoList est volontairement une app mono-appareil. Si nous ajoutons la synchronisation plus tard, elle sera opt-in et chiffrée de bout en bout.",
+                faq_q5: "Comment fonctionnent les rappels ?",
+                faq_a5: "Notifications locales planifiées par iOS. Les règles récurrentes (quotidiennes, hebdomadaires, mensuelles, annuelles) sont prises en charge. Les rappels ne quittent jamais votre appareil.",
+                faq_q6: "Est-ce gratuit ?",
+                faq_a6: "Oui. L'app est entièrement gratuite, sans publicité ni paywall bloquant les fonctions de base. Elle ne collecte que des événements d'usage anonymes, jamais le contenu de vos tâches.",
+                proof_free: "Une seule app",
+                proof_offline: "Plusieurs workflows",
+                proof_local: "Vues composables",
+                appstore_note: "Gratuit sur l'App Store · Local-first · Analyses d'usage anonymes uniquement",
+                trust_one_title: "Modèle de tâche unifié",
+                trust_one_desc: "Chaque workflow repose sur la même base de tâches.",
+                trust_two_title: "Styles de workflow",
+                trust_two_desc: "Gardez votre façon habituelle de penser les tâches.",
+                trust_three_title: "Vues composables",
+                trust_three_desc: "Plus de puissance sans changer d'app.",
+                formula_label: "Formule produit",
+                formula_title: "Une app. Plusieurs workflows. Des vues composables.",
+                formula_lead: "XdoList garde chaque tâche dans un modèle unifié, puis vous permet de changer de style de workflow et de composer les vues adaptées à votre façon de travailler.",
+                formula_one_title: "Une app",
+                formula_one_desc: "Tâches, projets, domaines, tags, rappels et futures vues partagent le même modèle au lieu de vivre dans des systèmes séparés.",
+                formula_two_title: "Plusieurs workflows",
+                formula_two_desc: "Commencez avec XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline ou un Custom Pack, sans changer d'app.",
+                formula_three_title: "Vues composables",
+                formula_three_desc: "Gardez votre workflow habituel, puis ajoutez Today, Calendrier, Revue, Filtre, Timeline et d'autres vues à mesure que votre système grandit.",
+                workflow_label: "Compatibilité des workflows",
+                workflow_title: "Apportez votre workflow avec vous.",
+                workflow_lead: "La plupart des apps de tâches vous demandent d'apprendre leur méthode. XdoList est construit autour de workflow packs : gardez le modèle mental auquel vous faites confiance, ou créez votre propre configuration avec Custom Pack.",
+                workflow_xdolist_title: "Le meilleur de plusieurs workflows",
+                workflow_xdolist_desc: "Un pack par défaut équilibré avec dashboard, inbox, projets, domaines, tags, revue, filtres et vues enregistrées.",
+                workflow_simple_title: "La configuration liste la plus directe",
+                workflow_simple_desc: "Dashboard, inbox, projets, tags et rappels, sans processus supplémentaire.",
+                workflow_elegant_title: "Planification Today / Anytime / Someday",
+                workflow_elegant_desc: "Gardez des projets et domaines propres, puis ajoutez des vues plus riches quand vous en avez besoin.",
+                workflow_query_title: "Organisation par requêtes",
+                workflow_query_desc: "Inbox rapide, labels, filtres et vues enregistrées pour ceux qui pensent en recherches.",
+                workflow_gtd_title: "Contrôle orienté revue",
+                workflow_gtd_desc: "Inbox, forecast, revue, projets, domaines et tags pour les systèmes plus lourds.",
+                workflow_calendar_title: "Planification par le temps",
+                workflow_calendar_desc: "Calendrier, timeline, rappels et répétitions pour ceux qui planifient par date et heure.",
+                workflow_custom_title: "Composez votre propre workflow",
+                workflow_custom_desc: "Choisissez les capacités, perspectives, navigation et réglages par défaut adaptés à votre façon de travailler.",
+                workflow_note: "Les workflow packs s'inspirent de modèles familiers de gestion des tâches. Les noms de produits et marques appartiennent à leurs propriétaires respectifs ; XdoList n'est ni affilié ni approuvé par eux.",
+                privacy_point_one: "Les tâches restent sur votre appareil",
+                privacy_point_two: "Aucune inscription ni e-mail requis",
+                privacy_point_three: "Les analyses sont anonymes et n'incluent jamais le contenu des tâches",
             },
             es: {
                 tagline: "Gestor de tareas simple y eficiente. Tus datos te pertenecen.",
                 promo_line: "Un modelo. Múltiples flujos. Vistas componibles.",
                 subtitle: "Sin registro, sin internet necesario. Ábrelo y úsalo al instante. Los datos de tus tareas se almacenan completamente en tu dispositivo local, privacidad garantizada.",
                 feedback: "Comentarios",
-                features_title: "Características principales",
+                features_title: "La ejecución diaria sigue siendo simple",
                 feat_quick_title: "Captura rápida",
                 feat_quick_desc: "Ábrelo y empieza a usarlo al instante. Sin registro, sin esperar sincronización. Comienza a gestionar tus tareas de inmediato.",
                 feat_privacy_title: "Privacidad primero",
@@ -1061,7 +2339,7 @@
                 feat_dark_title: "Modo oscuro",
                 feat_dark_desc: "Admite cambio automático entre modo claro y oscuro. Protege tus ojos y proporciona una experiencia más cómoda por la noche.",
                 privacy_title: "Promesa de privacidad",
-                privacy_desc: "Creemos que tus datos te pertenecen. XdoList no recopila, vende ni comparte tu información personal. Sin rastreo publicitario, sin análisis de datos, sin sincronización en la nube forzada.",
+                privacy_desc: "Creemos que tus datos te pertenecen. XdoList no recopila, vende ni comparte tu información personal. Sin rastreo publicitario ni sincronización forzada en la nube; el análisis de uso se limita a eventos anónimos sin contenido de tareas.",
                 privacy_btn: "Ver política de privacidad completa",
                 footer_privacy: "Política de privacidad",
                 footer_terms: "Términos de uso",
@@ -1072,14 +2350,80 @@
                 cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendido",
                 cookie_accept: "Aceptar análisis",
-                cookie_decline: "Solo esenciales"
+                cookie_decline: "Solo esenciales",
+                hero_pill: "● App de tareas con libertad de flujo",
+                hero_title: "Mantén tu flujo de trabajo. Gana más poder.",
+                hero_lead: "XdoList es un gestor de tareas construido sobre un modelo de tarea unificado, con múltiples estilos de flujo y vistas componibles.",
+                features_label: "Características",
+                features_lead: "Bajo el sistema de flujo flexible, el ciclo diario sigue siendo rápido: capturar, planificar, completar y recibir recordatorios.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "Prueba XdoList hoy",
+                cta_banner_sub: "Gratis en el App Store · Sin registro · Funciona sin conexión",
+                privacy_label: "Privacidad",
+                promo_sub: "Para todos los que valoran la concentración.",
+                footer_tagline: "Una app. Múltiples flujos. Vistas componibles.",
+                faq_label: "Preguntas",
+                faq_title: "Preguntas, respondidas",
+                faq_lead: "Todo lo que querrás saber antes de descargar.",
+                faq_q1: "¿Mis datos están realmente guardados solo en mi dispositivo?",
+                faq_a1: "Sí. Las tareas, etiquetas y recordatorios viven en una base de datos local dentro de la app. No tenemos servidor de sincronización, así que no hay a dónde subir. Los análisis opcionales del sitio web son anónimos y están separados de la app.",
+                faq_q2: "¿Necesito una cuenta?",
+                faq_a2: "No. Abre la app y empieza a escribir. Sin registro, sin verificación de correo, sin contraseña.",
+                faq_q3: "¿Funciona sin conexión?",
+                faq_a3: "Sí. Todas las funciones clave funcionan sin internet: capturar, organizar, completar, recordatorios. Solo necesitas conexión para la descarga desde el App Store.",
+                faq_q4: "¿Puedo sincronizar entre dispositivos?",
+                faq_a4: "En esta versión no. XdoList es a propósito una app de un solo dispositivo. Si añadimos sincronización más adelante, será opcional y cifrada de extremo a extremo.",
+                faq_q5: "¿Cómo funcionan los recordatorios?",
+                faq_a5: "Notificaciones locales programadas por iOS. Se admiten reglas recurrentes (diarias, semanales, mensuales, anuales). Los recordatorios no salen nunca de tu dispositivo.",
+                faq_q6: "¿Es gratis?",
+                faq_a6: "Sí. La app es totalmente gratuita, sin anuncios ni muros de pago que bloqueen funciones básicas. Solo recopila eventos de uso anónimos, nunca el contenido de tus tareas.",
+                proof_free: "Una app",
+                proof_offline: "Múltiples flujos",
+                proof_local: "Vistas componibles",
+                appstore_note: "Gratis en la App Store · Local-first · Solo analítica de uso anónima",
+                trust_one_title: "Modelo de tarea unificado",
+                trust_one_desc: "Cada flujo funciona sobre la misma base de tareas.",
+                trust_two_title: "Estilos de flujo",
+                trust_two_desc: "Conserva tu forma habitual de pensar las tareas.",
+                trust_three_title: "Vistas componibles",
+                trust_three_desc: "Más potencia sin cambiar de app.",
+                formula_label: "Fórmula del producto",
+                formula_title: "Una app. Múltiples flujos. Vistas componibles.",
+                formula_lead: "XdoList mantiene cada tarea en un modelo unificado y te permite cambiar de estilo de flujo y componer las vistas que encajan con tu forma de trabajar.",
+                formula_one_title: "Una app",
+                formula_one_desc: "Tareas, proyectos, áreas, etiquetas, recordatorios y futuras vistas comparten el mismo modelo en lugar de vivir en sistemas separados.",
+                formula_two_title: "Múltiples flujos",
+                formula_two_desc: "Empieza con XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline o un Custom Pack sin cambiar de app.",
+                formula_three_title: "Vistas componibles",
+                formula_three_desc: "Mantén tu flujo habitual y añade Hoy, Calendario, Revisión, Filtro, Timeline y otras vistas a medida que tu sistema crece.",
+                workflow_label: "Compatibilidad de flujos",
+                workflow_title: "Trae tu flujo de trabajo contigo.",
+                workflow_lead: "La mayoría de las apps de tareas te piden aprender su método. XdoList se construye alrededor de packs de flujo: conserva el modelo mental en el que confías o crea tu propia configuración con Custom Pack.",
+                workflow_xdolist_title: "Lo mejor de varios flujos",
+                workflow_xdolist_desc: "Un pack equilibrado con dashboard, bandeja, proyectos, áreas, etiquetas, revisión, filtros y vistas guardadas.",
+                workflow_simple_title: "La configuración de lista más directa",
+                workflow_simple_desc: "Dashboard, bandeja, proyectos, etiquetas y recordatorios sin proceso extra.",
+                workflow_elegant_title: "Planificación Hoy / Anytime / Someday",
+                workflow_elegant_desc: "Mantén proyectos y áreas ordenados y añade vistas más ricas cuando las necesites.",
+                workflow_query_title: "Organización por consultas",
+                workflow_query_desc: "Bandeja rápida, etiquetas, filtros y vistas guardadas para quienes piensan en búsquedas.",
+                workflow_gtd_title: "Control orientado a la revisión",
+                workflow_gtd_desc: "Bandeja, forecast, revisión, proyectos, áreas y etiquetas para sistemas más pesados.",
+                workflow_calendar_title: "Planificación por tiempo",
+                workflow_calendar_desc: "Calendario, timeline, recordatorios y repeticiones para quienes planifican por fecha y hora.",
+                workflow_custom_title: "Compón tu propio flujo",
+                workflow_custom_desc: "Elige capacidades, perspectivas, navegación y valores por defecto que encajen con tu forma de trabajar.",
+                workflow_note: "Los packs de flujo se inspiran en patrones familiares de gestión de tareas. Los nombres de productos y marcas pertenecen a sus respectivos propietarios; XdoList no está afiliado ni respaldado por ellos.",
+                privacy_point_one: "Las tareas se quedan en tu dispositivo",
+                privacy_point_two: "Sin registro ni correo electrónico",
+                privacy_point_three: "La analítica es anónima y nunca incluye el contenido de las tareas",
             },
             ar: {
                 tagline: "مدير مهام بسيط وفعّال. بياناتك ملك لك.",
                 promo_line: "نموذج واحد. سير عمل متعددة. عروض قابلة للتركيب.",
                 subtitle: "لا يحتاج إلى تسجيل أو إنترنت. افتح التطبيق واستخدمه فورًا. تُخزّن بيانات مهامك بالكامل على جهازك المحلي، مع ضمان الخصوصية.",
                 feedback: "ملاحظات",
-                features_title: "الميزات الرئيسية",
+                features_title: "التنفيذ اليومي يبقى بسيطًا",
                 feat_quick_title: "التقاط سريع",
                 feat_quick_desc: "افتح التطبيق وابدأ الاستخدام فورًا. لا حاجة للتسجيل أو انتظار المزامنة. ابدأ إدارة مهامك على الفور.",
                 feat_privacy_title: "الخصوصية أولاً",
@@ -1093,7 +2437,7 @@
                 feat_dark_title: "الوضع الداكن",
                 feat_dark_desc: "يدعم التبديل التلقائي بين الوضع الفاتح والداكن. يحمي عينيك ويوفر تجربة أكثر راحة في الليل.",
                 privacy_title: "وعد الخصوصية",
-                privacy_desc: "نؤمن بأن بياناتك ملك لك. لا يقوم XdoList بجمع أو بيع أو مشاركة معلوماتك الشخصية. لا تتبع إعلاني، ولا تحليل بيانات، ولا مزامنة سحابية إجبارية.",
+                privacy_desc: "نؤمن بأن بياناتك ملك لك. لا يقوم XdoList بجمع أو بيع أو مشاركة معلوماتك الشخصية. لا تتبع إعلاني ولا مزامنة سحابية إجبارية، ويقتصر تحليل الاستخدام على أحداث مجهولة لا تتضمن محتوى المهام.",
                 privacy_btn: "عرض سياسة الخصوصية الكاملة",
                 footer_privacy: "سياسة الخصوصية",
                 footer_terms: "شروط الاستخدام",
@@ -1104,14 +2448,80 @@
                 cookie_policy_link: "سياسة ملفات تعريف الارتباط",
                 cookie_dismiss: "فهمت",
                 cookie_accept: "قبول التحليل",
-                cookie_decline: "الأساسية فقط"
+                cookie_decline: "الأساسية فقط",
+                hero_pill: "● تطبيق مهام بحرية سير العمل",
+                hero_title: "احتفظ بطريقة عملك. واحصل على قوة أكبر.",
+                hero_lead: "XdoList مدير مهام مبني على نموذج مهمة موحّد، مع أنماط سير عمل متعددة وعروض قابلة للتركيب.",
+                features_label: "الميزات",
+                features_lead: "في ظل نظام سير العمل المرن، تبقى الحلقة اليومية سريعة: التقاط، تخطيط، إنجاز، وتذكير.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "جرّب XdoList اليوم",
+                cta_banner_sub: "مجانًا على App Store · بدون تسجيل · يعمل دون اتصال",
+                privacy_label: "الخصوصية",
+                promo_sub: "لكل من يقدّر التركيز.",
+                footer_tagline: "تطبيق واحد. سير عمل متعددة. عروض قابلة للتركيب.",
+                faq_label: "الأسئلة الشائعة",
+                faq_title: "إجابات على أسئلتك",
+                faq_lead: "كل ما قد تريد معرفته قبل التنزيل.",
+                faq_q1: "هل تُخزَّن بياناتي حقًا على جهازي فقط؟",
+                faq_a1: "نعم. المهام والوسوم والتذكيرات تعيش في قاعدة بيانات محلية داخل التطبيق. لا ندير خادم مزامنة، فلا يوجد شيء يُرفَع إليه. التحليلات الاختيارية على الموقع مجهولة الهوية ومنفصلة عن التطبيق.",
+                faq_q2: "هل أحتاج إلى حساب؟",
+                faq_a2: "لا. افتح التطبيق وابدأ بالكتابة. لا تسجيل ولا تحقق بريد ولا كلمة مرور.",
+                faq_q3: "هل يعمل دون اتصال؟",
+                faq_a3: "نعم. جميع الميزات الأساسية تعمل بدون إنترنت: الالتقاط والتنظيم والإكمال والتذكيرات. تحتاج الاتصال فقط لتنزيل التطبيق من App Store.",
+                faq_q4: "هل يمكنني المزامنة بين الأجهزة؟",
+                faq_a4: "لا في هذا الإصدار. XdoList تطبيق لجهاز واحد عن قصد. إذا أضفنا المزامنة لاحقًا فستكون اختيارية ومشفّرة من طرف إلى طرف.",
+                faq_q5: "كيف تعمل التذكيرات؟",
+                faq_a5: "إشعارات محلية يجدولها iOS. القواعد المتكررة (يومية وأسبوعية وشهرية وسنوية) مدعومة. التذكيرات لا تغادر جهازك أبدًا.",
+                faq_q6: "هل هو مجاني؟",
+                faq_a6: "نعم. التطبيق مجاني بالكامل، بدون إعلانات ولا حواجز مدفوعة تعيق الميزات الأساسية. يجمع التطبيق أحداث استخدام مجهولة فقط، ولا يجمع محتوى مهامك أبدًا.",
+                proof_free: "تطبيق واحد",
+                proof_offline: "سير عمل متعددة",
+                proof_local: "عروض قابلة للتركيب",
+                appstore_note: "مجاني على App Store · محلي أولاً · تحليلات استخدام مجهولة فقط",
+                trust_one_title: "نموذج مهمة موحّد",
+                trust_one_desc: "كل سير عمل يعمل على نفس أساس المهام.",
+                trust_two_title: "أنماط سير العمل",
+                trust_two_desc: "احتفظ بطريقتك المعتادة في التفكير بالمهام.",
+                trust_three_title: "عروض قابلة للتركيب",
+                trust_three_desc: "قوة أكبر دون تغيير التطبيق.",
+                formula_label: "معادلة المنتج",
+                formula_title: "تطبيق واحد. سير عمل متعددة. عروض قابلة للتركيب.",
+                formula_lead: "يحتفظ XdoList بكل مهمة في نموذج موحّد، ثم يتيح لك تبديل أنماط سير العمل وتركيب العروض التي تناسب طريقة عملك.",
+                formula_one_title: "تطبيق واحد",
+                formula_one_desc: "المهام والمشاريع والمجالات والوسوم والتذكيرات والعروض المستقبلية تشترك في نفس النموذج بدل أن تعيش في أنظمة منفصلة.",
+                formula_two_title: "سير عمل متعددة",
+                formula_two_desc: "ابدأ مع XdoList أو Simple List أو Elegant Flow أو Quick Capture أو Pro GTD أو Calendar Timeline أو Custom Pack دون تغيير التطبيق.",
+                formula_three_title: "عروض قابلة للتركيب",
+                formula_three_desc: "احتفظ بسير عملك المألوف ثم أضف اليوم والتقويم والمراجعة والتصفية والخط الزمني وغيرها كلما نما نظامك.",
+                workflow_label: "توافق سير العمل",
+                workflow_title: "أحضر سير عملك معك.",
+                workflow_lead: "معظم تطبيقات المهام تطلب منك تعلم طريقتها. XdoList مبني حول حزم سير العمل، فيمكنك الاحتفاظ بالنموذج الذهني الذي تثق به أو تشكيل إعدادك الخاص مع Custom Pack.",
+                workflow_xdolist_title: "أفضل ما في سير العمل المتعددة",
+                workflow_xdolist_desc: "حزمة افتراضية متوازنة مع لوحة المتابعة وصندوق الوارد والمشاريع والمجالات والوسوم والمراجعة والمرشحات والعروض المحفوظة.",
+                workflow_simple_title: "أبسط إعداد قائم على القوائم",
+                workflow_simple_desc: "لوحة المتابعة والوارد والمشاريع والوسوم والتذكيرات دون خطوات إضافية.",
+                workflow_elegant_title: "تخطيط اليوم / في أي وقت / يومًا ما",
+                workflow_elegant_desc: "حافظ على مشاريع ومجالات منظمة، ثم أضف عروضًا أغنى عند الحاجة.",
+                workflow_query_title: "تنظيم قائم على الاستعلام",
+                workflow_query_desc: "وارد سريع ووسوم ومرشحات وعروض محفوظة لمن يفكر بالبحث.",
+                workflow_gtd_title: "تحكم قائم على المراجعة",
+                workflow_gtd_desc: "الوارد والتوقعات والمراجعة والمشاريع والمجالات والوسوم للأنظمة الأثقل.",
+                workflow_calendar_title: "تخطيط مدفوع بالوقت",
+                workflow_calendar_desc: "تقويم وخط زمني وتذكيرات وتكرارات لمن يخطط بالتاريخ والوقت.",
+                workflow_custom_title: "ركّب سير عملك الخاص",
+                workflow_custom_desc: "اختر القدرات والمنظورات والتنقل والإعدادات الافتراضية التي تناسب طريقة عملك.",
+                workflow_note: "حزم سير العمل مستوحاة من أنماط إدارة مهام مألوفة. أسماء المنتجات والعلامات التجارية ملك لأصحابها؛ وXdoList غير تابع لهم ولا مدعوم منهم.",
+                privacy_point_one: "المهام تبقى على جهازك",
+                privacy_point_two: "لا حاجة للتسجيل أو البريد الإلكتروني",
+                privacy_point_three: "التحليلات مجهولة ولا تتضمن محتوى المهام أبدًا",
             },
             pt: {
                 tagline: "Gerenciador de tarefas simples e eficiente. Seus dados pertencem a você.",
                 promo_line: "Um modelo. Múltiplos fluxos. Visualizações componíveis.",
                 subtitle: "Sem cadastro, sem internet necessária. Abra e use instantaneamente. Os dados das suas tarefas são armazenados integralmente no seu dispositivo local, privacidade garantida.",
                 feedback: "Feedback",
-                features_title: "Principais recursos",
+                features_title: "A execução diária continua simples",
                 feat_quick_title: "Captura rápida",
                 feat_quick_desc: "Abra e comece a usar instantaneamente. Sem cadastro, sem esperar sincronização. Comece a gerenciar suas tarefas agora mesmo.",
                 feat_privacy_title: "Privacidade em primeiro lugar",
@@ -1136,14 +2546,80 @@
                 cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendi",
                 cookie_accept: "Aceitar análise",
-                cookie_decline: "Apenas essenciais"
+                cookie_decline: "Apenas essenciais",
+                hero_pill: "● App de tarefas com liberdade de fluxo",
+                hero_title: "Mantenha seu fluxo. Ganhe mais poder.",
+                hero_lead: "O XdoList é um gerenciador de tarefas construído sobre um modelo de tarefa unificado, com vários estilos de fluxo e visualizações componíveis.",
+                features_label: "Recursos",
+                features_lead: "Sob o sistema de fluxo flexível, o ciclo diário continua rápido: capturar, planejar, concluir e ser lembrado.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "Experimente o XdoList hoje",
+                cta_banner_sub: "Grátis na App Store · Sem cadastro · Funciona offline",
+                privacy_label: "Privacidade",
+                promo_sub: "Para todos que valorizam o foco.",
+                footer_tagline: "Um app. Vários fluxos. Visualizações componíveis.",
+                faq_label: "Perguntas",
+                faq_title: "Perguntas, respondidas",
+                faq_lead: "Tudo o que você pode querer saber antes de baixar.",
+                faq_q1: "Meus dados ficam mesmo só no meu dispositivo?",
+                faq_a1: "Sim. Tarefas, etiquetas e lembretes vivem em um banco local dentro do app. Não rodamos servidor de sincronização, então não há para onde enviar. As análises opcionais no site são anônimas e separadas do app.",
+                faq_q2: "Preciso de uma conta?",
+                faq_a2: "Não. Abra o app e comece a digitar. Sem cadastro, sem verificação de e-mail, sem senha.",
+                faq_q3: "Funciona offline?",
+                faq_a3: "Sim. Todos os recursos principais funcionam sem internet: capturar, organizar, concluir, lembretes. Você só precisa de conexão para baixar pelo App Store.",
+                faq_q4: "Posso sincronizar entre dispositivos?",
+                faq_a4: "Não nesta versão. XdoList é intencionalmente um app de dispositivo único. Se adicionarmos sincronização no futuro, será opt-in e criptografada de ponta a ponta.",
+                faq_q5: "Como funcionam os lembretes?",
+                faq_a5: "Notificações locais agendadas pelo iOS. Regras recorrentes (diárias, semanais, mensais, anuais) são suportadas. Os lembretes nunca saem do seu dispositivo.",
+                faq_q6: "É gratuito?",
+                faq_a6: "Sim. O app é totalmente gratuito, sem anúncios e sem paywalls que bloqueiem funções básicas. O app coleta apenas eventos de uso anônimos — nunca o conteúdo das suas tarefas.",
+                proof_free: "Um app",
+                proof_offline: "Vários fluxos",
+                proof_local: "Visualizações componíveis",
+                appstore_note: "Grátis na App Store · Local-first · Apenas análise de uso anônima",
+                trust_one_title: "Modelo de tarefa unificado",
+                trust_one_desc: "Todo fluxo roda sobre a mesma base de tarefas.",
+                trust_two_title: "Estilos de fluxo",
+                trust_two_desc: "Mantenha seu jeito habitual de pensar nas tarefas.",
+                trust_three_title: "Visualizações componíveis",
+                trust_three_desc: "Mais poder sem trocar de app.",
+                formula_label: "Fórmula do produto",
+                formula_title: "Um app. Vários fluxos. Visualizações componíveis.",
+                formula_lead: "O XdoList mantém cada tarefa em um modelo unificado e permite trocar de estilo de fluxo e compor as visualizações que combinam com seu jeito de trabalhar.",
+                formula_one_title: "Um app",
+                formula_one_desc: "Tarefas, projetos, áreas, tags, lembretes e futuras visualizações compartilham o mesmo modelo em vez de viver em sistemas separados.",
+                formula_two_title: "Vários fluxos",
+                formula_two_desc: "Comece com XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline ou um Custom Pack sem trocar de app.",
+                formula_three_title: "Visualizações componíveis",
+                formula_three_desc: "Mantenha seu fluxo familiar e adicione Hoje, Calendário, Revisão, Filtro, Timeline e outras visualizações conforme seu sistema cresce.",
+                workflow_label: "Compatibilidade de fluxos",
+                workflow_title: "Traga seu fluxo de trabalho com você.",
+                workflow_lead: "A maioria dos apps de tarefas pede que você aprenda o método deles. O XdoList é construído em torno de packs de fluxo: mantenha o modelo mental em que confia ou monte sua própria configuração com o Custom Pack.",
+                workflow_xdolist_title: "O melhor de vários fluxos",
+                workflow_xdolist_desc: "Um pack padrão equilibrado com dashboard, caixa de entrada, projetos, áreas, tags, revisão, filtros e visualizações salvas.",
+                workflow_simple_title: "A configuração de lista mais direta",
+                workflow_simple_desc: "Dashboard, caixa de entrada, projetos, tags e lembretes sem processo extra.",
+                workflow_elegant_title: "Planejamento Hoje / Anytime / Someday",
+                workflow_elegant_desc: "Mantenha projetos e áreas organizados e adicione visualizações mais ricas quando precisar.",
+                workflow_query_title: "Organização por consultas",
+                workflow_query_desc: "Caixa de entrada rápida, etiquetas, filtros e visualizações salvas para quem pensa em buscas.",
+                workflow_gtd_title: "Controle orientado à revisão",
+                workflow_gtd_desc: "Caixa de entrada, forecast, revisão, projetos, áreas e tags para sistemas mais pesados.",
+                workflow_calendar_title: "Planejamento orientado pelo tempo",
+                workflow_calendar_desc: "Calendário, timeline, lembretes e repetições para quem planeja por data e hora.",
+                workflow_custom_title: "Componha seu próprio fluxo",
+                workflow_custom_desc: "Escolha capacidades, perspectivas, navegação e padrões que combinem com seu jeito de trabalhar.",
+                workflow_note: "Os packs de fluxo são inspirados em padrões familiares de gerenciamento de tarefas. Nomes de produtos e marcas pertencem aos seus respectivos donos; o XdoList não é afiliado nem endossado por eles.",
+                privacy_point_one: "As tarefas ficam no seu dispositivo",
+                privacy_point_two: "Sem cadastro nem e-mail",
+                privacy_point_three: "A análise é anônima e nunca inclui o conteúdo das tarefas",
             },
             it: {
                 tagline: "Gestione attività semplice ed efficiente. I tuoi dati ti appartengono.",
                 promo_line: "Un modello. Più flussi. Viste componibili.",
                 subtitle: "Nessuna registrazione, nessuna connessione Internet richiesta. Apri e usa istantaneamente. I dati delle tue attività sono archiviati interamente sul tuo dispositivo locale, privacy garantita.",
                 feedback: "Feedback",
-                features_title: "Funzionalità principali",
+                features_title: "L'esecuzione quotidiana resta semplice",
                 feat_quick_title: "Cattura rapida",
                 feat_quick_desc: "Apri e inizia a usare istantaneamente. Nessuna registrazione, nessuna attesa di sincronizzazione. Inizia subito a gestire le tue attività.",
                 feat_privacy_title: "Privacy prima di tutto",
@@ -1168,7 +2644,73 @@
                 cookie_policy_link: "Politica sui cookie",
                 cookie_dismiss: "Capito",
                 cookie_accept: "Accetta analisi",
-                cookie_decline: "Solo essenziali"
+                cookie_decline: "Solo essenziali",
+                hero_pill: "● App per attività con libertà di flusso",
+                hero_title: "Mantieni il tuo flusso. Ottieni più potenza.",
+                hero_lead: "XdoList è un gestore di attività costruito su un modello di attività unificato, con più stili di flusso e viste componibili.",
+                features_label: "Funzionalità",
+                features_lead: "Sotto il sistema di flusso flessibile, il ciclo quotidiano resta veloce: catturare, pianificare, completare e ricevere promemoria.",
+                cta_appstore: "App Store ↓",
+                cta_banner_title: "Prova XdoList oggi",
+                cta_banner_sub: "Gratis su App Store · Nessuna registrazione · Funziona offline",
+                privacy_label: "Privacy",
+                promo_sub: "Per chi dà valore alla concentrazione.",
+                footer_tagline: "Un'app. Più flussi. Viste componibili.",
+                faq_label: "FAQ",
+                faq_title: "Domande, con risposta",
+                faq_lead: "Tutto ciò che potresti voler sapere prima di scaricare.",
+                faq_q1: "I miei dati sono davvero salvati solo sul mio dispositivo?",
+                faq_a1: "Sì. Attività, etichette e promemoria vivono in un database locale dentro l'app. Non gestiamo un server di sincronizzazione, quindi non c'è nulla a cui caricare. Le analisi opzionali sul sito sono anonime e separate dall'app.",
+                faq_q2: "Devo creare un account?",
+                faq_a2: "No. Apri l'app e inizia a scrivere. Niente registrazione, niente verifica email, niente password.",
+                faq_q3: "Funziona offline?",
+                faq_a3: "Sì. Tutte le funzioni principali funzionano senza Internet: cattura, organizza, completa, promemoria. La connessione serve solo per scaricare dall'App Store.",
+                faq_q4: "Posso sincronizzare tra dispositivi?",
+                faq_a4: "Non in questa versione. XdoList è intenzionalmente un'app mono-dispositivo. Se in futuro aggiungeremo la sincronizzazione, sarà opt-in e crittografata end-to-end.",
+                faq_q5: "Come funzionano i promemoria?",
+                faq_a5: "Notifiche locali pianificate da iOS. Sono supportate regole ricorrenti (giornaliere, settimanali, mensili, annuali). I promemoria non lasciano mai il tuo dispositivo.",
+                faq_q6: "È gratis?",
+                faq_a6: "Sì. L'app è completamente gratuita, senza pubblicità e senza paywall che blocchino le funzioni di base. L'app raccoglie solo eventi di utilizzo anonimi, mai il contenuto delle tue attività.",
+                proof_free: "Un'app",
+                proof_offline: "Più flussi",
+                proof_local: "Viste componibili",
+                appstore_note: "Gratis sull'App Store · Local-first · Solo analisi d'uso anonime",
+                trust_one_title: "Modello di attività unificato",
+                trust_one_desc: "Ogni flusso funziona sulla stessa base di attività.",
+                trust_two_title: "Stili di flusso",
+                trust_two_desc: "Mantieni il tuo modo abituale di pensare alle attività.",
+                trust_three_title: "Viste componibili",
+                trust_three_desc: "Più potenza senza cambiare app.",
+                formula_label: "Formula del prodotto",
+                formula_title: "Un'app. Più flussi. Viste componibili.",
+                formula_lead: "XdoList mantiene ogni attività in un modello unificato e ti permette di cambiare stile di flusso e comporre le viste adatte al tuo modo di lavorare.",
+                formula_one_title: "Un'app",
+                formula_one_desc: "Attività, progetti, aree, tag, promemoria e viste future condividono lo stesso modello invece di vivere in sistemi separati.",
+                formula_two_title: "Più flussi",
+                formula_two_desc: "Inizia con XdoList, Simple List, Elegant Flow, Quick Capture, Pro GTD, Calendar Timeline o un Custom Pack senza cambiare app.",
+                formula_three_title: "Viste componibili",
+                formula_three_desc: "Mantieni il tuo flusso abituale e aggiungi Oggi, Calendario, Revisione, Filtro, Timeline e altre viste man mano che il tuo sistema cresce.",
+                workflow_label: "Compatibilità dei flussi",
+                workflow_title: "Porta il tuo flusso di lavoro con te.",
+                workflow_lead: "La maggior parte delle app di attività ti chiede di imparare il suo metodo. XdoList è costruita attorno ai pack di flusso: mantieni il modello mentale di cui ti fidi o crea la tua configurazione con Custom Pack.",
+                workflow_xdolist_title: "Il meglio di più flussi",
+                workflow_xdolist_desc: "Un pack predefinito equilibrato con dashboard, inbox, progetti, aree, tag, revisione, filtri e viste salvate.",
+                workflow_simple_title: "La configurazione a lista più diretta",
+                workflow_simple_desc: "Dashboard, inbox, progetti, tag e promemoria senza processi extra.",
+                workflow_elegant_title: "Pianificazione Oggi / Anytime / Someday",
+                workflow_elegant_desc: "Mantieni progetti e aree ordinati e aggiungi viste più ricche quando serve.",
+                workflow_query_title: "Organizzazione per query",
+                workflow_query_desc: "Inbox veloce, etichette, filtri e viste salvate per chi pensa in ricerche.",
+                workflow_gtd_title: "Controllo orientato alla revisione",
+                workflow_gtd_desc: "Inbox, forecast, revisione, progetti, aree e tag per sistemi più complessi.",
+                workflow_calendar_title: "Pianificazione guidata dal tempo",
+                workflow_calendar_desc: "Calendario, timeline, promemoria e ripetizioni per chi pianifica per data e ora.",
+                workflow_custom_title: "Componi il tuo flusso",
+                workflow_custom_desc: "Scegli capacità, prospettive, navigazione e impostazioni predefinite adatte al tuo modo di lavorare.",
+                workflow_note: "I pack di flusso sono ispirati a modelli familiari di gestione delle attività. I nomi dei prodotti e i marchi appartengono ai rispettivi proprietari; XdoList non è affiliata né approvata da loro.",
+                privacy_point_one: "Le attività restano sul tuo dispositivo",
+                privacy_point_two: "Nessuna registrazione né email richiesta",
+                privacy_point_three: "Le analisi sono anonime e non includono mai il contenuto delle attività",
             }
         };
 
@@ -1201,11 +2743,12 @@
                 if (toggle) toggle.classList.remove('open');
             }
 
-            // Update all translated elements
+            // Update all translated elements (fallback to English for missing keys)
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+                const text = translations[lang]?.[key] ?? translations.en[key];
+                if (text) {
+                    el.textContent = text;
                 }
             });
         }
@@ -1249,7 +2792,7 @@
         function updateThemeIcon(theme) {
             const btn = document.querySelector('.theme-toggle');
             if (btn) {
-                btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                btn.textContent = theme === 'dark' ? '◐' : '◑';
                 btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
             }
         }

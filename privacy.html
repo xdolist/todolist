@@ -7,7 +7,7 @@
     <meta name="description" content="XdoList Privacy Policy - v0.1.0 stores all task data locally on your device by default, with optional Apple iCloud (Apple platforms only), optional self-managed Supabase or self-hosted backends. We do not operate an official cross-platform cloud sync service.">
     <meta name="keywords" content="XdoList privacy policy, data protection, privacy first, local storage, task manager privacy, iCloud, Supabase">
     <meta name="author" content="XdoList">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#0a0a0f">
 
     <!-- Canonical URL -->
@@ -51,7 +51,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <script>
         (function() {
@@ -105,134 +105,85 @@
       } catch (e) { /* localStorage unavailable */ }
     </script>
     <style>
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #151520;
-            --text-primary: #e5e5e5;
-            --text-secondary: #888888;
-            --text-muted: #555555;
-            --accent: #d4a574;
-            --accent-hover: #c49468;
-            --border: rgba(212, 165, 116, 0.15);
-            --border-hover: rgba(212, 165, 116, 0.3);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        [data-theme="light"] {
-            --bg-primary: #fafafa;
-            --bg-secondary: #f5f5f0;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --text-muted: #999999;
-            --accent: #b8860b;
-            --accent-hover: #9a7009;
-            --border: rgba(184, 134, 11, 0.2);
-            --border-hover: rgba(184, 134, 11, 0.4);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         ::selection {
             background: var(--accent);
-            color: #111118;
+            color: #ffffff;
+        }
+
+        :root {
+            /* 浅色为默认，深色为亮色变体，由 [data-theme="dark"] 覆盖 */
+            --bg-primary: #F7F8FB;
+            --bg-section: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #0F1226;
+            --text-secondary: rgba(15, 18, 38, 0.65);
+            --text-muted: rgba(15, 18, 38, 0.45);
+            --accent: #5B5EF7;
+            --accent-hover: #484BE5;
+            --accent-soft: rgba(91, 94, 247, 0.12);
+            --accent-text: #484BE5;
+            --teal: #0F9F8F;
+            --teal-soft: rgba(15, 159, 143, 0.12);
+            --warm: #F97316;
+            --warm-soft: rgba(249, 115, 22, 0.13);
+            --border: rgba(15, 18, 38, 0.06);
+            --border-strong: rgba(15, 18, 38, 0.12);
+            --card-shadow: 0 24px 48px -24px rgba(15, 18, 38, 0.18);
+            --accent-shadow: 0 10px 24px -10px rgba(91, 94, 247, 0.6);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1C1C1E;
+            --bg-section: #1C1C1E;
+            --bg-card: #2C2C2E;
+            --text-primary: #F5F5F7;
+            --text-secondary: rgba(245, 245, 247, 0.65);
+            --text-muted: rgba(245, 245, 247, 0.45);
+            --accent: #818CF8;
+            --accent-hover: #A5B4FC;
+            --accent-soft: rgba(129, 140, 248, 0.18);
+            --accent-text: #C7D2FE;
+            --teal: #2DD4BF;
+            --teal-soft: rgba(45, 212, 191, 0.14);
+            --warm: #FB923C;
+            --warm-soft: rgba(251, 146, 60, 0.16);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --card-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+            --accent-shadow: 0 10px 24px -10px rgba(129, 140, 248, 0.6);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.8;
-            color: var(--text-secondary);
+            line-height: 1.6;
+            color: var(--text-primary);
             background: var(--bg-primary);
-            padding: 0;
-            font-weight: 300;
-            letter-spacing: 0.01em;
+            min-height: 100vh;
+            font-weight: 400;
+            letter-spacing: 0;
         }
 
-        /* Language Switcher */
+        /* ===== 顶部：语言/主题栏 ===== */
         .lang-switcher {
             position: sticky;
             top: 0;
             right: 0;
             left: 0;
             display: flex;
-            gap: 4px;
+            gap: 6px;
             z-index: 100;
             flex-wrap: wrap;
             justify-content: flex-end;
             background: var(--bg-primary);
-            padding: 20px 40px;
+            padding: 14px 40px;
             border-bottom: 1px solid var(--border);
-        }
-        .lang-btn {
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.72em;
-            font-weight: 400;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-            letter-spacing: 0.02em;
-        }
-        .lang-btn:hover {
-            border-color: var(--border-hover);
-            color: var(--text-primary);
-        }
-        .lang-btn.active {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-            font-weight: 500;
-        }
-
-        .theme-toggle {
-            padding: 4px 10px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.25s ease;
-            margin-left: 8px;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--border-hover);
-            color: var(--text-primary);
-        }
-
-        .lang-toggle {
-            display: none;
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-primary);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.25s ease;
             align-items: center;
-            gap: 6px;
-        }
-
-        .lang-toggle:hover {
-            border-color: var(--border-hover);
-        }
-
-        .lang-toggle-arrow {
-            font-size: 0.7em;
-            transition: transform 0.25s ease;
-        }
-
-        .lang-toggle.open .lang-toggle-arrow {
-            transform: rotate(180deg);
-        }
-
-        .lang-panel {
-            display: contents;
         }
 
         .brand {
@@ -245,218 +196,368 @@
         }
 
         .brand-icon {
-            width: 24px;
-            height: 24px;
+            width: 34px;
+            height: 34px;
             flex-shrink: 0;
+            border-radius: 9px;
         }
 
         .brand-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1em;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
             letter-spacing: -0.01em;
         }
 
-        .container {
-            max-width: 720px;
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            margin-left: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-toggle {
+            display: inline-flex;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-toggle-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .lang-toggle.open .lang-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 6px;
+            gap: 0;
+            grid-template-columns: repeat(2, 1fr);
+            min-width: 230px;
+            box-shadow: 0 12px 40px rgba(15, 18, 38, 0.18);
+            z-index: 200;
+        }
+
+        .lang-panel.open {
+            display: grid;
+        }
+
+        .lang-panel .lang-btn {
+            display: block;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            text-align: left;
+            background: transparent;
+            margin: 2px;
+        }
+
+        .lang-panel .lang-btn:hover {
+            background: var(--accent-soft);
+        }
+
+        .lang-panel .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* ===== 正文容器 ===== */
+        .page {
+            padding: 40px 24px 72px;
+        }
+
+        .back-link {
+            display: block;
+            max-width: 760px;
+            margin: 0 auto 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .article {
+            max-width: 760px;
             margin: 0 auto;
             background: var(--bg-card);
-            padding: 80px 60px;
             border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 56px;
+            box-shadow: var(--card-shadow);
         }
-        h1 {
-            font-family: 'Playfair Display', Georgia, serif;
+
+        .article h1 {
+            margin: 0 0 14px;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 12px;
-            font-size: 2.4em;
-            font-weight: 600;
-            letter-spacing: -0.01em;
         }
+
         .meta {
             color: var(--text-muted);
-            font-size: 0.85em;
-            margin-bottom: 60px;
-            padding-bottom: 40px;
+            font-size: 13px;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
             border-bottom: 1px solid var(--border);
         }
-        h2 {
-            font-family: 'Playfair Display', Georgia, serif;
+
+        .meta p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .article h2 {
             color: var(--text-primary);
-            margin-top: 60px;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-            font-weight: 600;
+            margin-top: 44px;
+            margin-bottom: 14px;
+            font-size: 20px;
+            font-weight: 700;
             letter-spacing: -0.01em;
         }
-        h3 {
+
+        .article h3 {
             color: var(--text-primary);
-            margin-top: 32px;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-            font-weight: 500;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 600;
         }
-        p { margin-bottom: 16px; }
-        ul, ol { margin-left: 0;
-            margin-bottom: 20px;
+
+        .article p {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .article ul,
+        .article ol {
+            margin: 0 0 18px;
             list-style: none;
             padding-left: 0;
         }
-        li { margin-bottom: 10px;
+
+        .article li {
+            margin-bottom: 10px;
             padding-left: 20px;
             position: relative;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
         }
-        li::before {
+
+        .article li::before {
             content: "";
             position: absolute;
             left: 0;
-            top: 12px;
-            width: 4px;
-            height: 4px;
+            top: 11px;
+            width: 5px;
+            height: 5px;
             background: var(--accent);
             border-radius: 50%;
         }
-        .highlight {
-            background: rgba(212, 165, 116, 0.08);
-            border-left: 2px solid var(--accent);
-            padding: 20px 24px;
-            margin: 30px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            font-size: 0.9em;
-        }
-        th, td {
-            border: 1px solid var(--border);
-            padding: 14px 16px;
-            text-align: left;
-        }
-        th {
-            background: var(--bg-secondary);
-            font-weight: 500;
-            color: var(--text-primary);
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .contact {
-            background: var(--bg-secondary);
-            padding: 32px;
-            margin-top: 60px;
-            border: 1px solid var(--border);
-        }
-        .contact h2 { margin-top: 0; margin-bottom: 16px; }
-        a {
+
+        .article a {
             color: var(--accent);
             text-decoration: none;
-            transition: color 0.25s ease;
+            transition: color 0.2s ease;
         }
-        a:hover {
+
+        .article a:hover {
             color: var(--accent-hover);
+            text-decoration: underline;
         }
-        .no-collect { color: #c4786a; font-weight: 400; }
-        .nav {
-            text-align: center;
-            margin-bottom: 40px;
-            margin-top: 40px;
-            padding: 0 40px;
+
+        .highlight {
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 18px 22px;
+            margin: 26px 0;
         }
-        .nav a {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-size: 0.85em;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+
+        .highlight p {
+            margin: 0;
         }
-        .nav a:hover { color: var(--accent); }
 
         .final-statement {
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.85em;
-            margin-top: 60px;
-            padding-top: 40px;
+            font-size: 13px;
+            margin-top: 48px;
+            padding-top: 32px;
             border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 600px) {
-            body { padding: 0; }
-            .container { padding: 40px 24px; }
-            h1 { font-size: 1.8em; }
-            .lang-switcher { padding: 16px 24px; gap: 3px; position: relative; }
-            .lang-btn { font-size: 0.68em; padding: 3px 8px; }
-            .nav { padding: 0 24px; }
-
-            .lang-panel {
-                display: none;
-                position: absolute;
-                top: calc(100% + 6px);
-                right: 24px;
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                padding: 6px;
-                gap: 0;
-                grid-template-columns: repeat(3, 1fr);
-                min-width: 220px;
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-                z-index: 200;
-            }
-
-            .lang-panel.open {
-                display: grid;
-            }
-
-            .lang-panel .lang-btn {
-                display: block;
-                border: none;
-                border-radius: 8px;
-                padding: 8px 4px;
-                font-size: 0.7em;
-                text-align: center;
-                background: transparent;
-                margin: 2px;
-            }
-
-            .lang-panel .lang-btn:hover {
-                background: rgba(212, 165, 116, 0.15);
-            }
-
-            .lang-panel .lang-btn.active {
-                display: none;
-            }
-
-            .lang-toggle {
-                display: inline-flex;
-                order: 1;
-            }
-
-            .lang-switcher > .lang-btn:not(.active) {
-                display: none;
-            }
-
-            .lang-switcher > .lang-btn.active {
-                display: none;
-            }
-
-            .theme-toggle {
-                order: 2;
-            }
+        .final-statement p {
+            margin: 0;
         }
 
+        /* ===== Footer ===== */
+        footer {
+            background: #0F1226;
+            color: rgba(245, 245, 247, 0.7);
+            padding: 56px 40px 28px;
+            font-size: 13px;
+        }
+
+        footer .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+
+        footer .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer .brand-row .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+        }
+
+        footer .brand-row .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        footer .footer-tagline {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(245, 245, 247, 0.55);
+            max-width: 460px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        footer a,
+        footer .footer-link-button {
+            color: rgba(245, 245, 247, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 13px;
+        }
+
+        footer .footer-link-button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        footer a:hover,
+        footer .footer-link-button:hover {
+            color: var(--accent);
+        }
+
+        footer .copy {
+            font-size: 12px;
+            color: rgba(245, 245, 247, 0.45);
+            margin: 12px 0 0;
+        }
+
+        /* ===== Cookie Consent ===== */
         .cookie-consent {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            border-top: 1px solid var(--border);
-            padding: 20px 24px;
+            right: 24px;
+            bottom: 24px;
+            width: min(360px, calc(100vw - 48px));
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px;
             z-index: 1000;
             display: none;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 22px 54px -24px rgba(15, 18, 38, 0.38);
         }
 
         .cookie-consent.show {
@@ -464,20 +565,17 @@
         }
 
         .cookie-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .cookie-content p {
             margin: 0;
             color: var(--text-secondary);
-            font-size: 0.85em;
-            line-height: 1.5;
-            flex: 1;
+            font-size: 11px;
+            line-height: 1.4;
         }
 
         .cookie-content a {
@@ -486,70 +584,164 @@
         }
 
         .cookie-content a:hover {
-            color: var(--accent-hover);
             text-decoration: underline;
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
         }
 
         .cookie-buttons {
             display: flex;
-            flex-shrink: 0;
             gap: 8px;
+            width: 100%;
+            justify-content: flex-end;
         }
 
         .cookie-btn {
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 0.8em;
-            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid var(--border);
-            background: var(--accent);
-            color: #111118;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--text-primary);
         }
 
-        .cookie-btn:hover {
+        .cookie-btn.primary {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .cookie-btn.primary:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
         }
 
+        .cookie-btn:hover:not(.primary) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+
+        /* ===== Privacy 专属 ===== */
+        .article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 22px 0;
+            font-size: 14px;
+        }
+
+        .article th,
+        .article td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        .article th {
+            color: var(--text-primary);
+            font-weight: 600;
+            background: var(--bg-primary);
+        }
+
+        .no-collect {
+            color: #C2574F;
+        }
+
+        [data-theme="dark"] .no-collect {
+            color: #F0857D;
+        }
+
+        .contact {
+            margin-top: 44px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--bg-primary);
+        }
+
+        .contact h2 {
+            margin-top: 0 !important;
+        }
+
         .privacy-choice-link {
-            appearance: none;
-            border: 0;
+            display: block;
+            margin: 36px auto 0;
+            padding: 10px 22px;
+            border: 1px solid var(--border-strong);
+            border-radius: 10px;
             background: transparent;
             color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            font: inherit;
-            padding: 0;
-            margin-top: 16px;
+            transition: all 0.2s ease;
         }
 
         .privacy-choice-link:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
+            border-color: var(--accent);
         }
 
         @media (max-width: 768px) {
-            .cookie-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 16px;
+            .article table {
+                font-size: 13px;
             }
 
-            .cookie-buttons {
-                width: 100%;
-                justify-content: center;
+            .article th,
+            .article td {
+                padding: 10px 10px;
+            }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .lang-switcher {
+                padding: 12px 24px;
+                gap: 4px;
+                position: relative;
+            }
+
+            .lang-panel {
+                right: 24px;
+            }
+
+            .page {
+                padding: 28px 16px 56px;
+            }
+
+            .article {
+                padding: 36px 24px;
+                border-radius: 16px;
+            }
+
+            .article h1 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .cookie-consent {
+                right: 12px;
+                bottom: 12px;
+                width: min(300px, calc(100vw - 24px));
+                padding: 10px;
+            }
+
+            .cookie-content {
+                gap: 10px;
+            }
+
+            .cookie-content p {
+                font-size: 10px;
+                line-height: 1.3;
             }
 
             .cookie-btn {
                 flex: 1;
-                max-width: 140px;
+                padding: 7px 8px;
+                font-size: 11px;
             }
         }
     </style>
@@ -557,14 +749,15 @@
 <body>
     <div class="cookie-consent" id="cookieConsent" role="region" aria-label="Cookie consent" aria-describedby="cookieConsentDesc">
         <div class="cookie-content">
-            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
+            <p id="cookieConsentDesc"><span data-i18n="cookie_desc">Optional analytics are off until accepted.</span> <a href="cookies.html" data-i18n="cookie_policy_link">Cookie Policy</a></p>
             <div class="cookie-buttons">
                 <button class="cookie-btn" onclick="declineAnalyticsCookies()" data-i18n="cookie_decline">Only essential</button>
-                <button class="cookie-btn" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
+                <button class="cookie-btn primary" onclick="acceptAnalyticsCookies()" data-i18n="cookie_accept">Accept analytics</button>
             </div>
         </div>
     </div>
-    <div class="lang-switcher">
+
+    <header class="lang-switcher">
         <a href="index.html" class="brand">
             <img class="brand-icon" src="./logo.png" alt="XdoList">
             <span class="brand-text">XdoList</span>
@@ -585,14 +778,13 @@
             <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">Português</button>
             <button class="lang-btn" data-lang="it" onclick="setLang('it')">Italiano</button>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
-    </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    </header>
 
-    <div class="nav">
-        <a href="index.html" data-i18n="back_home">← Back to Home</a>
-    </div>
+    <main class="page">
+        <a href="index.html" class="back-link" data-i18n="back_home">← Back to Home</a>
 
-    <div class="container">
+        <article class="article">
         <h1 data-i18n="title">Privacy Policy</h1>
     <div class="meta">
             <p><span data-i18n="effective">Effective Date:</span> <span data-i18n="effective_date">July 13, 2026</span></p>
@@ -795,7 +987,27 @@ XdoList ("we", "the app") is a task management application. We highly value your
             <span data-i18n="final_desc"> XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.</span>
         </div>
         <button type="button" class="privacy-choice-link" onclick="openCookiePreferences()" data-i18n="privacy_choices">Privacy Choices</button>
-    </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="inner">
+            <div class="brand-row">
+                <img class="brand-icon" src="./logo.png" alt="XdoList">
+                <span class="brand-text">XdoList</span>
+            </div>
+            <p class="footer-tagline" data-i18n="footer_tagline">One app. Multiple workflows. Composable views.</p>
+            <div class="links">
+                <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                <a href="terms-of-use.html" data-i18n="footer_terms">Terms of Use</a>
+                <a href="cookies.html">Cookie Policy</a>
+                <button type="button" class="footer-link-button" onclick="openCookiePreferences()" data-i18n="footer_privacy_choices">Privacy Choices</button>
+                <a href="https://github.com/xdolist/xdolist/issues" target="_blank" rel="noopener noreferrer" data-i18n="footer_feedback">Feedback</a>
+                <a href="mailto:support@xdolist.com" data-i18n="footer_contact">Contact Us</a>
+            </div>
+            <p class="copy">© 2026 XdoList. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         const langMap = {
@@ -921,11 +1133,18 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 final_statement: "Statement:",
                 final_desc: " XdoList is a privacy-respecting app. Your data belongs to you. We only provide tools to help you manage your data and do not own, analyze, or sell your personal information.",
                 privacy_choices: "Privacy Choices",
-                cookie_desc: "We use optional analytics cookies to understand site traffic and improve XdoList. Analytics cookies are off until you accept. Essential cookies store your language, theme, and consent choice and cannot be disabled.",
+                cookie_desc: "Optional analytics are off until accepted.",
                 cookie_policy_link: "Cookie Policy",
                 cookie_dismiss: "Got it",
                 cookie_accept: "Accept analytics",
-                cookie_decline: "Only essential"
+                cookie_decline: "Only essential",
+                footer_tagline: "One app. Multiple workflows. Composable views.",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Use",
+                footer_privacy_choices: "Privacy Choices",
+                footer_feedback: "Feedback",
+                footer_contact: "Contact Us",
+
             },
             ja: {
                 back_home: "← ホームに戻る",
@@ -1041,7 +1260,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Cookie ポリシー",
                 cookie_dismiss: "了解",
                 cookie_accept: "分析を受け入れる",
-                cookie_decline: "必須のみ"
+                cookie_decline: "必須のみ",
+                footer_tagline: "ひとつのアプリ。複数のワークフロー。組み合わせ可能なビュー。",
+                footer_privacy: "プライバシーポリシー",
+                footer_terms: "利用規約",
+                footer_privacy_choices: "プライバシー設定",
+                footer_feedback: "フィードバック",
+                footer_contact: "お問い合わせ",
+
             },
             zh: {
                 back_home: "← 返回主页",
@@ -1159,7 +1385,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Cookie 政策",
                 cookie_dismiss: "知道了",
                 cookie_accept: "接受分析",
-                cookie_decline: "仅必要 Cookie"
+                cookie_decline: "仅必要 Cookie",
+                footer_tagline: "一个应用、多种工作流、可组合视图。",
+                footer_privacy: "隐私政策",
+                footer_terms: "用户协议",
+                footer_privacy_choices: "隐私选择",
+                footer_feedback: "反馈问题",
+                footer_contact: "联系我们",
+
             },
             ko: {
                 back_home: "← 홈으로 돌아가기",
@@ -1278,7 +1511,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "쿠키 정책",
                 cookie_dismiss: "확인",
                 cookie_accept: "분석 수락",
-                cookie_decline: "필수만 사용"
+                cookie_decline: "필수만 사용",
+                footer_tagline: "하나의 앱. 다양한 워크플로. 조합 가능한 뷰.",
+                footer_privacy: "개인정보 처리방침",
+                footer_terms: "이용약관",
+                footer_privacy_choices: "개인정보 선택",
+                footer_feedback: "피드백",
+                footer_contact: "문의하기",
+
             },
             de: {
                 back_home: "← Zurück zur Startseite",
@@ -1397,7 +1637,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Cookie-Richtlinie",
                 cookie_dismiss: "Verstanden",
                 cookie_accept: "Analyse akzeptieren",
-                cookie_decline: "Nur erforderliche"
+                cookie_decline: "Nur erforderliche",
+                footer_tagline: "Eine App. Mehrere Workflows. Kombinierbare Ansichten.",
+                footer_privacy: "Datenschutzerklärung",
+                footer_terms: "Nutzungsbedingungen",
+                footer_privacy_choices: "Datenschutzauswahl",
+                footer_feedback: "Feedback",
+                footer_contact: "Kontakt",
+
             },
             fr: {
                 back_home: "← Retour à l'accueil",
@@ -1516,7 +1763,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Politique relative aux cookies",
                 cookie_dismiss: "Compris",
                 cookie_accept: "Accepter l'analyse",
-                cookie_decline: "Essentiels uniquement"
+                cookie_decline: "Essentiels uniquement",
+                footer_tagline: "Une app. Plusieurs workflows. Des vues composables.",
+                footer_privacy: "Politique de confidentialité",
+                footer_terms: "Conditions d'utilisation",
+                footer_privacy_choices: "Choix de confidentialité",
+                footer_feedback: "Retour d'expérience",
+                footer_contact: "Nous contacter",
+
             },
             es: {
                 back_home: "← Volver al inicio",
@@ -1635,7 +1889,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendido",
                 cookie_accept: "Aceptar análisis",
-                cookie_decline: "Solo esenciales"
+                cookie_decline: "Solo esenciales",
+                footer_tagline: "Una app. Múltiples flujos. Vistas componibles.",
+                footer_privacy: "Política de privacidad",
+                footer_terms: "Términos de uso",
+                footer_privacy_choices: "Opciones de privacidad",
+                footer_feedback: "Comentarios",
+                footer_contact: "Contacto",
+
             },
             ar: {
                 back_home: "← العودة إلى الرئيسية",
@@ -1754,7 +2015,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "سياسة ملفات تعريف الارتباط",
                 cookie_dismiss: "فهمت",
                 cookie_accept: "قبول التحليل",
-                cookie_decline: "الأساسية فقط"
+                cookie_decline: "الأساسية فقط",
+                footer_tagline: "تطبيق واحد. سير عمل متعددة. عروض قابلة للتركيب.",
+                footer_privacy: "سياسة الخصوصية",
+                footer_terms: "شروط الاستخدام",
+                footer_privacy_choices: "خيارات الخصوصية",
+                footer_feedback: "ملاحظات",
+                footer_contact: "تواصل معنا",
+
             },
             pt: {
                 back_home: "← Voltar para o início",
@@ -1873,7 +2141,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Política de cookies",
                 cookie_dismiss: "Entendi",
                 cookie_accept: "Aceitar análise",
-                cookie_decline: "Apenas essenciais"
+                cookie_decline: "Apenas essenciais",
+                footer_tagline: "Um app. Vários fluxos. Visualizações componíveis.",
+                footer_privacy: "Política de privacidade",
+                footer_terms: "Termos de Uso",
+                footer_privacy_choices: "Opções de privacidade",
+                footer_feedback: "Feedback",
+                footer_contact: "Fale conosco",
+
             },
             it: {
                 back_home: "← Torna alla home",
@@ -1992,7 +2267,14 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 cookie_policy_link: "Politica sui cookie",
                 cookie_dismiss: "Capito",
                 cookie_accept: "Accetta analisi",
-                cookie_decline: "Solo essenziali"
+                cookie_decline: "Solo essenziali",
+                footer_tagline: "Un'app. Più flussi. Viste componibili.",
+                footer_privacy: "Informativa sulla privacy",
+                footer_terms: "Termini di utilizzo",
+                footer_privacy_choices: "Scelte privacy",
+                footer_feedback: "Feedback",
+                footer_contact: "Contattaci",
+
             }
         };
 
@@ -2025,11 +2307,12 @@ XdoList ("we", "the app") is a task management application. We highly value your
                 if (toggle) toggle.classList.remove('open');
             }
 
-            // Update all translated elements
+            // Update all translated elements (fallback to English for missing keys)
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+                const text = translations[lang]?.[key] ?? translations.en[key];
+                if (text) {
+                    el.textContent = text;
                 }
             });
         }
@@ -2073,7 +2356,7 @@ XdoList ("we", "the app") is a task management application. We highly value your
         function updateThemeIcon(theme) {
             const btn = document.querySelector('.theme-toggle');
             if (btn) {
-                btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                btn.textContent = theme === 'dark' ? '◐' : '◑';
                 btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
             }
         }

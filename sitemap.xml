@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://xdolist.com/</loc>
-        <lastmod>2026-07-02</lastmod>
+        <lastmod>2026-07-24</lastmod>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://xdolist.com/privacy.html</loc>
-        <lastmod>2026-07-02</lastmod>
+        <lastmod>2026-07-24</lastmod>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://xdolist.com/cookies.html</loc>
-        <lastmod>2026-07-02</lastmod>
+        <lastmod>2026-07-24</lastmod>
         <priority>0.3</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://xdolist.com/terms-of-use.html</loc>
-        <lastmod>2026-07-02</lastmod>
+        <lastmod>2026-07-24</lastmod>
         <priority>0.5</priority>
         <changefreq>monthly</changefreq>
     </url>
